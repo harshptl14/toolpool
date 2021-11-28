@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 const button = css`
   color: var(--pink);
@@ -22,7 +22,7 @@ const button = css`
   &:after {
     display: none !important;
   }
-`
+`;
 
 const mixins = {
   button,
@@ -167,6 +167,10 @@ const mixins = {
     padding: 0;
     margin: 0;
   `,
-}
 
-export default mixins
+  backColor: css`
+    background-color: red;
+  `,
+};
+
+export default mixins;

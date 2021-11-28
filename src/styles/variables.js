@@ -1,17 +1,19 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 const variables = css`
   :root {
-    --dark-pink: #190b0f;
-    --dark-pink-light: #32171e;
-    --pink: #652f3e;
-    --light-pink: #b1536c;
-    --lightest-pink: #fd779b;
-    --pink-shadow: rgba(2, 12, 27, 0.7);
+    --green: #2b7537;
+    --back-light: #f8fffa;
+    --back-dark: #010e04;
+    --shade-light: #ddffe7;
+    --shade-dark: #07290d;
+    --font-light: #96a798;
+    --font-dark: #cacaca;
+    --strike-light: #000000;
+    --strike-dark: #ffffff;
 
-    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
-      sans-serif;
-    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    --font-sans: "Open Sans", -apple-system, system-ui, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;
@@ -21,6 +23,7 @@ const variables = css`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
+    --fz-headingxl: 62px;
 
     --border-radius: 4px;
     --nav-height: 100px;
@@ -36,7 +39,8 @@ const variables = css`
 
     --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
     --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
-    --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ham-after: bottom 0.1s ease-in 0.25s,
+      transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     --ham-after-active: bottom 0.1s ease-out,
       transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
   }

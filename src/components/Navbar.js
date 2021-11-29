@@ -2,19 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 const NavDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 3rem;
-  height: 50px;
-  background-color: ${({ theme }) => theme.shade};
+  height: var(--nav-height);
+  background-color: ${({ theme }) => !theme.text};
+  ${({ theme }) => theme.mixins.flexBetween};
+`;
+
+const ButtonToogle = styled.button`
+  ${({ theme }) => theme.mixins.button};
+  padding: 1rem 1rem;
 `;
 
 const Navbar = (props) => {
   return (
     <NavDiv>
       ToolPool
-      <button onClick={props.toggleTheme}>Toggle theme</button>
+      <ButtonToogle onClick={props.toggleTheme}>Toggle theme</ButtonToogle>
     </NavDiv>
   );
 };

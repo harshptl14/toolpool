@@ -17,7 +17,6 @@ function App() {
     }
   };
   return (
-    console.log(mode),
     (
       <>
         <BrowserRouter>

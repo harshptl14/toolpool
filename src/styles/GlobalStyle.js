@@ -19,7 +19,7 @@ html{
 
   ::selection {
     background-color: ${({ theme }) => theme.shade};
-    /* color: ${({ theme }) => theme.color}; */
+    color: ${({ theme }) => theme.color};
   }
 
   :focus {

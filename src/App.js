@@ -2,32 +2,31 @@ import { BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyle";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "styled-components";
-import ContentBuilder from "./ContentBuilder";
+import RouteBuilder from "./routeBuilder";
 import { useState } from "react";
 import { lightTheme, darkTheme } from "./styles/theme";
 
 function App() {
-  const [mode, setTheme] = useState("light");
+  // false stands for light theme
+  const [mode, setTheme] = useState(false);
 
   const toggleTheme = () => {
-    if (mode === "light") {
-      setTheme("dark");
+    if (mode === false) {
+      setTheme(true);
     } else {
-      setTheme("light");
+      setTheme(false);
     }
   };
   return (
-    (
-      <>
-        <BrowserRouter>
-          <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
-            <GlobalStyles />
-            <Navbar toggleTheme={toggleTheme} />
-            <ContentBuilder />
-          </ThemeProvider>
-        </BrowserRouter>
-      </>
-    )
+    <>
+      <BrowserRouter>
+        <ThemeProvider theme={mode === false ? lightTheme : darkTheme}>
+          <GlobalStyles />
+          <Navbar toggleTheme={toggleTheme} />
+          <RouteBuilder />
+        </ThemeProvider>
+      </BrowserRouter>
+    </>
   );
 }
 

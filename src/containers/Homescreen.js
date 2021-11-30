@@ -4,10 +4,10 @@ import Card from "../components/Card";
 import { ReactComponent as CardIcon } from "../static/assets/text-size.svg";
 
 const HomeDiv = styled.div`
-  margin: 70px auto;
+  margin: 60px auto;
   font-size: var(--fz-headingxl);
   text-align: center;
-  max-width: 45%;
+  max-width: 50%;
   font-weight: 700;
   line-height: 67px;
 `;
@@ -22,11 +22,14 @@ const HomeDesc = styled.div`
 `;
 
 const Padding = styled.div`
-  margin: 0 100px;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 `;
 
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
+  max-width: 1240px;
   margin-bottom: 15px;
 `;
 
@@ -76,6 +79,8 @@ const homescreen = () => {
           </Icon>
           Text Tools
         </Card>
+
+        
       </Content>
     </Padding>
   );

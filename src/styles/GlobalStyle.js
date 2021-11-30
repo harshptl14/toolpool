@@ -35,9 +35,11 @@ html{
   body::-webkit-scrollbar {
     width: 12px;
   }
+
   body::-webkit-scrollbar-track {
     background: ${({ theme }) => theme.shade};
   }
+  
   body::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.shade};;
     border: 3px solid ${({ theme }) => theme.color};;

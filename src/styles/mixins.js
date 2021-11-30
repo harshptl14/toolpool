@@ -29,6 +29,7 @@ const card = css`
   /* height: 30%; */
   padding: 2rem;
   width: 30%;
+  max-width: 400px;
   border: 3px solid ${({ theme }) => theme.shade};
   transition: all 0.3s ease;
   cursor: pointer;
@@ -46,9 +47,9 @@ const openCard = css`
   ${card}
   box-shadow: 10px 10px 0 ${({ theme }) => theme.color};
   &:hover {
-    top: 0;
-    right: 0;
-    background-color: ${({ theme }) => theme.shade};
+    box-shadow: none;
+    top: 10px;
+    right: -10px;
   }
 `;
 

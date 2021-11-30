@@ -10,21 +10,15 @@ const HomeDiv = styled.div`
   max-width: 50%;
   font-weight: 700;
   line-height: 67px;
-`;
 
-const HomeDesc = styled.div`
-  font-size: var(--fz-md);
-  font-weight: 400;
-  width: 300px;
-  margin: 20px auto;
-  line-height: 20px;
-  color: ${({ theme }) => theme.descFont};
-`;
-
-const Padding = styled.div`
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
+  .homeDesc {
+    font-size: var(--fz-md);
+    font-weight: 400;
+    width: 300px;
+    margin: 20px auto;
+    line-height: 20px;
+    color: ${({ theme }) => theme.descFont};
+  }
 `;
 
 const Content = styled.div`
@@ -49,13 +43,13 @@ const TitleDiv = styled.div`
 
 const homescreen = () => {
   return (
-    <Padding>
+    <>
       <HomeDiv>
         Website with all tools for your work
-        <HomeDesc>
+        <div className="homeDesc">
           No need to bookmark tools seperately. It’s a free website with all
           important tools together
-        </HomeDesc>
+        </div>
       </HomeDiv>
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
@@ -79,10 +73,8 @@ const homescreen = () => {
           </Icon>
           Text Tools
         </Card>
-
-        
       </Content>
-    </Padding>
+    </>
   );
 };
 

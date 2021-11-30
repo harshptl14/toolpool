@@ -13,6 +13,7 @@ const ButtonToogle = styled.button`
   padding: 1rem 1rem;
 `;
 
+
 const Navbar = (props) => {
   return (
     <NavDiv>

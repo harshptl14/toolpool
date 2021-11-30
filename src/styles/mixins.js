@@ -69,6 +69,26 @@ const mixins = {
     flex-direction: column;
   `,
 
+  flexBetween: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `,
+
+  padding: css`
+    width: 85%;
+    max-width: 1240px;
+    margin: 0 auto;
+
+    @media (min-width: 786px) {
+      width: 85%;
+    }
+
+    @media (min-width: 1024px) {
+      width: 75%;
+    }
+  `,
+
   iconBackground: css`
     display: flex;
     padding: 0.94rem;
@@ -79,12 +99,6 @@ const mixins = {
     border-radius: var(--border-circle);
     background-color: ${({ theme }) => theme.shade};
     text-align: center;
-  `,
-
-  flexBetween: css`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   `,
 
   link: css`

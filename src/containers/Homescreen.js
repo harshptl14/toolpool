@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
 import { ReactComponent as CardIcon } from "../static/assets/text-size.svg";
-
+import Carousel from "../components/Carousel/Carousel";
 const HomeDiv = styled.div`
   margin: 60px auto;
   font-size: var(--fz-headingxl);
@@ -52,7 +52,8 @@ const homescreen = () => {
         </div>
       </HomeDiv>
       <TitleDiv>Featured Tools</TitleDiv>
-      <Content>
+      <Carousel/>
+      {/* <Content>
         <Card>
           <Icon>
             <CardIcon />
@@ -73,7 +74,7 @@ const homescreen = () => {
           </Icon>
           Text Tools
         </Card>
-      </Content>
+      </Content> */}
     </>
   );
 };

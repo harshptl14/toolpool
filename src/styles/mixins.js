@@ -76,16 +76,16 @@ const mixins = {
   `,
 
   padding: css`
-    width: 85%;
+    width: 90%;
     max-width: 1240px;
     margin: 0 auto;
 
-    @media (min-width: 786px) {
-      width: 85%;
+    @media (min-width: 600px) {
+      width: 75%;
     }
 
-    @media (min-width: 1024px) {
-      width: 75%;
+    @media (min-width: 1000px) {
+      width: 80%;
     }
   `,
 

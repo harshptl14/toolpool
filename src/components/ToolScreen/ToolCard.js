@@ -10,7 +10,14 @@ const StyledToolCard = styled.div`
   position: static;
 
   @media (min-width: 600px) {
-    width: 47%;
+    height: 250px;
+    width: 100%;
+    position: relative;
+  }
+
+  @media (min-width: 1000px) {
+    height: 320px;
+    width: 48%;
     position: relative;
   }
 `;

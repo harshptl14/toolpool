@@ -28,8 +28,8 @@ const card = css`
   position: relative;
   /* height: 30%; */
   padding: 2rem;
-  width: 30%;
-  max-width: 400px;
+  /* width: 30%; */
+  /* max-width: 400px; */
   border: 3px solid ${({ theme }) => theme.shade};
   transition: all 0.3s ease;
   cursor: pointer;
@@ -98,7 +98,7 @@ const mixins = {
     margin: 100px auto;
 
     @media (min-width: 600px) {
-      width: 75%;
+      width: 90%;
     }
 
     @media (min-width: 1000px) {

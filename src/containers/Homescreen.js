@@ -9,7 +9,7 @@ import useScroll from "../hooks/useScroll";
 
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
-  align-items: center;
+  align-items: start;
   width: 98%;
   flex-wrap: wrap;
 

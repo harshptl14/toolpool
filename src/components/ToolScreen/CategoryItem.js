@@ -24,8 +24,9 @@ const StyledCategoryItems = styled.div`
     color: ${({ theme }) => theme.color};
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 600px) and (max-width: 1000px) {
     /* width: 100px; */
+    font-size: var(--fz-md);
   }
 `;
 

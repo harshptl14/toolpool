@@ -32,7 +32,7 @@ const StyledCategory = styled.div`
   //MediaQuery
   @media (min-width: 600px) {
     display: block;
-    width: 35%;
+    width: 30%;
     margin-bottom: 0px;
   }
 `;
@@ -44,7 +44,12 @@ const StyledWrapper = styled.div`
 
   //MediaQuery
   @media (min-width: 600px) {
-    width: 60%;
+    width: 55%;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1000px) {
+    width: 65%;
     justify-content: space-between;
   }
 `;

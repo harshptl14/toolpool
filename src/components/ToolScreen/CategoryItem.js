@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import config from "../../static/utils/config";
 import styled from "styled-components";
 
 const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
   --color-primary: ${({ theme }) => theme.shade};
-
+  --color-text: ${({ theme }) => theme.color};
+  --color-text-nonactive: ${({ theme }) => theme.text};
   gap: 15px;
   padding: 20px 30px;
   user-select: none !important;
@@ -14,6 +15,14 @@ const StyledCategoryItems = styled.div`
 
   background-color: ${(props) =>
     props.active === "true" ? "var(--color-primary)" : "transperent"};
+  color: ${(props) =>
+    props.active === "true"
+      ? "var(--color-text)"
+      : "var(--color-text-nonactive)"};
+
+  :hover {
+    color: ${({ theme }) => theme.color};
+  }
 
   @media (min-width: 600px) {
     /* width: 100px; */
@@ -41,27 +50,10 @@ const StyledMobileCategory = styled.div`
   top: 4.4rem;
   margin-bottom: 30px;
   background-color: ${({ theme }) => theme.shade};
-  /* padding: 20px; */
   @media (min-width: 600px) {
     display: none;
   }
 
-  .displayName {
-    width: 60%;
-    background-color: ${({ theme }) => theme.background};
-    padding: 15px;
-    margin: 3px;
-    font-size: var(--fz-xs);
-  }
-
-  .changeCat {
-    color: ${({ theme }) => theme.color};
-    text-align: center;
-    width: 40%;
-    padding: 15px;
-    margin: 3px;
-    font-size: var(--fz-xs);
-  }
 `;
 
 const ChangeCat = styled.select`
@@ -81,7 +73,7 @@ const ChangeCat = styled.select`
   width: 100%;
   padding: 15px;
   margin: 3px;
-  font-size: var(--fz-xs);
+  font-size: var(--fz-md);
 `;
 
 const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
@@ -112,9 +104,7 @@ const CategoryItemMobile = ({ executeScroll, menuItem, setMenuItem }) => {
         }}
       >
         {config.categoryList.map((obj) => {
-          return (
-              <option> {obj.name}</option>
-          );
+          return <option> {obj.name}</option>;
         })}
       </ChangeCat>
     </StyledMobileCategory>

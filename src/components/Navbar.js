@@ -1,50 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { usePrefersReducedMotion, useScrollDirection } from "../hooks/index";
-// import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
-// import useScrollDirection from "../hooks/useScrollDirection";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
-
-// const NavDiv = styled.div`
-//   padding: 0 3rem;
-//   height: var(--nav-height);
-//   background-color: ${({ theme }) => !theme.text};
-//   ${({ theme }) => theme.mixins.flexBetween};
-// `;
-
-// const ButtonToogle = styled.button`
-//   ${({ theme }) => theme.mixins.button};
-//   padding: 1rem 1rem;
-// `;
-
-// const Navbar = (props) => {
-//   return (
-//     <NavDiv>
-//       ToolPool
-//       <ButtonToogle onClick={props.toggleTheme}>Toggle theme</ButtonToogle>
-//     </NavDiv>
-//   );
-// };
-
-const navLinks = [
-  {
-    name: "About",
-    url: "/#about",
-  },
-  {
-    name: "Experience",
-    url: "/#jobs",
-  },
-  {
-    name: "Work",
-    url: "/#projects",
-  },
-  {
-    name: "Contact",
-    url: "/#contact",
-  },
-];
+import config from "../static/utils/config";
+import Menu from "./menu";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -108,7 +68,7 @@ const StyledNav = styled.nav`
       height: 42px; */
       text-decoration: none;
       color: inherit;
-      
+
       &:hover,
       &:focus {
         svg {
@@ -161,7 +121,7 @@ const StyledLinks = styled.div`
     }
   }
 
-  .resume-button {
+  .theme-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
     font-size: var(--fz-xs);
@@ -215,14 +175,8 @@ const Navbar = ({ isHome, toggleTheme }) => {
   );
 
   const ResumeLink = (
-    <button
-      className="resume-button"
-      onClick={toggleTheme}
-      // href="/resume.pdf"
-      // target="_blank"
-      // rel="noopener noreferrer"
-    >
-      Resume
+    <button className="theme-button" onClick={toggleTheme}>
+      Theme
     </button>
   );
 
@@ -237,8 +191,8 @@ const Navbar = ({ isHome, toggleTheme }) => {
             {Logo}
             <StyledLinks>
               <ol>
-                {navLinks &&
-                  navLinks.map(({ url, name }, i) => (
+                {config.navLinks &&
+                  config.navLinks.map(({ url, name }, i) => (
                     <li key={i}>
                       <Link to={url}>{name}</Link>
                     </li>
@@ -246,7 +200,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
               </ol>
               <div>{ResumeLink}</div>
             </StyledLinks>
-            {/* <Menu /> */}
+            <Menu toggleTheme={toggleTheme} />
           </>
         ) : (
           <>
@@ -262,8 +216,8 @@ const Navbar = ({ isHome, toggleTheme }) => {
               <ol>
                 <TransitionGroup component={null}>
                   {isMounted &&
-                    navLinks &&
-                    navLinks.map(({ url, name }, i) => (
+                    config.navLinks &&
+                    config.navLinks.map(({ url, name }, i) => (
                       <CSSTransition
                         key={i}
                         classNames={fadeDownClass}
@@ -288,7 +242,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
                     <div
                       style={{
                         transitionDelay: `${
-                          isHome ? navLinks.length * 100 : 0
+                          isHome ? config.navLinks.length * 100 : 0
                         }ms`,
                       }}
                     >
@@ -299,13 +253,13 @@ const Navbar = ({ isHome, toggleTheme }) => {
               </TransitionGroup>
             </StyledLinks>
 
-            {/* <TransitionGroup component={null}>
+            <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <Menu /> 
+                  <Menu toggleTheme={toggleTheme} />
                 </CSSTransition>
               )}
-            </TransitionGroup> */}
+            </TransitionGroup>
           </>
         )}
       </StyledNav>

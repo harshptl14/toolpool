@@ -24,7 +24,7 @@ html{
   }
 
   :focus {
-    outline: 2px dashed ${({ theme }) => theme.shade};
+    outline: 2px dashed ${({ theme }) => theme.color};
     outline-offset: 3px;
   }
 

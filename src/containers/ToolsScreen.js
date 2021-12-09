@@ -53,7 +53,8 @@ const TitleDiv = styled.div`
  ${({ theme }) => theme.mixins.titleDiv}
 
  @media (min-width: 600px){
-   margin-top:  80px;
+   margin-top:  40px;
+   padding: 25px 0;
  }
 `;
 
@@ -62,7 +63,7 @@ const ToolsScreen = ({ executeScroll, elRef}) => {
 
   return (
     <>
-      <TitleDiv ref={elRef}>All Tools</TitleDiv>
+      <TitleDiv ref={elRef}>Tool Categories</TitleDiv>
       <OuterDiv>
         <StyledCategory>
           <CategoryItem

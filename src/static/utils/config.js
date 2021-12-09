@@ -24,11 +24,22 @@ const config = {
     },
   ],
 
-  featuredTools : [
-  { title: "Text tools" },
-  { title: "Image tools" },
-  { title: "Developers tools" },
-]
+  featuredTools: [
+    { title: "Text tools" },
+    { title: "Image tools" },
+    { title: "Developers tools" },
+  ],
+
+  navLinks: [
+    {
+      name: "About",
+      url: "/about",
+    },
+    {
+      name: "Contact",
+      url: "/contact",
+    },
+  ],
 };
 
 export default config;

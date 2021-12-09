@@ -30,7 +30,7 @@ const card = css`
   padding: 2rem;
   /* width: 30%; */
   /* max-width: 400px; */
-  border: 3px solid ${({ theme }) => theme.shade};
+  border: 2px solid ${({ theme }) => theme.border};
   transition: all 0.3s ease;
   cursor: pointer;
   top: 0;
@@ -89,6 +89,12 @@ const mixins = {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+  `,
+
+  flexBeside: css`
+    display: flex;
+    flex-direction: row;
     align-items: center;
   `,
 

@@ -81,10 +81,10 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
   return config.categoryList.map((obj) => {
     return (
       <StyledCategoryItems
-        key={obj.name}
-        active={menuItem === obj.name ? "true" : "false"}
+        key={obj.id}
+        active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
-          setMenuItem(obj.name);
+          setMenuItem(obj.id);
           executeScroll();
         }}
       >
@@ -95,7 +95,7 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
   });
 };
 
-const CategoryItemMobile = ({ executeScroll, menuItem, setMenuItem }) => {
+const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
   return (
     <StyledMobileCategory>
       <ChangeCat
@@ -105,7 +105,7 @@ const CategoryItemMobile = ({ executeScroll, menuItem, setMenuItem }) => {
         }}
       >
         {config.categoryList.map((obj) => {
-          return <option> {obj.name}</option>;
+          return <option value={obj.id}> {obj.name}</option>;
         })}
       </ChangeCat>
     </StyledMobileCategory>

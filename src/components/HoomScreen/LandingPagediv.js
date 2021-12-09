@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import useScroll from '../../hooks/useScroll';
 
 const HomeDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn}

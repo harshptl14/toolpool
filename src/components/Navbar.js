@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(5px);
   transition: var(--transition);
 
   @media (max-width: 1080px) {
@@ -104,6 +104,11 @@ const StyledLinks = styled.div`
       position: relative;
       counter-increment: item 1;
       font-size: var(--fz-xs);
+      color: ${({ theme }) => theme.descfont};
+      
+      :hover{
+       color: ${({theme}) => theme.color} 
+      }
 
       a {
         padding: 10px;
@@ -117,6 +122,7 @@ const StyledLinks = styled.div`
           font-size: var(--fz-xxs);
           text-align: right;
         }
+
       }
     }
   }

@@ -14,6 +14,9 @@ const variables = css`
     --strike-light: #000000;
     --strike-dark: #ffffff;
 
+    --border-light: #003300;
+    --border-dark: #07290d;
+
     --nav-light: rgba(248, 255, 250, 0.85);
     --nav-dark: rgba(1, 14, 4, 0.85);
 

@@ -5,10 +5,10 @@ import {
   CategoryItemMobile,
 } from "../components/ToolScreen/CategoryItem";
 import ToolCard from "../components/ToolScreen/ToolCard";
+import config from "../static/utils/config";
 
 const OuterDiv = styled.div`
   display: flex;
-  /* justify-content: space-around; */
   flex-direction: column;
   align-items: flex-start;
   height: max-content;
@@ -64,8 +64,7 @@ const TitleDiv = styled.div`
 `;
 
 const ToolsScreen = ({ executeScroll, elRef}) => {
-  const [menuItem, setMenuItem] = useState("Text Tools");
-
+  const [menuItem, setMenuItem] = useState("textTools");
   return (
     <>
       <TitleDiv ref={elRef}>Tool Categories</TitleDiv>
@@ -79,16 +78,12 @@ const ToolsScreen = ({ executeScroll, elRef}) => {
         </StyledCategory>
         <CategoryItemMobile
           executeScroll={executeScroll}
-          menuItem={menuItem}
           setMenuItem={setMenuItem}
         />
         <StyledWrapper>
-          <ToolCard className="placeHolder">Hi</ToolCard>
-          <ToolCard className="placeHolder">Hi</ToolCard>
-          <ToolCard className="placeHolder">Hi</ToolCard>
-          <ToolCard className="placeHolder">Hi</ToolCard>
-          <ToolCard className="placeHolder">Hi</ToolCard>
-          <ToolCard className="placeHolder">Hi</ToolCard>
+          {config[menuItem].map(({ title, desc, link }) => {
+            return <ToolCard title={title} desc={desc} link={link} />;
+          })}
         </StyledWrapper>
       </OuterDiv>
     </>

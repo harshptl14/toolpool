@@ -1,6 +1,5 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import TitleDiv from "../components/TitleDiv";
 import styled from "styled-components";
 
 const StyledAboutDiv = styled.div`
@@ -34,8 +33,8 @@ const StyledHeading = styled.div`
     width: 100%;
   }
   @media (min-width: 1000px) {
-    padding: 50px;
-    background-color: ${({theme}) => theme.shade};
+    position: sticky;
+    top: 4.4rem;
     width: 30%;
   }
 `;

@@ -4,18 +4,13 @@ import { Link } from "react-router-dom";
 import { FavoriteBorder } from "@styled-icons/material";
 import config from "../static/utils/config";
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
   ${({ theme }) => theme.mixins.flexColumn};
+  flex-shrink: 0;
   padding: 40px 0;
   width: 100%;
   background-color: ${({ theme }) => theme.footer};
   color: ${({ theme }) => theme.descfont};
-  /* font-size: var(--fz-md); */
-
-  /* @media (min-width: 600px) {
-    padding: 60px 100px;
-    ${({ theme }) => theme.mixins.flexBetween};
-  } */
 
   @media (min-width: 1000px) {
     ${({ theme }) => theme.mixins.flexBetween};

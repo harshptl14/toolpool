@@ -101,7 +101,8 @@ const mixins = {
   padding: css`
     width: 90%;
     max-width: 1240px;
-    margin: 100px auto;
+    margin: 100px auto 50px auto;
+    flex-grow: 1;
 
     @media (min-width: 600px) {
       width: 90%;

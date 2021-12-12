@@ -32,6 +32,7 @@ const variables = css`
     --fz-lg: 18px;
     --fz-xl: 20px;
     --fz-xxl: 22px;
+    --fz-xxxl: 25px;
     --fz-heading: 32px;
     --fz-headingxlM: 45px;
     --fz-headingxl: 62px;

@@ -28,7 +28,7 @@ const HomeDiv = styled.div`
     font-weight: 400;
     margin: 10px auto;
     line-height: 20px;
-    color: ${({ theme }) => theme.descFont};
+    color: ${({ theme }) => theme.descfont};
 
     @media (min-width: 600px) {
       font-size: var(--fz-md);

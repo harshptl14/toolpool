@@ -9,6 +9,7 @@ export const lightTheme = {
   text: `var(--strike-light)`,
   nav: `var(--nav-light)`,
   border: `var(--border-light)`,
+  footer: `var(--strike-dark)`,
   gradient: "linear-gradient(#39598A, #79D7ED)",
   bp: {
     mobileS: `max-width: 330px`,
@@ -33,6 +34,8 @@ export const darkTheme = {
   text: `var(--strike-dark)`,
   nav: `var(--nav-dark)`,
   border: `var(--border-dark)`,
+  footer: `var(--strike-light)`,
+
   bp: {
     mobileS: `max-width: 330px`,
     mobileM: `max-width: 400px`,

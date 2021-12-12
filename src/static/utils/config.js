@@ -19,6 +19,27 @@ const config = {
     },
   ],
 
+  footerLinks: [
+    {
+      name: "About",
+      url: "/about"
+    },
+
+    {
+      name: "Contact",
+      url: "/contact"
+    },
+    {
+      name: "Terms of Use",
+      url: "/terms"
+    }
+    ,
+    {
+      name: "Privacy Policy",
+      url: "/privacy"
+    }
+  ],
+
   // Categorylist of all tools
   categoryList: [
     {

@@ -149,6 +149,11 @@ const mixins = {
     }
   `,
 
+  pageTitle: css`
+    font-weight: 500;
+    font-size: var(--fz-headingxl);
+  `,
+
   inlineLink: css`
     display: inline-block;
     text-decoration: none;

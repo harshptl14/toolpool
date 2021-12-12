@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyle";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
 import RouteBuilder from "./routeBuilder";
 import { useState } from "react";
@@ -34,6 +35,7 @@ function App() {
           <GlobalPadding>
             <RouteBuilder />
           </GlobalPadding>
+          <Footer/>
         </ThemeProvider>
       </BrowserRouter>
     </>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, useTheme} from "styled-components";
 import { usePrefersReducedMotion, useScrollDirection } from "../hooks/index";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import config from "../static/utils/config";
 import Menu from "./menu";
+import LogoDark from "../static/svg/logoDark.svg";
+import { ReactComponent as LogoLight } from "../static/svg/logo.svg";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -135,6 +137,7 @@ const StyledLinks = styled.div`
 `;
 
 const Navbar = ({ isHome, toggleTheme }) => {
+  const theme = useTheme();
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection("down");
   const [scrolledToTop, setScrolledToTop] = useState(true);
@@ -170,7 +173,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          ToolPool
+            <img src={theme.logo} height="50" width="80" alt="text here" />
         </a>
       ) : (
         <Link to="/" aria-label="home">
@@ -185,8 +188,9 @@ const Navbar = ({ isHome, toggleTheme }) => {
       Theme
     </button>
   );
-
+  
   return (
+    
     <StyledHeader
       scrollDirection={scrollDirection}
       scrolledToTop={scrolledToTop}

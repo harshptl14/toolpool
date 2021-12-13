@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled,{useTheme} from "styled-components";
 import { Link } from "react-router-dom";
 import { FavoriteBorder } from "@styled-icons/material";
 import config from "../static/utils/config";
@@ -70,9 +70,15 @@ const StyledMadewith = styled.div`
 `;
 
 const Footer = () => {
+    const theme = useTheme();
+
   return (
     <StyledFooter>
-      <StyledLogo>ToolPoool</StyledLogo>
+      <StyledLogo>
+        <a href="/" aria-label="home">
+          <img src={theme.logo} height="50" width="80" alt="text here" />
+        </a>
+      </StyledLogo>
       <StyledLinks>
         {" "}
         <StyledLinks>

@@ -1,4 +1,6 @@
 import mixins from "./mixins";
+import logoDark from "../static/svg/logoDark.svg";
+import logoLight from "../static/svg/logo.svg";
 
 export const lightTheme = {
   color: `var(--green)`,
@@ -10,6 +12,8 @@ export const lightTheme = {
   nav: `var(--nav-light)`,
   border: `var(--border-light)`,
   footer: `var(--strike-dark)`,
+  logo: logoLight,
+
   gradient: "linear-gradient(#39598A, #79D7ED)",
   bp: {
     mobileS: `max-width: 330px`,
@@ -35,6 +39,7 @@ export const darkTheme = {
   nav: `var(--nav-dark)`,
   border: `var(--border-dark)`,
   footer: `var(--strike-light)`,
+  logo: logoDark,
 
   bp: {
     mobileS: `max-width: 330px`,

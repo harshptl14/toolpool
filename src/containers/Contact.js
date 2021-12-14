@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useInput } from "../hooks/useInput";
 import PageTitle from "../components/PageTitle";
+import { ReactComponent as ContactPC } from "../static/svg/contact.svg";
+import { ReactComponent as ContactMobile } from "../static/svg/contactMobile.svg";
 
 const StyledContactDiv = styled.div`
   width: 100%;
@@ -102,6 +104,31 @@ const StyledContent = styled.form`
   }
 `;
 
+const StyledContactPC = styled.div`
+  display: none;
+  margin-bottom: 40px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    svg {
+      height: 320px;
+      width: 100%;
+    }
+  }
+`;
+
+const StyledContactMobile = styled.div`
+  display: flex;
+  svg {
+    height: 400px;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    display: none;
+  }
+`;
+
 const Contact = () => {
   const {
     value: firstName,
@@ -110,9 +137,9 @@ const Contact = () => {
   } = useInput("");
 
   const {
-    value: email,
-    bind: bindEmail,
-    reset: resetLastName,
+    value: subject,
+    bind: bindSubject,
+    reset: resetSubject,
   } = useInput("");
 
   const {
@@ -124,10 +151,10 @@ const Contact = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
       window.open(
-        `mailto:email@example.com?subject=${firstName}%20is%20trying%20to%20contact&body=${message}`
+        `mailto:email@example.com?subject=${subject}&body=Hey%20${firstName}%20here,%0D%0A${message}`
       );
     resetFirstName();
-      resetLastName();
+      resetSubject();
       resetMessage();
   };
 
@@ -138,6 +165,12 @@ const Contact = () => {
         <div className="desc">toolpool@gmail.com</div>
       </StyledHeading>
       <StyledContent onSubmit={handleSubmit}>
+        <StyledContactPC>
+          <ContactPC />
+        </StyledContactPC>
+        <StyledContactMobile>
+          <ContactMobile />
+        </StyledContactMobile>
         <div className="contactusCaption">
           Have an inquiry or some feedback for us?
         </div>
@@ -156,11 +189,11 @@ const Contact = () => {
           <div className="app-form-group">
             <input
               className="app-form-control"
-              placeholder="Email"
-              name="email"
-              id="email"
+              placeholder="Subject"
+              name="subject"
+              id="subject"
               required
-              {...bindEmail}
+              {...bindSubject}
             />
           </div>
           <div className="app-form-group message">

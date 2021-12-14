@@ -1,6 +1,9 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
 import styled from "styled-components";
+import Icon from "../static/icons/icon";
+import { ReactComponent as About } from "../static/svg/about.svg";
+import { ReactComponent as AboutMobile } from "../static/svg/aboutMobile.svg";
 
 const StyledAboutDiv = styled.div`
   width: 100%;
@@ -57,15 +60,13 @@ const StyledContent = styled.div`
   .descHeading {
     ${({ theme }) => theme.mixins.titleDiv}
     font-size: var(--fz-xxxl);
-    margin: 50px 0 10px 0;
+    margin: 0px 0 10px 0;
     color: ${({ theme }) => theme.color};
 
     @media (min-width: 600px) {
       margin: 0px 0 10px 0;
     }
   }
-
-
 
   .descSmall {
     font-size: var(--fz-lg);
@@ -74,14 +75,48 @@ const StyledContent = styled.div`
     word-spacing: 2.5px;
   }
 `;
+
+const StyledAboutPC = styled.div`
+  display: none;
+  margin-bottom: 40px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    svg {
+      height: 320px;
+      width: 100%;
+    }
+  }
+`;
+
+const StyledAboutMobile = styled.div`
+  display: flex;
+  svg {
+    height: 400px;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    display: none;
+  }
+`;
+
 const about = () => {
   return (
     <StyledAboutDiv>
       <StyledHeading>
         <PageTitle>About</PageTitle>
-        <div className="desc">Some hidden things about us!!</div>
+        <div className="desc">
+          {/* <Icon Twitter/> */}
+          Some hidden things about us!!</div>
       </StyledHeading>
       <StyledContent>
+        <StyledAboutPC>
+          <About />
+        </StyledAboutPC>
+        <StyledAboutMobile>
+          <AboutMobile />
+        </StyledAboutMobile>
         <div className="descHeading">What is ToolPool?</div>
         <div className="descSmall">
           ToolPool is a one-stop tool-pool for day to day needs. Aim to build

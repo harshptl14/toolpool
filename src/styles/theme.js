@@ -13,8 +13,6 @@ export const lightTheme = {
   border: `var(--border-light)`,
   footer: `var(--strike-dark)`,
   logo: logoLight,
-
-  gradient: "linear-gradient(#39598A, #79D7ED)",
   bp: {
     mobileS: `max-width: 330px`,
     mobileM: `max-width: 400px`,

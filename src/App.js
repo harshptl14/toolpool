@@ -4,38 +4,33 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
 import RouteBuilder from "./routeBuilder";
-import { useState } from "react";
+import { useDarkMode } from "../src/hooks/useDarkMode";
 import { lightTheme, darkTheme } from "./styles/theme";
 import styled from "styled-components";
 
 const GlobalPadding = styled.div`
-  ${({theme}) => theme.mixins.padding};
+  ${({ theme }) => theme.mixins.padding};
 `;
 
 let home = true;
 
 function App() {
-  // false stands for light theme
-  const [mode, setTheme] = useState(false);
+  // Custom hook to set theme.
+  // Destructured useDarkMode functional component.
+  const [theme, themeToggler] = useDarkMode();
 
-  const toggleTheme = () => {
-    if (mode === false) {
-      setTheme(true);
-    } else {
-      setTheme(false);
-    }
-  };
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   return (
     <>
       <BrowserRouter>
-        <ThemeProvider theme={mode === false ? lightTheme : darkTheme}>
+        <ThemeProvider theme={themeMode}>
           <GlobalStyles />
-          <Navbar isHome={home} toggleTheme={toggleTheme} />
+          <Navbar isHome={home} toggleTheme={themeToggler} />
           <GlobalPadding>
             <RouteBuilder />
           </GlobalPadding>
-          <Footer/>
+          <Footer />
         </ThemeProvider>
       </BrowserRouter>
     </>

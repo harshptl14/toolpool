@@ -5,8 +5,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import config from "../static/utils/config";
 import Menu from "./menu";
-import LogoDark from "../static/svg/logoDark.svg";
-import { ReactComponent as LogoLight } from "../static/svg/logo.svg";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};

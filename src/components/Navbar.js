@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { css, useTheme} from "styled-components";
-import { usePrefersReducedMotion, useScrollDirection } from "../hooks/index";
+import { usePrefersReducedMotion, useScrollDirection } from "../hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import config from "../static/utils/config";
@@ -118,7 +118,7 @@ const StyledLinks = styled.div`
         color: inherit;
 
         &:before {
-          content: "0" counter(item) ".";
+          /* content: "0" counter(item) "."; */
           margin-right: 5px;
           color: ${({ theme }) => theme.color};
           font-size: var(--fz-xxs);

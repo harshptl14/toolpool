@@ -41,7 +41,7 @@ const HomeDiv = styled.div`
   }
 
   .allToolsButton {
-    ${({ theme }) => theme.mixins.smallButtonFilled}
+    ${({ theme }) => theme.mixins.smallButton}
   }
 `;
 

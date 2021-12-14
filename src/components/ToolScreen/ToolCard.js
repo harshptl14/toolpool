@@ -60,7 +60,7 @@ const Arrow = styled.div`
 
 const ToolCard = ({ title, desc, link }) => {
   return (
-    <StyledToolCard component={Link} to={link}>
+    <StyledToolCard>
       <Link to={link} style={{ color: "inherit", textDecoration: "inherit" }}>
         <Icon>
           <CardIcon />

@@ -73,26 +73,39 @@ const config = {
     {
       title: "Case Converter",
       desc: "Convert your text or string to uppercase, lowercase, title case & sentence case",
-      link: "/text-tools/case-converter",
+      link: "texttools/caseconverter",
     },
 
     {
       title: "Lorem Ipsum Generator",
       desc: "Create your placeholder texts with desired number of paragraphs and properties",
-      link: "/text-tools/lorem-ipsum-generator",
+      link: "texttools/lorem",
     },
 
     {
       title: "Letter Counter",
       desc: "Count letters, words and sentences in a text and analyze this numbers with common limits",
-      link: "/text-tools/letter-counter",
+      link: "/letter-counter",
     },
     {
       title: "Multiple Whitespace Remover",
       desc: "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
-      link: "/text-tools/multiple-whitespace-remover",
+      link: "/multiple-whitespace-remover",
+    },
+    {
+      title: "Text 2 Binary",
+      desc: "Convert text to binary strings and vice versa.",
+      link: "texttools/t2b",
+    },
+    {
+      title: "Unique words finder",
+      desc: "Find all the uniques words used in a text.",
+      link: "texttools/uniquewords",
     },
   ],
+
+
+
   imageTools: [
     {
       title: "Image Cropper",
@@ -137,6 +150,8 @@ const config = {
       link: "/image-tools/image-color-picker",
     },
   ],
+
+
   colorTools: [
     {
       title: "Image Cropper",

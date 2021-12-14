@@ -6,11 +6,21 @@ const variables = css`
     --back-light: #f8fffa;
     --back-dark: #010e04;
     --shade-light: #ddffe7;
+    --shade-light-varient: #b6ffcb;
+    --shade-dark-varient: #0b4115;
     --shade-dark: #07290d;
     --font-light: #96a798;
     --font-dark: #cacaca;
     --strike-light: #000000;
     --strike-dark: #ffffff;
+
+    --border-light: #003300;
+    --border-dark: #07290d;
+
+    --nav-light: rgba(248, 255, 250, 0.85);
+    --nav-dark: rgba(1, 14, 4, 0.85);
+
+    --navy-shadow: rgba(2, 12, 27, 0.7);
 
     --font-sans: "Open Sans", -apple-system, system-ui, sans-serif;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
@@ -22,7 +32,9 @@ const variables = css`
     --fz-lg: 18px;
     --fz-xl: 20px;
     --fz-xxl: 22px;
+    --fz-xxxl: 25px;
     --fz-heading: 32px;
+    --fz-headingxlM: 45px;
     --fz-headingxl: 62px;
 
     --border-radius: 4px;

@@ -9,6 +9,7 @@ ${variables}
 html{
     box-sizing: border-box;
     width: 100%;
+    scroll-behavior: smooth;
 }
 
 *, 
@@ -23,7 +24,7 @@ html{
   }
 
   :focus {
-    outline: 2px dashed ${({ theme }) => theme.shade};
+    outline: 2px dashed ${({ theme }) => theme.color};
     outline-offset: 3px;
   }
 
@@ -33,16 +34,16 @@ html{
     scrollbar-color: ${({ theme }) => theme.color};
   }
   body::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
   }
 
   body::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.shade};
+    /* background: ${({ theme }) => theme.shade}; */
   }
   
   body::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.shade};;
-    border: 3px solid ${({ theme }) => theme.color};;
+    background-color: ${({ theme }) => theme.shadeVarient};
+    /* border: 1px solid ${({ theme }) => theme.color}; */
     border-radius: 10px;
   }
 

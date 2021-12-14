@@ -28,9 +28,9 @@ const card = css`
   position: relative;
   /* height: 30%; */
   padding: 2rem;
-  width: 30%;
-  max-width: 400px;
-  border: 3px solid ${({ theme }) => theme.shade};
+  /* width: 30%; */
+  /* max-width: 400px; */
+  border: 2px solid ${({ theme }) => theme.border};
   transition: all 0.3s ease;
   cursor: pointer;
   top: 0;
@@ -53,10 +53,17 @@ const openCard = css`
   }
 `;
 
+
 const mixins = {
   button,
   card,
   openCard,
+
+  flexStart: css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  `,
 
   flexCenter: css`
     display: flex;
@@ -67,25 +74,42 @@ const mixins = {
   flexColumn: css`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   `,
 
   flexBetween: css`
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   `,
 
-  padding: css`
-    width: 85%;
-    max-width: 1240px;
-    margin: 0 auto;
+  flexAround: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  `,
 
-    @media (min-width: 786px) {
-      width: 85%;
+  flexBeside: css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `,
+
+  padding: css`
+    width: 90%;
+    max-width: 1240px;
+    margin: 100px auto 50px auto;
+    flex-grow: 1;
+
+    @media (min-width: 600px) {
+      width: 90%;
     }
 
-    @media (min-width: 1024px) {
-      width: 75%;
+    @media (min-width: 1000px) {
+      width: 80%;
     }
   `,
 
@@ -119,7 +143,16 @@ const mixins = {
   titleDiv: css`
     font-weight: 500;
     font-size: var(--fz-heading);
-    margin: 20px 0;
+    margin: 50px 0 30px 0;
+
+    @media (min-width: 600px) {
+      margin: 60px 0 30px 0;
+    }
+  `,
+
+  pageTitle: css`
+    font-weight: 500;
+    font-size: var(--fz-headingxl);
   `,
 
   inlineLink: css`
@@ -171,6 +204,29 @@ const mixins = {
     &:focus,
     &:active {
       background-color: ${({ theme }) => theme.shade};
+      outline: none;
+    }
+    &:after {
+      display: none !important;
+    }
+  `,
+
+  smallButtonFilled: css`
+    color: ${({ theme }) => theme.color};
+    background-color: ${({ theme }) => theme.shade};
+    border: 1px solid ${({ theme }) => theme.color};
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    font-size: var(--fz-xs);
+    font-family: var(--font-mono);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
       outline: none;
     }
     &:after {
@@ -239,5 +295,7 @@ const mixins = {
     background-color: red;
   `,
 };
+
+
 
 export default mixins;

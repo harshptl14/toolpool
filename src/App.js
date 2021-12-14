@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyle";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
 import RouteBuilder from "./routeBuilder";
 import { useState } from "react";
@@ -11,6 +12,7 @@ const GlobalPadding = styled.div`
   ${({theme}) => theme.mixins.padding};
 `;
 
+let home = true;
 
 function App() {
   // false stands for light theme
@@ -23,15 +25,17 @@ function App() {
       setTheme(false);
     }
   };
+
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={mode === false ? lightTheme : darkTheme}>
           <GlobalStyles />
-          <Navbar toggleTheme={toggleTheme} />
+          <Navbar isHome={home} toggleTheme={toggleTheme} />
           <GlobalPadding>
-          <RouteBuilder />
+            <RouteBuilder />
           </GlobalPadding>
+          <Footer/>
         </ThemeProvider>
       </BrowserRouter>
     </>

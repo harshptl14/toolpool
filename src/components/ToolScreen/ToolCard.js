@@ -6,9 +6,9 @@ import { ReactComponent as ArrowIcon } from "../../static/svg/arrow.svg";
 
 const StyledToolCard = styled.div`
   ${({ theme }) => theme.mixins.card}
-  padding: 2.2rem;
+  padding: 1.8rem;
   width: 100%;
-  margin-bottom: 60px;
+  margin: 20px auto;
   position: static;
 
   @media (min-width: 600px) {

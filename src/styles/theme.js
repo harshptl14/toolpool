@@ -1,6 +1,8 @@
 import mixins from "./mixins";
 import logoDark from "../static/svg/logoDark.svg";
 import logoLight from "../static/svg/logo.svg";
+import waveLight from "../static/svg/waveLight.svg";
+import waveDark from "../static/svg/waveDark.svg";
 
 export const lightTheme = {
   color: `var(--green)`,
@@ -13,6 +15,7 @@ export const lightTheme = {
   border: `var(--border-light)`,
   footer: `var(--strike-dark)`,
   logo: logoLight,
+  wave: waveLight,
   bp: {
     mobileS: `max-width: 330px`,
     mobileM: `max-width: 400px`,
@@ -38,6 +41,7 @@ export const darkTheme = {
   border: `var(--border-dark)`,
   footer: `var(--strike-light)`,
   logo: logoDark,
+  wave: waveDark,
 
   bp: {
     mobileS: `max-width: 330px`,

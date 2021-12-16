@@ -6,6 +6,7 @@ import ToolsScreen from "./ToolsScreen";
 import TitleDiv from "../components/TitleDiv";
 import LandingPagediv from "../components/HoomScreen/LandingPagediv";
 import useScroll from "../hooks/useScroll";
+import InfoCard from "../components/HoomScreen/InfoCard";
 
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
@@ -32,6 +33,7 @@ const Homescreen = () => {
         })}
       </Content>
       <ToolsScreen executeScroll={executeScroll} elRef={elRef} />
+      <InfoCard/>
     </>
   );
 };

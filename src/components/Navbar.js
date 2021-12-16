@@ -64,8 +64,6 @@ const StyledNav = styled.nav`
 
     a {
       color: var(--green);
-      /* width: 42px;
-      height: 42px; */
       text-decoration: none;
       color: inherit;
 

@@ -1,7 +1,6 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
 import styled from "styled-components";
-import Icon from "../static/icons/icon";
 import { ReactComponent as About } from "../static/svg/about.svg";
 import { ReactComponent as AboutMobile } from "../static/svg/aboutMobile.svg";
 
@@ -46,6 +45,10 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  a{
+    ${({theme}) => theme.mixins.linkColored}
+  }
 
   @media (min-width: 600px) {
     width: 100%;
@@ -108,7 +111,8 @@ const about = () => {
         <PageTitle>About</PageTitle>
         <div className="desc">
           {/* <Icon Twitter/> */}
-          Some hidden things about us!!</div>
+          Some hidden things about us!!
+        </div>
       </StyledHeading>
       <StyledContent>
         <StyledAboutPC>
@@ -119,11 +123,11 @@ const about = () => {
         </StyledAboutMobile>
         <div className="descHeading">What is ToolPool?</div>
         <div className="descSmall">
-          ToolPool is a one-stop tool-pool for day to day needs. Aim to build
-          this tool-pool is to reduce the number of tabs open in your browser to
-          do some tiny tasks. This tool will also lower your burden to find a
-          tool from bookmarks that you saved years ago. Now, you just have to
-          bookmark one website and done...
+          <b>ToolPool</b> is a one-stop tool-pool for day to day needs. Aim to
+          build this tool-pool is to reduce the number of tabs open in your
+          browser to do some tiny tasks. This tool will also lower your burden
+          to find a tool from bookmarks that you saved years ago. Now, you just
+          have to bookmark one website and done...
         </div>
         <div className="descHeading">Why did we build this?</div>
         <div className="descSmall">
@@ -140,11 +144,27 @@ const about = () => {
         </div>
         <div className="descHeading"> Who are those two noob devs?</div>
         <div className="descSmall">
-          ToolPool is designed and being built by Harsh Patel and Yash Paneliya.
-          Both of them belong to the planet earth. They are not very experienced
-          professionals but they are very enthusiastic developers. They are
-          doing their best to build a one-stop solution for many problems with
-          an elegant and user-friendly interface.
+          <b>ToolPool</b> is designed and being built by{" "}
+          <a
+            href="https://patelharsh.gq/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Harsh Patel{" "}
+          </a>
+          and
+          <a
+            href="https://yashpaneliya.github.io/#/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" "}
+            Yash Paneliya
+          </a>
+          . Both of them belong to the planet earth. They are not very
+          experienced professionals but they are very enthusiastic developers.
+          They are doing their best to build a one-stop solution for many
+          problems with an elegant and user-friendly interface.
         </div>
       </StyledContent>
     </StyledAboutDiv>

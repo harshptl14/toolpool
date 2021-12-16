@@ -78,6 +78,13 @@ const mixins = {
     align-items: center;
   `,
 
+  flexColumnSpacebetween: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+  `,
+
   flexBetween: css`
     display: flex;
     flex-direction: row;
@@ -132,6 +139,19 @@ const mixins = {
     color: inherit;
     position: relative;
     transition: var(--transition);
+    &:hover,
+    &:active,
+    &:focus {
+      color: ${({ theme }) => theme.color};
+      outline: 0;
+    }
+  `,
+
+  linkColored: css`
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    color: inherit;
+    color: var(--shade-light-varient);
     &:hover,
     &:active,
     &:focus {

@@ -6,9 +6,29 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 // List of all the tool components with category
 export const TOOLS = {
   texttools: {
-    lorem: <LoremGenerator />,
-    caseconverter: <CaseConverter />,
-    t2b: <Text2Binary />,
-    uniquewords: <UniqueWordsFinder />,
+    lorem: [
+      "Lorem Ipsum Generator",
+      <LoremGenerator />,
+      "texttools/lorem",
+      "Create your placeholder texts with desired number of paragraphs and properties",
+    ],
+    caseconverter: [
+      "Case Converter",
+      <CaseConverter />,
+      "texttools/caseconverter",
+      "Convert your text or string to uppercase, lowercase, title case & sentence case",
+    ],
+    t2b: [
+      "Text 2 Binary",
+      <Text2Binary />,
+      "texttools/t2b",
+      "Convert text to binary strings and vice versa.",
+    ],
+    uniquewords: [
+      "Unique Word Finder",
+      <UniqueWordsFinder />,
+      "texttools/uniquewords",
+      "Find all the uniques words used in a text.",
+    ],
   },
 };

@@ -7,7 +7,7 @@ const ToolWrapper = () => {
   const { category, toolName } = useParams();
   console.log("Tool name : ", toolName);
   console.log("Tool category : ", category);
-  return TOOLS[category][toolName];
+  return TOOLS[category][toolName][1];
 };
 
 export default ToolWrapper;

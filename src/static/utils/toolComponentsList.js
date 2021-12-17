@@ -6,29 +6,31 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 // List of all the tool components with category
 export const TOOLS = {
   texttools: {
-    lorem: [
-      "Lorem Ipsum Generator",
-      <LoremGenerator />,
-      "texttools/lorem",
-      "Create your placeholder texts with desired number of paragraphs and properties",
-    ],
-    caseconverter: [
-      "Case Converter",
-      <CaseConverter />,
-      "texttools/caseconverter",
-      "Convert your text or string to uppercase, lowercase, title case & sentence case",
-    ],
-    t2b: [
-      "Text 2 Binary",
-      <Text2Binary />,
-      "texttools/t2b",
-      "Convert text to binary strings and vice versa.",
-    ],
-    uniquewords: [
-      "Unique Word Finder",
-      <UniqueWordsFinder />,
-      "texttools/uniquewords",
-      "Find all the uniques words used in a text.",
-    ],
+    lorem: {
+      title: "Lorem Ipsum Generator",
+      component: <LoremGenerator />,
+      url: "texttools/lorem",
+      description:
+        "Create your placeholder texts with desired number of paragraphs and properties",
+    },
+    caseconverter: {
+      title: "Case Converter",
+      component: <CaseConverter />,
+      url: "texttools/caseconverter",
+      description:
+        "Convert your text or string to uppercase, lowercase, title case & sentence case",
+    },
+    t2b: {
+      title: "Text 2 Binary",
+      component: <Text2Binary />,
+      url: "texttools/t2b",
+      description: "Convert text to binary strings and vice versa.",
+    },
+    uniquewords: {
+      title: "Unique Word Finder",
+      component: <UniqueWordsFinder />,
+      url: "texttools/uniquewords",
+      description: "Find all the uniques words used in a text.",
+    },
   },
 };

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { TOOLS } from "../../static/utils/toolComponentsList";
 import ReactMarkdown from "react-markdown";
 import { tool1 } from "../../static/toolDescriptions/tool1";
+import PageTitle from "../PageTitle";
 
 // A wrapper component to display various tools dynamically according to their ID (from URL)
 const ToolWrapper = () => {
@@ -13,6 +13,7 @@ const ToolWrapper = () => {
   console.log("Tool category : ", category);
   return (
     <div>
+      <PageTitle size="small">{TOOLS[category][toolName]["title"]}</PageTitle>
       {TOOLS[category][toolName]["component"]}
       {/* Markdown component to display description */}
       <div>

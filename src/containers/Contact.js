@@ -161,7 +161,7 @@ const Contact = () => {
   return (
     <StyledContactDiv>
       <StyledHeading>
-        <PageTitle>Contact Us</PageTitle>
+        <PageTitle size="big">Contact Us</PageTitle>
         <div className="desc">toolpool@gmail.com</div>
       </StyledHeading>
       <StyledContent onSubmit={handleSubmit}>

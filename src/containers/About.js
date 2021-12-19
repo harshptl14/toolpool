@@ -108,7 +108,7 @@ const about = () => {
   return (
     <StyledAboutDiv>
       <StyledHeading>
-        <PageTitle>About</PageTitle>
+        <PageTitle size="big">About</PageTitle>
         <div className="desc">
           {/* <Icon Twitter/> */}
           Some hidden things about us!!

@@ -2,6 +2,7 @@ import LoremGenerator from "../../components/Tools/TextTools/LoremGenerator/lore
 import CaseConverter from "../../components/Tools/TextTools/CaseConverter/caseconverter";
 import Text2Binary from "../../components/Tools/TextTools/Text2Binary/text2binary";
 import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinder/uniqueWordsFinder";
+import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 
 // List of all the tool components with category
 export const TOOLS = {
@@ -31,6 +32,14 @@ export const TOOLS = {
       component: <UniqueWordsFinder />,
       url: "texttools/uniquewords",
       description: "Find all the uniques words used in a text.",
+    },
+  },
+  imagetools: {
+    imageresizer: {
+      title: "Image Resizer",
+      component: <ImageResizer />,
+      url: "imagetools/uniquewords",
+      description: "Resize your image in dimensions you want.",
     },
   },
 };

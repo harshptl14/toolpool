@@ -115,17 +115,17 @@ const config = {
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
-      link: "/image-tools/image-resizer",
+      link: "/imagetools/imageresizer",
     },
     {
       title: "Image Color Extractor",
       desc: "Extract all colors from an image and get color codes and details of this colors as a list",
-      link: "/image-tools/image-color-extractor",
+      link: "/imagetools/image-color-extractor",
     },
     {
       title: "Image Color Picker",
       desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-      link: "/image-tools/image-color-picker",
+      link: "/imagetools/image-color-picker",
     },
   ],
   developerTools: [

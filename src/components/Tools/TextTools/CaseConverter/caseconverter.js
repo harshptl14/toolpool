@@ -5,17 +5,7 @@ import styled from "styled-components";
 import ButtonDiv from "../../ButtonDiv";
 
 const StyledTextArea = styled.textarea`
-  width: 100%;
-  background-color: ${({ theme }) => theme.footer};
-  border: 2px solid ${({ theme }) => theme.shade};
-  font-size: var(--fz-lg);
-  padding: 15px 20px;
-  margin: 15px 0;
-  font-family: "Open Sans", -apple-system, system-ui, sans-serif;
-  color: ${({ theme }) => theme.descfont};
-  &:focus,
-  &:active {
-  }
+  ${({ theme }) => theme.mixins.textarea}
 `;
 
 const CaseConverter = () => {
@@ -72,20 +62,17 @@ const CaseConverter = () => {
   ];
 
   return (
-    <div className="main">
-      <div className="input">
-        <StyledTextArea
-          name="text"
-          id="textarea"
-          cols="90"
-          rows="15"
-          value={inputText}
-          onChange={(e) => {
-            setInputText(e.target.value);
-          }}
-        ></StyledTextArea>
-      </div>
-
+    <div>
+      <StyledTextArea
+        name="text"
+        id="textarea"
+        cols="90"
+        rows="15"
+        value={inputText}
+        onChange={(e) => {
+          setInputText(e.target.value);
+        }}
+      ></StyledTextArea>
       <ButtonDiv filter={filter} finalButtons={finalButtons} />
     </div>
   );

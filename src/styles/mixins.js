@@ -305,6 +305,20 @@ const mixins = {
     }
   `,
 
+  textarea: css`
+    width: 100%;
+    background-color: ${({ theme }) => theme.footer};
+    border: 2px solid ${({ theme }) => theme.shade};
+    font-size: var(--fz-lg);
+    padding: 15px 20px;
+    margin: 15px 0;
+    font-family: "Open Sans", -apple-system, system-ui, sans-serif;
+    color: ${({ theme }) => theme.descfont};
+    &:focus,
+    &:active {
+    }
+  `,
+
   resetList: css`
     list-style: none;
     padding: 0;

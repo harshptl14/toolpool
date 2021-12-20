@@ -1,6 +1,25 @@
 import { useEffect, useState } from "react";
 import { LOREM_WORDS } from "./lorem_words";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import styled from "styled-components";
+import ButtonDiv from "../../ButtonDiv";
+
+const StyledTextArea = styled.textarea`
+  ${({ theme }) => theme.mixins.textarea}
+`;
+
+const StyledInputDiv = styled.div`
+  ${({ theme }) => theme.mixins.flexColumnStart}
+
+  @media (min-width: 600px) {
+    ${({ theme }) => theme.mixins.flexBetween}
+
+    input{
+      width: 100%;
+    }
+  }
+`;
+
 //Lorem Ipsum text generator component
 const LoremGenerator = () => {
   const [outputText, setOutputText] = useState(""); // variable to store output.
@@ -52,11 +71,32 @@ const LoremGenerator = () => {
     return LOREM_WORDS.at(Math.floor(Math.random() * LOREM_WORDS.length));
   }
 
+  const filter = [];
+
+  const finalButtons = [
+    {
+      key: "7",
+      title: "Reset",
+      method: () => {
+        setSentences(3);
+        setWords(5);
+        setParagraphs(1);
+      },
+      type: "normal",
+    },
+    {
+      key: "8",
+      title: "Copy",
+      method: () => copyToClipboard(outputText),
+      type: "submit",
+    },
+  ];
+
   return (
     <div className="main-div">
-      <div className="input-section">
+      <StyledInputDiv>
         <div className="para-input">
-          <p>No. of Paragraphs</p>
+          <label>No. of Paragraphs</label>
 
           <input
             type="range"
@@ -73,7 +113,7 @@ const LoremGenerator = () => {
           <div className="bubble">{paragraphs}</div>
         </div>
         <div className="sentence-input">
-          <p>No. of sentences per Paragraph</p>
+          <label>No. of sentences per Paragraph</label>
           <input
             type="range"
             className="slider"
@@ -88,7 +128,7 @@ const LoremGenerator = () => {
           <div className="bubble">{sentencesPerPara}</div>
         </div>
         <div className="words-input">
-          <p>No. of words per sentence</p>
+          <label>No. of words per sentence</label>
 
           <input
             type="range"
@@ -103,18 +143,17 @@ const LoremGenerator = () => {
           />
           <div className="bubble">{wordsPerSentence}</div>
         </div>
-      </div>
+      </StyledInputDiv>
       <div className="output-section">
         <br />
-        <h2>Generated Text</h2>
-        <textarea rows={10} cols={150} className="result" value={outputText} />
-        <button
-          onClick={() => {
-            copyToClipboard(outputText);
-          }}
-        >
-          Copy
-        </button>
+        <h3>Generated Text</h3>
+        <StyledTextArea
+          rows={10}
+          cols={150}
+          className="result"
+          value={outputText}
+        />
+        <ButtonDiv filter={filter} finalButtons={finalButtons}></ButtonDiv>
       </div>
     </div>
   );

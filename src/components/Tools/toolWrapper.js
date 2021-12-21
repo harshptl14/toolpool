@@ -14,6 +14,7 @@ const ToolWrapper = () => {
   return (
     <div>
       <PageTitle size="small">{TOOLS[category][toolName]["title"]}</PageTitle>
+      <br></br>
       {TOOLS[category][toolName]["component"]}
       {/* Markdown component to display description */}
       <div>

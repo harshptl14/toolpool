@@ -11,12 +11,28 @@ const StyledTextArea = styled.textarea`
 const StyledInputDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumnStart}
 
-  @media (min-width: 600px) {
+  .sliderTitle{
+    font-size: var(--fz-sm);
+  }
+
+  ${({theme}) => theme.mixins.slider}
+
+  @media (min-width: 800px) {
     ${({ theme }) => theme.mixins.flexBetween}
 
     input{
       width: 100%;
     }
+  }
+`;
+
+const SliderDiv = styled.div`
+  width: 100%;
+  margin-top: 10px;
+
+  @media (min-width: 800px) {
+    width: 30%;
+    margin-top: 0px;
   }
 `;
 
@@ -93,11 +109,10 @@ const LoremGenerator = () => {
   ];
 
   return (
-    <div className="main-div">
+    <div>
       <StyledInputDiv>
-        <div className="para-input">
-          <label>No. of Paragraphs</label>
-
+        <SliderDiv>
+          <div className="sliderTitle">No. of Paragraphs</div>
           <input
             type="range"
             className="slider"
@@ -111,9 +126,9 @@ const LoremGenerator = () => {
             }}
           />
           <div className="bubble">{paragraphs}</div>
-        </div>
-        <div className="sentence-input">
-          <label>No. of sentences per Paragraph</label>
+        </SliderDiv>
+        <SliderDiv>
+          <div className="sliderTitle">No. of sentences per Paragraph</div>
           <input
             type="range"
             className="slider"
@@ -126,9 +141,9 @@ const LoremGenerator = () => {
             }}
           />
           <div className="bubble">{sentencesPerPara}</div>
-        </div>
-        <div className="words-input">
-          <label>No. of words per sentence</label>
+        </SliderDiv>
+        <SliderDiv >
+          <div className="sliderTitle">No. of words per sentence</div>
 
           <input
             type="range"
@@ -142,7 +157,7 @@ const LoremGenerator = () => {
             }}
           />
           <div className="bubble">{wordsPerSentence}</div>
-        </div>
+        </SliderDiv>
       </StyledInputDiv>
       <div className="output-section">
         <br />

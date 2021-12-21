@@ -140,7 +140,7 @@ const LoremGenerator = () => {
               generateText(paragraphs, sentencesPerPara, wordsPerSentence);
             }}
           />
-          <div className="bubble">{sentencesPerPara}</div>
+          <div>{sentencesPerPara}</div>
         </SliderDiv>
         <SliderDiv >
           <div className="sliderTitle">No. of words per sentence</div>
@@ -156,10 +156,10 @@ const LoremGenerator = () => {
               generateText(paragraphs, sentencesPerPara, wordsPerSentence);
             }}
           />
-          <div className="bubble">{wordsPerSentence}</div>
+          <div >{wordsPerSentence}</div>
         </SliderDiv>
       </StyledInputDiv>
-      <div className="output-section">
+      <div>
         <br />
         <h3>Generated Text</h3>
         <StyledTextArea

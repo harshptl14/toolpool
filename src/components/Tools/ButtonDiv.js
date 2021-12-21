@@ -37,7 +37,7 @@ const OutputButtonDiv = styled.div`
 `;
 
 const StyledButton = styled.button`
-  --submit-color: ${({ theme }) => theme.shade};
+  --submit-color: ${({ theme }) => theme.shadeVarient};
   ${({ theme }) => theme.mixins.smallButton};
   background-color: ${(props) =>
     props.type === "submit" ? "var(--submit-color)" : "transparent"};

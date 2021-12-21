@@ -53,7 +53,6 @@ const openCard = css`
   }
 `;
 
-
 const mixins = {
   button,
   card,
@@ -318,7 +317,7 @@ const mixins = {
     border: 2px solid ${({ theme }) => theme.shade};
     font-size: var(--fz-lg);
     padding: 15px 20px;
-    margin: 15px 0;
+    margin: 0px 0 15px 0;
     font-family: "Open Sans", -apple-system, system-ui, sans-serif;
     color: ${({ theme }) => theme.descfont};
     &:focus,
@@ -335,8 +334,96 @@ const mixins = {
   backColor: css`
     background-color: red;
   `,
+
+  slider: css`
+    input[type="range"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 100%;
+      height: 5px;
+      padding: 0;
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+      background: ${({theme}) => theme.shade};
+    }
+
+    /*Chrome thumb*/
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -webkit-border-radius: 5px;
+      /*16x16px adjusted to be same as 14x14px on moz*/
+      height: 16px;
+      width: 16px;
+      border-radius: 5px;
+      background: ${({ theme }) => theme.color};
+      /* border: 1px solid #c5c5c5; */
+    }
+
+    /*Mozilla thumb*/
+
+    input[type="range"]::-moz-range-thumb {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -moz-border-radius: 5px;
+      height: 14px;
+      width: 14px;
+      border-radius: 5px;
+      background: #e7e7e7;
+      border: 1px solid #c5c5c5;
+    }
+
+    /*IE & Edge input*/
+
+    input[type="range"]::-ms-track {
+      width: 300px;
+      height: 6px;
+      /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+      background: transparent;
+      /*leave room for the larger thumb to overflow with a transparent border */
+      border-color: transparent;
+      border-width: 2px 0;
+      /*remove default tick marks*/
+      color: transparent;
+    }
+
+    /*IE & Edge thumb*/
+
+    input[type="range"]::-ms-thumb {
+      height: 14px;
+      width: 14px;
+      border-radius: 5px;
+      background: #e7e7e7;
+      border: 1px solid #c5c5c5;
+    }
+
+    /*IE & Edge left side*/
+
+    input[type="range"]::-ms-fill-lower {
+      background-color: ${({ theme }) => theme.shade};
+      /* border-radius: 2px; */
+    }
+
+    /*IE & Edge right side*/
+
+    input[type="range"]::-ms-fill-upper {
+      background-color: ${({ theme }) => theme.color};
+      /* border-radius: 2px; */
+    }
+    
+
+    /*IE disable tooltip*/
+
+    input[type="range"]::-ms-tooltip {
+      display: none;
+    }
+
+    input[type="text"] {
+      border: none;
+    }
+  `,
 };
-
-
 
 export default mixins;

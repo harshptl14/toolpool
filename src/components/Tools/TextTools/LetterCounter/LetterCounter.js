@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { StyledOutput } from "../../StyledOutput";
 
 const StyledTextArea = styled.textarea`
   ${({ theme }) => theme.mixins.textarea}

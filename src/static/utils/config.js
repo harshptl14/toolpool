@@ -22,22 +22,21 @@ const config = {
   footerLinks: [
     {
       name: "About",
-      url: "/about"
+      url: "/about",
     },
 
     {
       name: "Contact",
-      url: "/contact"
+      url: "/contact",
     },
     {
       name: "Terms of Use",
-      url: "/terms"
-    }
-    ,
+      url: "/terms",
+    },
     {
       name: "Privacy Policy",
-      url: "/privacy"
-    }
+      url: "/privacy",
+    },
   ],
 
   // Categorylist of all tools
@@ -85,7 +84,7 @@ const config = {
     {
       title: "Letter Counter",
       desc: "Count letters, words and sentences in a text and analyze this numbers with common limits",
-      link: "/letter-counter",
+      link: "texttools/lettercounter",
     },
     {
       title: "Multiple Whitespace Remover",
@@ -103,8 +102,6 @@ const config = {
       link: "texttools/uniquewords",
     },
   ],
-
-
 
   imageTools: [
     {
@@ -150,7 +147,6 @@ const config = {
       link: "/image-tools/image-color-picker",
     },
   ],
-
 
   colorTools: [
     {

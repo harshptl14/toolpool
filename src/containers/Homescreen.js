@@ -29,11 +29,11 @@ const Homescreen = () => {
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
         {config.featuredTools.map((obj) => {
-          return <Card title={obj.title} />;
+          return <Card title={obj.title} link={obj.link} />;
         })}
       </Content>
       <ToolsScreen executeScroll={executeScroll} elRef={elRef} />
-      <InfoCard/>
+      <InfoCard />
     </>
   );
 };

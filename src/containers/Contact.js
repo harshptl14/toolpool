@@ -146,23 +146,23 @@ const Contact = () => {
     value: message,
     bind: bindMessage,
     reset: resetMessage,
-    } = useInput("");
-    
+  } = useInput("");
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-      window.open(
-        `mailto:email@example.com?subject=${subject}&body=Hey%20${firstName}%20here,%0D%0A${message}`
-      );
+    window.open(
+      `mailto:octruszamp@gmail.com?subject=${subject}&body=Hey%20${firstName}%20here,%0D%0A${message}`
+    );
     resetFirstName();
-      resetSubject();
-      resetMessage();
+    resetSubject();
+    resetMessage();
   };
 
   return (
     <StyledContactDiv>
       <StyledHeading>
         <PageTitle size="big">Contact Us</PageTitle>
-        <div className="desc">toolpool@gmail.com</div>
+        <div className="desc">octruszamp@gmail.com</div>
       </StyledHeading>
       <StyledContent onSubmit={handleSubmit}>
         <StyledContactPC>

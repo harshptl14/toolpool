@@ -1,6 +1,7 @@
 import React from "react";
 import config from "../../static/utils/config";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { useScrollDirection } from "../../hooks";
 
 const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -48,13 +49,29 @@ const StyledMobileCategory = styled.div`
   justify-content: center;
   width: 100%;
   position: sticky;
-  top: 4.4rem;
   margin-bottom: 30px;
   background-color: ${({ theme }) => theme.shade};
   @media (min-width: 600px) {
     display: none;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    ${(props) =>
+      props.scrollDirection === "up" &&
+      // !props.scrolledToTop &&
+      css`
+        /*       height: var(--nav-scroll-height);*/
+        top: 4.4rem;
+        /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
+      `};
 
+    ${(props) =>
+      props.scrollDirection === "down" &&
+      // !props.scrolledToTop &&
+      css`
+        top: 0rem;
+        /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
+      `};
+  }
 `;
 
 const ChangeCat = styled.select`
@@ -84,6 +101,7 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
         key={obj.id}
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
+          console.log("obj.id : ", obj.id);
           setMenuItem(obj.id);
           executeScroll();
         }}
@@ -96,8 +114,10 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
 };
 
 const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
+  const scrollDirection = useScrollDirection("down");
+
   return (
-    <StyledMobileCategory>
+    <StyledMobileCategory scrollDirection={scrollDirection}>
       <ChangeCat
         onClick={(e) => {
           setMenuItem(e.target.value);

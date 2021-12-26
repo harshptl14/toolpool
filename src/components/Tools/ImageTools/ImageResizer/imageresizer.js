@@ -13,23 +13,27 @@ const ImageResizer = () => {
   const MAX_WIDTH = 5000;
   const MAX_HEIGHT = 5000;
 
-  useEffect(() => {
-    // if (!previewImage) {
-    //   setpreviewImage(undefined);
-    //   return;
-    // }
-    // // generating ObjectURL for input image to preview
-    // const objectUrl = URL.createObjectURL(imageInput);
-    // var image = new Image();
-    // image.src = objectUrl
-    // setpreviewImage(image);
-    // free memory when ever this component is unmounted
-    // return () => URL.revokeObjectURL(objectUrl);
-  }, []);
+  // useEffect(() => {
+  //   // if (!previewImage) {
+  //   //   setpreviewImage(undefined);
+  //   //   return;
+  //   // }
+  //   // // generating ObjectURL for input image to preview
+  //   // const objectUrl = URL.createObjectURL(imageInput);
+  //   // var image = new Image();
+  //   // image.src = objectUrl
+  //   // setpreviewImage(image);
+  //   // free memory when ever this component is unmounted
+  //   // return () => URL.revokeObjectURL(objectUrl);
+  // }, []);
 
   const onSelectFile = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
       setpreviewImage(undefined);
+      return;
+    }
+    if (!e.target.files[0].name) {
+      console.log("Please upload Image file of format .png,.jpeg, .jfif");
       return;
     }
     console.log(e.target.files[0]);
@@ -61,7 +65,7 @@ const ImageResizer = () => {
   const changeHeight = (val) => {
     if (!isChecked) {
       setHeight(val);
-    } 
+    }
   };
 
   // const onClickResize = () => {
@@ -110,7 +114,7 @@ const ImageResizer = () => {
 
   function DownloadCanvasAsImage() {
     let downloadLink = document.createElement("a");
-    downloadLink.setAttribute("download", `${previewImage.name}.png`);
+    downloadLink.setAttribute("download", `${previewImage.name}`);
     let canvas = document.getElementById("canvas");
     canvas.toBlob(function (blob) {
       let url = URL.createObjectURL(blob);

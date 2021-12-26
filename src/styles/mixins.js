@@ -157,7 +157,7 @@ const mixins = {
     text-decoration: none;
     text-decoration-skip-ink: auto;
     color: inherit;
-    color: var(--shade-light-varient);
+    color: var(--green);
     &:hover,
     &:active,
     &:focus {
@@ -319,7 +319,7 @@ const mixins = {
     padding: 15px 20px;
     margin: 0px 0 15px 0;
     font-family: "Open Sans", -apple-system, system-ui, sans-serif;
-    color: ${({ theme }) => theme.descfont};
+    color: ${({ theme }) => theme.text};
     &:focus,
     &:active {
     }
@@ -345,7 +345,7 @@ const mixins = {
       border-radius: 2px;
       outline: none;
       cursor: pointer;
-      background: ${({theme}) => theme.shade};
+      background: ${({ theme }) => theme.shade};
     }
 
     /*Chrome thumb*/
@@ -412,7 +412,6 @@ const mixins = {
       background-color: ${({ theme }) => theme.color};
       /* border-radius: 2px; */
     }
-    
 
     /*IE disable tooltip*/
 

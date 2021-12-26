@@ -3,9 +3,22 @@ import textIcon from "../svg/text-size.svg";
 const config = {
   //HomeScreen featured tools
   featuredTools: [
-    { title: "Text tools" },
-    { title: "Image tools" },
-    { title: "Developers tools" },
+    {
+      title: "Case Converter",
+      desc: "Convert your text or string to uppercase, lowercase, title case & sentence case",
+      link: "texttools/caseconverter",
+    },
+
+    {
+      title: "Lorem Ipsum Generator",
+      desc: "Create your placeholder texts with desired number of paragraphs and properties",
+      link: "texttools/lorem",
+    },
+    {
+      title: "Image Resizer",
+      desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
+      link: "/imagetools/imageresizer",
+    },
   ],
 
   navLinks: [
@@ -22,22 +35,21 @@ const config = {
   footerLinks: [
     {
       name: "About",
-      url: "/about"
+      url: "/about",
     },
 
     {
       name: "Contact",
-      url: "/contact"
+      url: "/contact",
     },
     {
       name: "Terms of Use",
-      url: "/terms"
-    }
-    ,
+      url: "/terms",
+    },
     {
       name: "Privacy Policy",
-      url: "/privacy"
-    }
+      url: "/privacy",
+    },
   ],
 
   // Categorylist of all tools
@@ -104,8 +116,6 @@ const config = {
     },
   ],
 
-
-
   imageTools: [
     {
       title: "Image Cropper",
@@ -150,7 +160,6 @@ const config = {
       link: "/image-tools/image-color-picker",
     },
   ],
-
 
   colorTools: [
     {

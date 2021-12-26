@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as CardIcon } from "../static/svg/text-size.svg";
-
+import { Link } from "react-router-dom";
 const CardDiv = styled.div`
   ${({ theme }) => theme.mixins.openCard};
   width: 99%;
@@ -26,14 +26,23 @@ const Icon = styled.div`
   margin-bottom: 10px;
 `;
 
-const Card = ({ title }) => {
+const Card = (props) => {
   return (
-    <CardDiv>
-      <Icon>
-        <CardIcon />
-      </Icon>
-      {title}
-    </CardDiv>
+    <Link
+      to={props.link}
+      style={{
+        color: "inherit",
+        textDecoration: "inherit",
+        width: "100%",
+      }}
+    >
+      <CardDiv>
+        <Icon>
+          <CardIcon />
+        </Icon>
+        {props.title}
+      </CardDiv>
+    </Link>
   );
 };
 

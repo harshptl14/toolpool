@@ -3,6 +3,13 @@ import {
   copyToClipboard,
   copyAsJSON,
 } from "../../../../static/helpers/helperfunctions";
+import ButtonDiv from "../../ButtonDiv";
+import styled from "styled-components";
+import { StyledOutput } from "../../StyledOutput";
+
+const StyledTextArea = styled.textarea`
+  ${({ theme }) => theme.mixins.textarea}
+`;
 
 const UniqueWordsFinder = () => {
   const [inputText, setInputText] = useState("");
@@ -23,7 +30,7 @@ const UniqueWordsFinder = () => {
         map.set(words[i], (map.get(words[i]) ?? 0) + 1);
       }
       for (let key of map.keys()) {
-        list += key + "\n";
+        list += key + " ";
       }
       //Converting list of words to JSON
       json = Object.fromEntries(map);
@@ -31,10 +38,48 @@ const UniqueWordsFinder = () => {
       setOutput(list);
     }
   }
+
+  const filterInput = [
+    {
+      key: "1",
+      title: "Generate Unique Words",
+      method: () => findUniqueWords(),
+    },
+  ];
+
+  const finalInput = [
+    {
+      key: "2",
+      title: "Reset",
+      method: () => {
+        setInputText("");
+        setOutput("");
+      },
+      type: "normal",
+    },
+  ];
+
+  const filterOutput = [];
+
+  const finalOutput = [
+    {
+      key: "2",
+      title: "Copy Words",
+      method: () => copyToClipboard(output),
+      type: "submit",
+    },
+    {
+      key: "3",
+      title: "Copy As JSON",
+      method: () => copyAsJSON(outputJSON),
+      type: "submit",
+    },
+  ];
+
   return (
     <div className="main">
       <div className="input-section">
-        <textarea
+        <StyledTextArea
           name="text"
           id="textarea"
           cols="90"
@@ -43,34 +88,16 @@ const UniqueWordsFinder = () => {
           onChange={(e) => {
             setInputText(e.target.value);
           }}
-        ></textarea>
+        ></StyledTextArea>
       </div>
-      <button onClick={findUniqueWords}>Generate Unique words</button>
-      <div className="output-section">
-        <textarea
-          name="text"
-          id="opTextarea"
-          cols="90"
-          rows="15"
-          defaultValue={output}
-        ></textarea>
-        <button
-          id="copyBtn"
-          onClick={() => {
-            copyToClipboard(output);
-          }}
-        >
-          Copy Words
-        </button>
-        <button
-          id="copyJSONBtn"
-          onClick={() => {
-            copyAsJSON(outputJSON);
-          }}
-        >
-          Copy As JSON
-        </button>
-      </div>
+      <ButtonDiv filter={filterInput} finalButtons={finalInput} />
+
+      <StyledOutput data={output}>{output}</StyledOutput>
+      <ButtonDiv
+        display={output === "" ? "none" : "flex"}
+        filter={filterOutput}
+        finalButtons={finalOutput}
+      />
     </div>
   );
 };

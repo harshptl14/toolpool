@@ -3,6 +3,7 @@ import CaseConverter from "../../components/Tools/TextTools/CaseConverter/caseco
 import Text2Binary from "../../components/Tools/TextTools/Text2Binary/text2binary";
 import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinder/uniqueWordsFinder";
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
+import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 
 // List of all the tool components with category
 export const TOOLS = {
@@ -32,6 +33,14 @@ export const TOOLS = {
       component: <UniqueWordsFinder />,
       url: "texttools/uniquewords",
       description: "Find all the uniques words used in a text.",
+    },
+
+    lettercounter: {
+      title: "Letter Counter",
+      component: <LetterCounter />,
+      url: "texttools/lettercounter",
+      description:
+        "Count letters, words and sentences in a text and analyze this numbers with common limits",
     },
   },
   imagetools: {

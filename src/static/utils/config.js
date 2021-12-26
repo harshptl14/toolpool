@@ -97,7 +97,7 @@ const config = {
     {
       title: "Letter Counter",
       desc: "Count letters, words and sentences in a text and analyze this numbers with common limits",
-      link: "/letter-counter",
+      link: "texttools/lettercounter",
     },
     {
       title: "Multiple Whitespace Remover",

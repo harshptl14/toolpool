@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButtonDiv = styled.div`
-  display: flex;
+  display: ${(props) => props.display || "flex"};
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -55,9 +55,9 @@ const StyledButton = styled.button`
   }
 `;
 
-const ButtonDiv = ({ filter, finalButtons }) => {
+const ButtonDiv = ({ filter, finalButtons, display }) => {
   return (
-    <StyledButtonDiv>
+    <StyledButtonDiv display={display}>
       <ChangeButtonDiv>
         {filter.map(({ title, method, key }) => {
           return (

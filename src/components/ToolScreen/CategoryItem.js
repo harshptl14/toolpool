@@ -52,7 +52,9 @@ const StyledMobileCategory = styled.div`
   position: sticky;
   background-color: ${({ theme }) => theme.shade};
   border: 1.8px dashed ${({ theme }) => theme.color};
-  
+
+
+
   margin: 1em -100%; // for old browsers
   margin: 1em calc(50% - 50vw);
 
@@ -89,6 +91,10 @@ const ChangeCat = styled.select`
 
   ::-ms-expand {
     display: none; /* remove default arrow on ie10 and ie11 */
+  }
+
+  :focus {
+    outline: 0px dashed ${({ theme }) => theme.color};
   }
 
   color: ${({ theme }) => theme.color};

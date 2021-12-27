@@ -7,6 +7,7 @@ import TitleDiv from "../components/TitleDiv";
 import LandingPagediv from "../components/HoomScreen/LandingPagediv";
 import useScroll from "../hooks/useScroll";
 import InfoCard from "../components/HoomScreen/InfoCard";
+import { Link } from "react-router-dom";
 
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
@@ -14,9 +15,31 @@ const Content = styled.div`
   width: 98%;
   flex-wrap: wrap;
 
+  .linkDiv {
+    width: 98%;
+    color: inherit;
+    text-decoration: inherit;
+    /* :focus{
+    outline: 1.8px dashed ${({ theme }) => theme.color};
+    } */
+  }
+
   @media (min-width: 600px) {
     width: 100%;
     ${({ theme }) => theme.mixins.flexBetween};
+
+    .linkDiv {
+      width: 47%;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    width: 100%;
+    ${({ theme }) => theme.mixins.flexBetween};
+
+    .linkDiv {
+      width: 31.5%;
+    }
   }
 `;
 
@@ -29,7 +52,11 @@ const Homescreen = () => {
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
         {config.featuredTools.map((obj) => {
-          return <Card title={obj.title} link={obj.link} />;
+          return (
+            <Link to={obj.link} className="linkDiv">
+              <Card title={obj.title}/>
+            </Link>
+          );
         })}
       </Content>
       <ToolsScreen executeScroll={executeScroll} elRef={elRef} />

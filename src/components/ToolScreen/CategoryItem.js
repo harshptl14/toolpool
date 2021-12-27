@@ -47,10 +47,15 @@ const Icon = styled.img`
 const StyledMobileCategory = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
+  text-align: center;
   position: sticky;
-  margin-bottom: 30px;
   background-color: ${({ theme }) => theme.shade};
+  border: 1.8px dashed ${({ theme }) => theme.color};
+  
+  margin: 1em -100%; // for old browsers
+  margin: 1em calc(50% - 50vw);
+
   @media (min-width: 600px) {
     display: none;
   }

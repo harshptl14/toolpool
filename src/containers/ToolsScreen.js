@@ -55,12 +55,14 @@ const StyledWrapper = styled.div`
 `;
 
 const TitleDiv = styled.div`
- ${({ theme }) => theme.mixins.titleDiv}
+  ${({ theme }) => theme.mixins.titleDiv}
+  margin: 0px 0 20px 0;
+  padding-top: 20px;
 
- @media (min-width: 600px){
-   margin-top:  40px;
-   padding: 25px 0;
- }
+  @media (min-width: 600px) {
+    margin-top: 40px;
+    padding: 25px 0;
+  }
 `;
 
 const ToolsScreen = ({ executeScroll, elRef}) => {

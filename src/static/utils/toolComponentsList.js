@@ -4,6 +4,7 @@ import Text2Binary from "../../components/Tools/TextTools/Text2Binary/text2binar
 import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinder/uniqueWordsFinder";
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
+import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
 
 // List of all the tool components with category
 export const TOOLS = {
@@ -41,6 +42,14 @@ export const TOOLS = {
       url: "texttools/lettercounter",
       description:
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
+    },
+
+    whitespaceremover: {
+      title: "Multiple Whitespace Remover",
+      component: <WhiteSpace />,
+      url: "texttools/whitespaceremover",
+      description:
+        "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
     },
   },
   imagetools: {

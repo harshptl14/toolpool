@@ -83,8 +83,8 @@ const ToolsScreen = ({ executeScroll, elRef}) => {
           setMenuItem={setMenuItem}
         />
         <StyledWrapper>
-          {config[menuItem].map(({ title, desc, link }) => {
-            return <ToolCard title={title} desc={desc} link={link} />;
+          {config[menuItem].map(({ title, desc, link, icon }) => {
+            return <ToolCard title={title} desc={desc} link={link} icon={icon} />;
           })}
         </StyledWrapper>
       </OuterDiv>

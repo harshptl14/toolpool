@@ -128,12 +128,13 @@ const mixins = {
 
   iconBackground: css`
     display: flex;
-    padding: 0.94rem;
-    width: 55px;
+    padding: 1.3rem;
+    width: max-content;
     border: 0px;
-    justify-content: center;
+    /* box-shadow: 2px 2px 0 ${({ theme }) => theme.shadeVarient}; */
+    /* justify-content: center; */
     align-items: center;
-    border-radius: var(--border-circle);
+    border-radius: 5px;
     background-color: ${({ theme }) => theme.shade};
     text-align: center;
   `,

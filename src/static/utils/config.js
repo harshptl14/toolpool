@@ -1,4 +1,13 @@
 import textIcon from "../svg/text-size.svg";
+import Icon from "../icons/icon";
+
+import lorem from "../assets/paragraph.png";
+import resize from "../assets/resize.png";
+import whiteSpace from "../assets/cut.png";
+import count from "../assets/counter.png";
+import caseconverter from "../assets/text.png";
+import binary from "../assets/binary.png";
+import unique from "../assets/book.png";
 
 const config = {
   //HomeScreen featured tools
@@ -7,17 +16,20 @@ const config = {
       title: "Case Converter",
       desc: "Convert your text or string to uppercase, lowercase, title case & sentence case",
       link: "texttools/caseconverter",
+      icon: caseconverter,
     },
 
     {
       title: "Lorem Ipsum Generator",
       desc: "Create your placeholder texts with desired number of paragraphs and properties",
       link: "texttools/lorem",
+      icon: lorem,
     },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "/imagetools/imageresizer",
+      icon: resize,
     },
   ],
 
@@ -86,33 +98,39 @@ const config = {
       title: "Case Converter",
       desc: "Convert your text or string to uppercase, lowercase, title case & sentence case",
       link: "texttools/caseconverter",
+      icon: caseconverter,
     },
 
     {
       title: "Lorem Ipsum Generator",
       desc: "Create your placeholder texts with desired number of paragraphs and properties",
       link: "texttools/lorem",
+      icon: lorem,
     },
 
     {
       title: "Letter Counter",
       desc: "Count letters, words and sentences in a text and analyze this numbers with common limits",
       link: "texttools/lettercounter",
+      icon: count,
     },
     {
       title: "Multiple Whitespace Remover",
       desc: "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
-      link: "/multiple-whitespace-remover",
+      link: "texttools/whitespaceremover",
+      icon: whiteSpace,
     },
     {
       title: "Text 2 Binary",
       desc: "Convert text to binary strings and vice versa.",
       link: "texttools/t2b",
+      icon: binary,
     },
     {
       title: "Unique words finder",
       desc: "Find all the uniques words used in a text.",
       link: "texttools/uniquewords",
+      icon: unique,
     },
   ],
 
@@ -121,21 +139,25 @@ const config = {
       title: "Image Cropper",
       desc: "Crop unwanted parts of images and download desired part of the image as a new file",
       link: "/image-tools/image-cropper",
+      icon: resize,
     },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "/imagetools/imageresizer",
+      icon: lorem,
     },
     {
       title: "Image Color Extractor",
       desc: "Extract all colors from an image and get color codes and details of this colors as a list",
       link: "/imagetools/image-color-extractor",
+      icon: lorem,
     },
     {
       title: "Image Color Picker",
       desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
       link: "/imagetools/image-color-picker",
+      icon: lorem,
     },
   ],
   developerTools: [
@@ -143,21 +165,25 @@ const config = {
       title: "Image Cropper",
       desc: "Crop unwanted parts of images and download desired part of the image as a new file",
       link: "/image-tools/image-cropper",
+      icon: lorem,
     },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "/image-tools/image-resizer",
+      icon: lorem,
     },
     {
       title: "Image Color Extractor",
       desc: "Extract all colors from an image and get color codes and details of this colors as a list",
       link: "/image-tools/image-color-extractor",
+      icon: lorem,
     },
     {
       title: "Image Color Picker",
       desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
       link: "/image-tools/image-color-picker",
+      icon: lorem,
     },
   ],
 
@@ -166,21 +192,25 @@ const config = {
       title: "Image Cropper",
       desc: "Crop unwanted parts of images and download desired part of the image as a new file",
       link: "/image-tools/image-cropper",
+      icon: lorem,
     },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "/image-tools/image-resizer",
+      icon: lorem,
     },
     {
       title: "Image Color Extractor",
       desc: "Extract all colors from an image and get color codes and details of this colors as a list",
       link: "/image-tools/image-color-extractor",
+      icon: lorem,
     },
     {
       title: "Image Color Picker",
       desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
       link: "/image-tools/image-color-picker",
+      icon: lorem,
     },
   ],
   socialmediaTools: [
@@ -188,21 +218,25 @@ const config = {
       title: "Image Cropper",
       desc: "Crop unwanted parts of images and download desired part of the image as a new file",
       link: "/image-tools/image-cropper",
+      icon: lorem,
     },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "/image-tools/image-resizer",
+      icon: lorem,
     },
     {
       title: "Image Color Extractor",
       desc: "Extract all colors from an image and get color codes and details of this colors as a list",
       link: "/image-tools/image-color-extractor",
+      icon: lorem,
     },
     {
       title: "Image Color Picker",
       desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
       link: "/image-tools/image-color-picker",
+      icon: lorem,
     },
   ],
 };

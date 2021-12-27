@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as CardIcon } from "../../static/svg/text-size.svg";
 import { ReactComponent as ArrowIcon } from "../../static/svg/arrow.svg";
+// import WordCount from '../../static/assets/book.png';
 
 const StyledToolCard = styled.div`
   ${({ theme }) => theme.mixins.card}
@@ -43,9 +44,9 @@ const StyledOpen = styled.div`
 
 const Icon = styled.div`
   ${({ theme }) => theme.mixins.iconBackground};
-  svg {
+  svg, img {
     height: auto;
-    width: 1.8rem;
+    width: 2.5rem;
     transition: all 0.3s linear;
   }
   margin-bottom: 10px;
@@ -58,12 +59,12 @@ const Arrow = styled.div`
   }
 `;
 
-const ToolCard = ({ title, desc, link }) => {
+const ToolCard = ({ title, desc, link, icon }) => {
   return (
     <StyledToolCard>
       <Link to={link} style={{ color: "inherit", textDecoration: "inherit" }}>
         <Icon>
-          <CardIcon />
+        <img src={icon} alt="error" />
         </Icon>
         <StyledTitle>{title}</StyledTitle>
         <StyledDesc>{desc}</StyledDesc>

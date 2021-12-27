@@ -54,7 +54,7 @@ const Homescreen = () => {
         {config.featuredTools.map((obj) => {
           return (
             <Link to={obj.link} className="linkDiv">
-              <Card title={obj.title}/>
+              <Card title={obj.title} icon={obj.icon}/>
             </Link>
           );
         })}

@@ -3,6 +3,8 @@ import logoDark from "../static/svg/logoDark.svg";
 import logoLight from "../static/svg/logo.svg";
 import waveLight from "../static/svg/waveLight.svg";
 import waveDark from "../static/svg/waveDark.svg";
+import infoDark from "../static/svg/infoDark.svg";
+import infoLight from "../static/svg/infoLight.svg";
 
 export const lightTheme = {
   color: `var(--green)`,
@@ -16,6 +18,7 @@ export const lightTheme = {
   footer: `var(--strike-dark)`,
   logo: logoLight,
   wave: waveLight,
+  info: infoLight,
   bp: {
     mobileS: `max-width: 330px`,
     mobileM: `max-width: 400px`,
@@ -42,6 +45,7 @@ export const darkTheme = {
   footer: `var(--strike-light)`,
   logo: logoDark,
   wave: waveDark,
+  info: infoDark,
 
   bp: {
     mobileS: `max-width: 330px`,

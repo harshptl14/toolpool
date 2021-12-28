@@ -20,11 +20,11 @@ const CardDiv = styled.div`
 
 const Icon = styled.div`
   ${({ theme }) => theme.mixins.iconBackground};
-  padding: 0.9rem;
+  padding: 0.8rem;
   svg,
   img {
     height: auto;
-    width: 2rem;
+    width: 1.5rem;
     transition: all 0.3s linear;
   }
   margin-bottom: 10px;

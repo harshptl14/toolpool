@@ -1,6 +1,4 @@
 import textIcon from "../svg/text-size.svg";
-import Icon from "../icons/icon";
-
 import lorem from "../assets/paragraph.png";
 import resize from "../assets/resize.png";
 import whiteSpace from "../assets/cut.png";

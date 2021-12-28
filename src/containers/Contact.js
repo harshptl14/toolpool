@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import { useInput } from "../hooks/useInput";
 import PageTitle from "../components/PageTitle";
@@ -157,7 +157,9 @@ const Contact = () => {
     resetSubject();
     resetMessage();
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <StyledContactDiv>
       <StyledHeading>

@@ -1,12 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import { ReactComponent as InfoMobile } from "../../static/svg/info.svg";
+import styled,{useTheme} from "styled-components";
+// import { ReactComponent as InfoMobile } from "../../static/svg/infoNew.svg";
 
 const StyledInfoCard = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColumn};
   color: var(--font-light);
-  background: var(--shade-light);
+  background: url(${(props) => props.bg});
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 60px 30px;
   margin: 50px auto;
   font-size: var(--fz-md);
@@ -51,7 +53,7 @@ const StyledContent = styled.div`
 `;
 
 const StyledSvg = styled.div`
-  svg {
+  svg, img {
     height: 100%;
     width: 100%;
   }
@@ -65,10 +67,15 @@ const StyledSvg = styled.div`
 `;
 
 const InfoCard = () => {
+      const theme = useTheme();
+
   return (
-    <StyledInfoCard>
+    <StyledInfoCard bg={theme.wave}>
       <StyledSvg>
-        <InfoMobile />
+        <img src={theme.info} alt="text here" />
+
+        {/* <InfoMobile /> */}
+        {/* {theme.info} */}
       </StyledSvg>
       <StyledContent>
         <div className="heading">Pool with tons of Tools</div>

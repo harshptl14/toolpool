@@ -8,8 +8,10 @@ const Icon = ({ name }) => {
       return <icons.GpsOff />;
     case 'Instagram':
       return <icons.Facebook />;
-    case 'Waves':
-      return <icons.Waves />;
+    case 'WavesLight':
+      return <icons.WavesLight />;
+    case 'WavesDark':
+      return <icons.WavesDark />;
     case 'Wordcount':
       return icons.Wordcount;
     default:

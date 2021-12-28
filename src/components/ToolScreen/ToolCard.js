@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ReactComponent as CardIcon } from "../../static/svg/text-size.svg";
 import { ReactComponent as ArrowIcon } from "../../static/svg/arrow.svg";
-// import WordCount from '../../static/assets/book.png';
 
 const StyledToolCard = styled.div`
   ${({ theme }) => theme.mixins.card}

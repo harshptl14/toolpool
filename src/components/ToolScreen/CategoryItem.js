@@ -37,9 +37,9 @@ const Icon = styled.img`
   height: 30px;
   width: 30px;
   background-color: transparent;
-  svg {
+  svg, img {
     height: auto;
-    width: 1.8rem;
+    width: 1.5rem;
     transition: all 0.3s linear;
   }
 `;

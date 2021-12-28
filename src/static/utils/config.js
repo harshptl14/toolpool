@@ -1,11 +1,15 @@
-import textIcon from "../svg/text-size.svg";
 import lorem from "../assets/paragraph.png";
 import resize from "../assets/resize.png";
-import whiteSpace from "../assets/cut.png";
+import whiteSpace from "../assets/whitespace.png";
 import count from "../assets/counter.png";
 import caseconverter from "../assets/text.png";
 import binary from "../assets/binary.png";
 import unique from "../assets/book.png";
+import textTools from "../assets/texttools.png";
+import imageTools from "../assets/image.png";
+import codingTools from "../assets/coding.png";
+import colorsTools from "../assets/color.png";
+import socialmediaTools from "../assets/network.png";
 
 const config = {
   //HomeScreen featured tools
@@ -66,27 +70,27 @@ const config = {
   categoryList: [
     {
       name: "Text Tools",
-      logo: textIcon,
+      logo: textTools,
       id: "textTools",
     },
     {
       name: "Image Tools",
-      logo: textIcon,
+      logo: imageTools,
       id: "imageTools",
     },
     {
       name: "Developers Tools",
-      logo: textIcon,
+      logo: codingTools,
       id: "developerTools",
     },
     {
       name: "Colors Tools",
-      logo: textIcon,
+      logo: colorsTools,
       id: "colorTools",
     },
     {
       name: "Social Media Tools",
-      logo: textIcon,
+      logo: socialmediaTools,
       id: "socialmediaTools",
     },
   ],

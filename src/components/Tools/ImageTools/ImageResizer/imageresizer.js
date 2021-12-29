@@ -1,5 +1,118 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Canvas from "../canvas";
+import styled from "styled-components";
+import { UploadFile } from "@styled-icons/material";
+
+const StyledOuterdiv = styled.div`
+  /* input[type="file"] {
+    display: none;
+  }
+  .selectImage {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1.8px dashed ${({ theme }) => theme.color};
+    cursor: pointer;
+    gap: 10px;
+    :focus {
+      outline: 0px dashed ${({ theme }) => theme.color};
+    }
+  } */
+
+`;
+
+const StyledFilearea = styled.div`
+  width: 100%;
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .file-dummy {
+    width: 100%;
+    padding: 30px;
+    background-color: ${({ theme }) => theme.footer};
+    border: 1.8px dashed ${({ theme }) => theme.color};
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+
+    color: ${({ theme }) => theme.descfont};
+
+    .success {
+      display: none;
+    }
+
+    .default {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  &:hover .file-dummy {
+    background: ${({ theme }) => theme.shade};
+  }
+
+  input[type="file"]:focus + .file-dummy {
+    /* outline: 2px solid rgba(255, 255, 255, 0.5); */
+    /* outline: -webkit-focus-ring-color auto 5px; */
+  }
+
+  input[type="file"]:valid + .file-dummy {
+    background-color: ${({ theme }) => theme.shade};
+
+    .success {
+      display: inline-block;
+    }
+    .default {
+      display: none;
+    }
+  }
+`;
+
+const StyledPreviewimageDiv = styled.div`
+  /* width: 100%  */
+  position: relative;
+  margin: 16px 0px;
+  padding: 24px;
+  width: 100%;
+  height: max-content;
+  background: ${({ theme }) => theme.shade};
+  border: 1px solid ${({ theme }) => theme.shade};
+  /* border-radius: 8px; */
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  color: rgb(97, 98, 150);
+  /* opacity: 0.5; */
+  cursor: not-allowed;
+  transition: all 0.25s ease 0s;
+
+  .previewImage {
+    width: auto;
+    max-width: calc(100% - 40px);
+    height: auto;
+    max-height: 420px;
+  }
+`;
 
 const ImageResizer = () => {
   // const [imageInput, setimageInput] = useState();
@@ -124,14 +237,46 @@ const ImageResizer = () => {
   }
 
   return (
-    <div>
+    <StyledOuterdiv>
       {/* <form> */}
       {/* Input section */}
-      <input type="file" onChange={onSelectFile} />
+      {/* <label className="selectImage" for="file">
+        <UploadFile width="40px" color="#2b7537" />
+        Click here to browse Image
+      </label>
+      <input id="file" type="file" onChange={onSelectFile} /> */}
+      <StyledFilearea>
+        <label for="images"></label>
+        <input
+          type="file"
+          name="images"
+          id="images"
+          required="required"
+          multiple="multiple"
+          onChange={onSelectFile}
+        />
+
+        <div class="file-dummy">
+          <div className="success">
+            Great, your files are selected. Keep on.
+          </div>
+          <div className="default">
+            <UploadFile width="40px" color="#2b7537" />
+            Drag your image here, or click to browse
+          </div>
+        </div>
+      </StyledFilearea>
+
       {previewImage && (
         <div>
           <div>
-            <img src={previewImage.src} alt="previewImage" />
+            <StyledPreviewimageDiv>
+              <img
+                src={previewImage.src}
+                alt="previewImage"
+                className="previewImage"
+              />
+            </StyledPreviewimageDiv>
             <h5>Original image</h5>
             <input
               type="number"
@@ -177,7 +322,7 @@ const ImageResizer = () => {
         </div>
       )}
       {/* </form> */}
-    </div>
+    </StyledOuterdiv>
   );
 };
 

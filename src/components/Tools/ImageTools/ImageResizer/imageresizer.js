@@ -2,28 +2,7 @@ import { useState } from "react";
 import Canvas from "../canvas";
 import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
-
-const StyledOuterdiv = styled.div`
-  /* input[type="file"] {
-    display: none;
-  }
-  .selectImage {
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border: 1.8px dashed ${({ theme }) => theme.color};
-    cursor: pointer;
-    gap: 10px;
-    :focus {
-      outline: 0px dashed ${({ theme }) => theme.color};
-    }
-  } */
-
-`;
+import ButtonDiv from "../../ButtonDiv";
 
 const StyledFilearea = styled.div`
   width: 100%;
@@ -74,10 +53,11 @@ const StyledFilearea = styled.div`
   }
 
   input[type="file"]:valid + .file-dummy {
-    background-color: ${({ theme }) => theme.shade};
+    /* background-color: ${({ theme }) => theme.shade}; */
 
     .success {
       display: inline-block;
+      color: ${({ theme }) => theme.color};
     }
     .default {
       display: none;
@@ -89,7 +69,7 @@ const StyledPreviewimageDiv = styled.div`
   /* width: 100%  */
   position: relative;
   margin: 16px 0px;
-  padding: 24px;
+  padding: 30px 0;
   width: 100%;
   height: max-content;
   background: ${({ theme }) => theme.shade};
@@ -105,14 +85,99 @@ const StyledPreviewimageDiv = styled.div`
   /* opacity: 0.5; */
   cursor: not-allowed;
   transition: all 0.25s ease 0s;
-
   .previewImage {
     width: auto;
     max-width: calc(100% - 40px);
     height: auto;
     max-height: 420px;
   }
+
+  .title {
+    color: ${({ theme }) => theme.color};
+    margin-top: 10px;
+    font-size: var(--fz-lg);
+  }
+
+  .size {
+    margin-top: 5px;
+    font-size: var(--fz-sm);
+    color: ${({ theme }) => theme.descfont};
+  }
 `;
+
+const StyledFilterDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 10px 0;
+
+`;
+const StyledInput = styled.input`
+  background-color: ${({ theme }) => theme.footer};
+  padding: 10px;
+  width: 49%;
+  border: 1.5px solid ${({ theme }) => theme.shadeVarient};
+  color: ${({ theme }) => theme.text};
+
+  :active {
+    outline: 1.8px dashed ${({ theme }) => theme.color};
+  }
+`;
+
+const StyledCheckboxDiv = styled.div`
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 30px;
+font-size: var(--fz-lg);
+  input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: ${({ theme }) => theme.background};
+    /* Not removed via appearance */
+    margin: 0;
+
+    font: inherit;
+    color: ${({ theme }) => theme.color};
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.1em solid ${({ theme }) => theme.color};
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em ${({ theme }) => theme.color};
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  input[type="checkbox"]:focus {
+    /* outline: max(2px, 0.15em) solid ${({ theme }) => theme.color}; */
+    outline-offset: max(2px, 0.15em);
+  }
+`;
+
+
+
 
 const ImageResizer = () => {
   // const [imageInput, setimageInput] = useState();
@@ -225,6 +290,32 @@ const ImageResizer = () => {
     }
   };
 
+  const filter = [
+    {
+      key: "1",
+      title: "Resize",
+      method: () => {},
+      type: "normal",
+    },
+  ];
+
+    const finalButtons = [
+      {
+        key: "2",
+        title: "Reset",
+        method: () => {
+          setpreviewImage('');
+        },
+        type: "normal",
+      },
+      {
+        key: "3",
+        title: "Download",
+        method: () => DownloadCanvasAsImage(),
+        type: "submit",
+      },
+    ];
+
   function DownloadCanvasAsImage() {
     let downloadLink = document.createElement("a");
     downloadLink.setAttribute("download", `${previewImage.name}`);
@@ -237,14 +328,7 @@ const ImageResizer = () => {
   }
 
   return (
-    <StyledOuterdiv>
-      {/* <form> */}
-      {/* Input section */}
-      {/* <label className="selectImage" for="file">
-        <UploadFile width="40px" color="#2b7537" />
-        Click here to browse Image
-      </label>
-      <input id="file" type="file" onChange={onSelectFile} /> */}
+    <div>
       <StyledFilearea>
         <label for="images"></label>
         <input
@@ -258,7 +342,7 @@ const ImageResizer = () => {
 
         <div class="file-dummy">
           <div className="success">
-            Great, your files are selected. Keep on.
+            Great, your files are selected. Drag your image or click to chanage.
           </div>
           <div className="default">
             <UploadFile width="40px" color="#2b7537" />
@@ -276,38 +360,50 @@ const ImageResizer = () => {
                 alt="previewImage"
                 className="previewImage"
               />
+              <div className="title">{previewImage.name}</div>
+              <div className="size">
+                Size: {previewImage.width} x {previewImage.height}
+              </div>
             </StyledPreviewimageDiv>
-            <h5>Original image</h5>
-            <input
-              type="number"
-              name="width"
-              value={width}
-              placeholder="Width"
-              onChange={(e) => {
-                changeWidth(e.target.value);
-              }}
-            />
-            <input
-              type="number"
-              name="height"
-              placeholder="Height"
-              disabled={isChecked}
-              value={height}
-              onChange={(e) => {
-                changeHeight(e.target.value);
-              }}
-            />
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={() => setisChecked(!isChecked)}
-            />
-            <label>Maintain aspect ratio</label>
-            <br />
-            {/* <button onClick={onClickResize}>Resize image</button> */}
+
+            <StyledFilterDiv>
+              <StyledInput
+                type="number"
+                name="width"
+                value={width}
+                placeholder="Width"
+                onChange={(e) => {
+                  changeWidth(e.target.value);
+                }}
+              />
+              <StyledInput
+                type="number"
+                name="height"
+                placeholder="Height"
+                disabled={isChecked}
+                value={height}
+                onChange={(e) => {
+                  changeHeight(e.target.value);
+                }}
+              />
+            </StyledFilterDiv>
+
+            <StyledCheckboxDiv>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={() => setisChecked(!isChecked)}
+              />
+              <label>Maintain aspect ratio</label>
+            </StyledCheckboxDiv>
+
+            <ButtonDiv filter={filter} finalButtons={finalButtons} />
+
           </div>
         </div>
       )}
+
+      <h3>Preview Image</h3>
 
       {/* Output section */}
       {previewImage && (
@@ -321,8 +417,7 @@ const ImageResizer = () => {
           <button onClick={DownloadCanvasAsImage}>Download</button>
         </div>
       )}
-      {/* </form> */}
-    </StyledOuterdiv>
+    </div>
   );
 };
 

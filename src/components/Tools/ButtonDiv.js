@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledButtonDiv = styled.div`
@@ -55,7 +55,23 @@ const StyledButton = styled.button`
   }
 `;
 
+const Toast = styled.div`
+  position: absolute;
+  width: 10rem;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  border: 2px solid ${({ theme }) => theme.color};
+  border-radius: 5px;
+  text-align: center;
+  font-size: var(--fz-xxs);
+  transition: 0.5s;
+  background-color: ${({ theme }) => theme.shadeVarient};
+  color: ${({ theme }) => theme.color};
+`;
+
 const ButtonDiv = ({ filter, finalButtons, display }) => {
+  const [showToast, setShowToast] = useState(false);
+
   return (
     <StyledButtonDiv display={display}>
       <ChangeButtonDiv>
@@ -66,6 +82,7 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
               rightpadd="true"
               key={key}
               onClick={(e) => {
+                
                 method();
               }}
             >
@@ -83,6 +100,12 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
               rightpadd="false"
               key={key}
               onClick={(e) => {
+                if (title === "Copy") {
+                  setShowToast(true);
+                  setTimeout(() => {
+                    setShowToast(false);
+                  }, 2000);
+                }
                 method();
               }}
             >
@@ -90,6 +113,7 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
             </StyledButton>
           );
         })}
+        {showToast && <Toast>Copied!!</Toast>}
       </OutputButtonDiv>
     </StyledButtonDiv>
   );

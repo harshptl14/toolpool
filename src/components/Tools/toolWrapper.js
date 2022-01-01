@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { TOOLS } from "../../static/utils/toolComponentsList";
 import ReactMarkdown from "react-markdown";
-import { tool1 } from "../../static/toolDescriptions/tool1";
 import PageTitle from "../PageTitle";
 import { useEffect } from "react";
+import { LoremReadme } from "../../static/toolDescriptions/toolReadmes";
 
 // A wrapper component to display various tools dynamically according to their ID (from URL)
 const ToolWrapper = () => {
@@ -25,7 +25,7 @@ const ToolWrapper = () => {
       {TOOLS[category][toolName]["component"]}
       {/* Markdown component to display description */}
       <div>
-        <ReactMarkdown children={tool1} />
+        <ReactMarkdown children={TOOLS[category][toolName]["readme"] ?? ``} />
       </div>
     </div>
   );

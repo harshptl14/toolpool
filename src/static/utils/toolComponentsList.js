@@ -5,6 +5,14 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
+import {
+  CaseReadme,
+  Lettercountreadme,
+  LoremReadme,
+  T2BReadme,
+  UniqueReadme,
+  WhitespaceReadme,
+} from "../toolDescriptions/toolReadmes";
 
 // List of all the tool components with category
 export const TOOLS = {
@@ -15,6 +23,7 @@ export const TOOLS = {
       url: "texttools/lorem",
       description:
         "Create your placeholder texts with desired number of paragraphs and properties",
+      readme: LoremReadme,
     },
     caseconverter: {
       title: "Case Converter",
@@ -22,18 +31,21 @@ export const TOOLS = {
       url: "texttools/caseconverter",
       description:
         "Convert your text or string to uppercase, lowercase, title case & sentence case",
+      readme: CaseReadme,
     },
     t2b: {
       title: "Text 2 Binary",
       component: <Text2Binary />,
       url: "texttools/t2b",
       description: "Convert text to binary strings and vice versa.",
+      readme: T2BReadme,
     },
     uniquewords: {
       title: "Unique Word Finder",
       component: <UniqueWordsFinder />,
       url: "texttools/uniquewords",
       description: "Find all the uniques words used in a text.",
+      readme: UniqueReadme,
     },
 
     lettercounter: {
@@ -42,6 +54,7 @@ export const TOOLS = {
       url: "texttools/lettercounter",
       description:
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
+      readme: Lettercountreadme,
     },
 
     whitespaceremover: {
@@ -50,6 +63,7 @@ export const TOOLS = {
       url: "texttools/whitespaceremover",
       description:
         "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
+      readme: WhitespaceReadme,
     },
   },
   imagetools: {

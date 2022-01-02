@@ -69,7 +69,7 @@ const StyledPreviewimageDiv = styled.div`
   /* width: 100%  */
   position: relative;
   margin: 16px 0px;
-  padding: 30px 0;
+   padding: 30px 0; 
   width: 100%;
   height: max-content;
   background: ${({ theme }) => theme.shade};
@@ -326,7 +326,7 @@ const ImageResizer = () => {
       downloadLink.click();
     });
   }
-
+    
   return (
     <div>
       <StyledFilearea>
@@ -362,6 +362,7 @@ const ImageResizer = () => {
               />
               <div className="title">{previewImage.name}</div>
               <div className="size">
+                
                 Size: {previewImage.width} x {previewImage.height}
               </div>
             </StyledPreviewimageDiv>
@@ -398,7 +399,6 @@ const ImageResizer = () => {
             </StyledCheckboxDiv>
 
             <ButtonDiv filter={filter} finalButtons={finalButtons} />
-
           </div>
         </div>
       )}
@@ -408,12 +408,13 @@ const ImageResizer = () => {
       {/* Output section */}
       {previewImage && (
         <div>
-          <Canvas
-            id="canvas"
-            draw={draw}
-            width={width > MAX_WIDTH ? previewImage.width : width}
-            height={height > MAX_HEIGHT ? previewImage.height : height}
-          />
+            <Canvas
+              id="canvas"
+              style={{}}
+              draw={draw}
+              width={width > MAX_WIDTH ? previewImage.width : width}
+              height={height > MAX_HEIGHT ? previewImage.height : height}
+            />
           <button onClick={DownloadCanvasAsImage}>Download</button>
         </div>
       )}

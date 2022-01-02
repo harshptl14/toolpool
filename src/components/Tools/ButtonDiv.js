@@ -37,7 +37,7 @@ const OutputButtonDiv = styled.div`
 `;
 
 const StyledButton = styled.button`
-  --submit-color: ${({ theme }) => theme.shadeVarient};
+  --submit-color: ${({ theme }) => theme.shade};
   ${({ theme }) => theme.mixins.smallButton};
   background-color: ${(props) =>
     props.type === "submit" ? "var(--submit-color)" : "transparent"};
@@ -59,13 +59,13 @@ const Toast = styled.div`
   position: absolute;
   width: 10rem;
   z-index: 20;
+  margin-top: 50px;
   padding: 0.75rem 1rem;
   border: 2px solid ${({ theme }) => theme.color};
   border-radius: 5px;
   text-align: center;
   font-size: var(--fz-xxs);
-  transition: 0.5s;
-  background-color: ${({ theme }) => theme.shadeVarient};
+  background-color: ${({ theme }) => theme.shade};
   color: ${({ theme }) => theme.color};
 `;
 
@@ -82,7 +82,6 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
               rightpadd="true"
               key={key}
               onClick={(e) => {
-                
                 method();
               }}
             >
@@ -90,6 +89,7 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
             </StyledButton>
           );
         })}
+        {/* {showToast && <Toast>Copied!!</Toast>} */}
       </ChangeButtonDiv>
 
       <OutputButtonDiv>
@@ -100,12 +100,17 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
               rightpadd="false"
               key={key}
               onClick={(e) => {
-                if (title === "Copy") {
+                if (
+                  title === "Copy" ||
+                  title === "Copy Words" ||
+                  title === "Copy As JSON"
+                ) {
                   setShowToast(true);
                   setTimeout(() => {
                     setShowToast(false);
                   }, 2000);
                 }
+                
                 method();
               }}
             >

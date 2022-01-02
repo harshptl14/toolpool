@@ -24,7 +24,7 @@ const ToolWrapper = () => {
       <br></br>
       {TOOLS[category][toolName]["component"]}
       {/* Markdown component to display description */}
-      <div>
+      <div style={{marginTop: "50px"}}>
         <ReactMarkdown children={TOOLS[category][toolName]["readme"] ?? ``} />
       </div>
     </div>

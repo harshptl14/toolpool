@@ -8,6 +8,7 @@ import LandingPagediv from "../components/HoomScreen/LandingPagediv";
 import useScroll from "../hooks/useScroll";
 import InfoCard from "../components/HoomScreen/InfoCard";
 import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
@@ -48,13 +49,19 @@ const Homescreen = () => {
 
   return (
     <>
+      <Helmet>
+        <html lang="en" />
+        <title>ToolPool - Online Helper Tools</title>
+        <meta name="x`" content="Tutorial for React Helmet" />
+      </Helmet>
+
       <LandingPagediv executeScroll={executeScroll} />
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
         {config.featuredTools.map((obj) => {
           return (
             <Link to={obj.link} className="linkDiv">
-              <Card title={obj.title} icon={obj.icon}/>
+              <Card title={obj.title} icon={obj.icon} />
             </Link>
           );
         })}

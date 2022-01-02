@@ -7,6 +7,7 @@ const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
   --color-primary: ${({ theme }) => theme.shade};
   --color-text: ${({ theme }) => theme.color};
+  --color-hover: ${({ theme }) => theme.hover};
   --color-text-nonactive: ${({ theme }) => theme.text};
   gap: 15px;
   padding: 20px 30px;
@@ -22,7 +23,9 @@ const StyledCategoryItems = styled.div`
       : "var(--color-text-nonactive)"};
 
   :hover {
-    color: ${({ theme }) => theme.color};
+    /* color: ${({ theme }) => theme.color}; */
+    background-color: ${(props) =>
+      props.active === "true" ? "transperent" : "var(--color-hover)"};
   }
 
   @media (min-width: 600px) and (max-width: 1000px) {

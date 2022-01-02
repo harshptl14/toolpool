@@ -6,12 +6,12 @@ const BannerDiv = styled.div`
   z-index: 12;
   font-size: var(--fz-lg);
   width: 100vw;
-  height: 2rem;
+  height: 2.2rem;
   background-color: ${({ theme }) => theme.color};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: ${({ theme }) => theme.background};
 
   @media (max-width: 480px) {
     font-size: var(--fz-sm);

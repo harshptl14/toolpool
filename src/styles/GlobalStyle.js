@@ -43,7 +43,7 @@ html{
   }
   
   body::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.shadeVarient};
+    background-color: ${({ theme }) => theme.border};
     /* border: 1px solid ${({ theme }) => theme.color}; */
     border-radius: 10px;
   }

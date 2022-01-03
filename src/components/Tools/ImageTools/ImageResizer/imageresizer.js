@@ -68,7 +68,7 @@ const StyledFilearea = styled.div`
 const StyledPreviewimageDiv = styled.div`
   position: relative;
   margin: 16px 0px;
-  padding: 30px 0;
+   padding: 30px 0; 
   width: 100%;
   height: max-content;
   background: ${({ theme }) => theme.shade};
@@ -290,7 +290,7 @@ const ImageResizer = () => {
       downloadLink.click();
     });
   }
-
+    
   return (
     <div>
       <StyledFilearea>

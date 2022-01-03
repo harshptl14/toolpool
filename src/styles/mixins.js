@@ -218,7 +218,7 @@ const mixins = {
   smallButton: css`
     color: ${({ theme }) => theme.color};
     background-color: transparent;
-    border: 1px solid ${({ theme }) => theme.color};
+    border: 1px solid ${({ theme }) => theme.border};
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
     font-size: var(--fz-xs);

@@ -2,23 +2,35 @@ import { css } from "styled-components";
 
 const variables = css`
   :root {
-    --green: #2b7537;
+    --green: #008315;
+    --dark-green: #5ec655;
+
     --back-light: #f8fffa;
-    --back-dark: #010e04;
-    --shade-light: #ddffe7;
+    --back-dark: #021406;
+
+    --shade-light: #d7ffe3;
+    --shade-dark: #072f0e;
+
+    --hover-light: #eefff1;
+    --hover-dark: #041b08;
+
     --shade-light-varient: #b6ffcb;
     --shade-dark-varient: #0b4115;
-    --shade-dark: #07290d;
-    --font-light: #96a798;
-    --font-dark: #cacaca;
+
+    --fontdesc-light: #86ae8c;
+    --fontdesc-dark: #cacaca;
+
+    --font-light: #303031;
+    --font-dark: #f6fff8;
+
     --strike-light: #000000;
     --strike-dark: #ffffff;
 
-    --border-light: #003300;
-    --border-dark: #07290d;
+    --border-light: #b1edc2;
+    --border-dark: #093e13;
 
     --nav-light: rgba(248, 255, 250, 0.85);
-    --nav-dark: rgba(1, 14, 4, 0.85);
+    --nav-dark: rgba(2, 20, 6, 0.85);
 
     --navy-shadow: rgba(2, 12, 27, 0.7);
 

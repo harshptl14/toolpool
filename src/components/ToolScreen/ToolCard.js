@@ -59,10 +59,10 @@ const Arrow = styled.div`
 
 const ToolCard = ({ title, desc, link, icon }) => {
   return (
-    <StyledToolCard>
+    <StyledToolCard title={title}>
       <Link to={link} style={{ color: "inherit", textDecoration: "inherit" }}>
         <Icon>
-        <img src={icon} alt="error" />
+        <img src={icon} alt={title} />
         </Icon>
         <StyledTitle>{title}</StyledTitle>
         <StyledDesc>{desc}</StyledDesc>

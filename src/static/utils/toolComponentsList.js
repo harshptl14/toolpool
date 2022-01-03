@@ -6,6 +6,16 @@ import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imagere
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
 import {
+  caseconverter,
+  lorem,
+  resize,
+  count,
+  binary,
+  unique,
+  whiteSpace,
+} from "../icons/index";
+
+import {
   CaseReadme,
   Lettercountreadme,
   LoremReadme,
@@ -24,6 +34,7 @@ export const TOOLS = {
       description:
         "Create your placeholder texts with desired number of paragraphs and properties",
       readme: LoremReadme,
+      icon: lorem,
     },
     caseconverter: {
       title: "Case Converter",
@@ -32,6 +43,7 @@ export const TOOLS = {
       description:
         "Convert your text or string to uppercase, lowercase, title case & sentence case",
       readme: CaseReadme,
+      icon: caseconverter,
     },
     t2b: {
       title: "Text 2 Binary",
@@ -39,6 +51,7 @@ export const TOOLS = {
       url: "texttools/t2b",
       description: "Convert text to binary strings and vice versa.",
       readme: T2BReadme,
+      icon: binary,
     },
     uniquewords: {
       title: "Unique Word Finder",
@@ -46,6 +59,7 @@ export const TOOLS = {
       url: "texttools/uniquewords",
       description: "Find all the uniques words used in a text.",
       readme: UniqueReadme,
+      icon: unique,
     },
 
     lettercounter: {
@@ -55,6 +69,7 @@ export const TOOLS = {
       description:
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
       readme: Lettercountreadme,
+      icon: count,
     },
 
     whitespaceremover: {
@@ -64,6 +79,7 @@ export const TOOLS = {
       description:
         "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
       readme: WhitespaceReadme,
+      icon: whiteSpace,
     },
   },
   imagetools: {
@@ -72,6 +88,7 @@ export const TOOLS = {
       component: <ImageResizer />,
       url: "imagetools/uniquewords",
       description: "Resize your image in dimensions you want.",
+      icon: resize,
     },
   },
 };

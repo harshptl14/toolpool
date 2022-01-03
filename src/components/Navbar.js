@@ -10,7 +10,7 @@ import Banner from "./HoomScreen/Banner";
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
-  top: 20px;
+  top: 36px;
   z-index: 11;
   padding: 0px 50px;
   width: 100%;

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { createPortal } from "react-dom";
 
 const BannerDiv = styled.div`
-  position: absolute;
-  z-index: 12;
+  /* position: absolute; */
+  /* z-index: 12; */
   font-size: var(--fz-lg);
   width: 100vw;
   height: 2.2rem;

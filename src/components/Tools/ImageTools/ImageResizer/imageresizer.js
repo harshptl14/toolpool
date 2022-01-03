@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Canvas from "../canvas";
 import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
@@ -66,7 +66,6 @@ const StyledFilearea = styled.div`
 `;
 
 const StyledPreviewimageDiv = styled.div`
-  /* width: 100%  */
   position: relative;
   margin: 16px 0px;
    padding: 30px 0; 
@@ -100,8 +99,8 @@ const StyledPreviewimageDiv = styled.div`
 
   .size {
     margin-top: 5px;
-    font-size: var(--fz-sm);
-    color: ${({ theme }) => theme.descfont};
+    font-size: var(--fz-lg);
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -110,7 +109,6 @@ const StyledFilterDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 20px 0 10px 0;
-
 `;
 const StyledInput = styled.input`
   background-color: ${({ theme }) => theme.footer};
@@ -125,11 +123,11 @@ const StyledInput = styled.input`
 `;
 
 const StyledCheckboxDiv = styled.div`
-display: flex;
-align-items: center;
-gap: 10px;
-margin-bottom: 30px;
-font-size: var(--fz-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-size: var(--fz-lg);
   input[type="checkbox"] {
     /* Add if not using autoprefixer */
     -webkit-appearance: none;
@@ -176,57 +174,34 @@ font-size: var(--fz-lg);
   }
 `;
 
-
-
-
 const ImageResizer = () => {
   // const [imageInput, setimageInput] = useState();
-  const [previewImage, setpreviewImage] = useState();
+  const [previewImage, setpreviewImage] = useState(null);
+  const previewImageRef = useRef();
   // const [isClicked, setisClicked] = useState(false);
   const [isChecked, setisChecked] = useState(true);
 
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(150);
+  const [height, setHeight] = useState(150);
 
   const MAX_WIDTH = 5000;
   const MAX_HEIGHT = 5000;
 
-  // useEffect(() => {
-  //   // if (!previewImage) {
-  //   //   setpreviewImage(undefined);
-  //   //   return;
-  //   // }
-  //   // // generating ObjectURL for input image to preview
-  //   // const objectUrl = URL.createObjectURL(imageInput);
-  //   // var image = new Image();
-  //   // image.src = objectUrl
-  //   // setpreviewImage(image);
-  //   // free memory when ever this component is unmounted
-  //   // return () => URL.revokeObjectURL(objectUrl);
-  // }, []);
-
-  const onSelectFile = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setpreviewImage(undefined);
-      return;
-    }
-    if (!e.target.files[0].name) {
-      console.log("Please upload Image file of format .png,.jpeg, .jfif");
-      return;
-    }
-    console.log(e.target.files[0]);
-    // setimageInput(e.target.files[0]);
+  const onSelectFile = (file) => {
+    console.log("File", file);
     // generating ObjectURL for input image to preview
-    const objectUrl = URL.createObjectURL(e.target.files[0]);
+    const objectUrl = URL.createObjectURL(file);
     console.log(objectUrl);
     var image = new Image();
-    image.name = e.target.files[0].name;
+    image.name = file.name;
     image.src = objectUrl;
     setpreviewImage(image);
   };
 
   const maintainAspectRatio = (newWidth) => {
-    var ratio = previewImage.height / previewImage.width;
+    var ratio =
+      previewImageRef.current.naturalHeight /
+      previewImageRef.current.naturalWidth;
     var updatedHeight = ratio * newWidth;
     setWidth(newWidth);
     setHeight(updatedHeight.toFixed(2));
@@ -239,56 +214,45 @@ const ImageResizer = () => {
       setWidth(val);
     }
   };
-
   const changeHeight = (val) => {
     if (!isChecked) {
       setHeight(val);
     }
   };
 
-  // const onClickResize = () => {
-  //   if (width > 20000 || width < 9) {
-  //     console.log("Width should be between 9 to 20000 pixels");
-  //     return;
-  //   }
-  //   if (height > 20000 || height < 9) {
-  //     console.log("Height should be between 9 to 20000 pixels");
-  //     return;
-  //   }
-  //   console.log("Resizer function");
-  //   setisClicked(true);
-  // };
+  const draw = useCallback(
+    (ctx) => {
+      // The most common aspect ratios for standard photography and art prints are 3:2 and 5:4
+      if (previewImage) {
+        var image = new Image();
+        image.src = previewImage.src;
+        if (width > MAX_WIDTH || width < 9) {
+          image.onload = () => {
+            // resizing and drawing image on canvas
+            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+          };
+          console.log("Width should be between 9 to 20000 pixels");
+          return;
+        }
+        if (height > MAX_HEIGHT || height < 9) {
+          image.onload = () => {
+            // resizing and drawing image on canvas
+            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+          };
+          console.log("Height should be between 9 to 20000 pixels");
+          return;
+        }
 
-  const draw = (ctx) => {
-    // The most common aspect ratios for standard photography and art prints are 3:2 and 5:4
-    if (previewImage) {
-      var image = new Image();
-      image.src = previewImage.src;
-      if (width > MAX_WIDTH || width < 9) {
+        // console.log("New width * height : ", width, " * ", height);
+        // converting image file to Image object to access it in JS logic
         image.onload = () => {
           // resizing and drawing image on canvas
-          ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+          ctx.drawImage(image, 0, 0, width, height);
         };
-        console.log("Width should be between 9 to 20000 pixels");
-        return;
       }
-      if (height > MAX_HEIGHT || height < 9) {
-        image.onload = () => {
-          // resizing and drawing image on canvas
-          ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
-        };
-        console.log("Height should be between 9 to 20000 pixels");
-        return;
-      }
-
-      // console.log("New width * height : ", width, " * ", height);
-      // converting image file to Image object to access it in JS logic
-      image.onload = () => {
-        // resizing and drawing image on canvas
-        ctx.drawImage(image, 0, 0, width, height);
-      };
-    }
-  };
+    },
+    [previewImage, width, height]
+  );
 
   const filter = [
     {
@@ -299,22 +263,22 @@ const ImageResizer = () => {
     },
   ];
 
-    const finalButtons = [
-      {
-        key: "2",
-        title: "Reset",
-        method: () => {
-          setpreviewImage('');
-        },
-        type: "normal",
+  const finalButtons = [
+    {
+      key: "2",
+      title: "Reset",
+      method: () => {
+        setpreviewImage(null);
       },
-      {
-        key: "3",
-        title: "Download",
-        method: () => DownloadCanvasAsImage(),
-        type: "submit",
-      },
-    ];
+      type: "normal",
+    },
+    {
+      key: "3",
+      title: "Download",
+      method: () => DownloadCanvasAsImage(),
+      type: "submit",
+    },
+  ];
 
   function DownloadCanvasAsImage() {
     let downloadLink = document.createElement("a");
@@ -330,14 +294,22 @@ const ImageResizer = () => {
   return (
     <div>
       <StyledFilearea>
-        <label for="images"></label>
         <input
           type="file"
           name="images"
           id="images"
           required="required"
-          multiple="multiple"
-          onChange={onSelectFile}
+          onClick={(e) => {
+            e.target.value = null;
+          }}
+          onChange={(e) => {
+            console.log(e.target.files);
+            if (!e.target.files || e.target.files.length === 0) {
+              setpreviewImage(undefined);
+              return;
+            }
+            onSelectFile(e.target.files[0]);
+          }}
         />
 
         <div class="file-dummy">
@@ -356,16 +328,31 @@ const ImageResizer = () => {
           <div>
             <StyledPreviewimageDiv>
               <img
+                ref={previewImageRef}
+                src={previewImage.src}
+                alt="previewImage"
+                className="previewImage"
+                onLoad={() => {
+                  setWidth(previewImageRef.current.naturalWidth);
+                  setHeight(previewImageRef.current.naturalHeight);
+                }}
+              />
+              <div className="title">{previewImage.name}</div>
+              <div className="size">
+                Size: {width} x {height}
+              </div>
+            </StyledPreviewimageDiv>
+            {/* <StyledPreviewimageDiv>
+              <img
                 src={previewImage.src}
                 alt="previewImage"
                 className="previewImage"
               />
               <div className="title">{previewImage.name}</div>
               <div className="size">
-                
                 Size: {previewImage.width} x {previewImage.height}
               </div>
-            </StyledPreviewimageDiv>
+            </StyledPreviewimageDiv> */}
 
             <StyledFilterDiv>
               <StyledInput
@@ -403,19 +390,15 @@ const ImageResizer = () => {
         </div>
       )}
 
-      <h3>Preview Image</h3>
-
-      {/* Output section */}
       {previewImage && (
         <div>
-            <Canvas
-              id="canvas"
-              style={{}}
-              draw={draw}
-              width={width > MAX_WIDTH ? previewImage.width : width}
-              height={height > MAX_HEIGHT ? previewImage.height : height}
-            />
-          <button onClick={DownloadCanvasAsImage}>Download</button>
+          <Canvas
+            id="canvas"
+            style={{ display: "none" }}
+            draw={draw}
+            width={width > MAX_WIDTH ? previewImage.width : width}
+            height={height > MAX_HEIGHT ? previewImage.height : height}
+          />
         </div>
       )}
     </div>
@@ -423,3 +406,30 @@ const ImageResizer = () => {
 };
 
 export default ImageResizer;
+
+// useEffect(() => {
+//   // if (!previewImage) {
+//   //   setpreviewImage(undefined);
+//   //   return;
+//   // }
+//   // // generating ObjectURL for input image to preview
+//   // const objectUrl = URL.createObjectURL(imageInput);
+//   // var image = new Image();
+//   // image.src = objectUrl
+//   // setpreviewImage(image);
+//   // free memory when ever this component is unmounted
+//   // return () => URL.revokeObjectURL(objectUrl);
+// }, []);
+
+// const onClickResize = () => {
+//   if (width > 20000 || width < 9) {
+//     console.log("Width should be between 9 to 20000 pixels");
+//     return;
+//   }
+//   if (height > 20000 || height < 9) {
+//     console.log("Height should be between 9 to 20000 pixels");
+//     return;
+//   }
+//   console.log("Resizer function");
+//   setisClicked(true);
+// };

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 import ButtonDiv from "../../ButtonDiv";
 import useScroll from "../../../../hooks/useScroll";
+import { ToastContext } from "../../../Toast/toastcontext";
 
 const StyledTextArea = styled.textarea`
   ${({ theme }) => theme.mixins.textarea}
@@ -36,7 +37,7 @@ const Text2Binary = () => {
   const [textOutput, setTextOutput] = useState("");
   const [executeScrollBinary, elRefBinary] = useScroll();
   const [executeScrollText, elRefText] = useScroll();
-
+  const [state, dispatch] = useContext(ToastContext);
 
   function convertToBinary() {
     setBinaryOutput(
@@ -65,6 +66,13 @@ const Text2Binary = () => {
       key: "1",
       title: "Convert to Binary",
       method: () => {
+        if (textInput === "" || textInput.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message: "Please enter some text!!",
+          });
+          return;
+        }
         convertToBinary();
         executeScrollBinary();
       },
@@ -88,6 +96,13 @@ const Text2Binary = () => {
       key: "3",
       title: "Convert to Text",
       method: () => {
+        if (binaryInput === "" || binaryInput.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message: "Please enter some text!!",
+          });
+          return;
+        }
         convertToText();
         executeScrollText();
       },
@@ -151,7 +166,7 @@ const Text2Binary = () => {
       />
 
       <div>
-        <StyledOutput ref={elRefText}  data={textOutput}>
+        <StyledOutput ref={elRefText} data={textOutput}>
           {" "}
           {textOutput}
         </StyledOutput>

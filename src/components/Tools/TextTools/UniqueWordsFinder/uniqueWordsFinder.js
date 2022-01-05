@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   copyToClipboard,
   copyAsJSON,
@@ -6,7 +6,7 @@ import {
 import ButtonDiv from "../../ButtonDiv";
 import styled from "styled-components";
 import { StyledOutput } from "../../StyledOutput";
-
+import { ToastContext } from "../../../Toast/toastcontext";
 const StyledTextArea = styled.textarea`
   ${({ theme }) => theme.mixins.textarea}
 `;
@@ -15,6 +15,7 @@ const UniqueWordsFinder = () => {
   const [inputText, setInputText] = useState("");
   const [output, setOutput] = useState("");
   const [outputJSON, setOutputJSON] = useState({});
+  const [state, dispatch] = useContext(ToastContext);
 
   //Function to find unique words from text
   function findUniqueWords() {
@@ -43,7 +44,16 @@ const UniqueWordsFinder = () => {
     {
       key: "1",
       title: "Generate Unique Words",
-      method: () => findUniqueWords(),
+      method: () => {
+        if (inputText === "" || inputText.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message:"Please enter some text!!"
+          });
+          return;
+        }
+        findUniqueWords();
+      },
     },
   ];
 

@@ -22,7 +22,7 @@ export const TOOLS = {
       component: <LoremGenerator />,
       url: "texttools/lorem",
       description:
-        "Create your placeholder texts with desired number of paragraphs and properties",
+        "Generate Lorem Ipsum text with desired number of paragraphs and properties",
       readme: LoremReadme,
     },
     caseconverter: {
@@ -30,7 +30,7 @@ export const TOOLS = {
       component: <CaseConverter />,
       url: "texttools/caseconverter",
       description:
-        "Convert your text or string to uppercase, lowercase, title case & sentence case",
+        "Convert your text to uppercase, lowercase, title case, sentence case and many more",
       readme: CaseReadme,
     },
     t2b: {
@@ -62,7 +62,7 @@ export const TOOLS = {
       component: <WhiteSpace />,
       url: "texttools/whitespaceremover",
       description:
-        "Remove multiple whitespaces and linebreaks in a text and clear unwanted characters",
+        "Remove multiple whitespaces and linebreaks in a text and clear unwanted spaces",
       readme: WhitespaceReadme,
     },
   },

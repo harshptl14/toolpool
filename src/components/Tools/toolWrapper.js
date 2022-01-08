@@ -5,6 +5,9 @@ import PageTitle from "../PageTitle";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { LoremReadme } from "../../static/toolDescriptions/toolReadmes";
+import Toast from "../Toast/toast";
+import { ToastContext } from "../Toast/toastcontext";
+import { useContext } from "react";
 
 
 const StyledTitleDiv = styled.div`
@@ -27,6 +30,8 @@ const Icon = styled.div`
 
 // A wrapper component to display various tools dynamically according to their ID (from URL)
 const ToolWrapper = () => {
+  const [state, dispatch] = useContext(ToastContext);
+
   //fetch toolId from URL params
   const { category, toolName } = useParams();
 
@@ -53,10 +58,11 @@ const ToolWrapper = () => {
       <br></br>
       {TOOLS[category][toolName]["component"]}
       {/* Markdown component to display description */}
+      {state.show && <Toast></Toast>}
       <div style={{ marginTop: "50px" }}>
         <ReactMarkdown children={TOOLS[category][toolName]["readme"] ?? ``} />
       </div>
-    </div>
+      </div>
   );
 };
 

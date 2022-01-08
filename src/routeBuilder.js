@@ -4,6 +4,7 @@ import ToolWrapper from "./components/Tools/toolWrapper";
 import AboutUs from "./containers/About";
 import Contact from "./containers/Contact";
 import Homescreen from "./containers/Homescreen";
+import ToastContextProvider from "./components/Toast/toastreducer";
 
 const RouteBuilder = () => {
   return (
@@ -11,7 +12,15 @@ const RouteBuilder = () => {
       <Route path="/" exact element={<Homescreen />} />
       <Route path="/about" exact element={<AboutUs />} />
       <Route path="/contact" exact element={<Contact />} />
-      <Route path="/:category/:toolName" exact element={<ToolWrapper />} />
+      <Route
+        path="/:category/:toolName"
+        exact
+        element={
+          <ToastContextProvider>
+            <ToolWrapper />
+          </ToastContextProvider>
+        }
+      />
     </Routes>
   );
 };

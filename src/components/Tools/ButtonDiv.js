@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { ToastContext } from "../Toast/toastcontext";
 
 const StyledButtonDiv = styled.div`
   display: ${(props) => props.display || "flex"};
@@ -55,22 +56,8 @@ const StyledButton = styled.button`
   }
 `;
 
-const Toast = styled.div`
-  position: absolute;
-  width: 10rem;
-  z-index: 20;
-  margin-top: 50px;
-  padding: 0.75rem 1rem;
-  border: 2px solid ${({ theme }) => theme.color};
-  border-radius: 5px;
-  text-align: center;
-  font-size: var(--fz-xxs);
-  background-color: ${({ theme }) => theme.shade};
-  color: ${({ theme }) => theme.color};
-`;
-
 const ButtonDiv = ({ filter, finalButtons, display }) => {
-  const [showToast, setShowToast] = useState(false);
+  const [state, dispatch] = useContext(ToastContext);
 
   return (
     <StyledButtonDiv display={display}>
@@ -105,12 +92,14 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
                   title === "Copy Words" ||
                   title === "Copy As JSON"
                 ) {
-                  setShowToast(true);
-                  setTimeout(() => {
-                    setShowToast(false);
-                  }, 2000);
+                  if (!state.show) {
+                    dispatch({
+                      type: "SHOW",
+                      message: "Copied Text!!",
+                    });
+                  }
                 }
-                
+
                 method();
               }}
             >
@@ -118,7 +107,6 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
             </StyledButton>
           );
         })}
-        {showToast && <Toast>Copied!!</Toast>}
       </OutputButtonDiv>
     </StyledButtonDiv>
   );

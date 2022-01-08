@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 import styled from "styled-components";
 import ButtonDiv from "../../ButtonDiv";
+import { ToastContext } from "../../../Toast/toastcontext";
 
 const StyledTextArea = styled.textarea`
   ${({ theme }) => theme.mixins.textarea}
@@ -9,11 +10,19 @@ const StyledTextArea = styled.textarea`
 
 const WhiteSpace = () => {
   const [inputText, setInputText] = useState("");
+  const [state, dispatch] = useContext(ToastContext);
 
   useEffect(() => {}, [inputText]);
 
   // Function to remove white space
   const removeMulWhiteSpace = () => {
+    if (inputText === "" || inputText.length === 0) {
+      dispatch({
+        type: "SHOW",
+        message: "Please enter some text!!",
+      });
+      return;
+    }
     return inputText.replace(/\s+/g, " ");
   };
 
@@ -35,7 +44,16 @@ const WhiteSpace = () => {
     {
       key: "8",
       title: "Copy",
-      method: () => copyToClipboard(inputText),
+      method: () => {
+        if (inputText === "" || inputText.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message: "Please enter some text!!",
+          });
+          return;
+        }
+        copyToClipboard(inputText);
+      },
       type: "submit",
     },
   ];

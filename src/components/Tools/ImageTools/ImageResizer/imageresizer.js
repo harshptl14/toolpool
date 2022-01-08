@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useContext } from "react";
 import Canvas from "../canvas";
 import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
 import ButtonDiv from "../../ButtonDiv";
+import { ToastContext } from "../../../Toast/toastcontext";
 
 const StyledFilearea = styled.div`
   width: 100%;
@@ -68,7 +69,7 @@ const StyledFilearea = styled.div`
 const StyledPreviewimageDiv = styled.div`
   position: relative;
   margin: 16px 0px;
-   padding: 30px 0; 
+  padding: 30px 0;
   width: 100%;
   height: max-content;
   background: ${({ theme }) => theme.shade};
@@ -184,6 +185,8 @@ const ImageResizer = () => {
   const [width, setWidth] = useState(150);
   const [height, setHeight] = useState(150);
 
+  const [state, dispatch] = useContext(ToastContext);
+
   const MAX_WIDTH = 5000;
   const MAX_HEIGHT = 5000;
 
@@ -231,7 +234,11 @@ const ImageResizer = () => {
             // resizing and drawing image on canvas
             ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
           };
-          console.log("Width should be between 9 to 20000 pixels");
+          console.log("Width should be between 9 to 5000 pixels");
+          dispatch({
+            type: "SHOW",
+            message: "Width should be between 9 to 5000 pixels",
+          });
           return;
         }
         if (height > MAX_HEIGHT || height < 9) {
@@ -240,6 +247,10 @@ const ImageResizer = () => {
             ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
           };
           console.log("Height should be between 9 to 20000 pixels");
+          dispatch({
+            type: "SHOW",
+            message: "Height should be between 9 to 5000 pixels",
+          });
           return;
         }
 
@@ -255,12 +266,12 @@ const ImageResizer = () => {
   );
 
   const filter = [
-    {
-      key: "1",
-      title: "Resize",
-      method: () => {},
-      type: "normal",
-    },
+    // {
+    //   key: "1",
+    //   title: "Resize",
+    //   method: () => {},
+    //   type: "normal",
+    // },
   ];
 
   const finalButtons = [
@@ -281,16 +292,36 @@ const ImageResizer = () => {
   ];
 
   function DownloadCanvasAsImage() {
-    let downloadLink = document.createElement("a");
-    downloadLink.setAttribute("download", `${previewImage.name}`);
-    let canvas = document.getElementById("canvas");
-    canvas.toBlob(function (blob) {
-      let url = URL.createObjectURL(blob);
-      downloadLink.setAttribute("href", url);
-      downloadLink.click();
-    });
+    try {
+      if (width > MAX_WIDTH || width < 9) {
+        console.log("Width should be between 9 to 5000 pixels");
+        dispatch({
+          type: "SHOW",
+          message: "Width should be between 9 to 5000 pixels",
+        });
+        return;
+      }
+      if (height > MAX_HEIGHT || height < 9) {
+        console.log("Height should be between 9 to 20000 pixels");
+        dispatch({
+          type: "SHOW",
+          message: "Height should be between 9 to 5000 pixels",
+        });
+        return;
+      }
+      let downloadLink = document.createElement("a");
+      downloadLink.setAttribute("download", `${previewImage.name}`);
+      let canvas = document.getElementById("canvas");
+      canvas.toBlob(function (blob) {
+        let url = URL.createObjectURL(blob);
+        downloadLink.setAttribute("href", url);
+        downloadLink.click();
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
   }
-    
+
   return (
     <div>
       <StyledFilearea>

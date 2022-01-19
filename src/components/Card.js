@@ -1,38 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as CardIcon } from "../static/svg/text-size.svg";
 
 const CardDiv = styled.div`
   ${({ theme }) => theme.mixins.openCard};
-  width: 99%;
+  width: 100%;
+  flex-shrink: 1;
   margin: 0 0 30px 0;
+  font-weight: 500;
+  font-size: var(--fz-xxl);
 
   @media (min-width: 600px) {
-    width: 47%;
+    width: 95%;
   }
 
   @media (min-width: 1000px) {
-    width: 31%;
+    width: 95%;
   }
 `;
 
 const Icon = styled.div`
   ${({ theme }) => theme.mixins.iconBackground};
-  svg {
+  padding: 0.8rem;
+  svg,
+  img {
     height: auto;
-    width: 1.8rem;
+    width: 1.5rem;
     transition: all 0.3s linear;
   }
   margin-bottom: 10px;
 `;
 
-const Card = ({ title }) => {
+const Card = (props) => {
   return (
     <CardDiv>
       <Icon>
-        <CardIcon />
+        <img src={props.icon} alt="error" />
       </Icon>
-      {title}
+      {props.title}
     </CardDiv>
   );
 };

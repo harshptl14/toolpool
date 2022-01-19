@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PageTitle from "../components/PageTitle";
 import styled from "styled-components";
 import { ReactComponent as About } from "../static/svg/about.svg";
@@ -104,11 +104,14 @@ const StyledAboutMobile = styled.div`
   }
 `;
 
-const about = () => {
+const AboutUs = () => {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <StyledAboutDiv>
       <StyledHeading>
-        <PageTitle>About</PageTitle>
+        <PageTitle size="big">About</PageTitle>
         <div className="desc">
           {/* <Icon Twitter/> */}
           Some hidden things about us!!
@@ -171,4 +174,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default AboutUs;

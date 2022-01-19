@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GpsOff, Facebook, Waves } from "./index";
+import * as icons from "./index";
 
 const Icon = ({ name }) => {
   switch (name) {
     case 'Twitter':
-      return <GpsOff />;
+      return <icons.GpsOff />;
     case 'Instagram':
-      return <Facebook />;
-    case 'Waves':
-      return <Waves />;
+      return <icons.Facebook />;
+    case 'WavesLight':
+      return <icons.WavesLight />;
+    case 'WavesDark':
+      return <icons.WavesDark />;
+    case 'Wordcount':
+      return icons.Wordcount;
     default:
-      return <GpsOff />;
+      return <icons.GpsOff />;
   }
 };
 

@@ -1,70 +1,155 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import styled from "styled-components";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import ButtonDiv from "../../ButtonDiv";
+import useScroll from "../../../../hooks/useScroll";
+import { ToastContext } from "../../../Toast/toastcontext";
+
+const StyledTextArea = styled.textarea`
+  ${({ theme }) => theme.mixins.textarea}
+`;
+
+const StyledOutput = styled.div`
+  display: ${(props) => (props.data === "" ? "none" : "block")};
+  padding: 30px;
+  background: ${({ theme }) => theme.shadeVarient};
+  margin: 20px 0;
+  transition: var(--easing);
+`;
+
+const StyledButton = styled.button`
+  display: ${(props) => (props.data === "" ? "none" : "block")};
+  --submit-color: ${({ theme }) => theme.shadeVarient};
+  ${({ theme }) => theme.mixins.smallButton};
+  background-color: "var(--submit-color)";
+  margin-bottom: 20px;
+
+  :hover {
+    background-color: ${(props) =>
+      props.type === "submit" ? "transparent" : "var(--submit-color)"};
+  }
+`;
 
 const Text2Binary = () => {
+  const [textInput, setTextInput] = useState("");
+  const [binaryInput, setBinaryInput] = useState("");
+  const [binaryOutput, setBinaryOutput] = useState("");
+  const [textOutput, setTextOutput] = useState("");
+  const [executeScrollBinary, elRefBinary] = useScroll();
+  const [executeScrollText, elRefText] = useScroll();
+  const [state, dispatch] = useContext(ToastContext);
 
-    const [textInput, setTextInput] = useState("");
-    const [binaryInput, setBinaryInput] = useState("");
-    const [binaryOutput, setBinaryOutput] = useState("");
-    const [textOutput, setTextOutput] = useState("");
-  
-    function convertToBinary() {
-      setBinaryOutput(
-        textInput
-          .split("")
-          .map(function (char) {
-            return char.charCodeAt(0).toString(2);
-          })
-          .join(" ")
-      );
-    }
-  
-    function convertToText() {
-      setTextOutput(
-        binaryInput
-          .split(" ")
-          .map(function (bin) {
-            return String.fromCharCode(parseInt(bin, 2));
-          })
-          .join("")
-      );
-    }
-    return ( 
-        <div className="main">
-      <h2>Text 2 Binary</h2>
-      <div className="input-section">
-        <textarea
-          name="text"
-          id="textarea"
-          cols="90"
-          rows="15"
-          value={textInput}
-          onChange={(e) => {
-            setTextInput(e.target.value);
-          }}
-        ></textarea>
-      </div>
-      <button onClick={convertToBinary}>Convert to Binary</button>
-      <div className="output-section">
-        <textarea
-          name="text"
-          id="opTextarea"
-          cols="90"
-          rows="15"
-          defaultValue={binaryOutput}
-        ></textarea>
-        <button
-          id="copyBtn"
-          onClick={() => {
-            copyToClipboard(binaryOutput);
-          }}
-        >
-          Copy
-        </button>
-      </div>
+  function convertToBinary() {
+    setBinaryOutput(
+      textInput
+        .split("")
+        .map(function (char) {
+          return char.charCodeAt(0).toString(2);
+        })
+        .join(" ")
+    );
+  }
+
+  function convertToText() {
+    setTextOutput(
+      binaryInput
+        .split(" ")
+        .map(function (bin) {
+          return String.fromCharCode(parseInt(bin, 2));
+        })
+        .join("")
+    );
+  }
+
+  const textToBinaryFilter = [
+    {
+      key: "1",
+      title: "Convert to Binary",
+      method: () => {
+        if (textInput === "" || textInput.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message: "Please enter some text!!",
+          });
+          return;
+        }
+        convertToBinary();
+        executeScrollBinary();
+      },
+    },
+  ];
+
+  const textToBinaryOutput = [
+    {
+      key: "2",
+      title: "Reset",
+      method: () => {
+        setTextInput("");
+        setBinaryOutput("");
+      },
+      type: "normal",
+    },
+  ];
+
+  const binaryToTextFilter = [
+    {
+      key: "3",
+      title: "Convert to Text",
+      method: () => {
+        if (binaryInput === "" || binaryInput.length === 0) {
+          dispatch({
+            type: "SHOW",
+            message: "Please enter some text!!",
+          });
+          return;
+        }
+        convertToText();
+        executeScrollText();
+      },
+    },
+  ];
+
+  const binaryToTextOutput = [
+    {
+      key: "4",
+      title: "Reset",
+      method: () => {
+        setBinaryInput("");
+        setTextOutput("");
+      },
+      type: "normal",
+    },
+  ];
+
+  return (
+    <div>
+      <StyledTextArea
+        name="text"
+        id="textarea"
+        cols="90"
+        rows="15"
+        value={textInput}
+        onChange={(e) => {
+          setTextInput(e.target.value);
+        }}
+      ></StyledTextArea>
+      <ButtonDiv
+        filter={textToBinaryFilter}
+        finalButtons={textToBinaryOutput}
+      />
+      <StyledOutput ref={elRefBinary} data={binaryOutput}>
+        {" "}
+        {binaryOutput}
+      </StyledOutput>
+      <StyledButton
+        data={binaryOutput}
+        onClick={() => copyToClipboard(binaryOutput)}
+      >
+        Copy
+      </StyledButton>
       <h2>Binary to Text</h2>
-      <div className="input-section2">
-        <textarea
+      <div>
+        <StyledTextArea
           name="text"
           id="textarea2"
           cols="90"
@@ -73,28 +158,27 @@ const Text2Binary = () => {
           onChange={(e) => {
             setBinaryInput(e.target.value);
           }}
-        ></textarea>
+        ></StyledTextArea>
       </div>
-      <button onClick={convertToText}>Convert to Text</button>
-      <div className="output-section2">
-        <textarea
-          name="text"
-          id="opTextarea2"
-          cols="90"
-          rows="15"
-          defaultValue={textOutput}
-        ></textarea>
-        <button
-          id="copyBtn"
-          onClick={() => {
-            copyToClipboard(textOutput);
-          }}
+      <ButtonDiv
+        filter={binaryToTextFilter}
+        finalButtons={binaryToTextOutput}
+      />
+
+      <div>
+        <StyledOutput ref={elRefText} data={textOutput}>
+          {" "}
+          {textOutput}
+        </StyledOutput>
+        <StyledButton
+          data={textOutput}
+          onClick={() => copyToClipboard(textOutput)}
         >
           Copy
-        </button>
+        </StyledButton>
       </div>
     </div>
-     );
-}
- 
+  );
+};
+
 export default Text2Binary;

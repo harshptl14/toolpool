@@ -1,11 +1,13 @@
 import React from "react";
 import config from "../../static/utils/config";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { useScrollDirection } from "../../hooks";
 
 const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
   --color-primary: ${({ theme }) => theme.shade};
   --color-text: ${({ theme }) => theme.color};
+  --color-hover: ${({ theme }) => theme.hover};
   --color-text-nonactive: ${({ theme }) => theme.text};
   gap: 15px;
   padding: 20px 30px;
@@ -21,7 +23,9 @@ const StyledCategoryItems = styled.div`
       : "var(--color-text-nonactive)"};
 
   :hover {
-    color: ${({ theme }) => theme.color};
+    /* color: ${({ theme }) => theme.color}; */
+    background-color: ${(props) =>
+      props.active === "true" ? "transperent" : "var(--color-hover)"};
   }
 
   @media (min-width: 600px) and (max-width: 1000px) {
@@ -36,9 +40,9 @@ const Icon = styled.img`
   height: 30px;
   width: 30px;
   background-color: transparent;
-  svg {
+  svg, img {
     height: auto;
-    width: 1.8rem;
+    width: 1.5rem;
     transition: all 0.3s linear;
   }
 `;
@@ -46,15 +50,38 @@ const Icon = styled.img`
 const StyledMobileCategory = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
+  text-align: center;
   position: sticky;
-  top: 4.4rem;
-  margin-bottom: 30px;
   background-color: ${({ theme }) => theme.shade};
+  border: 1.8px dashed ${({ theme }) => theme.color};
+
+
+
+  margin: 1em -100%; // for old browsers
+  margin: 1em calc(50% - 50vw);
+
   @media (min-width: 600px) {
     display: none;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    ${(props) =>
+      props.scrollDirection === "up" &&
+      // !props.scrolledToTop &&
+      css`
+        /*       height: var(--nav-scroll-height);*/
+        top: 4.4rem;
+        /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
+      `};
 
+    ${(props) =>
+      props.scrollDirection === "down" &&
+      // !props.scrolledToTop &&
+      css`
+        top: 0rem;
+        /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
+      `};
+  }
 `;
 
 const ChangeCat = styled.select`
@@ -67,6 +94,10 @@ const ChangeCat = styled.select`
 
   ::-ms-expand {
     display: none; /* remove default arrow on ie10 and ie11 */
+  }
+
+  :focus {
+    outline: 0px dashed ${({ theme }) => theme.color};
   }
 
   color: ${({ theme }) => theme.color};
@@ -84,6 +115,7 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
         key={obj.id}
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
+          console.log("obj.id : ", obj.id);
           setMenuItem(obj.id);
           executeScroll();
         }}
@@ -96,8 +128,10 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
 };
 
 const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
+  const scrollDirection = useScrollDirection("down");
+
   return (
-    <StyledMobileCategory>
+    <StyledMobileCategory scrollDirection={scrollDirection}>
       <ChangeCat
         onClick={(e) => {
           setMenuItem(e.target.value);

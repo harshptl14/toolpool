@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import styled, { css, useTheme} from "styled-components";
+import styled, { css, useTheme } from "styled-components";
 import { usePrefersReducedMotion, useScrollDirection } from "../hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import config from "../static/utils/config";
 import Menu from "./menu";
+import Banner from "./HoomScreen/Banner";
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
-  top: 0;
+  top: 36px;
   z-index: 11;
   padding: 0px 50px;
   width: 100%;
@@ -35,6 +36,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
+        top:0;
         background-color: ${({ theme }) => theme.nav};
         /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
       `};
@@ -44,6 +46,7 @@ const StyledHeader = styled.header`
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
+        top:0;
         transform: translateY(calc(var(--nav-scroll-height) * -1));
         /* box-shadow: 0 10px 30px -10px var(--navy-shadow); */
       `};
@@ -103,9 +106,9 @@ const StyledLinks = styled.div`
       counter-increment: item 1;
       font-size: var(--fz-xs);
       color: ${({ theme }) => theme.descfont};
-      
-      :hover{
-       color: ${({theme}) => theme.color} 
+
+      :hover {
+        color: ${({ theme }) => theme.color};
       }
 
       a {
@@ -120,7 +123,6 @@ const StyledLinks = styled.div`
           font-size: var(--fz-xxs);
           text-align: right;
         }
-
       }
     }
   }
@@ -130,6 +132,10 @@ const StyledLinks = styled.div`
     margin-left: 15px;
     font-size: var(--fz-xs);
   }
+`;
+
+const BannerWrapper = styled.div`
+  ${({ theme }) => theme.mixins.flexColumn};
 `;
 
 const Navbar = ({ isHome, toggleTheme }) => {
@@ -169,7 +175,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-            <img src={theme.logo} height="50" width="80" alt="text here" />
+          <img src={theme.logo} height="50" width="80" alt="text here" />
         </a>
       ) : (
         <Link to="/" aria-label="home">
@@ -184,92 +190,95 @@ const Navbar = ({ isHome, toggleTheme }) => {
       Theme
     </button>
   );
-  
+
   return (
-    
-    <StyledHeader
-      scrollDirection={scrollDirection}
-      scrolledToTop={scrolledToTop}
-    >
-      <StyledNav>
-        {prefersReducedMotion ? (
-          <>
-            {Logo}
-            <StyledLinks>
-              <ol>
-                {config.navLinks &&
-                  config.navLinks.map(({ url, name }, i) => (
-                    <li key={i}>
-                      <Link to={url}>{name}</Link>
-                    </li>
-                  ))}
-              </ol>
-              <div>{ResumeLink}</div>
-            </StyledLinks>
-            <Menu toggleTheme={toggleTheme} />
-          </>
-        ) : (
-          <>
-            <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo}</>
-                </CSSTransition>
-              )}
-            </TransitionGroup>
+    <BannerWrapper>
+      <Banner />
 
-            <StyledLinks>
-              <ol>
-                <TransitionGroup component={null}>
-                  {isMounted &&
-                    config.navLinks &&
+      <StyledHeader
+        scrollDirection={scrollDirection}
+        scrolledToTop={scrolledToTop}
+      >
+        <StyledNav>
+          {prefersReducedMotion ? (
+            <>
+              {Logo}
+              <StyledLinks>
+                <ol>
+                  {config.navLinks &&
                     config.navLinks.map(({ url, name }, i) => (
-                      <CSSTransition
-                        key={i}
-                        classNames={fadeDownClass}
-                        timeout={timeout}
-                      >
-                        <li
-                          key={i}
-                          style={{
-                            transitionDelay: `${isHome ? i * 100 : 0}ms`,
-                          }}
-                        >
-                          <Link to={url}>{name}</Link>
-                        </li>
-                      </CSSTransition>
+                      <li key={i}>
+                        <Link to={url}>{name}</Link>
+                      </li>
                     ))}
-                </TransitionGroup>
-              </ol>
-
+                </ol>
+                <div>{ResumeLink}</div>
+              </StyledLinks>
+              <Menu toggleTheme={toggleTheme} />
+            </>
+          ) : (
+            <>
               <TransitionGroup component={null}>
                 {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div
-                      style={{
-                        transitionDelay: `${
-                          isHome ? config.navLinks.length * 100 : 0
-                        }ms`,
-                      }}
-                    >
-                      {ResumeLink}
-                    </div>
+                  <CSSTransition classNames={fadeClass} timeout={timeout}>
+                    <>{Logo}</>
                   </CSSTransition>
                 )}
               </TransitionGroup>
-            </StyledLinks>
 
-            <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <Menu toggleTheme={toggleTheme} />
-                </CSSTransition>
-              )}
-            </TransitionGroup>
-          </>
-        )}
-      </StyledNav>
-    </StyledHeader>
+              <StyledLinks>
+                <ol>
+                  <TransitionGroup component={null}>
+                    {isMounted &&
+                      config.navLinks &&
+                      config.navLinks.map(({ url, name }, i) => (
+                        <CSSTransition
+                          key={i}
+                          classNames={fadeDownClass}
+                          timeout={timeout}
+                        >
+                          <li
+                            key={i}
+                            style={{
+                              transitionDelay: `${isHome ? i * 100 : 0}ms`,
+                            }}
+                          >
+                            <Link to={url}>{name}</Link>
+                          </li>
+                        </CSSTransition>
+                      ))}
+                  </TransitionGroup>
+                </ol>
+
+                <TransitionGroup component={null}>
+                  {isMounted && (
+                    <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                      <div
+                        style={{
+                          transitionDelay: `${
+                            isHome ? config.navLinks.length * 100 : 0
+                          }ms`,
+                        }}
+                      >
+                        {ResumeLink}
+                      </div>
+                    </CSSTransition>
+                  )}
+                </TransitionGroup>
+              </StyledLinks>
+
+              <TransitionGroup component={null}>
+                {isMounted && (
+                  <CSSTransition classNames={fadeClass} timeout={timeout}>
+                    <Menu toggleTheme={toggleTheme} />
+                  </CSSTransition>
+                )}
+              </TransitionGroup>
+            </>
+          )}
+        </StyledNav>
+      </StyledHeader>
+    </BannerWrapper>
   );
 };
 

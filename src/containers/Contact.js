@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import { useInput } from "../hooks/useInput";
 import PageTitle from "../components/PageTitle";
@@ -146,23 +146,25 @@ const Contact = () => {
     value: message,
     bind: bindMessage,
     reset: resetMessage,
-    } = useInput("");
-    
+  } = useInput("");
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-      window.open(
-        `mailto:email@example.com?subject=${subject}&body=Hey%20${firstName}%20here,%0D%0A${message}`
-      );
+    window.open(
+      `mailto:octruszamp@gmail.com?subject=${subject}&body=Hey%20${firstName}%20here,%0D%0A${message}`
+    );
     resetFirstName();
-      resetSubject();
-      resetMessage();
+    resetSubject();
+    resetMessage();
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <StyledContactDiv>
       <StyledHeading>
-        <PageTitle>Contact Us</PageTitle>
-        <div className="desc">toolpool@gmail.com</div>
+        <PageTitle size="big">Contact Us</PageTitle>
+        <div className="desc">octruszamp@gmail.com</div>
       </StyledHeading>
       <StyledContent onSubmit={handleSubmit}>
         <StyledContactPC>

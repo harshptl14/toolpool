@@ -1,28 +1,31 @@
 import React from "react";
-import styled from "styled-components";
-import { ReactComponent as InfoMobile } from "../../static/svg/info.svg";
+import styled,{useTheme} from "styled-components";
+// import { ReactComponent as InfoMobile } from "../../static/svg/infoNew.svg";
 
 const StyledInfoCard = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColumn};
-  color: var(--font-light);
-  background: var(--shade-light);
+  color: ${({ theme }) => theme.descfont};
+  background: ${({ theme }) => theme.shade};
+  /* url(${(props) => props.bg}); */
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 60px 30px;
   margin: 50px auto;
   font-size: var(--fz-md);
 
   @media (min-width: 800px) {
-    ${({ theme }) => theme.mixins.flexBetween};
+    ${({ theme }) => theme.mixins.flexAround};
     margin: 60px auto;
     padding: 40px;
     font-size: var(--fz-sm);
   }
 
   @media (min-width: 1000px) {
-    ${({ theme }) => theme.mixins.flexBetween};
+    ${({ theme }) => theme.mixins.flexAround};
     padding: 50px;
     margin: 80px auto;
-    font-size: var(--fz-md);
+    font-size: var(--fz-lg);
   }
 `;
 
@@ -43,6 +46,7 @@ const StyledContent = styled.div`
   }
 
   @media (min-width: 1000px) {
+    width: 70%;
     height: auto;
     .heading {
       font-size: var(--fz-heading);
@@ -51,24 +55,40 @@ const StyledContent = styled.div`
 `;
 
 const StyledSvg = styled.div`
-  svg {
+  svg,
+  img {
     height: 100%;
     width: 100%;
   }
 
   @media (min-width: 800px) {
     width: 40%;
+
+    svg,
+    img {
+      width: 100%;
+    }
   }
 
   @media (min-width: 1000px) {
+    width: 30%;
+    svg,
+    img {
+      width: 100%;
+    }
   }
 `;
 
 const InfoCard = () => {
+      const theme = useTheme();
+
   return (
-    <StyledInfoCard>
+    <StyledInfoCard bg={theme.wave}>
       <StyledSvg>
-        <InfoMobile />
+        <img src={theme.info} alt="text here" />
+
+        {/* <InfoMobile /> */}
+        {/* {theme.info} */}
       </StyledSvg>
       <StyledContent>
         <div className="heading">Pool with tons of Tools</div>

@@ -1,6 +1,41 @@
 import { useEffect, useState } from "react";
 import { LOREM_WORDS } from "./lorem_words";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import styled from "styled-components";
+import ButtonDiv from "../../ButtonDiv";
+
+const StyledTextArea = styled.textarea`
+  ${({ theme }) => theme.mixins.textarea}
+`;
+
+const StyledInputDiv = styled.div`
+  ${({ theme }) => theme.mixins.flexColumnStart}
+
+  .sliderTitle{
+    font-size: var(--fz-sm);
+  }
+
+  ${({theme}) => theme.mixins.slider}
+
+  @media (min-width: 800px) {
+    ${({ theme }) => theme.mixins.flexBetween}
+
+    input{
+      width: 100%;
+    }
+  }
+`;
+
+const SliderDiv = styled.div`
+  width: 100%;
+  margin-top: 10px;
+
+  @media (min-width: 800px) {
+    width: 30%;
+    margin-top: 0px;
+  }
+`;
+
 //Lorem Ipsum text generator component
 const LoremGenerator = () => {
   const [outputText, setOutputText] = useState(""); // variable to store output.
@@ -52,12 +87,32 @@ const LoremGenerator = () => {
     return LOREM_WORDS.at(Math.floor(Math.random() * LOREM_WORDS.length));
   }
 
-  return (
-    <div className="main-div">
-      <div className="input-section">
-        <div className="para-input">
-          <p>No. of Paragraphs</p>
+  const filter = [];
 
+  const finalButtons = [
+    {
+      key: "7",
+      title: "Reset",
+      method: () => {
+        setSentences(3);
+        setWords(5);
+        setParagraphs(1);
+      },
+      type: "normal",
+    },
+    {
+      key: "8",
+      title: "Copy",
+      method: () => copyToClipboard(outputText),
+      type: "submit",
+    },
+  ];
+
+  return (
+    <div>
+      <StyledInputDiv>
+        <SliderDiv>
+          <div className="sliderTitle">No. of Paragraphs</div>
           <input
             type="range"
             className="slider"
@@ -71,9 +126,9 @@ const LoremGenerator = () => {
             }}
           />
           <div className="bubble">{paragraphs}</div>
-        </div>
-        <div className="sentence-input">
-          <p>No. of sentences per Paragraph</p>
+        </SliderDiv>
+        <SliderDiv>
+          <div className="sliderTitle">No. of sentences per Paragraph</div>
           <input
             type="range"
             className="slider"
@@ -85,10 +140,10 @@ const LoremGenerator = () => {
               generateText(paragraphs, sentencesPerPara, wordsPerSentence);
             }}
           />
-          <div className="bubble">{sentencesPerPara}</div>
-        </div>
-        <div className="words-input">
-          <p>No. of words per sentence</p>
+          <div>{sentencesPerPara}</div>
+        </SliderDiv>
+        <SliderDiv >
+          <div className="sliderTitle">No. of words per sentence</div>
 
           <input
             type="range"
@@ -101,20 +156,19 @@ const LoremGenerator = () => {
               generateText(paragraphs, sentencesPerPara, wordsPerSentence);
             }}
           />
-          <div className="bubble">{wordsPerSentence}</div>
-        </div>
-      </div>
-      <div className="output-section">
+          <div >{wordsPerSentence}</div>
+        </SliderDiv>
+      </StyledInputDiv>
+      <div>
         <br />
-        <h2>Generated Text</h2>
-        <textarea rows={10} cols={150} className="result" value={outputText} />
-        <button
-          onClick={() => {
-            copyToClipboard(outputText);
-          }}
-        >
-          Copy
-        </button>
+        <h3>Generated Text</h3>
+        <StyledTextArea
+          rows={10}
+          cols={150}
+          className="result"
+          value={outputText}
+        />
+        <ButtonDiv filter={filter} finalButtons={finalButtons}></ButtonDiv>
       </div>
     </div>
   );

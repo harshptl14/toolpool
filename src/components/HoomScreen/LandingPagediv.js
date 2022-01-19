@@ -45,12 +45,10 @@ const HomeDiv = styled.div`
   }
 `;
 
-
-
 const LandingPagediv = ({executeScroll}) => {
     return (
       <HomeDiv>
-        Website with all tools for your work
+        One-Stop solution with all tools for your work
         <div className="homeDesc">
           No need to bookmark tools seperately. It’s a free website with all
           important tools together

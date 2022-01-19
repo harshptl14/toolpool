@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components"
-import variables from "./variables"
-import fonts from './fonts';
+import { createGlobalStyle } from "styled-components";
+import variables from "./variables";
+import fonts from "./fonts";
 
 const GlobalStyle = createGlobalStyle`
 ${fonts};
@@ -19,12 +19,13 @@ html{
   }
 
   ::selection {
+    transition: var(--transition);
     background-color: ${({ theme }) => theme.shade};
     color: ${({ theme }) => theme.color};
   }
 
   :focus {
-    outline: 2px dashed ${({ theme }) => theme.color};
+    outline: 1.8px dashed ${({ theme }) => theme.color};
     outline-offset: 3px;
   }
 
@@ -42,7 +43,7 @@ html{
   }
   
   body::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.shadeVarient};
+    background-color: ${({ theme }) => theme.border};
     /* border: 1px solid ${({ theme }) => theme.color}; */
     border-radius: 10px;
   }
@@ -94,4 +95,4 @@ html{
   }
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

@@ -1,9 +1,9 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 const button = css`
-  color: var(--pink);
+  color: ${({ theme }) => theme.color};
   background-color: transparent;
-  border: 1px solid var(--pink);
+  border: 1px solid ${({ theme }) => theme.color};
   border-radius: var(--border-radius);
   font-size: var(--fz-xs);
   font-family: var(--font-mono);
@@ -16,20 +16,68 @@ const button = css`
   &:hover,
   &:focus,
   &:active {
-    background-color: var(--lightest-pink);
+    background-color: ${({ theme }) => theme.shade};
     outline: none;
   }
   &:after {
     display: none !important;
   }
-`
+`;
+
+const card = css`
+  position: relative;
+  /* height: 30%; */
+  padding: 2rem;
+  width: 30%;
+  border: 3px solid ${({ theme }) => theme.shade};
+  transition: all 0.3s ease;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+
+  &:hover {
+    box-shadow: 10px 10px 0 ${({ theme }) => theme.color};
+    top: -10px;
+    right: 10px;
+  }
+`;
+
+const openCard = css`
+  ${card}
+  box-shadow: 10px 10px 0 ${({ theme }) => theme.color};
+  &:hover {
+    top: 0;
+    right: 0;
+    background-color: ${({ theme }) => theme.shade};
+  }
+`;
 
 const mixins = {
   button,
+  card,
+  openCard,
+
   flexCenter: css`
     display: flex;
     justify-content: center;
     align-items: center;
+  `,
+
+  flexColumn: css`
+    display: flex;
+    flex-direction: column;
+  `,
+
+  iconBackground: css`
+    display: flex;
+    padding: 0.94rem;
+    width: 55px;
+    border: 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-circle);
+    background-color: ${({ theme }) => theme.shade};
+    text-align: center;
   `,
 
   flexBetween: css`
@@ -48,9 +96,15 @@ const mixins = {
     &:hover,
     &:active,
     &:focus {
-      color: var(--pink);
+      color: ${({ theme }) => theme.color};
       outline: 0;
     }
+  `,
+
+  titleDiv: css`
+    font-weight: 500;
+    font-size: var(--fz-heading);
+    margin: 20px 0;
   `,
 
   inlineLink: css`
@@ -59,17 +113,17 @@ const mixins = {
     text-decoration-skip-ink: auto;
     position: relative;
     transition: var(--transition);
-    color: var(--pink);
+    color: ${({ theme }) => theme.color};
     &:hover,
     &:focus,
     &:active {
-      color: var(--pink);
+      color: ${({ theme }) => theme.color};
       outline: 0;
       &:after {
         width: 100%;
       }
       & > * {
-        color: var(--pink) !important;
+        color: ${({ theme }) => theme.color} !important;
         transition: var(--transition);
       }
     }
@@ -80,18 +134,16 @@ const mixins = {
       height: 1px;
       position: relative;
       bottom: 0.37em;
-      background-color: var(--pink);
+      background-color: ${({ theme }) => theme.color};
       transition: var(--transition);
       opacity: 0.5;
     }
   `,
 
-  button,
-
   smallButton: css`
-    color: var(--pink);
+    color: ${({ theme }) => theme.color};
     background-color: transparent;
-    border: 1px solid var(--pink);
+    border: 1px solid ${({ theme }) => theme.color};
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
     font-size: var(--fz-xs);
@@ -103,7 +155,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--lightest-pink);
+      background-color: ${({ theme }) => theme.shade};
       outline: none;
     }
     &:after {
@@ -112,9 +164,9 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--pink);
+    color: ${({ theme }) => theme.color};
     background-color: transparent;
-    border: 1px solid var(--pink);
+    border: 1px solid ${({ theme }) => theme.color};
     border-radius: var(--border-radius);
     padding: 1.25rem 1.75rem;
     font-size: var(--fz-sm);
@@ -126,7 +178,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--lightest-pink);
+      background-color: ${({ theme }) => theme.shade};
       outline: none;
     }
     &:after {
@@ -157,7 +209,7 @@ const mixins = {
         content: "▹";
         position: absolute;
         left: 0;
-        color: var(--pink);
+        color: ${({ theme }) => theme.color};
       }
     }
   `,
@@ -167,6 +219,10 @@ const mixins = {
     padding: 0;
     margin: 0;
   `,
-}
 
-export default mixins
+  backColor: css`
+    background-color: red;
+  `,
+};
+
+export default mixins;

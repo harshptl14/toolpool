@@ -18,29 +18,29 @@ html{
   }
 
   ::selection {
-    background-color: var(--pink);
-    color: var(--lightest-pink);
+    background-color: ${({ theme }) => theme.shade};
+    color: ${({ theme }) => theme.color};
   }
 
   :focus {
-    outline: 2px dashed var(--lightest-pink);
+    outline: 2px dashed ${({ theme }) => theme.shade};
     outline-offset: 3px;
   }
 
   /* Scrollbar Styles */
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--dark-slate) var(--navy);
+    scrollbar-color: ${({ theme }) => theme.color};
   }
   body::-webkit-scrollbar {
     width: 12px;
   }
   body::-webkit-scrollbar-track {
-    background: var(--pink);
+    background: ${({ theme }) => theme.shade};
   }
   body::-webkit-scrollbar-thumb {
-    background-color: var(--dark-pink-light);
-    border: 3px solid var(--lightest-pink);
+    background-color: ${({ theme }) => theme.shade};;
+    border: 3px solid ${({ theme }) => theme.color};;
     border-radius: 10px;
   }
 
@@ -51,8 +51,8 @@ html{
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--dark-pink);
-    color: var(--light-pink);
+    background-color: ${({ theme }) => theme.background};
+    color:  ${({ theme }) => theme.text};
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
@@ -83,10 +83,12 @@ html{
 
   #root {
     min-height: 100vh;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
     grid-template-rows: 1fr auto;
-    grid-template-columns: 100%;
+    grid-template-columns: 100%; */
   }
-`
+`;
 
 export default GlobalStyle

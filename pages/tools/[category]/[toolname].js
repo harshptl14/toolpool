@@ -114,13 +114,16 @@ const ToolWrapper = ({ category, toolname }) => {
           property="og:image"
           content={TOOLS[category][toolname]["poster"]}
         />
-        <meta property="og:url" content="" />
+        <meta
+          property="og:image:secure_url"
+          content={TOOLS[category][toolname]["poster"]}
+        />
+        <meta property="og:url" content={`https://toolpool.ml/tools/${category}/${toolname}`} />
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="" />
         <meta
           name="twitter:title"
           content={TOOLS[category][toolname]["title"]}

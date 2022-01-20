@@ -8,7 +8,7 @@ const StyledInfoCard = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColumn};
   color: ${({ theme }) => theme.descfont};
-  background: ${({ theme }) => theme.shade};
+  background: ${({ theme }) => theme.shadeBackcard};
   /* url(${(props) => props.bg}); */
   background-repeat: no-repeat;
   background-size: cover;

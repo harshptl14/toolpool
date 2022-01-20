@@ -17,6 +17,9 @@ const variables = css`
     --shade-light-varient: #b6ffcb;
     --shade-dark-varient: #0b4115;
 
+    --shade-light-backcard: #e3ffe8;
+    --shade-dark-backcard: #06290c;
+
     --fontdesc-light: #86ae8c;
     --fontdesc-dark: #cacaca;
 

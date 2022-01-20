@@ -116,7 +116,6 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
         key={obj.id}
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
-          console.log("obj.id : ", obj.id);
           setMenuItem(obj.id);
           executeScroll();
         }}

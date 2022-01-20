@@ -26,8 +26,8 @@ export const getStaticProps = async (context) => {
   const toolname = context.params.toolname;
   const category = context.params.category;
 
-  console.log(toolname);
-  console.log(category);
+  // console.log(toolname);
+  // console.log(category);
 
   return {
     props: {

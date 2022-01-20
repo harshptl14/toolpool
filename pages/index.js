@@ -127,7 +127,6 @@ export default function Homescreen() {
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
         {config.featuredTools.map((obj) => {
-          console.log(obj.link);
           return (
             <Link passHref href={obj.link} key={obj.key}>
               {/* <Card title={obj.title} icon={obj.icon} /> */}

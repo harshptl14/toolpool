@@ -9,7 +9,6 @@ const StyledTitle = styled.div`
 `;
 
 const PageTitle = (props) => {
-  console.log(props.size);
   return <StyledTitle size={props.size}>{props.children}</StyledTitle>;
 };
 

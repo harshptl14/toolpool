@@ -253,7 +253,6 @@ const ImageResizer = () => {
           return;
         }
 
-        // console.log("New width * height : ", width, " * ", height);
         // converting image file to Image object to access it in JS logic
         image.onload = () => {
           // resizing and drawing image on canvas

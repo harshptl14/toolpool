@@ -56,7 +56,7 @@ export const TOOLS = {
         "Generate Lorem Ipsum text with desired number of paragraphs and properties",
       readme: LoremReadme,
       icon: lorem,
-      poster: "/assets/posters/posterLoremipsum.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterLoremipsum.jpg",
     },
     caseconverter: {
       title: "Case Converter",
@@ -66,7 +66,7 @@ export const TOOLS = {
         "Convert your text to uppercase, lowercase, title case, sentence case and many more",
       readme: CaseReadme,
       icon: caseconverter,
-      poster: "/assets/posters/posterCaseconverter.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterCaseconverter.jpg",
     },
     t2b: {
       title: "Text 2 Binary",
@@ -75,7 +75,7 @@ export const TOOLS = {
       description: "Convert text to binary strings and vice versa.",
       readme: T2BReadme,
       icon: binary,
-      poster: "/assets/posters/posterText2binary.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterText2binary.jpg",
     },
     uniquewords: {
       title: "Unique Word Finder",
@@ -84,7 +84,7 @@ export const TOOLS = {
       description: "Find all the uniques words used in a text.",
       readme: UniqueReadme,
       icon: unique,
-      poster: "/assets/posters/posterUniqueword.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterUniqueword.jpg",
     },
 
     lettercounter: {
@@ -95,7 +95,7 @@ export const TOOLS = {
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
       readme: Lettercountreadme,
       icon: count,
-      poster: "/assets/posters/posterLettercounter.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterLettercounter.jpg",
     },
 
     whitespaceremover: {
@@ -106,7 +106,7 @@ export const TOOLS = {
         "Remove multiple whitespaces and linebreaks in a text and clear unwanted spaces",
       readme: WhitespaceReadme,
       icon: whiteSpace,
-      poster: "/assets/posters/posterWhitespace.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterWhitespace.jpg",
     },
   },
   image: {
@@ -117,7 +117,7 @@ export const TOOLS = {
       description: "Resize your image in dimensions you want.",
       readme: ImageResizerreadme,
       icon: resize,
-      poster: "/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },
   dev: {
@@ -128,7 +128,7 @@ export const TOOLS = {
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: resize,
-      poster: "/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },
 };

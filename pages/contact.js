@@ -169,10 +169,14 @@ const Contact = () => {
         <meta
           property="og:image"
           itemProp="image"
-          content="/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:url" content="" />
+        <meta property="og:url" content="https://toolpool.ml/contact" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
@@ -184,7 +188,7 @@ const Contact = () => {
           name="twitter:description"
           content="Free online tools to get your day-to-day tedious tasks get done in just a few clicks. Lorem-ipsum generator, Image resizer, Case converter and so more."
         />
-        <meta name="twitter:image" content="/assets/posterToolpool.jpg" />
+        <meta name="twitter:image" content="https://toolpool.ml/assets/posterToolpool.jpg" />
       </Head>
       <StyledHeading>
         <PageTitle size="big">Contact Us</PageTitle>

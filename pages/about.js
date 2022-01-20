@@ -119,12 +119,16 @@ const AboutUs = () => {
         <meta
           property="og:image"
           itemProp="image"
-          content="/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:url" content="" />
+        <meta property="og:url" content="https://toolpool.ml/about" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -136,7 +140,7 @@ const AboutUs = () => {
         />
         <meta
           name="twitter:image"
-          content="/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
         />
       </Head>
       <StyledHeading>

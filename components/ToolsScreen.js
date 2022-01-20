@@ -72,7 +72,7 @@ const StyledToolCard = styled.a`
   ${({ theme }) => theme.mixins.card}
   padding: 1.8rem;
   width: 100%;
-  margin: 20px auto;
+  margin: 0px auto 40px auto;
   position: static;
 
   @media (min-width: 600px) {

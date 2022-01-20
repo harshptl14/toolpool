@@ -10,6 +10,8 @@ import imageTools from "../../public/assets/image.png";
 import codingTools from "../../public/assets/coding.png";
 import colorsTools from "../../public/assets/color.png";
 import socialmediaTools from "../../public/assets/network.png";
+import loading from "../../public/assets/sand-clock.png";
+import shadow from "../../public/assets/square-shadow.png";
 
 export {
   lorem,
@@ -24,4 +26,6 @@ export {
   codingTools,
   colorsTools,
   socialmediaTools,
+  loading,
+  shadow,
 };

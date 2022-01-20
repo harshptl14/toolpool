@@ -86,6 +86,14 @@ const ToolWrapper = ({ category, toolname }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const renderers = {
+    //This custom renderer changes how images are rendered
+    //we use it to constrain the max width of an image to its container
+    img: ({ alt, src, title }) => (
+      <img alt={alt} src={src} title={title} style={{ maxWidth: 250 }} />
+    ),
+  };
+
   return (
     <div>
       <Head>
@@ -149,6 +157,7 @@ const ToolWrapper = ({ category, toolname }) => {
         <ReactMarkdown
           children={TOOLS[category][toolname]["readme"] ?? ``}
           skipHtml={false}
+          components={renderers}
         />
       </StyledDesc>
     </div>

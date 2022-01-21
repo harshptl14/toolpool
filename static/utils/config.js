@@ -222,13 +222,13 @@ const config = {
   ],
 
   colorTools: [
-    {
-      title: "Under development",
-      desc: "Tools in this category are in development, we are working so hard to add more and more tools ASAP",
-      link: "tools/color/underdevelopment",
-      icon: loading,
-      key: 1,
-    },
+    // {
+    //   title: "Under development",
+    //   desc: "Tools in this category are in development, we are working so hard to add more and more tools ASAP",
+    //   link: "tools/color/underdevelopment",
+    //   icon: loading,
+    //   key: 1,
+    // },
     // {
     //   title: "Image Resizer",
     //   desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
@@ -252,13 +252,13 @@ const config = {
     // },
   ],
   socialmediaTools: [
-    {
-      title: "Under development",
-      desc: "Tools in this category are in development, we are working so hard to add more and more tools ASAP",
-      link: "tools/social/underdevelopment",
-      icon: loading,
-      key: 1,
-    },
+    // {
+    //   title: "Under development",
+    //   desc: "Tools in this category are in development, we are working so hard to add more and more tools ASAP",
+    //   link: "tools/social/underdevelopment",
+    //   icon: loading,
+    //   key: 1,
+    // },
     // {
     //   title: "Image Cropper",
     //   desc: "Crop unwanted parts of images and download desired part of the image as a new file",

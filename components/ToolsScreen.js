@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  CategoryItem,
-  CategoryItemMobile,
-} from "./ToolScreen/CategoryItem";
+import { CategoryItem, CategoryItemMobile } from "./ToolScreen/CategoryItem";
 import config from "../static/utils/config";
 import Link from "next/link";
 import Image from "next/image";
@@ -66,7 +63,6 @@ const TitleDiv = styled.div`
   }
 `;
 
-
 // styling toolcard
 const StyledToolCard = styled.a`
   ${({ theme }) => theme.mixins.card}
@@ -123,7 +119,18 @@ const Arrow = styled.div`
   }
 `;
 
-const ToolsScreen = ({ executeScroll, elRef}) => {
+const NoTools = styled.div`
+  width: 100%;
+  height: max-content;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  color: ${({ theme }) => theme.color};
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.shade};
+`;
+
+const ToolsScreen = ({ executeScroll, elRef }) => {
   const [menuItem, setMenuItem] = useState("textTools");
   return (
     <>
@@ -141,23 +148,31 @@ const ToolsScreen = ({ executeScroll, elRef}) => {
           setMenuItem={setMenuItem}
         />
         <StyledWrapper>
-          {config[menuItem].map(({ title, desc, link, icon, key }) => {
-             return <Link href={link} passHref key={key}>
-                <StyledToolCard>
-                  <Icon>
-                    <Image height={50} width={50} src={icon} alt={title} />
-                  </Icon>
-                  <StyledTitle>{title}</StyledTitle>
-                  <StyledDesc>{desc}</StyledDesc>
-                  <StyledOpen>
-                    open
-                    {/* <Arrow>
+          {config[menuItem].length !== 0 ? (
+            config[menuItem].map(({ title, desc, link, icon, key }) => {
+              return (
+                <Link href={link} passHref key={key}>
+                  <StyledToolCard>
+                    <Icon>
+                      <Image height={50} width={50} src={icon} alt={title} />
+                    </Icon>
+                    <StyledTitle>{title}</StyledTitle>
+                    <StyledDesc>{desc}</StyledDesc>
+                    <StyledOpen>
+                      open
+                      {/* <Arrow>
               <ArrowIcon />
             </Arrow> */}
-                  </StyledOpen>
-                </StyledToolCard>
-              </Link>
-          })}
+                    </StyledOpen>
+                  </StyledToolCard>
+                </Link>
+              );
+            })
+          ) : (
+            <NoTools>
+              <p>Under development...🚧</p>
+            </NoTools>
+          )}
         </StyledWrapper>
       </OuterDiv>
     </>

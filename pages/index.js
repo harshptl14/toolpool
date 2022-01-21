@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import LandingPagediv from "../components/HoomScreen/LandingPagediv";
+import LandingPagediv from "../components/HomeScreen/LandingPagediv";
 import Link from "next/link";
 import TitleDiv from "../components/TitleDiv";
 // import Card from '../components/Card';
 import useScroll from "../hooks/useScroll";
 import ToolsScreen from "../components/ToolsScreen";
-import InfoCard from "../components/HoomScreen/InfoCard";
+import InfoCard from "../components/HomeScreen/InfoCard";
 import config from "../static/utils/config";
 import Image from "next/image";
 import Head from "next/head";

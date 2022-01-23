@@ -1,58 +1,116 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "styled-components";
+import { copyToClipboard } from "../../../static/helpers/helperfunctions";
+import ButtonDiv from "../ButtonDiv";
 
 const StyledOuterDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
-  width: 100%;
-  height: 100%;
 `;
 
-const InputSection = styled.div`
+const StyledUpper = styled.div`
+  ${({ theme }) => theme.mixins.flexColumn};
   width: 100%;
-  height: 100%;
-  ${({ theme }) => theme.mixins.flexStart};
+  margin-bottom: 30px;
+  gap: 40px;
+
+  @media (min-width: 800px) {
+    ${({ theme }) => theme.mixins.flexBetween};
+    flex-flow: row;
+    gap: 80px;
+  }
 `;
 
 const SlidersSection = styled.div`
-  width: 30%;
+  ${({ theme }) => theme.mixins.slider}
+  ${({ theme }) => theme.mixins.flexColumnStart}
+  width: 100%;
+
   .sliderTitle {
     font-size: var(--fz-sm);
   }
 
   .bubble {
     font-size: var(--fz-sm);
+    color: ${({ theme }) => theme.color};
   }
 
-  ${({ theme }) => theme.mixins.flexColumn}
+  @media (min-width: 800px) {
+    flex: 1 0 fill;
+    align-items: stretch;
+    width: 50%;
 
-  ${({ theme }) => theme.mixins.slider}
+    .sliderTitle {
+      font-size: var(--fz-md);
+    }
+  }
 `;
 
 const SliderDiv = styled.div`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 
   @media (min-width: 800px) {
-    width: 30%;
-    margin-top: 0px;
+    width: 100%;
+    margin-top: 20px;
   }
 `;
 
 const ColorSection = styled.div`
-  ${({ theme }) => theme.mixins.flexColumn}
-  width: 30%;
+  ${({ theme }) => theme.mixins.flexStart}
+  width: 100%;
   height: 100%;
-  justify-content: flex-start;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: var(--font-mono);
+
+  label {
+    gap: 10px;
+    font-size: var(--fz-lg);
+    ${({ theme }) => theme.mixins.flexStart}
+  }
+
+  input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
+
+  ${({ theme }) => theme.mixins.checkbox};
+
+  .colordiv {
+    ${({ theme }) => theme.mixins.flexStart};
+    gap: 10px;
+    font-size: var(--fz-sm);
+    color: ${({ theme }) => theme.color};
+    padding: 13px;
+    background-color: ${({ theme }) => theme.shadeBackcard};
+  }
+  /* justify-content: flex-start; */
 `;
 
-const OutputSection = styled.div`
-  width: 30%;
-  height: 100%;
+const OutputSection = styled(SlidersSection)`
+  border: 1.8px dashed ${({ theme }) => theme.shade};
   background-color: ${(props) => props.backgroundColor};
+  height: 430px;
+
+  @media (min-width: 800px) {
+    width: 60%;
+  }
 
   .box {
-    width: 150px;
-    height: 150px;
+    margin: auto;
+    width: 50%;
+    height: 50%;
     background-color: ${(props) => props.boxColor};
     -webkit-box-shadow: ${(props) => props.horizontalOffset}
       ${(props) => props.verticalOffset} ${(props) => props.blur}
@@ -70,31 +128,95 @@ const CSSGenerationDiv = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColumn}
   align-items: flex-start;
+  /* margin-bottom: 20px; */
 `;
 
 const CSSProps = styled.div`
   ${({ theme }) => theme.mixins.flexColumn}
-  width:100%;
+  color: ${({ theme }) => theme.color};
+  width: 100%;
   align-items: flex-start;
-  margin-top: 1rem;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.shade};
+  font-family: var(--font-mono);
+  background-color: ${({ theme }) => theme.shadeBackcard};
+  font-size: var(--fz-sm);
+  
+  @media (min-width: 800px) {
+    font-size: var(--fz-lg);
+    padding: 2rem;
+    margin-top: 1rem;
+  }
 `;
 
+var backgroundFlag = false;
+
 const BoxShadowGenerator = () => {
-  const [horizontalOffset, setHorizontalOffset] = useState("5px");
-  const [verticalOffset, setVerticalOffset] = useState("5px");
-  const [blur, setBlur] = useState("10px");
-  const [spread, setSpread] = useState("5px");
-  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
+  const theme = useTheme();
+  const [horizontalOffset, setHorizontalOffset] = useState("5");
+  const [verticalOffset, setVerticalOffset] = useState("5");
+  const [blur, setBlur] = useState("10");
+  const [spread, setSpread] = useState("5");
+  const [backgroundColor, setBackgroundColor] = useState(theme.toolInput);
   const [boxColor, setBoxColor] = useState("#5ec655");
-  const [shadowColor, setShadowColor] = useState("#dddddd");
+  const [shadowColor, setShadowColor] = useState(theme.shadow);
   const [inset, setinset] = useState(false);
+
+  const filter = [];
+
+  const finalButtons = [
+    {
+      key: "1",
+      title: "Reset",
+      method: () => {
+        backgroundFlag = false;
+        setHorizontalOffset("5");
+        setVerticalOffset("5");
+        setBlur("10");
+        setSpread("5");
+        setBoxColor("#5ec655");
+        setShadowColor(theme.shadow);
+        setinset(false);
+        setBackgroundColor(theme.toolInput);
+      },
+      type: "normal",
+    },
+    {
+      key: "2",
+      title: "Copy",
+      method: () => {
+        let node = document.getElementById("output");
+        let text = node.textContent;
+        copyToClipboard(text);
+      },
+      type: "submit",
+    },
+  ];
+
+  const changeBackground = (e) => {
+    setBackgroundColor(e.target.value);
+    backgroundFlag = true;
+  };
+
+  const changeShadow = (e) => {
+    setShadowColor(e.target.value);
+    backgroundFlag = true;
+  };
+
+  useEffect(
+    () => {
+      // Runs ONCE after initial rendering
+      // and after every rendering ONLY IF `prop` or `state` changes
+      setBackgroundColor(theme.toolInput);
+      setShadowColor(theme.shadow);
+      // console.log("IN");
+    },
+    backgroundFlag ? [] : [theme]
+  );
 
   return (
     <StyledOuterDiv>
-      <InputSection>
+      <StyledUpper>
         <SlidersSection>
           <SliderDiv>
             <div className="sliderTitle">Horizontal Offset</div>
@@ -106,10 +228,11 @@ const BoxShadowGenerator = () => {
               max="32"
               step="1"
               onInput={(e) => {
-                setHorizontalOffset(e.target.value + "px");
+                setHorizontalOffset(e.target.value);
               }}
             />
-            <div className="bubble">{horizontalOffset}</div>
+
+            <div className="bubble">{horizontalOffset + "px"}</div>
           </SliderDiv>
           <SliderDiv>
             <div className="sliderTitle">Vertical Offset</div>
@@ -121,10 +244,10 @@ const BoxShadowGenerator = () => {
               max="32"
               step="1"
               onInput={(e) => {
-                setVerticalOffset(e.target.value + "px");
+                setVerticalOffset(e.target.value);
               }}
             />
-            <div className="bubble">{verticalOffset}</div>
+            <div className="bubble">{verticalOffset + "px"}</div>
           </SliderDiv>
           <SliderDiv>
             <div className="sliderTitle">Blur</div>
@@ -136,10 +259,10 @@ const BoxShadowGenerator = () => {
               max="32"
               step="1"
               onInput={(e) => {
-                setBlur(e.target.value + "px");
+                setBlur(e.target.value);
               }}
             />
-            <div className="bubble">{blur}</div>
+            <div className="bubble">{blur + "px"}</div>
           </SliderDiv>
           <SliderDiv>
             <div className="sliderTitle">Spread</div>
@@ -151,71 +274,88 @@ const BoxShadowGenerator = () => {
               max="32"
               step="1"
               onInput={(e) => {
-                setSpread(e.target.value + "px");
+                setSpread(e.target.value);
               }}
             />
-            <div className="bubble">{spread}</div>
+            <div className="bubble">{spread + "px"}</div>
           </SliderDiv>
+          {/* </SlidersSection> */}
+          <ColorSection>
+            <div className="colordiv">
+              <input
+                type="color"
+                onInput={(e) => {
+                  changeBackground(e);
+                }}
+                value={backgroundColor}
+              />
+              Backgroud
+            </div>
+
+            <div className="colordiv">
+              <input
+                type="color"
+                onInput={(e) => {
+                  setBoxColor(e.target.value);
+                }}
+                value={boxColor}
+              />
+              Color
+            </div>
+            <div className="colordiv">
+              <input
+                type="color"
+                onInput={(e) => {
+                  changeShadow(e);
+                }}
+                value={shadowColor}
+              />
+              Shadow
+            </div>
+
+            <label>
+              <input
+                type="checkbox"
+                value={inset}
+                onChange={(e) => setinset(e.target.value)}
+              />
+              Inset
+            </label>
+          </ColorSection>
         </SlidersSection>
-        <ColorSection>
-          <input
-            type="color"
-            onInput={(e) => {
-              setBackgroundColor(e.target.value);
-            }}
-            value={backgroundColor}
-          />
-          <input
-            type="color"
-            onInput={(e) => {
-              setBoxColor(e.target.value);
-            }}
-            value={boxColor}
-          />
-          <input
-            type="color"
-            onInput={(e) => {
-              setShadowColor(e.target.value);
-            }}
-            value={shadowColor}
-          />
-          <input
-            type="checkbox"
-            value={inset}
-            onChange={(e) => setinset(e.target.value)}
-          />
-          <label>Inset</label>
-        </ColorSection>
+
         <OutputSection
           backgroundColor={backgroundColor}
           boxColor={boxColor}
           shadowColor={shadowColor}
-          horizontalOffset={horizontalOffset}
-          verticalOffset={verticalOffset}
-          blur={blur}
-          spread={spread}
+          horizontalOffset={horizontalOffset + "px"}
+          verticalOffset={verticalOffset + "px"}
+          blur={blur + "px"}
+          spread={spread + "px"}
         >
           <div className="box"></div>
         </OutputSection>
-      </InputSection>
+      </StyledUpper>
       <CSSGenerationDiv>
-        <CSSProps>
+        <CSSProps id="output">
           <span>background-color: {boxColor}; </span>
           <span>
-            -webkit-box-shadow: {horizontalOffset} {verticalOffset} {blur}{" "}
-            {spread} {shadowColor}
+            -webkit-box-shadow: {horizontalOffset + "px"}{" "}
+            {verticalOffset + "px"} {blur + "px"} {spread + "px"} {shadowColor}
           </span>
           <span>
-            -moz-box-shadow: {horizontalOffset} {verticalOffset} {blur} {spread}{" "}
-            {shadowColor}
+            -moz-box-shadow: {horizontalOffset + "px"} {verticalOffset + "px"}{" "}
+            {blur + "px"} {spread + "px"} {shadowColor}
           </span>
           <span>
-            box-shadow: {horizontalOffset} {verticalOffset} {blur} {spread}{" "}
-            {shadowColor}
+            box-shadow: {horizontalOffset + "px"} {verticalOffset + "px"}{" "}
+            {blur + "px"} {spread + "px"} {shadowColor}
           </span>
         </CSSProps>
         {/* TODO: Copy and Reset buttons */}
       </CSSGenerationDiv>
+
+      <ButtonDiv filter={filter} finalButtons={finalButtons} />
     </StyledOuterDiv>
   );
 };

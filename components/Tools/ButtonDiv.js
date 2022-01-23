@@ -7,6 +7,7 @@ const StyledButtonDiv = styled.div`
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: 15px;
 
   @media (min-width: 800px) {
     justify-content: space-between;

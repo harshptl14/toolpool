@@ -112,13 +112,15 @@ const OutputSection = styled(SlidersSection)`
     width: 50%;
     height: 50%;
     background-color: ${(props) => props.boxColor};
-    -webkit-box-shadow: ${(props) => props.horizontalOffset}
-      ${(props) => props.verticalOffset} ${(props) => props.blur}
-      ${(props) => props.spread} ${(props) => props.shadowColor};
-    -moz-box-shadow: ${(props) => props.horizontalOffset}
-      ${(props) => props.verticalOffset} ${(props) => props.blur}
-      ${(props) => props.spread} ${(props) => props.shadowColor};
-    box-shadow: ${(props) => props.horizontalOffset}
+    -webkit-box-shadow: ${(props) => props.inset}
+      ${(props) => props.horizontalOffset} ${(props) => props.verticalOffset}
+      ${(props) => props.blur} ${(props) => props.spread}
+      ${(props) => props.shadowColor};
+    -moz-box-shadow: ${(props) => props.inset}
+      ${(props) => props.horizontalOffset} ${(props) => props.verticalOffset}
+      ${(props) => props.blur} ${(props) => props.spread}
+      ${(props) => props.shadowColor};
+    box-shadow: ${(props) => props.inset} ${(props) => props.horizontalOffset}
       ${(props) => props.verticalOffset} ${(props) => props.blur}
       ${(props) => props.spread} ${(props) => props.shadowColor};
   }
@@ -141,7 +143,7 @@ const CSSProps = styled.div`
   font-family: var(--font-mono);
   background-color: ${({ theme }) => theme.shadeBackcard};
   font-size: var(--fz-sm);
-  
+
   @media (min-width: 800px) {
     font-size: var(--fz-lg);
     padding: 2rem;
@@ -255,7 +257,7 @@ const BoxShadowGenerator = () => {
               type="range"
               className="slider"
               value={blur}
-              min="-32"
+              min="0"
               max="32"
               step="1"
               onInput={(e) => {
@@ -317,7 +319,9 @@ const BoxShadowGenerator = () => {
               <input
                 type="checkbox"
                 value={inset}
-                onChange={(e) => setinset(e.target.value)}
+                onChange={(e) => {
+                  setinset(!inset);
+                }}
               />
               Inset
             </label>
@@ -332,6 +336,7 @@ const BoxShadowGenerator = () => {
           verticalOffset={verticalOffset + "px"}
           blur={blur + "px"}
           spread={spread + "px"}
+          inset={inset ? "inset" : ""}
         >
           <div className="box"></div>
         </OutputSection>
@@ -340,19 +345,18 @@ const BoxShadowGenerator = () => {
         <CSSProps id="output">
           <span>background-color: {boxColor}; </span>
           <span>
-            -webkit-box-shadow: {horizontalOffset + "px"}{" "}
+            -webkit-box-shadow: {inset ? "inset" : ""} {horizontalOffset + "px"}{" "}
             {verticalOffset + "px"} {blur + "px"} {spread + "px"} {shadowColor}
           </span>
           <span>
-            -moz-box-shadow: {horizontalOffset + "px"} {verticalOffset + "px"}{" "}
-            {blur + "px"} {spread + "px"} {shadowColor}
+            -moz-box-shadow: {inset ? "inset" : ""} {horizontalOffset + "px"}{" "}
+            {verticalOffset + "px"} {blur + "px"} {spread + "px"} {shadowColor}
           </span>
           <span>
-            box-shadow: {horizontalOffset + "px"} {verticalOffset + "px"}{" "}
-            {blur + "px"} {spread + "px"} {shadowColor}
+            box-shadow: {inset ? "inset" : ""} {horizontalOffset + "px"}{" "}
+            {verticalOffset + "px"} {blur + "px"} {spread + "px"} {shadowColor}
           </span>
         </CSSProps>
-        {/* TODO: Copy and Reset buttons */}
       </CSSGenerationDiv>
 
       <ButtonDiv filter={filter} finalButtons={finalButtons} />

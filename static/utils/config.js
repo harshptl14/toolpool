@@ -172,7 +172,7 @@ const config = {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
       link: "tools/image/imageresizer",
-      icon: lorem,
+      icon: resize,
       key: 1,
     },
     // {

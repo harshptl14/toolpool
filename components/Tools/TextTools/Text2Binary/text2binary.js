@@ -143,7 +143,13 @@ const Text2Binary = () => {
       </StyledOutput>
       <StyledButton
         data={binaryOutput}
-        onClick={() => copyToClipboard(binaryOutput)}
+        onClick={() => {
+          copyToClipboard(binaryOutput);
+          dispatch({
+            type: "SHOW",
+            message: "Binary copied!!",
+          });
+        }}
       >
         Copy
       </StyledButton>
@@ -172,7 +178,13 @@ const Text2Binary = () => {
         </StyledOutput>
         <StyledButton
           data={textOutput}
-          onClick={() => copyToClipboard(textOutput)}
+          onClick={() => {
+            copyToClipboard(textOutput);
+            dispatch({
+              type: "SHOW",
+              message: "Text copied!!",
+            });
+          }}
         >
           Copy
         </StyledButton>

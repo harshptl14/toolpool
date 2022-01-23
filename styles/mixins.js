@@ -319,7 +319,7 @@ const mixins = {
     border: 2px solid ${({ theme }) => theme.shade};
     font-size: var(--fz-lg);
     padding: 15px 20px;
-    margin: 0px 0 15px 0;
+    /* margin: 0px 0 15px 0; */
     font-family: "Open Sans", -apple-system, system-ui, sans-serif;
     color: ${({ theme }) => theme.text};
     &:focus,
@@ -423,6 +423,53 @@ const mixins = {
 
     input[type="text"] {
       border: none;
+    }
+  `,
+
+  checkbox: css`
+    input[type="checkbox"] {
+      /* Add if not using autoprefixer */
+      -webkit-appearance: none;
+      /* Remove most all native input styles */
+      appearance: none;
+      /* For iOS < 15 */
+      background-color: ${({ theme }) => theme.background};
+      /* Not removed via appearance */
+      margin: 0;
+
+      font: inherit;
+      color: ${({ theme }) => theme.color};
+      width: 1.15em;
+      height: 1.15em;
+      border: 0.1em solid ${({ theme }) => theme.color};
+      border-radius: 0.15em;
+      transform: translateY(-0.075em);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input[type="checkbox"]::before {
+      content: "";
+      width: 0.65em;
+      height: 0.65em;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      transform: scale(0);
+      transform-origin: bottom left;
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em ${({ theme }) => theme.color};
+      /* Windows High Contrast Mode */
+      background-color: CanvasText;
+    }
+
+    input[type="checkbox"]:checked::before {
+      transform: scale(1);
+    }
+
+    input[type="checkbox"]:focus {
+      /* outline: max(2px, 0.15em) solid ${({ theme }) => theme.color}; */
+      outline-offset: max(2px, 0.15em);
     }
   `,
 };

@@ -6,6 +6,7 @@ import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imagere
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
 import {
+  BoxShadowReadme,
   CaseReadme,
   ImageResizerreadme,
   Lettercountreadme,
@@ -128,6 +129,7 @@ export const TOOLS = {
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: resize,
+      readme: BoxShadowReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

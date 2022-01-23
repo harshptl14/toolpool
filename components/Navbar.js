@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Link from "next/link";
 import config from "../static/utils/config";
 import Menu from "./menu";
-import Banner from "./HoomScreen/Banner";
+import Banner from "./HomeScreen/Banner";
 import Image from "next/image";
 
 const StyledHeader = styled.header`

@@ -72,6 +72,7 @@ export const T2BReadme = `
 ## What is this?
 "Hello", if you say this to your PC then it won't understand your language. It is so dumb device that understands only one language, Binary. All the code you write in any language on any device is converted to Binary at the end. With the help of this tool, you can convert any text to a binary string and vice versa. Suppose you want to share some secret thing with your geeky friend in a format which a normal person won't understand, you can convert it to binary using this tool. But if any person is aware of this tool then bro your secret will be no more a secret 😂.
 
+Also, whenever you convert Binary to Text then write binary in space separated format because if they aren't space separated then the generated text may differ from desired text.
 ### Example
 
 **Text :**
@@ -111,4 +112,27 @@ Taddaaaaa!! It's done.
 
 ### NOTE
 You can either scale up or down your image. If you scale down, it is always ok, but if you scale up your image and use it with its original width, you may face with quality issues. Be aware of the fact that, scaling up an image without losing quality needs extra effort and you have to use AI or different algorithms to fill the interpolated areas.
+`;
+
+export const BoxShadowReadme = `
+## What is CSS Box-Shadow Generator?
+CSS Box-shadow generator is an online free tool to generate CSS for desired shadow effect for a HTML component. So, no need to try and error values for a perfect shadow for your divs. Just drag some sliders here and get the CSS in a click.
+
+### How values are applied?
+
+*box-shadow : HORIZONATL_OFFSET VE*RTICAL_OFFSET BLUR SPREAD;*
+
+Above line is the syntax for providing box shadow in css.
+
+**Horizontal Offset:** Horizontal offset is the distance of shadow from center in x-axis.It can have positive or negative value.
+
+**Vertical Offset:** Vertical offset is the distance of shadow from center in y-axis. It can have positive or negative value.
+
+**Blur:** Blur is the amount of blur that will be applied to shadow. It has to be zero or positive.
+
+**Spread:** Spread is the radius of the shadow spread that will be subtracted or added to shadow itself. If its value is negative, shadow will be smaller, vice versa. 
+
+**Color:** Color of shadow.
+
+**Inset:** Inset changes the shadow from outer to inner. By default, shadow is outset.
 `;

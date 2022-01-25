@@ -105,6 +105,12 @@ const mixins = {
     align-items: center;
   `,
 
+  flexEven: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  `,
+
   flexBeside: css`
     display: flex;
     flex-direction: row;

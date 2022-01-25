@@ -34,6 +34,7 @@ import {
   unique,
   whiteSpace,
 } from "../icons/index";
+import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 
 export const URLLIST = [
   "text/lorem",
@@ -44,6 +45,7 @@ export const URLLIST = [
   "text/lettercounter",
   "image/imageresizer",
   "dev/box-shadow-generator",
+  "social/tweet-generator",
 ];
 
 // List of all the tool components with category
@@ -130,6 +132,18 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: resize,
       readme: BoxShadowReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+  },
+  social: {
+    "tweet-generator": {
+      title: "Tweet Generator",
+      component: <TweetGenerator />,
+      url: "social/tweet-generator",
+      description:
+        "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
+      icon: resize,
+      readme: ``,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

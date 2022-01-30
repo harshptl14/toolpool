@@ -185,7 +185,7 @@ const AboutUs = () => {
           </a>
           and
           <a
-            href="https://yashpaneliya.github.io/#/"
+            href="https://expy.bio/yashpaneliya"
             target="_blank"
             rel="noopener noreferrer"
           >

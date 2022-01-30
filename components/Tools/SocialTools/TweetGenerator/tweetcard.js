@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import DP from "../../../../public/assets/dp.jpeg";
 import Image from "next/image";
-import TestImg1 from "../../../../public/assets/posters/posterToolpool.jpg";
-import TestImg2 from "../../../../public/assets/posters/posterWhitespace.jpg";
-import TestImg3 from "../../../../public/assets/posters/posterLoremipsum.jpg";
-import TestImg4 from "../../../../public/assets/posters/posterLettercounter.jpg";
 
 const MainCard = styled.div`
   display: flex;
@@ -95,16 +90,33 @@ const TweetImages = styled.div`
   border-radius: 16px;
   border: 1px solid grey;
   height: 290px;
-  display: block;
-  /*grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
-  grid-auto-flow: dense;*/
+  display: flex;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  padding: 0;
+  border: 2px ${({ theme }) => theme.background} solid;
+
+  .col1 {
+    width: ${(props) => (props.len === 1 ? "100%" : "50%")};
+    display: flex;
+    flex-direction: column;
+    height: 290px;
+    margin: 0;
+  }
+
+  .col2 {
+    width: ${(props) => (props.len === 1 ? "0%" : "50%")};
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 290px;
+  }
 `;
 
 const Reach = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexEven};
-  margin-top: 15px;
+  margin-top: 10px;
 
   .action {
     display: flex;
@@ -129,7 +141,11 @@ const FormattedTweetText = ({ text }) => {
   return (
     <div style={{ width: "100%" }}>
       {text.split(" ").map((item, index) => {
-        if (item.includes("@") || item.includes("#") || item.includes("http")) {
+        if (
+          item.startsWith("@") ||
+          item.startsWith("#") ||
+          item.startsWith("http")
+        ) {
           return (
             <span className="highlight" key={index}>
               {item + " "}
@@ -143,24 +159,21 @@ const FormattedTweetText = ({ text }) => {
   );
 };
 
-function ImageGridItem({ path, alt, hfr, wfr }) {
+function ImageGridItem({ path, alt }) {
   const style = {
-    // gridColumnStart: `${alt + 1}`,
-    // gridColumnEnd: `span ${wfr}`,
-    // gridRowStart: `${alt + 1}`,
-    // gridRowEnd: `span ${hfr}`,
+    height: `100%`,
+    width: `100%`,
+    position: "relative",
   };
 
   return (
     <div style={style}>
-      <Image src={path} alt={alt} />
+      <Image src={path} alt={alt} objectFit="cover" layout="fill" />
     </div>
   );
 }
 
-const TweetCard = () => {
-  const imgList = [TestImg1, TestImg2, TestImg3, TestImg4];
-
+const TweetCard = (props) => {
   const VerifiedSVG = (
     <svg
       width="18.75"
@@ -221,45 +234,62 @@ const TweetCard = () => {
     <MainCard>
       <DPDiv>
         <ProfileImage>
-          <Image src={DP} alt="Profile Picture" className="avatar" />
+          <Image
+            src={props.dp}
+            alt="Profile Picture"
+            className="avatar"
+            width={"48px"}
+            height={"48px"}
+          />
         </ProfileImage>
       </DPDiv>
       <TweetSection>
         <UserDetails>
           <div className="details">
-            <div className="name">John Doe</div>
-            <div className="verified">{VerifiedSVG}</div>
-            <div className="username">@johndoe · </div>
-            <div className="date">10m</div>
+            <div className="name">
+              {props.name.length === 0 ? "Piggy Pomp" : props.name}
+            </div>
+            {props.verified && <div className="verified">{VerifiedSVG}</div>}
+            <div className="username">
+              @{props.username.length === 0 ? "piggypomp" : props.username} ·{" "}
+            </div>
+            <div className="date">{props.date}</div>
           </div>
           <div className="options">{OptionsSVG}</div>
         </UserDetails>
         <TweetText>
           <FormattedTweetText
             text={
-              " This is a sample tweet. @mentions, #hashtags, https://links.com are all automatically converted."
+              props.tweettext.length === 0
+                ? "@ToolPool is #love 💚"
+                : props.tweettext
             }
           />
         </TweetText>
-        {imgList.length !== 0 && (
-          <TweetImages>
-            {imgList.map((i, index) => {
-              if ([1, 2, 4].includes(imgList.length)) {
-                if (imgList.length === 1) {
-                  return <ImageGridItem path={i} alt={index} hfr={2} wfr={2} />;
-                } else if (imgList.length === 2) {
-                  return <ImageGridItem path={i} alt={index} hfr={2} wfr={1} />;
-                } else {
-                  return <ImageGridItem path={i} alt={index} hfr={1} wfr={1} />;
-                }
-              }
-            })}
+        {props.imgList.length !== 0 && (
+          <TweetImages len={props.imgList.length}>
+            <div className="col1">
+              {props.imgList[0] && (
+                <ImageGridItem path={props.imgList[0]} alt={0} />
+              )}
+              {props.imgList[2] && (
+                <ImageGridItem path={props.imgList[2]} alt={0} />
+              )}
+            </div>
+            <div className="col2">
+              {props.imgList[1] && (
+                <ImageGridItem path={props.imgList[1]} alt={0} />
+              )}
+              {props.imgList[3] && (
+                <ImageGridItem path={props.imgList[3]} alt={0} />
+              )}
+            </div>
           </TweetImages>
         )}
         <Reach>
-          <ReachComponent svg={ReplySVG} count="50" />
-          <ReachComponent svg={RetweetSVG} count="50" />
-          <ReachComponent svg={LikeSVG} count="50" />
+          <ReachComponent svg={ReplySVG} count={props.reply} />
+          <ReachComponent svg={RetweetSVG} count={props.rt} />
+          <ReachComponent svg={LikeSVG} count={props.likes} />
           <ReachComponent svg={UploadSVG} />
         </Reach>
       </TweetSection>

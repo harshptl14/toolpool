@@ -27,7 +27,7 @@ const Banner = () => {
       )} */}
         <BannerDiv>
           Site is under construction 🚧, stay tuned for updates!!
-        </BannerDiv>,
+        </BannerDiv>
     </>
   );
 };

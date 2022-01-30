@@ -7,3 +7,18 @@ export function copyToClipboard(text) {
 export function copyAsJSON(json) {
   navigator.clipboard.writeText(JSON.stringify(json));
 }
+
+export const Months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]

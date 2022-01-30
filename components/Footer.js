@@ -92,7 +92,7 @@ const Footer = () => {
         </ol>
       </StyledLinks>
       <StyledMadewith>
-        Made with <FavoriteBorder width="20px" /> in Earth
+        Made with <FavoriteBorder width="20px" /> on Earth
       </StyledMadewith>
     </StyledFooter>
   );

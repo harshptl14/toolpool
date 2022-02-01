@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import TweetCard from "./tweetcard";
@@ -8,6 +8,7 @@ import TestImg3 from "../../../../public/assets/posters/posterLoremipsum.jpg";
 import TestImg4 from "../../../../public/assets/posters/posterLettercounter.jpg";
 import DP from "../../../../public/assets/dp.jpeg";
 import { Months } from "../../../../static/helpers/helperfunctions";
+import { toPng } from "html-to-image";
 
 const MainDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn}
@@ -57,6 +58,21 @@ const TweetGenerator = () => {
   const [replies, setReplies] = useState();
   const [rts, setRts] = useState();
 
+  const tweetRef = useRef();
+
+  const handleDownload = async () => {
+    toPng(tweetRef.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "tweet.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <MainDiv>
       <Tweet>
@@ -71,12 +87,13 @@ const TweetGenerator = () => {
           rt={rts}
           reply={replies}
           imgList={tweetImages}
+          ref={tweetRef}
         />
       </Tweet>
       <TweetInputs>
         {/* Profile image upload field */}
         <div className="actions">
-          <button>Download</button>
+          <button onClick={handleDownload}>Download</button>
         </div>
         <input
           type="file"

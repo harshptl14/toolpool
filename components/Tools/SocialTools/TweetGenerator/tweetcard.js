@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-
+import React from "react";
 const MainCard = styled.div`
   display: flex;
   width: 600px;
@@ -173,7 +173,7 @@ function ImageGridItem({ path, alt }) {
   );
 }
 
-const TweetCard = (props) => {
+const TweetCard = React.forwardRef((props, ref) => {
   const VerifiedSVG = (
     <svg
       width="18.75"
@@ -231,7 +231,7 @@ const TweetCard = (props) => {
   );
 
   return (
-    <MainCard>
+    <MainCard ref={ref}>
       <DPDiv>
         <ProfileImage>
           <Image
@@ -295,7 +295,7 @@ const TweetCard = (props) => {
       </TweetSection>
     </MainCard>
   );
-};
+});
 
 export default TweetCard;
 

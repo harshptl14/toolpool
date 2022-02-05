@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import React from "react";
+import caseposter from "../../../../public/assets/posters/posterCaseconverter.jpg";
+
 const MainCard = styled.div`
   display: flex;
   width: 600px;
@@ -69,6 +71,7 @@ const UserDetails = styled.div`
     color: grey;
   }
 `;
+
 const TweetText = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexStart};
@@ -85,6 +88,7 @@ const TweetText = styled.div`
     color: #46adf4;
   }
 `;
+
 const TweetImages = styled.div`
   width: 100%;
   border-radius: 16px;
@@ -168,7 +172,7 @@ function ImageGridItem({ path, alt }) {
 
   return (
     <div style={style}>
-      <Image src={path} alt={alt} objectFit="cover" layout="fill" />
+    <Image src={path} alt={alt} objectFit="cover" layout="fill" />
     </div>
   );
 }
@@ -235,6 +239,7 @@ const TweetCard = React.forwardRef((props, ref) => {
       <DPDiv>
         <ProfileImage>
           <Image
+            key={1}
             src={props.dp}
             alt="Profile Picture"
             className="avatar"
@@ -266,6 +271,12 @@ const TweetCard = React.forwardRef((props, ref) => {
             }
           />
         </TweetText>
+        {/* <Image
+          key={3}
+          src={caseposter}
+          width={"400px"}
+          height={"200px"}
+        /> */}
         {props.imgList.length !== 0 && (
           <TweetImages len={props.imgList.length}>
             <div className="col1">
@@ -332,7 +343,6 @@ export default TweetCard;
             <Image src={TestImg1} className="img" />
           </div> */
 }
-
 {
   /* <Image src={TestImg2} />
           <Image src={TestImg3} />

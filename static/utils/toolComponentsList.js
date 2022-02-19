@@ -5,6 +5,7 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
+import RgbHexConverter from "../../components/Tools/ColorTools/rgbHexConverter";
 import {
   BoxShadowReadme,
   CaseReadme,
@@ -33,6 +34,9 @@ import {
   binary,
   unique,
   whiteSpace,
+  shadow,
+  tweetGenerator,
+  colorConverter,
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 
@@ -46,6 +50,7 @@ export const URLLIST = [
   "image/imageresizer",
   "dev/box-shadow-generator",
   "social/tweet-generator",
+  "color/rgb-hex-converter",
 ];
 
 // List of all the tool components with category
@@ -130,7 +135,7 @@ export const TOOLS = {
       url: "dev/box-shadow-generator",
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
-      icon: resize,
+      icon: shadow,
       readme: BoxShadowReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
@@ -142,7 +147,19 @@ export const TOOLS = {
       url: "social/tweet-generator",
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
-      icon: resize,
+      icon: tweetGenerator,
+      readme: ``,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+  },
+  color: {
+    "rgb-hex-converter": {
+      title: "Rgb-Hex-Hsl Converter",
+      component: <RgbHexConverter />,
+      url: "color/rgb-hex-converter",
+      description:
+        "Convert RGB or Hex color into different types of color codes",
+      icon: colorConverter,
       readme: ``,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },

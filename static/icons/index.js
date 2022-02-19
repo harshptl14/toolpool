@@ -12,6 +12,8 @@ import colorsTools from "../../public/assets/color.png";
 import socialmediaTools from "../../public/assets/network.png";
 import loading from "../../public/assets/sand-clock.png";
 import shadow from "../../public/assets/square-shadow.png";
+import tweetGenerator from "../../public/assets/tweetGenerator.png";
+import colorConverter from "../../public/assets/colorConverter.png";
 
 export {
   lorem,
@@ -28,4 +30,6 @@ export {
   socialmediaTools,
   loading,
   shadow,
+  tweetGenerator,
+  colorConverter,
 };

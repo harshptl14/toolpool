@@ -50,8 +50,8 @@ const StyledPreviewimageDiv = styled.div`
 
 const StyledFilterDiv = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.mixins.flexBetween}
+  gap: 30px;
   margin: 20px 0 10px 0;
 `;
 

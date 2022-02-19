@@ -60,12 +60,14 @@ const mixins = {
 
   flexStart: css`
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
   `,
 
   flexCenter: css`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   `,
@@ -483,7 +485,7 @@ const mixins = {
   textbox: css`
     background-color: ${({ theme }) => theme.toolInput};
     padding: 10px;
-    width: 49%;
+    width: 100%;
     border: 1.5px solid ${({ theme }) => theme.shadeVarient};
     color: ${({ theme }) => theme.text};
 

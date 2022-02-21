@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import Image from "next/image";
 import React from "react";
-import caseposter from "../../../../public/assets/posters/posterCaseconverter.jpg";
+import "../../../../static/helpers/helperfunctions";
+import { nFormatter } from "../../../../static/helpers/helperfunctions";
 
 const MainCard = styled.div`
   display: flex;
   width: 600px;
   height: max-content;
   margin: auto;
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${(props) => (props.tTheme ? "black" : "white")};
 
   border: 1px solid var(--fontdesc-dark);
   border-radius: 5px;
@@ -51,6 +52,7 @@ const UserDetails = styled.div`
 
   .name {
     font-weight: 700;
+    color: ${(props) => (props.tTheme ? "white" : "black")};
   }
 
   .username {
@@ -75,6 +77,7 @@ const UserDetails = styled.div`
 const TweetText = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexStart};
+  color: ${(props) => (props.tTheme ? "white" : "black")};
 
   .highlight {
     color: #46adf4;
@@ -172,7 +175,7 @@ function ImageGridItem({ path, alt }) {
 
   return (
     <div style={style}>
-    <Image src={path} alt={alt} objectFit="cover" layout="fill" />
+      <Image src={path} alt={alt} objectFit="cover" layout="fill" />
     </div>
   );
 }
@@ -235,7 +238,7 @@ const TweetCard = React.forwardRef((props, ref) => {
   );
 
   return (
-    <MainCard ref={ref}>
+    <MainCard ref={ref} tTheme={props.tTheme}>
       <DPDiv>
         <ProfileImage>
           <Image
@@ -249,7 +252,7 @@ const TweetCard = React.forwardRef((props, ref) => {
         </ProfileImage>
       </DPDiv>
       <TweetSection>
-        <UserDetails>
+        <UserDetails tTheme={props.tTheme}>
           <div className="details">
             <div className="name">
               {props.name.length === 0 ? "Piggy Pomp" : props.name}
@@ -262,7 +265,7 @@ const TweetCard = React.forwardRef((props, ref) => {
           </div>
           <div className="options">{OptionsSVG}</div>
         </UserDetails>
-        <TweetText>
+        <TweetText tTheme={props.tTheme}>
           <FormattedTweetText
             text={
               props.tweettext.length === 0
@@ -271,12 +274,6 @@ const TweetCard = React.forwardRef((props, ref) => {
             }
           />
         </TweetText>
-        {/* <Image
-          key={3}
-          src={caseposter}
-          width={"400px"}
-          height={"200px"}
-        /> */}
         {props.imgList.length !== 0 && (
           <TweetImages len={props.imgList.length}>
             <div className="col1">
@@ -298,9 +295,9 @@ const TweetCard = React.forwardRef((props, ref) => {
           </TweetImages>
         )}
         <Reach>
-          <ReachComponent svg={ReplySVG} count={props.reply} />
-          <ReachComponent svg={RetweetSVG} count={props.rt} />
-          <ReachComponent svg={LikeSVG} count={props.likes} />
+          <ReachComponent svg={ReplySVG} count={nFormatter(props.reply, 1)} />
+          <ReachComponent svg={RetweetSVG} count={nFormatter(props.rt, 1)} />
+          <ReachComponent svg={LikeSVG} count={nFormatter(props.likes, 1)} />
           <ReachComponent svg={UploadSVG} />
         </Reach>
       </TweetSection>
@@ -309,42 +306,3 @@ const TweetCard = React.forwardRef((props, ref) => {
 });
 
 export default TweetCard;
-
-{
-  /* <ImageGridItem path={TestImg2} alt={"i"} index={2} length={3} />
-          <ImageGridItem path={TestImg2} alt={"i"} index={2} length={3} /> */
-}
-{
-  /* <ImageGridItem path={TestImg2} alt={"i"} index={1} length={2} /> */
-}
-{
-  /* <div className="col">
-            <Image src={TestImg1} className="img" />
-            {/* <Image src={TestImg1} className="img" /> 
-          </div> */
-}
-{
-  /* <div className="col">
-            <Image src={TestImg3} className="img" />
-            {/* <Image src={TestImg1} className="img" /> 
-          </div> */
-}
-{
-  /* <div className="wrapper">
-            <Image src={TestImg1} className="img" />
-          </div>
-          <div className="wrapper">
-            <Image src={TestImg1} className="img" />
-          </div>
-          <div className="wrapper">
-            <Image src={TestImg1} className="img" />
-          </div>
-          <div className="wrapper">
-            <Image src={TestImg1} className="img" />
-          </div> */
-}
-{
-  /* <Image src={TestImg2} />
-          <Image src={TestImg3} />
-          <Image src={TestImg4} /> */
-}

@@ -2,23 +2,19 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import TweetCard from "./tweetcard";
-import TestImg1 from "../../../../public/assets/posters/posterToolpool.jpg";
-import TestImg2 from "../../../../public/assets/posters/posterWhitespace.jpg";
-import TestImg3 from "../../../../public/assets/posters/posterLoremipsum.jpg";
-import TestImg4 from "../../../../public/assets/posters/posterLettercounter.jpg";
 import DP from "../../../../public/assets/dp.jpeg";
 import { Months } from "../../../../static/helpers/helperfunctions";
 import { toPng } from "html-to-image";
 import ButtonDiv from "../../ButtonDiv";
 import { Cross } from "@styled-icons/entypo/Cross";
+import html2canvas from "html2canvas";
 
 const StyledFilearea = styled.div`
   --limit-color: ${({ theme }) => theme.hover};
   --default-color: ${({ theme }) => theme.footer};
   ${({ theme }) => theme.mixins.imageUploader} /* width: 100%; */
   input[type="file"] {
-    cursor: ${(props) =>
-      props.islimit ? "no-drop" : "pointer"};
+    cursor: ${(props) => (props.islimit ? "no-drop" : "pointer")};
   }
   .file-dummy {
     padding: 20px;
@@ -27,9 +23,7 @@ const StyledFilearea = styled.div`
     gap: 25px;
     padding-top: -10px;
     background-color: ${(props) =>
-      props.islimit
-        ? "var(--limit-color)"
-        : "var(--default-color)"};
+      props.islimit ? "var(--limit-color)" : "var(--default-color)"};
   }
 
   .info {
@@ -216,9 +210,10 @@ const TweetGenerator = () => {
   const [verified, setVerified] = useState(false);
   const [date, setDate] = useState("1s");
   const [tweet, setTweet] = useState("@ToolPool is #love 💚");
-  const [likes, setLikes] = useState();
-  const [replies, setReplies] = useState();
-  const [rts, setRts] = useState();
+  const [likes, setLikes] = useState("");
+  const [replies, setReplies] = useState("");
+  const [rts, setRts] = useState("");
+  const [tweetTheme, setTweetTheme] = useState(false);
 
   const tweetRef = useRef();
 
@@ -229,10 +224,25 @@ const TweetGenerator = () => {
         link.download = "tweet.png";
         link.href = dataUrl;
         link.click();
+        link.remove();
       })
       .catch((err) => {
         console.log(err);
       });
+    // try {
+    //   const canvas = await html2canvas(tweetRef.current, {
+    //     allowTaint: true,
+    //   });
+    //   const a = document.createElement("a");
+    //   a.style.display = "none";
+    //   a.href = canvas.toDataURL("image/png");
+    //   a.download = `tweet.png`;
+    //   document.body.appendChild(a);
+    //   a.click();
+    //   a.remove();
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   const filter = [];
@@ -260,6 +270,7 @@ const TweetGenerator = () => {
           rt={rts}
           reply={replies}
           imgList={tweetImages}
+          tTheme={tweetTheme}
           ref={tweetRef}
         />
       </Tweet>
@@ -279,24 +290,10 @@ const TweetGenerator = () => {
                   profileImage === null ? setProfileImage(undefined) : {};
                   return;
                 }
-
-                // var reader = new FileReader();
-                // reader.onload = function () {
-                //   var dataURL = reader.result;
-                //   setProfileImage(dataURL);
-                // };
-                // reader.readAsDataURL(e.target.files[0]);
                 setProfileImage(window.URL.createObjectURL(e.target.files[0]));
               }}
             />
             <div className="file-dummy">
-              {/* <div className="success">
-                Great, your files are selected. Drag your image or click to
-                chanage.
-              </div>
-              <div className="default">
-                Drag your image here, or click to browse
-              </div> */}
               <div className="info">
                 Profile(Avatar) Image
                 <div className="uploadInfo">Click/drag to upload</div>
@@ -368,12 +365,6 @@ const TweetGenerator = () => {
               }}
             />
             <div className="file-dummy">
-              {/* <div className="success">
-                Drag your image here, or click to browse
-              </div>
-              <div className="default">
-                Drag your image here, or click to browse
-              </div> */}
               <div className="info">
                 Tweet Images (Up to 4)
                 <div className="uploadInfo">Click/drag to upload</div>
@@ -432,6 +423,12 @@ const TweetGenerator = () => {
                 onInput={(e) => setVerified(!verified)}
               />
               <label>Verified</label>
+              <input
+                type="checkbox"
+                name="theme"
+                onInput={(e) => setTweetTheme(!tweetTheme)}
+              />
+              <label>Dark Theme</label>
             </StyledCheckboxDiv>
             {/* input for date */}
             <StyledInputDate
@@ -471,7 +468,8 @@ const TweetGenerator = () => {
             <StyledTextArea
               type="text"
               name="tweettext"
-              placeholder="Tweet"
+              placeholder="Tweet (max. 280 characters)"
+              maxLength={280}
               onInput={(e) => setTweet(e.target.value)}
             />
           </StyledRightDiv>

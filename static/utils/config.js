@@ -13,6 +13,8 @@ import {
   socialmediaTools,
   loading,
   shadow,
+  tweetGenerator,
+  colorConverter,
 } from "../icons/index";
 
 const config = {
@@ -186,13 +188,21 @@ const config = {
     }
   ],
 
-  colorTools: [],
+  colorTools: [
+    {
+      title: "Rgb-Hex-Hsl Converter",
+      desc: "Convert RGB or Hex color into different types of color codes",
+      link: "tools/color/rgb-hex-converter",
+      icon: colorConverter,
+      key: 1,
+    },
+  ],
   socialmediaTools: [
     {
       title: "Tweet Generator",
       desc: "Generate a fake tweet screenshot just for fun.",
       link: "tools/social/tweet-generator",
-      icon: loading,
+      icon: tweetGenerator,
       key: 1,
     },
   ],

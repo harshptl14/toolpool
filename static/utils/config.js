@@ -11,8 +11,8 @@ import {
   codingTools,
   colorsTools,
   socialmediaTools,
-  loading, 
-  shadow
+  loading,
+  shadow,
 } from "../icons/index";
 
 const config = {
@@ -161,13 +161,6 @@ const config = {
   ],
 
   imageTools: [
-    // {
-    //   title: "Image Cropper",
-    //   desc: "Crop unwanted parts of images and download desired part of the image as a new file",
-    //   link: "tools/image/image-cropper",
-    //   icon: resize,
-    //   key: 1,
-    // },
     {
       title: "Image Resizer",
       desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
@@ -175,20 +168,6 @@ const config = {
       icon: resize,
       key: 1,
     },
-    // {
-    //   title: "Image Color Extractor",
-    //   desc: "Extract all colors from an image and get color codes and details of this colors as a list",
-    //   link: "tools/image/image-color-extractor",
-    //   icon: lorem,
-    //   key: 3,
-    // },
-    // {
-    //   title: "Image Color Picker",
-    //   desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-    //   link: "tools/image/image-color-picker",
-    //   icon: lorem,
-    //   key: 4,
-    // },
   ],
   developerTools: [
     {
@@ -198,59 +177,16 @@ const config = {
       icon: shadow,
       key: 1,
     },
-    // {
-    //   title: "Image Resizer",
-    //   desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
-    //   link: "tools/image/imageresizer",
-    //   icon: lorem,
-    //   key: 2,
-    // },
-    // {
-    //   title: "Image Color Extractor",
-    //   desc: "Extract all colors from an image and get color codes and details of this colors as a list",
-    //   link: "tools/image/image-color-extractor",
-    //   icon: lorem,
-    //   key: 3,
-    // },
-    // {
-    //   title: "Image Color Picker",
-    //   desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-    //   link: "tools/image/image-color-picker",
-    //   icon: lorem,
-    //   key: 4,
-    // },
+    {
+      title: "CSS Glass-morphism Generator",
+      desc: "Generate CSS code for Glassmorphism effect on elements",
+      link: "tools/dev/glass-morphism-generator",
+      icon: shadow,
+      key: 2,
+    }
   ],
 
-  colorTools: [
-    // {
-    //   title: "Under development",
-    //   desc: "Tools in this category are in development, we are working so hard to add more and more tools ASAP",
-    //   link: "tools/color/underdevelopment",
-    //   icon: loading,
-    //   key: 1,
-    // },
-    // {
-    //   title: "Image Resizer",
-    //   desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
-    //   link: "tools/image/imageresizer",
-    //   icon: lorem,
-    //   key: 2,
-    // },
-    // {
-    //   title: "Image Color Extractor",
-    //   desc: "Extract all colors from an image and get color codes and details of this colors as a list",
-    //   link: "tools/image/image-color-extractor",
-    //   icon: lorem,
-    //   key: 3,
-    // },
-    // {
-    //   title: "Image Color Picker",
-    //   desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-    //   link: "tools/image/image-color-picker",
-    //   icon: lorem,
-    //   key: 4,
-    // },
-  ],
+  colorTools: [],
   socialmediaTools: [
     {
       title: "Tweet Generator",
@@ -259,34 +195,6 @@ const config = {
       icon: loading,
       key: 1,
     },
-    // {
-    //   title: "Image Cropper",
-    //   desc: "Crop unwanted parts of images and download desired part of the image as a new file",
-    //   link: "tools/image/image-cropper",
-    //   icon: resize,
-    //   key: 1,
-    // },
-    // {
-    //   title: "Image Resizer",
-    //   desc: "Resize any image to desired width and height either by protecting aspect ratio or not",
-    //   link: "tools/image/imageresizer",
-    //   icon: lorem,
-    //   key: 2,
-    // },
-    // {
-    //   title: "Image Color Extractor",
-    //   desc: "Extract all colors from an image and get color codes and details of this colors as a list",
-    //   link: "tools/image/image-color-extractor",
-    //   icon: lorem,
-    //   key: 3,
-    // },
-    // {
-    //   title: "Image Color Picker",
-    //   desc: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-    //   link: "tools/image/image-color-picker",
-    //   icon: lorem,
-    //   key: 4,
-    // },
   ],
 };
 

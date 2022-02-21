@@ -14,17 +14,9 @@ import {
   T2BReadme,
   UniqueReadme,
   WhitespaceReadme,
+  GlassMorphReadme
 } from "../toolDescriptions/toolReadmes";
-import BoxShadowGenerator from "../../components/Tools/DevTools/boxshadowgenerator";
-
-// import posterlorem from "../../public/assets/posters/posterLoremipsum.jpg";
-// import posterimageresizer from "../../public/assets/posters/posterImageresizer.jpg";
-// import posterlettercounter from "../../public/assets/posters/posterLettercounter.jpg";
-// import postertext2binary from "../../public/assets/posters/posterText2binary.jpg";
-// import posteruniqueword from "../../public/assets/posters/posterUniqueword.jpg";
-// import posterwhitespace from "../../public/assets/posters/posterWhitespace.jpg";
-// import postercase from "../../public/assets/posters/posterCaseconverter.jpg";
-
+import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
   caseconverter,
   lorem,
@@ -35,6 +27,7 @@ import {
   whiteSpace,
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
+import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
 
 export const URLLIST = [
   "text/lorem",
@@ -45,6 +38,7 @@ export const URLLIST = [
   "text/lettercounter",
   "image/imageresizer",
   "dev/box-shadow-generator",
+  "dev/glass-morphism-generator",
   "social/tweet-generator",
 ];
 
@@ -132,6 +126,15 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: resize,
       readme: BoxShadowReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+    "glass-morphism-generator": {
+      title: "CSS Glass-morphism Generator",
+      component: <GlassMorphismGenerator /> ,
+      description: "Generate CSS code for Glassmorphism effect on elements",
+      url: "dev/glass-morphism-generator",
+      icon: resize,
+      readme: GlassMorphReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

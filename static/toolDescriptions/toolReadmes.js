@@ -136,3 +136,21 @@ Above line is the syntax for providing box shadow in css.
 
 **Inset:** Inset changes the shadow from outer to inner. By default, shadow is outset.
 `;
+
+export const GlassMorphReadme = `
+## What is CSS Glass-morphism generator?
+
+Glassmorphism is the current UI trend in 2022. There is a growing tendency from big companies to use glassmorphism in their designs. Apple and Microsoft are some examples using this method in their user interfaces. 
+There are many applications of glass effect on Windows 11 UI. It is very important to set the background color, blur and opacity. If it is not balanced properly, its glass feeling may not be seen as expected in the web page.
+CSS Glassmorphism generator free tool helps you generate the CSS code for desired glassmorphism effect. 
+This tool offers various options to test and view glassmorphism effect according your color choice and also desired background colors or images. 
+You can directly then copy the code for the effect.
+
+### How values are applied?
+**Blur:** It defines the blur effect of the glass. 
+
+**Opacity:** It defines the opacity of colot of glass.
+
+There are options to replace background with specific colors or images. This gives a better understanding and view of the effect.
+The generated code doesn't contain the code for this background color/image. It's just for effect testing purposes.
+`;

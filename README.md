@@ -45,6 +45,7 @@ The aim to build this website is to reduce the number of tabs open in your brows
     <summary>Developer tools</summary>
 
 1. CSS Box Shadow generator
+2. CSS Glass-morphism generator
 </details>
 
 <details>
@@ -56,7 +57,7 @@ The aim to build this website is to reduce the number of tabs open in your brows
 <details>
     <summary>Social Media tools</summary>
 
-1. Tweet generator
+1. Tweet generator (under-construction)
 </details>
 <br/>
 

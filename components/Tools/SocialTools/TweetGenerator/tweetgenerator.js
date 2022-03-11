@@ -7,7 +7,6 @@ import { Months } from "../../../../static/helpers/helperfunctions";
 import { toPng } from "html-to-image";
 import ButtonDiv from "../../ButtonDiv";
 import { Cross } from "@styled-icons/entypo/Cross";
-import html2canvas from "html2canvas";
 
 const StyledFilearea = styled.div`
   --limit-color: ${({ theme }) => theme.hover};
@@ -218,7 +217,7 @@ const TweetGenerator = () => {
   const tweetRef = useRef();
 
   const handleDownload = async () => {
-    toPng(tweetRef.current, { cacheBust: true })
+    toPng(tweetRef.current, { cacheBust: true, width: 670 })
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.download = "tweet.png";
@@ -229,20 +228,6 @@ const TweetGenerator = () => {
       .catch((err) => {
         console.log(err);
       });
-    // try {
-    //   const canvas = await html2canvas(tweetRef.current, {
-    //     allowTaint: true,
-    //   });
-    //   const a = document.createElement("a");
-    //   a.style.display = "none";
-    //   a.href = canvas.toDataURL("image/png");
-    //   a.download = `tweet.png`;
-    //   document.body.appendChild(a);
-    //   a.click();
-    //   a.remove();
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
   const filter = [];
@@ -285,12 +270,18 @@ const TweetGenerator = () => {
               accept="image/*"
               id="profilePhoto"
               disabled={profileImage !== null}
-              onChange={(e) => {
+              onChange={async (e) => {
                 if (!e.target.files || e.target.files.length === 0) {
                   profileImage === null ? setProfileImage(undefined) : {};
                   return;
                 }
-                setProfileImage(window.URL.createObjectURL(e.target.files[0]));
+                var objectUrl = await new Promise((resolve) => {
+                  var reader = new FileReader();
+                  reader.onload = (e) => resolve(reader.result);
+                  reader.readAsDataURL(e.target.files[0]);
+                });
+                setProfileImage(objectUrl);
+                // setProfileImage(URL.createObjectURL(e.target.files[0]));
               }}
             />
             <div className="file-dummy">
@@ -333,7 +324,7 @@ const TweetGenerator = () => {
               accept="image/*"
               multiple="multiple"
               disabled={tweetImages.length === 4}
-              onChange={(e) => {
+              onChange={async (e) => {
                 if (!e.target.files || e.target.files.length === 0) {
                   return;
                 }
@@ -341,25 +332,35 @@ const TweetGenerator = () => {
                 var imgStack = [];
                 var imgUrl;
 
-                if (tweetImages.length > 0) {
-                  len = 4 - tweetImages.length;
-                }
+                // console.log();
+
+                // if (tweetImages.length > 0) {
+                //   len = 4 - tweetImages.length;
+                // }
 
                 if (tweetImages.length === 0) {
                   for (var i = 0; i < len; i++) {
-                    imgUrl = window.URL.createObjectURL(e.target.files[i]);
-                    console.log(imgUrl);
+                    // imgUrl = URL.createObjectURL(e.target.files[i]);
+                    imgUrl = await new Promise((resolve) => {
+                      var reader = new FileReader();
+                      reader.onload = (e) => resolve(reader.result);
+                      reader.readAsDataURL(e.target.files[i]);
+                    });
                     imgStack.push(imgUrl);
                   }
                   setTweetImages(imgStack);
                   return;
                 } else {
                   for (var i = 0; i < len; i++) {
-                    imgUrl = window.URL.createObjectURL(e.target.files[i]);
-                    console.log(imgUrl);
+                    // imgUrl = URL.createObjectURL(e.target.files[i]);
+                    imgUrl = await new Promise((resolve) => {
+                      var reader = new FileReader();
+                      reader.onload = (e) => resolve(reader.result);
+                      reader.readAsDataURL(e.target.files[i]);
+                    });
                     imgStack.push(imgUrl);
                   }
-                  setTweetImages(tweetImages.concat(imgStack));
+                  setTweetImages((timgs) => timgs.concat(imgStack));
                   return;
                 }
               }}

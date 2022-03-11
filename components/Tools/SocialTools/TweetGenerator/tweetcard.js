@@ -6,7 +6,7 @@ import { nFormatter } from "../../../../static/helpers/helperfunctions";
 
 const MainCard = styled.div`
   display: flex;
-  width: 600px;
+  max-width: 600px;
   height: max-content;
   margin: auto;
   background-color: ${(props) => (props.tTheme ? "black" : "white")};
@@ -101,7 +101,7 @@ const TweetImages = styled.div`
   overflow: hidden;
   margin-top: 0.5rem;
   padding: 0;
-  border: 2px ${({ theme }) => theme.background} solid;
+  border: 2px ${(props) => (props.tTheme ? "black" : "white")} solid;
 
   .col1 {
     width: ${(props) => (props.len === 1 ? "100%" : "50%")};
@@ -275,7 +275,7 @@ const TweetCard = React.forwardRef((props, ref) => {
           />
         </TweetText>
         {props.imgList.length !== 0 && (
-          <TweetImages len={props.imgList.length}>
+          <TweetImages len={props.imgList.length} tTheme={props.tTheme}>
             <div className="col1">
               {props.imgList[0] && (
                 <ImageGridItem path={props.imgList[0]} alt={0} />

@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async () => {
   const paths = URLLIST.map((obj) => {
@@ -18,7 +19,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -79,6 +80,12 @@ const StyledTitle = styled.div`
   }
 `;
 
+const LoadingWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  margin: auto;
+`;
+
 const ToolWrapper = ({ category, toolname }) => {
   const [state, dispatch] = useContext(ToastContext);
 
@@ -93,6 +100,12 @@ const ToolWrapper = ({ category, toolname }) => {
       <img alt={alt} src={src} title={title} style={{ maxWidth: 250 }} />
     ),
   };
+
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <LoadingWrapper>Loading...</LoadingWrapper>;
+  }
 
   return (
     <div>
@@ -118,7 +131,10 @@ const ToolWrapper = ({ category, toolname }) => {
           property="og:image:secure_url"
           content={TOOLS[category][toolname]["poster"]}
         />
-        <meta property="og:url" content={`https://toolpool.ml/tools/${category}/${toolname}`} />
+        <meta
+          property="og:url"
+          content={`https://toolpool.ml/tools/${category}/${toolname}`}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />

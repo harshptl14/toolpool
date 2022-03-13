@@ -6,21 +6,21 @@ import { useEffect } from "react";
 
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  // const router = useRouter();
   
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+  // useEffect(() => {
+  //   const handleRouteChange = (url) => {
+  //     gtag.pageview(url);
+  //   };
+  //   router.events.on("routeChangeComplete", handleRouteChange);
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange);
+  //   };
+  // }, [router.events]);
 
   return (
     <>
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
             });
           `,
         }}
-      />
+      /> */}
       <Layout>
         <Component {...pageProps} />
       </Layout>

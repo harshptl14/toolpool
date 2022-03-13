@@ -9,6 +9,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import getOgImage from "../../../lib/getOGImage";
 
 export const getStaticPaths = async () => {
   const paths = URLLIST.map((obj) => {
@@ -26,14 +27,17 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const toolname = context.params.toolname;
   const category = context.params.category;
-
-  // console.log(toolname);
-  // console.log(category);
+  const ogImage = await getOgImage(
+    `/toolpool.ml?title=${TOOLS[category][toolname]["title"]}&url=${process.env.BASE_URL}/`
+  );
+  console.log(toolname);
+  console.log(category);
 
   return {
     props: {
       category: category,
       toolname: toolname,
+      ogImage: ogImage,
     },
   };
 };
@@ -86,7 +90,7 @@ const LoadingWrapper = styled.div`
   margin: auto;
 `;
 
-const ToolWrapper = ({ category, toolname }) => {
+const ToolWrapper = ({ category, toolname, ogImage }) => {
   const [state, dispatch] = useContext(ToastContext);
 
   useEffect(() => {
@@ -123,14 +127,8 @@ const ToolWrapper = ({ category, toolname }) => {
           property="og:description"
           content={TOOLS[category][toolname]["description"]}
         />
-        <meta
-          property="og:image"
-          content={TOOLS[category][toolname]["poster"]}
-        />
-        <meta
-          property="og:image:secure_url"
-          content={TOOLS[category][toolname]["poster"]}
-        />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
         <meta
           property="og:url"
           content={`https://toolpool.ml/tools/${category}/${toolname}`}
@@ -148,10 +146,7 @@ const ToolWrapper = ({ category, toolname }) => {
           name="twitter:description"
           content={TOOLS[category][toolname]["description"]}
         />
-        <meta
-          name="twitter:image"
-          content={TOOLS[category][toolname]["poster"]}
-        />
+        <meta name="twitter:image" content={ogImage} />
       </Head>
       <StyledTitleDiv>
         <Icon>

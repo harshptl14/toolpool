@@ -32,6 +32,7 @@ import {
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
+import ImageColorPicker from "../../components/Tools/ImageTools/ColorExtractor/ColorExtractor";
 
 export const URLLIST = [
   "text/lorem",
@@ -41,6 +42,7 @@ export const URLLIST = [
   "text/whitespaceremover",
   "text/lettercounter",
   "image/imageresizer",
+  "image/imagecolorpicker",
   "dev/box-shadow-generator",
   "dev/glass-morphism-generator",
   "social/tweet-generator",
@@ -121,6 +123,15 @@ export const TOOLS = {
       icon: resize,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
+    imagecolorpicker:{
+      title: "Image Color Picker",
+      component: <ImageColorPicker />,
+      url: "image/imagecolorpicker",
+      description: "Get exact pixel color from an image.",
+      readme: ImageResizerreadme,
+      icon: resize,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    }
   },
   dev: {
     "box-shadow-generator": {

@@ -16,7 +16,7 @@ The aim to build this website is to reduce the number of tabs open in your brows
 <details>
   <summary>How to use it?</summary>
     
-  1. Head over to the [TOOLPOOL](toolpool.ml)
+  1. Head over to the [TOOLPOOL](https://toolpool.ml)
   2. Search for the tool you wanna use
   3. Most of the tools are user friendly so there won't be any confusion, still if you find them diffcult to use, we have provided a small desciption for every tool
 </details>

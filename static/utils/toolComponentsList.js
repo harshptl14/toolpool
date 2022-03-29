@@ -15,7 +15,8 @@ import {
   T2BReadme,
   UniqueReadme,
   WhitespaceReadme,
-  GlassMorphReadme
+  GlassMorphReadme,
+  ImageColorPickerReadme
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -32,7 +33,7 @@ import {
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
-import ImageColorPicker from "../../components/Tools/ImageTools/ColorExtractor/ColorExtractor";
+import ImageColorPicker from "../../components/Tools/ImageTools/ImageColorPicker/imagecolorpicker";
 
 export const URLLIST = [
   "text/lorem",
@@ -128,7 +129,7 @@ export const TOOLS = {
       component: <ImageColorPicker />,
       url: "image/imagecolorpicker",
       description: "Get exact pixel color from an image.",
-      readme: ImageResizerreadme,
+      readme: ImageColorPickerReadme,
       icon: resize,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     }

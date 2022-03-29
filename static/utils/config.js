@@ -170,13 +170,13 @@ const config = {
       icon: resize,
       key: 1,
     },
-    // {
-    //   title: "Image Color Picker",
-    //   desc: "Get exact pixel color from an image",
-    //   link: "tools/image/imagecolorpicker",
-    //   icon: resize,
-    //   key: 2,
-    // },
+    {
+      title: "Image Color Picker",
+      desc: "Get exact pixel color from an image",
+      link: "tools/image/imagecolorpicker",
+      icon: resize,
+      key: 2,
+    },
   ],
   developerTools: [
     {

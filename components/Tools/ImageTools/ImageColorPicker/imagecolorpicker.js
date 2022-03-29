@@ -2,14 +2,38 @@ import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
 import { useState, useCallback } from "react";
 import Canvas from "../canvas";
-
+import ButtonDiv from "../../ButtonDiv";
+import { Copy } from "@styled-icons/boxicons-regular";
+import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 const Wrapperdiv = styled.div`
   .canvas-preview {
-    /*  overflow-x: scroll;*/
-    margin: auto;
-    width: fit-content;
-    border: 1px solid red;
+    margin: 1em auto;
+    max-width: fit-content;
+    overflow-x: scroll;
   }
+
+  .result {
+    width: max-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 830px) {
+    .result {
+      flex-direction: column;
+    }
+  }
+
+  .action-btns {
+    margin: auto;
+    width: max-content;
+  }
+`;
+
+const CopyButton = styled.button`
+  background-color: transparent;
+  border: none;
 `;
 
 const StyledFilearea = styled.div`
@@ -17,16 +41,18 @@ const StyledFilearea = styled.div`
 `;
 
 const ResultWrapper = styled.div`
-  max-width: 100%;
-  min-width: 50%;
-  margin: auto;
+  margin: 2em auto;
   padding: 1em;
-  background-color: ${(theme) => theme.shadeVarient};
+  max-width: max-content;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.shadeVarient};
+  display: flex;
 
   .color-display {
-    width: 150px;
+    min-width: 100px;
     height: inherit;
-    background-color: red;
+    background-color: ${(props) => `${props.hex}`};
+    border-radius: 10px;
   }
 
   .color-data {
@@ -53,9 +79,20 @@ function findPos(obj) {
   return undefined;
 }
 
+const hexToRgb = (hex) => {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? `
+        ${parseInt(result[1], 16)},
+        ${parseInt(result[2], 16)},
+        ${parseInt(result[3], 16)}
+      `
+    : null;
+};
+
 const ImageColorPicker = () => {
   const [previewImage, setpreviewImage] = useState(null);
-  const [rgb, setRgb] = useState(null);
+  const [hex, setHex] = useState("#ffffff");
 
   const draw = useCallback(
     (ctx) => {
@@ -83,6 +120,33 @@ const ImageColorPicker = () => {
     [previewImage]
   );
 
+  const finalButtons = [
+    {
+      key: "1",
+      title: "Pick color",
+      method: () => {
+        const eyeDropper = new EyeDropper();
+        try {
+          eyeDropper.open().then((data) => {
+            setHex(data.sRGBHex);
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      type: "normal",
+    },
+    {
+      key: "2",
+      title: "Reset",
+      method: () => {
+        setpreviewImage(null);
+        setHex(null);
+      },
+      type: "normal",
+    },
+  ];
+
   return (
     <Wrapperdiv>
       <StyledFilearea>
@@ -92,11 +156,11 @@ const ImageColorPicker = () => {
           id="images"
           required="required"
           onClick={(e) => {
-            setpreviewImage(undefined);
+            setpreviewImage(null);
           }}
           onChange={(e) => {
             if (e.target.files.length === 0) {
-              setpreviewImage(undefined);
+              setpreviewImage(null);
               return;
             }
             var image = new Image();
@@ -117,30 +181,55 @@ const ImageColorPicker = () => {
           </div>
         </div>
       </StyledFilearea>
-      {rgb && (
-        <ResultWrapper>
-          <div className="color-display"></div>
-          <div className="color-data">
-            <span>RGB : {rgb[0] + `,` + rgb[1] + `,` + rgb[2]}</span>
-            <span>Hex : </span>
-            <span>HSV : </span>
+      {previewImage && (
+        <div className="result">
+          <ResultWrapper hex={hex}>
+            <div className="color-display"></div>
+            <div className="color-data">
+              <span>
+                RGB : ({`${hexToRgb(hex)}`})
+                <CopyButton
+                  onClick={(e) => {
+                    copyToClipboard(hexToRgb(hex));
+                  }}
+                >
+                  <Copy width={20} />
+                </CopyButton>
+              </span>
+              <span>
+                Hex : {hex}
+                <CopyButton
+                  onClick={(e) => {
+                    copyToClipboard(hex);
+                  }}
+                >
+                  <Copy width={20} />
+                </CopyButton>
+              </span>
+            </div>
+          </ResultWrapper>
+          <div className="action-btns">
+            {previewImage && (
+              <ButtonDiv filter={[]} finalButtons={finalButtons} />
+            )}
           </div>
-        </ResultWrapper>
+        </div>
       )}
+
       {previewImage && (
         <div className="canvas-preview">
           <Canvas
             id="canvas"
             draw={draw}
-            width={600}
-            height={400}
+            width={700}
+            height={500}
             onClick={(e, ctx) => {
-              var pos = findPos(ctx.canvas);
-              const x = e.pageX - pos.x;
-              const y = e.pageY - pos.y;
-              var imageData = ctx.getImageData(x, y, 1, 1).data;
-              const [r, g, b] = imageData;
-              setRgb([r, g, b]);
+              // var pos = findPos(ctx.canvas);
+              // const x = e.pageX - pos.x;
+              // const y = e.pageY - pos.y;
+              // var imageData = ctx.getImageData(x, y, 1, 1).data;
+              // const [r, g, b] = imageData;
+              // setRgb([r, g, b]);
             }}
           />
         </div>

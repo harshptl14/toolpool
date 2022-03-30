@@ -193,6 +193,13 @@ const config = {
       icon: shadow,
       key: 2,
     },
+    {
+      title: "CSS Transition Generator",
+      desc: "Generate CSS code for transitions and animations",
+      link: "tools/dev/css-transition-generator",
+      icon: shadow,
+      key: 3,
+    },
   ],
 
   colorTools: [

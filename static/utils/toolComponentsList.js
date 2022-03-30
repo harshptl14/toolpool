@@ -16,7 +16,7 @@ import {
   UniqueReadme,
   WhitespaceReadme,
   GlassMorphReadme,
-  ImageColorPickerReadme
+  ImageColorPickerReadme,
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -34,6 +34,7 @@ import {
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
 import ImageColorPicker from "../../components/Tools/ImageTools/ImageColorPicker/imagecolorpicker";
+import CSSTransitionsWrapper from "../../components/Tools/DevTools/CSSTransitions/CssTransitions";
 
 export const URLLIST = [
   "text/lorem",
@@ -46,6 +47,7 @@ export const URLLIST = [
   "image/imagecolorpicker",
   "dev/box-shadow-generator",
   "dev/glass-morphism-generator",
+  "dev/css-transition-generator",
   "social/tweet-generator",
   "color/rgb-hex-converter",
 ];
@@ -124,7 +126,7 @@ export const TOOLS = {
       icon: resize,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
-    imagecolorpicker:{
+    imagecolorpicker: {
       title: "Image Color Picker",
       component: <ImageColorPicker />,
       url: "image/imagecolorpicker",
@@ -132,7 +134,7 @@ export const TOOLS = {
       readme: ImageColorPickerReadme,
       icon: resize,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
-    }
+    },
   },
   dev: {
     "box-shadow-generator": {
@@ -147,9 +149,18 @@ export const TOOLS = {
     },
     "glass-morphism-generator": {
       title: "CSS Glass-morphism Generator",
-      component: <GlassMorphismGenerator /> ,
+      component: <GlassMorphismGenerator />,
       description: "Generate CSS code for Glassmorphism effect on elements",
       url: "dev/glass-morphism-generator",
+      icon: resize,
+      readme: GlassMorphReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+    "css-transition-generator": {
+      title: "CSS Transition Generator",
+      component: <CSSTransitionsWrapper />,
+      description: "Generate CSS code for transitions and animations",
+      url: "dev/css-transition-generator",
       icon: resize,
       readme: GlassMorphReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",

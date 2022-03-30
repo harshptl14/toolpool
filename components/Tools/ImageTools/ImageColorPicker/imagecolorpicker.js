@@ -141,7 +141,7 @@ const ImageColorPicker = () => {
       title: "Reset",
       method: () => {
         setpreviewImage(null);
-        setHex(null);
+        setHex('#ffffff');
       },
       type: "normal",
     },

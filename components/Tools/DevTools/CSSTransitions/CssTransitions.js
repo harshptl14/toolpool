@@ -4,7 +4,8 @@ import { useContext, useEffect } from "react";
 import { TransitionContext } from "./context/TransitionContext";
 import LabeledInput from "../../../Common/LabeledInput";
 import { TypeComponents } from "./TypeComponents";
-
+import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import ButtonDiv from "../../ButtonDiv";
 // CSS code generator for various transition animations
 const TranstionParentWrapper = styled.div`
   width: 100%;
@@ -36,19 +37,68 @@ const ResultSection = styled.div`
   }
 `;
 
-const CSSTransitions = (props) => {
+const OutputBox = styled.div`
+  width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  background-color: ${({ theme }) => theme.shadeVarient};
+
+  .output {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.color};
+    text-align: center;
+    color: ${({ theme }) => theme.text};
+    ${(props) => props.mainCode}
+    ${(props) => props.transitionCode}
+  }
+
+  .output:hover {
+    ${(props) => props.pseudoCode}
+  }
+`;
+
+const ResultCodeSection = styled.div`
+  width: 90%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+
+  .desc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .desc p {
+    min-width: max-content;
+  }
+
+  .maincode {
+    min-width: 100%;
+  }
+
+  .code {
+    background-color: ${({ theme }) => theme.shadeVarient};
+    padding: 1em;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+`;
+
+const CSSTransitionsGenerator = (props) => {
   const [state, dispatch] = useContext(TransitionContext);
 
-  // Changin the resultant code whenever a property is changed
+  // Changing the resultant code whenever a property is changed
   useEffect(() => {
-    dispatch({ type: "CHANGECODE" });
-  }, [
-    state.transitionType,
-    state.duration,
-    state.delay,
-    state.timingFunction,
-    state.delay,
-  ]);
+    dispatch({ type: "INITCODE" });
+  }, [state.transitionType]);
 
   const onTypeSelect = (e) => {
     console.log(e.target.value);
@@ -67,6 +117,28 @@ const CSSTransitions = (props) => {
   const onDelayChange = (e) => {
     dispatch({ type: "CHANGEDELAY", delay: e.target.value });
   };
+
+  const mainCopyButtons = [
+    {
+      key: "1",
+      title: "Copy",
+      method: () => {
+        copyToClipboard(state.mainCode + "\n" + state.transitionCode);
+      },
+      type: "normal",
+    },
+  ];
+
+  const pseudoCopyButtons = [
+    {
+      key: "1",
+      title: "Copy",
+      method: () => {
+        copyToClipboard(state.pseudoCode);
+      },
+      type: "normal",
+    },
+  ];
 
   return (
     <TranstionParentWrapper>
@@ -109,9 +181,35 @@ const CSSTransitions = (props) => {
         </LabeledInput>
       </InputSection>
       <ResultSection>
-        {state.mainCode}
-        <br />
-        {state.pseudoCode}
+        <OutputBox
+          mainCode={state.mainCode}
+          transitionCode={state.transitionCode}
+          pseudoCode={state.pseudoCode}
+        >
+          <div className="output">Hover me</div>
+        </OutputBox>
+        <ResultCodeSection>
+          <h2>Code</h2>
+          <div className="maincode">
+            <div className="desc">
+              <p>Code for main element</p>
+              <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
+            </div>
+            <div className="code">
+              <div>{state.mainCode}</div>
+              <div>{state.transitionCode}</div>
+            </div>
+          </div>
+          <div className="pseudocode">
+            <div className="desc">
+              <p>Code for pseudo element</p>
+              <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
+            </div>
+            <div className="code">
+              <div>{state.pseudoCode}</div>
+            </div>
+          </div>
+        </ResultCodeSection>
       </ResultSection>
     </TranstionParentWrapper>
   );
@@ -120,7 +218,7 @@ const CSSTransitions = (props) => {
 const CSSTransitionsWrapper = (props) => {
   return (
     <CSSTransitionProvider>
-      <CSSTransitions />
+      <CSSTransitionsGenerator />
     </CSSTransitionProvider>
   );
 };

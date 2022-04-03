@@ -12,5 +12,5 @@ export const PseudoCodeTemplates = {
   width: "width: 150px;",
   height: "height: 150px;",
   "background-color": "background-color: #00ff00;",
-  outline: "outline: 1px solid #00ff00;",
+  outline: "outline: 5px solid #00ff00;",
 };

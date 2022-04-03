@@ -45,7 +45,7 @@ const OutputBox = styled.div`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.shadeVarient};
-
+  padding: 1em;
   .output {
     width: 150px;
     height: 150px;
@@ -160,6 +160,7 @@ const CSSTransitionsGenerator = (props) => {
             name="duration"
             placeholder="In seconds"
             onChange={onDurationChange}
+            defaultValue={state.duration}
           />
         </LabeledInput>
         <LabeledInput label="Timing Function">
@@ -177,6 +178,7 @@ const CSSTransitionsGenerator = (props) => {
             name="delay"
             placeholder="In seconds"
             onChange={onDelayChange}
+            defaultValue={state.delay}
           />
         </LabeledInput>
       </InputSection>
@@ -186,7 +188,9 @@ const CSSTransitionsGenerator = (props) => {
           transitionCode={state.transitionCode}
           pseudoCode={state.pseudoCode}
         >
-          <div className="output">Hover me</div>
+          <div className="output">
+            <p>Hover me</p>
+          </div>
         </OutputBox>
         <ResultCodeSection>
           <h2>Code</h2>
@@ -202,7 +206,9 @@ const CSSTransitionsGenerator = (props) => {
           </div>
           <div className="pseudocode">
             <div className="desc">
-              <p>Code for pseudo element</p>
+              <p>
+                Code for pseudo element, <i>like :hover</i>
+              </p>
               <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
             </div>
             <div className="code">

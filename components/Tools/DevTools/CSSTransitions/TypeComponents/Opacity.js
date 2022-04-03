@@ -2,9 +2,9 @@ import { useContext } from "react";
 import styled from "styled-components";
 import LabeledInput from "../../../../Common/LabeledInput";
 import { TransitionContext } from "../context/TransitionContext";
-const Wrapper = styled.div`
-  width: 100%;
-`;
+// const Wrapper = styled.div`
+//   width: 100%;
+// `;
 
 const SlidersSection = styled.div`
   ${({ theme }) => theme.mixins.slider}
@@ -52,7 +52,6 @@ const OpacityInputs = () => {
   };
 
   const onPseudoOpacityChangeHandler = (e) => {
-    console.log(e.target.value);
     const pseudoCode = `
     opacity: ${e.target.value};
     `;
@@ -60,7 +59,7 @@ const OpacityInputs = () => {
   };
 
   return (
-    <Wrapper>
+    <>
       <SlidersSection>
         <SliderDiv>
           <LabeledInput label="Initial opacity">
@@ -93,7 +92,7 @@ const OpacityInputs = () => {
           </LabeledInput>
         </SliderDiv>
       </SlidersSection>
-    </Wrapper>
+    </>
   );
 };
 

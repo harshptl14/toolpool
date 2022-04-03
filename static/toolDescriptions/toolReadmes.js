@@ -166,3 +166,28 @@ Result will be listed in Hex and RGB color code format and you can copy any of t
 Upload an image file and click on **Pick Color** button. You will get the magnified pixel view by hovering the mouse over image. 
 Click on the desired pixel and color-preview will be displayed with color codes. You can directly copy the color codes.
 `;
+
+export const CSSTransitionsReadme = `
+## What is CSS Transition Generator?
+
+CSS Transition Generator is an online tool to generate css code for various types of transition animations for properties like width, height, outline, background-color and opacity.
+
+You can set values for different properties for an element and also change the duration and delay of the transition. 
+
+**Transition syntax explanation:**
+
+The first parameter defines which CSS3 property will be affected by the transition (ex. outline, width, etc.).
+
+The second parameter defines the duration in seconds (s) of the transition. In our example the duration is 1 seconds.
+
+The third parameter (optional) is the speed curve of the transition. Below are some functions that can be used:
+- ease: specifies a transition effect with a slow start, then fast, then slow. It is the default value.
+- linear: specifies a transition effect with the same speed from start to the end.
+- ease-in: specifies a transition effect with a slow start.
+- ease-out: specifies a transition effect with a slow end.
+- ease-in-out: specifies a transition effect with a slow start and a slow end.
+
+We can also add a delay (optional), in order to shift the transition according to a duration.
+
+First code snippets is for the initial state of the element and the seconds snippet is for the pseudo class like hover, click, etc. of the element.
+`;

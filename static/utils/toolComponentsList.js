@@ -17,6 +17,7 @@ import {
   WhitespaceReadme,
   GlassMorphReadme,
   ImageColorPickerReadme,
+  CSSTransitionsReadme,
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -162,7 +163,7 @@ export const TOOLS = {
       description: "Generate CSS code for transitions and animations",
       url: "dev/css-transition-generator",
       icon: resize,
-      readme: GlassMorphReadme,
+      readme: CSSTransitionsReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

@@ -18,7 +18,7 @@ const HeightInputs = () => {
         }}
       />
       <Slider
-        label="New height"
+        label="Pseudo height"
         min={10}
         max={300}
         step={1}

@@ -18,6 +18,7 @@ const OutlineInputs = () => {
         step={1}
         defaultValue={1}
         onChange={(e) => {
+          setInitWidth(e.target.value);
           const mainCode = `outline: ${e.target.value}px solid ${initColor};`;
           dispatch({ type: "CHANGEMAINCODE", mainCode: mainCode });
         }}
@@ -38,6 +39,7 @@ const OutlineInputs = () => {
         step={1}
         defaultValue={5}
         onChange={(e) => {
+          setNewWidth(e.target.value);
           const pseudoCode = `outline: ${e.target.value}px solid ${newColor};`;
           dispatch({ type: "CHANGEPSEUDOCODE", pseudoCode: pseudoCode });
         }}
@@ -47,7 +49,7 @@ const OutlineInputs = () => {
         onChange={(e) => {
           setNewColor(e.target.value);
           const pseudoCode = `outline: ${newWidth}px solid ${e.target.value};`;
-          dispatch({ type: "CHANGEMAINCODE", pseudoCode: pseudoCode });
+          dispatch({ type: "CHANGEPSEUDOCODE", pseudoCode: pseudoCode });
         }}
         value={newColor}
       />

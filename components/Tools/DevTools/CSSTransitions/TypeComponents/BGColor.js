@@ -17,7 +17,7 @@ const BGColorInputs = () => {
   return (
     <ColorInputsWrapper>
       <ColorInput
-        label="Initial Color"
+        label="Initial Background Color"
         onChange={(e) => {
           setInitColor(e.target.value);
           const mainCode = `background-color: ${e.target.value};`;
@@ -26,7 +26,7 @@ const BGColorInputs = () => {
         value={initColor}
       />
       <ColorInput
-        label="New Color"
+        label="Pseudo Background Color"
         onChange={(e) => {
           setNewColor(e.target.value);
           const pseudoCode = `background-color: ${e.target.value};`;

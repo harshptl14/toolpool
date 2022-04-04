@@ -190,4 +190,16 @@ The third parameter (optional) is the speed curve of the transition. Below are s
 We can also add a delay (optional), in order to shift the transition according to a duration.
 
 First code snippets is for the initial state of the element and the seconds snippet is for the pseudo class like hover, click, etc. of the element.
+
+Example:
+
+.box {\n
+    opacity: 0.5;
+    transition: opacity 1s ease 0s;
+}
+
+.box:hover {\n
+    opacity: 1;
+}
+
 `;

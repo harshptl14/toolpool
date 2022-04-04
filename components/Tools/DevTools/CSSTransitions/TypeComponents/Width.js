@@ -18,7 +18,7 @@ const WidthInputs = () => {
         }}
       />
       <Slider
-        label="New Width"
+        label="Pseudo Width"
         min={10}
         max={300}
         step={1}

@@ -98,6 +98,52 @@ _Note: New category will get listed in `master` only after at least one tool is 
 _You can see other tools for reference_
 
 </details/>
+
+<details>
+<summary><strong>How to style Toolpool</strong></summary>
+  <br/>
+To start with, the styles directory holds most of the properties of the design system. You can find common queries regarding the usage of the style system below.
+
+1.  How to access colors based on Theme
+    
+    -   [Theme](https://github.com/harshptl14/toolpool/blob/new-tool/styles/theme.js) wraps the [whole app](https://github.com/harshptl14/toolpool/blob/new-tool/components/Layout.js), so it’s accessible throughout the application
+        
+        To access the theme, use this syntax
+        
+        ```jsx
+        ${({ theme }) => theme.color};
+        
+        ```
+        
+        It will automatically detect the light/dark mode and gives the colors accordingly.
+        
+        [Theme.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/theme.js) contains the default color for the application for both light and dark modes respectively.
+        
+1.  How to access different custom component’s style
+    
+    -   To access rapidly used custom components, go through [styles/mixins.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/mixins.js)
+        To access components, use this syntax
+        
+        ```jsx
+        ${({ theme }) => theme.mixins.smallButton};
+        
+        ```
+        
+        If you will run into a situation, where it’s required to make components that will reuse in the future, then make sure to put them into the [mixins](https://github.com/harshptl14/toolpool/blob/new-tool/styles/mixins.js) folder.
+        
+3.  Want to change the default properties of a component?
+    
+    -   Use the component’s style from mixins.js, wrap with the custom component and overwrite the value that you want to change.
+  
+    
+    ```jsx
+    const StyledCustomizedButton = styled.button`
+    ${({ theme }) => theme.mixins.smallButton};
+    padding: 1em 2em;
+    `;
+    
+    ```
+</details>
 <br/>
 
 # Any contributions you make will be under the MIT Software License

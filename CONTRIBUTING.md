@@ -119,7 +119,7 @@ To start with, the styles directory holds most of the properties of the design s
         
         [Theme.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/theme.js) contains the default color for the application for both light and dark modes respectively.
         
-1.  How to access different custom component’s style
+2.  How to access different custom component’s style
     
     -   To access rapidly used custom components, go through [styles/mixins.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/mixins.js)
         To access components, use this syntax
@@ -136,13 +136,13 @@ To start with, the styles directory holds most of the properties of the design s
     -   Use the component’s style from mixins.js, wrap with the custom component and overwrite the value that you want to change.
   
     
-    ```jsx
-    const StyledCustomizedButton = styled.button`
-    ${({ theme }) => theme.mixins.smallButton};
-    padding: 1em 2em;
-    `;
-    
-    ```
+        ```jsx
+        const StyledCustomizedButton = styled.button`
+        ${({ theme }) => theme.mixins.smallButton};
+        padding: 1em 2em;
+        `;
+
+        ```
 </details>
 <br/>
 

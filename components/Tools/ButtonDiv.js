@@ -96,7 +96,7 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
                   if (!state.show) {
                     dispatch({
                       type: "SHOW",
-                      message: "Copied Text!!",
+                      message: "Copied to Clipboard!!",
                     });
                   }
                 }

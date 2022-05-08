@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useTheme } from "styled-components";
-import { copyToClipboard } from "../../../static/helpers/helperfunctions";
-import ButtonDiv from "../ButtonDiv";
+import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import ButtonDiv from "../../ButtonDiv";
 
 const StyledOuterDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};

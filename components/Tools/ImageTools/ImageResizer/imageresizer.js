@@ -4,65 +4,9 @@ import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
 import ButtonDiv from "../../ButtonDiv";
 import { ToastContext } from "../../../Toast/toastcontext";
+
 const StyledFilearea = styled.div`
-  width: 100%;
-  position: relative;
-
-  input[type="file"] {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  .file-dummy {
-    width: 100%;
-    padding: 30px;
-    background-color: ${({ theme }) => theme.footer};
-    border: 1.8px dashed ${({ theme }) => theme.color};
-    text-align: center;
-    transition: background 0.3s ease-in-out;
-
-    color: ${({ theme }) => theme.descfont};
-
-    .success {
-      display: none;
-    }
-
-    .default {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 15px;
-    }
-  }
-
-  &:hover .file-dummy {
-    background: ${({ theme }) => theme.shade};
-  }
-
-  input[type="file"]:focus + .file-dummy {
-    /* outline: 2px solid rgba(255, 255, 255, 0.5); */
-    /* outline: -webkit-focus-ring-color auto 5px; */
-  }
-
-  input[type="file"]:valid + .file-dummy {
-    /* background-color: ${({ theme }) => theme.shade}; */
-
-    .success {
-      display: inline-block;
-      color: ${({ theme }) => theme.color};
-    }
-    .default {
-      display: none;
-    }
-  }
+ ${({theme}) => theme.mixins.imageUploader}
 `;
 
 const StyledPreviewimageDiv = styled.div`
@@ -106,20 +50,13 @@ const StyledPreviewimageDiv = styled.div`
 
 const StyledFilterDiv = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.mixins.flexBetween}
+  gap: 30px;
   margin: 20px 0 10px 0;
 `;
-const StyledInput = styled.input`
-  background-color: ${({ theme }) => theme.footer};
-  padding: 10px;
-  width: 49%;
-  border: 1.5px solid ${({ theme }) => theme.shadeVarient};
-  color: ${({ theme }) => theme.text};
 
-  :active {
-    outline: 1.8px dashed ${({ theme }) => theme.color};
-  }
+const StyledInput = styled.input`
+  ${({ theme }) => theme.mixins.textbox};
 `;
 
 const StyledCheckboxDiv = styled.div`
@@ -138,13 +75,13 @@ const ImageResizer = () => {
   // const [isClicked, setisClicked] = useState(false);
   const [isChecked, setisChecked] = useState(true);
 
-  const [width, setWidth] = useState(150);
-  const [height, setHeight] = useState(150);
+  const [width, setWidth] = useState(250);
+  const [height, setHeight] = useState(250);
 
   const [state, dispatch] = useContext(ToastContext);
 
-  const MAX_WIDTH = 5000;
-  const MAX_HEIGHT = 5000;
+  const MAX_WIDTH = 10000;
+  const MAX_HEIGHT = 10000;
 
   const onSelectFile = (file) => {
     console.log("File", file);
@@ -185,30 +122,30 @@ const ImageResizer = () => {
       if (previewImage) {
         var image = new Image();
         image.src = previewImage.src;
-        if (width > MAX_WIDTH || width < 9) {
-          image.onload = () => {
-            // resizing and drawing image on canvas
-            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
-          };
-          console.log("Width should be between 9 to 5000 pixels");
-          dispatch({
-            type: "SHOW",
-            message: "Width should be between 9 to 5000 pixels",
-          });
-          return;
-        }
-        if (height > MAX_HEIGHT || height < 9) {
-          image.onload = () => {
-            // resizing and drawing image on canvas
-            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
-          };
-          console.log("Height should be between 9 to 20000 pixels");
-          dispatch({
-            type: "SHOW",
-            message: "Height should be between 9 to 5000 pixels",
-          });
-          return;
-        }
+        // if (width > MAX_WIDTH || width < 9) {
+        //   image.onload = () => {
+        //     // resizing and drawing image on canvas
+        //     ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+        //   };
+        //   console.log("Width should be between 9 to 5000 pixels");
+        //   dispatch({
+        //     type: "SHOW",
+        //     message: "Width should be between 9 to 5000 pixels",
+        //   });
+        //   return;
+        // }
+        // if (height > MAX_HEIGHT || height < 9) {
+        //   image.onload = () => {
+        //     // resizing and drawing image on canvas
+        //     ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+        //   };
+        //   console.log("Height should be between 9 to 20000 pixels");
+        //   dispatch({
+        //     type: "SHOW",
+        //     message: "Height should be between 9 to 5000 pixels",
+        //   });
+        //   return;
+        // }
 
         // converting image file to Image object to access it in JS logic
         image.onload = () => {

@@ -60,12 +60,14 @@ const mixins = {
 
   flexStart: css`
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
   `,
 
   flexCenter: css`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   `,
@@ -103,6 +105,12 @@ const mixins = {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+  `,
+
+  flexEven: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   `,
 
   flexBeside: css`
@@ -315,6 +323,7 @@ const mixins = {
 
   textarea: css`
     width: 100%;
+    /* resize: none; */
     background-color: ${({ theme }) => theme.footer};
     border: 2px solid ${({ theme }) => theme.shade};
     font-size: var(--fz-lg);
@@ -470,6 +479,78 @@ const mixins = {
     input[type="checkbox"]:focus {
       /* outline: max(2px, 0.15em) solid ${({ theme }) => theme.color}; */
       outline-offset: max(2px, 0.15em);
+    }
+  `,
+
+  textbox: css`
+    background-color: ${({ theme }) => theme.toolInput};
+    padding: 10px;
+    width: 100%;
+    border: 1.5px solid ${({ theme }) => theme.shadeVarient};
+    color: ${({ theme }) => theme.text};
+
+    :active {
+      outline: 1.8px dashed ${({ theme }) => theme.color};
+    }
+  `,
+
+  imageUploader: css`
+    width: 100%;
+    position: relative;
+
+    input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-dummy {
+      width: 100%;
+      padding: 30px;
+      background-color: ${({ theme }) => theme.footer};
+      border: 1.8px dashed ${({ theme }) => theme.shade};
+      text-align: center;
+      transition: background 0.3s ease-in-out;
+      color: ${({ theme }) => theme.descfont};
+
+      .success {
+        display: none;
+      }
+
+      .default {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    &:hover .file-dummy {
+      border: 1.8px dashed ${({ theme }) => theme.color};
+
+      /* background: ${({ theme }) => theme.hover}; */
+    }
+
+    input[type="file"]:focus + .file-dummy {
+      /* outline: 2px solid rgba(255, 255, 255, 0.5); */
+      /* outline: -webkit-focus-ring-color auto 5px; */
+    }
+
+    input[type="file"]:valid + .file-dummy {
+      .success {
+        display: inline-block;
+        color: ${({ theme }) => theme.color};
+      }
+      .default {
+        display: none;
+      }
     }
   `,
 };

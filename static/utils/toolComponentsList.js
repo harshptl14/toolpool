@@ -5,6 +5,7 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
+import RgbHexConverter from "../../components/Tools/ColorTools/rgbHexConverter";
 import {
   BoxShadowReadme,
   CaseReadme,
@@ -14,17 +15,11 @@ import {
   T2BReadme,
   UniqueReadme,
   WhitespaceReadme,
+  GlassMorphReadme,
+  ImageColorPickerReadme,
+  CSSTransitionsReadme,
 } from "../toolDescriptions/toolReadmes";
-import BoxShadowGenerator from "../../components/Tools/DevTools/boxshadowgenerator";
-
-// import posterlorem from "../../public/assets/posters/posterLoremipsum.jpg";
-// import posterimageresizer from "../../public/assets/posters/posterImageresizer.jpg";
-// import posterlettercounter from "../../public/assets/posters/posterLettercounter.jpg";
-// import postertext2binary from "../../public/assets/posters/posterText2binary.jpg";
-// import posteruniqueword from "../../public/assets/posters/posterUniqueword.jpg";
-// import posterwhitespace from "../../public/assets/posters/posterWhitespace.jpg";
-// import postercase from "../../public/assets/posters/posterCaseconverter.jpg";
-
+import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
   caseconverter,
   lorem,
@@ -33,7 +28,14 @@ import {
   binary,
   unique,
   whiteSpace,
+  shadow,
+  tweetGenerator,
+  colorConverter,
 } from "../icons/index";
+import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
+import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
+import ImageColorPicker from "../../components/Tools/ImageTools/ImageColorPicker/imagecolorpicker";
+import CSSTransitionsWrapper from "../../components/Tools/DevTools/CSSTransitions/CssTransitions";
 
 export const URLLIST = [
   "text/lorem",
@@ -43,7 +45,12 @@ export const URLLIST = [
   "text/whitespaceremover",
   "text/lettercounter",
   "image/imageresizer",
+  "image/imagecolorpicker",
   "dev/box-shadow-generator",
+  "dev/glass-morphism-generator",
+  "dev/css-transition-generator",
+  "social/tweet-generator",
+  "color/rgb-hex-converter",
 ];
 
 // List of all the tool components with category
@@ -120,6 +127,15 @@ export const TOOLS = {
       icon: resize,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
+    imagecolorpicker: {
+      title: "Image Color Picker",
+      component: <ImageColorPicker />,
+      url: "image/imagecolorpicker",
+      description: "Get exact pixel color from an image.",
+      readme: ImageColorPickerReadme,
+      icon: resize,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
   },
   dev: {
     "box-shadow-generator": {
@@ -128,8 +144,50 @@ export const TOOLS = {
       url: "dev/box-shadow-generator",
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
-      icon: resize,
+      icon: shadow,
       readme: BoxShadowReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+    "glass-morphism-generator": {
+      title: "CSS Glass-morphism Generator",
+      component: <GlassMorphismGenerator />,
+      description: "Generate CSS code for Glassmorphism effect on elements",
+      url: "dev/glass-morphism-generator",
+      icon: resize,
+      readme: GlassMorphReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+    "css-transition-generator": {
+      title: "CSS Transition Generator",
+      component: <CSSTransitionsWrapper />,
+      description: "Generate CSS code for transitions and animations",
+      url: "dev/css-transition-generator",
+      icon: resize,
+      readme: CSSTransitionsReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+  },
+  social: {
+    "tweet-generator": {
+      title: "Tweet Generator",
+      component: <TweetGenerator />,
+      url: "social/tweet-generator",
+      description:
+        "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
+      icon: tweetGenerator,
+      readme: ``,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+  },
+  color: {
+    "rgb-hex-converter": {
+      title: "Rgb-Hex-Hsl Converter",
+      component: <RgbHexConverter />,
+      url: "color/rgb-hex-converter",
+      description:
+        "Convert RGB or Hex color into different types of color codes",
+      icon: colorConverter,
+      readme: ``,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

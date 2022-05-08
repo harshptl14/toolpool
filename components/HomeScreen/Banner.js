@@ -26,8 +26,8 @@ const Banner = () => {
         Document.getElementById("banner")
       )} */}
         <BannerDiv>
-          Site is under construction 🚧, stay tuned for updates!!
-        </BannerDiv>,
+          More tools are on their way 🛠, stay tuned for updates!!
+        </BannerDiv>
     </>
   );
 };

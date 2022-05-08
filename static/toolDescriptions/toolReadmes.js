@@ -136,3 +136,70 @@ Above line is the syntax for providing box shadow in css.
 
 **Inset:** Inset changes the shadow from outer to inner. By default, shadow is outset.
 `;
+
+export const GlassMorphReadme = `
+## What is CSS Glass-morphism generator?
+
+Glassmorphism is the current UI trend in 2022. There is a growing tendency from big companies to use glassmorphism in their designs. Apple and Microsoft are some examples using this method in their user interfaces. 
+There are many applications of glass effect on Windows 11 UI. It is very important to set the background color, blur and opacity. If it is not balanced properly, its glass feeling may not be seen as expected in the web page.
+CSS Glassmorphism generator free tool helps you generate the CSS code for desired glassmorphism effect. 
+This tool offers various options to test and view glassmorphism effect according your color choice and also desired background colors or images. 
+You can directly then copy the code for the effect.
+
+### How values are applied?
+**Blur:** It defines the blur effect of the glass. 
+
+**Opacity:** It defines the opacity of colot of glass.
+
+There are options to replace background with specific colors or images. This gives a better understanding and view of the effect.
+The generated code doesn't contain the code for this background color/image. It's just for effect testing purposes.
+`;
+
+export const ImageColorPickerReadme = `
+## What is Image Color Picker?
+
+An online tool to extract colors from an image. You can select color of a pixel of the image with the help of magnified pixel view. 
+
+When you are developing an app or website then you need color code from the image og UI. Image Color Picker will help you to pick the color with the fastest way. 
+Result will be listed in Hex and RGB color code format and you can copy any of them according to your needs. 
+
+Upload an image file and click on **Pick Color** button. You will get the magnified pixel view by hovering the mouse over image. 
+Click on the desired pixel and color-preview will be displayed with color codes. You can directly copy the color codes.
+`;
+
+export const CSSTransitionsReadme = `
+## What is CSS Transition Generator?
+
+CSS Transition Generator is an online tool to generate css code for various types of transition animations for properties like width, height, outline, background-color and opacity.
+
+You can set values for different properties for an element and also change the duration and delay of the transition. 
+
+**Transition syntax explanation:**
+
+The first parameter defines which CSS3 property will be affected by the transition (ex. outline, width, etc.).
+
+The second parameter defines the duration in seconds (s) of the transition. In our example the duration is 1 seconds.
+
+The third parameter (optional) is the speed curve of the transition. Below are some functions that can be used:
+- ease: specifies a transition effect with a slow start, then fast, then slow. It is the default value.
+- linear: specifies a transition effect with the same speed from start to the end.
+- ease-in: specifies a transition effect with a slow start.
+- ease-out: specifies a transition effect with a slow end.
+- ease-in-out: specifies a transition effect with a slow start and a slow end.
+
+We can also add a delay (optional), in order to shift the transition according to a duration.
+
+First code snippets is for the initial state of the element and the seconds snippet is for the pseudo class like hover, click, etc. of the element.
+
+Example:
+
+.box {\n
+    opacity: 0.5;
+    transition: opacity 1s ease 0s;
+}
+
+.box:hover {\n
+    opacity: 1;
+}
+
+`;

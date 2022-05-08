@@ -26,7 +26,7 @@ In ToolPool, tools are divided among various categories.
 
 ## Praposing new category/tool
 
-1. If you want to prapose a whole new category/tool in ToolPool, first raise an issue for it from [here]()
+1. If you want to prapose a whole new category/tool in ToolPool, first raise an issue for it from [category-request](https://github.com/harshptl14/toolpool/issues/new?assignees=&labels=category-request&template=category-request.md&title=) and [tool-request](https://github.com/harshptl14/toolpool/issues/new?assignees=&labels=tool-request&template=tool-request.md&title=) respectively.
 2. Once everything is discussed and the category/tool is approved, we'll provide a new logo for category/tool
 3. Then you can start working/coding on it.
 
@@ -100,49 +100,35 @@ _You can see other tools for reference_
 </details/>
 
 <details>
-<summary><strong>How to style Toolpool</strong></summary>
+<summary><strong>Styling in Toolpool</strong></summary>
   <br/>
 To start with, the styles directory holds most of the properties of the design system. You can find common queries regarding the usage of the style system below.
 
-1.  How to access colors based on Theme
+1.  How to access colors based on Theme?
     
-    -   [Theme](https://github.com/harshptl14/toolpool/blob/new-tool/styles/theme.js) wraps the [whole app](https://github.com/harshptl14/toolpool/blob/new-tool/components/Layout.js), so it’s accessible throughout the application
+    -   [Theme](styles/theme.js) wraps the [whole app](components/Layout.js), so it’s accessible throughout the application.
         
         To access the theme, use this syntax
         
         ```jsx
         ${({ theme }) => theme.color};
-        
         ```
         
-        It will automatically detect the light/dark mode and gives the colors accordingly.
+        Colors and styled will be applied according to currently active theme i.e. Light/Dark.
         
-        [Theme.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/theme.js) contains the default color for the application for both light and dark modes respectively.
+        [Theme.js](styles/theme.js) contains the variables for both light and dark theme.
         
-2.  How to access different custom component’s style
+2.  How to access styles of different custom components?
     
-    -   To access rapidly used custom components, go through [styles/mixins.js](https://github.com/harshptl14/toolpool/blob/new-tool/styles/mixins.js)
+    -   To access styles of commanly used custom components, checkout [styles/mixins.js](styles/mixins.js)
         To access components, use this syntax
         
         ```jsx
         ${({ theme }) => theme.mixins.smallButton};
-        
         ```
         
-        If you will run into a situation, where it’s required to make components that will reuse in the future, then make sure to put them into the [mixins](https://github.com/harshptl14/toolpool/blob/new-tool/styles/mixins.js) folder.
+        Add custom styles which are going to be used widely in the project in [mixins.js](styles/mixins.js) file.
         
-3.  Want to change the default properties of a component?
-    
-    -   Use the component’s style from mixins.js, wrap with the custom component and overwrite the value that you want to change.
-  
-    
-        ```jsx
-        const StyledCustomizedButton = styled.button`
-        ${({ theme }) => theme.mixins.smallButton};
-        padding: 1em 2em;
-        `;
-
-        ```
 </details>
 <br/>
 

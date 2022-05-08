@@ -1,6 +1,8 @@
 # <center>**TOOL POOL**</center>
 
+<a href="https://toolpool.ml" >
 <img src="https://toolpool.ml/assets/posters/posterToolpool.jpg" alt="TOOLPOOL POSTER" />
+</a>
 
 <center><strong>One-Stop solution with all tools for your work</strong></center>
 <br/>
@@ -157,11 +159,13 @@ export default MyApp;
 ```sh
 npm run dev
 ```
+
 <br/>
 
-##  What's inside?
+## What's inside?
+
 A quick look at the folder structure of this project.
-    
+
     .
     ├── components
     |   ├──HomeScreen
@@ -173,6 +177,9 @@ A quick look at the folder structure of this project.
     ├──lib
     ├──pages
     ├──public
+    |   ├──assets
+    |   ├──icons
+    |   ├──svg
     ├──static
     |   ├──helpers
     |   ├──icons

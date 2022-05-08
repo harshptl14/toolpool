@@ -190,6 +190,7 @@ We love your input. You can contribute to this project in many ways like,
 - Improve the documentation
 - Submitting a fix
 
+Refer [CONTRIBUTING.MD](CONTRIBUTING.MD) before you start contributing.
 <br/>
 
 # **Support the project ♥**

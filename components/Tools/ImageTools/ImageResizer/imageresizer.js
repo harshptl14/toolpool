@@ -75,13 +75,13 @@ const ImageResizer = () => {
   // const [isClicked, setisClicked] = useState(false);
   const [isChecked, setisChecked] = useState(true);
 
-  const [width, setWidth] = useState(150);
-  const [height, setHeight] = useState(150);
+  const [width, setWidth] = useState(250);
+  const [height, setHeight] = useState(250);
 
   const [state, dispatch] = useContext(ToastContext);
 
-  const MAX_WIDTH = 5000;
-  const MAX_HEIGHT = 5000;
+  const MAX_WIDTH = 10000;
+  const MAX_HEIGHT = 10000;
 
   const onSelectFile = (file) => {
     console.log("File", file);
@@ -122,30 +122,30 @@ const ImageResizer = () => {
       if (previewImage) {
         var image = new Image();
         image.src = previewImage.src;
-        if (width > MAX_WIDTH || width < 9) {
-          image.onload = () => {
-            // resizing and drawing image on canvas
-            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
-          };
-          console.log("Width should be between 9 to 5000 pixels");
-          dispatch({
-            type: "SHOW",
-            message: "Width should be between 9 to 5000 pixels",
-          });
-          return;
-        }
-        if (height > MAX_HEIGHT || height < 9) {
-          image.onload = () => {
-            // resizing and drawing image on canvas
-            ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
-          };
-          console.log("Height should be between 9 to 20000 pixels");
-          dispatch({
-            type: "SHOW",
-            message: "Height should be between 9 to 5000 pixels",
-          });
-          return;
-        }
+        // if (width > MAX_WIDTH || width < 9) {
+        //   image.onload = () => {
+        //     // resizing and drawing image on canvas
+        //     ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+        //   };
+        //   console.log("Width should be between 9 to 5000 pixels");
+        //   dispatch({
+        //     type: "SHOW",
+        //     message: "Width should be between 9 to 5000 pixels",
+        //   });
+        //   return;
+        // }
+        // if (height > MAX_HEIGHT || height < 9) {
+        //   image.onload = () => {
+        //     // resizing and drawing image on canvas
+        //     ctx.drawImage(image, 0, 0, previewImage.width, previewImage.height);
+        //   };
+        //   console.log("Height should be between 9 to 20000 pixels");
+        //   dispatch({
+        //     type: "SHOW",
+        //     message: "Height should be between 9 to 5000 pixels",
+        //   });
+        //   return;
+        // }
 
         // converting image file to Image object to access it in JS logic
         image.onload = () => {

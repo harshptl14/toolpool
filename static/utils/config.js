@@ -146,13 +146,13 @@ const config = {
       icon: whiteSpace,
       key: 4,
     },
-    // {
-    //   title: "Text 2 Binary",
-    //   desc: "Convert text to binary strings and vice versa.",
-    //   link: "tools/text/t2b",
-    //   icon: binary,
-    //   key: 5,
-    // },
+    {
+      title: "Text 2 Binary",
+      desc: "Convert text to binary strings and vice versa.",
+      link: "tools/text/t2b",
+      icon: binary,
+      key: 5,
+    },
     {
       title: "Unique words finder",
       desc: "Find all the uniques words used in a text.",
@@ -203,22 +203,22 @@ const config = {
   ],
 
   colorTools: [
-    // {
-    //   title: "Rgb-Hex-Hsl Converter",
-    //   desc: "Convert RGB or Hex color into different types of color codes",
-    //   link: "tools/color/rgb-hex-converter",
-    //   icon: colorConverter,
-    //   key: 1,
-    // },
+    {
+      title: "Rgb-Hex-Hsl Converter",
+      desc: "Convert RGB or Hex color into different types of color codes",
+      link: "tools/color/rgb-hex-converter",
+      icon: colorConverter,
+      key: 1,
+    },
   ],
   socialmediaTools: [
-    // {
-    //   title: "Tweet Generator",
-    //   desc: "Generate a fake tweet screenshot just for fun.",
-    //   link: "tools/social/tweet-generator",
-    //   icon: tweetGenerator,
-    //   key: 1,
-    // },
+    {
+      title: "Tweet Generator",
+      desc: "Generate a fake tweet screenshot just for fun.",
+      link: "tools/social/tweet-generator",
+      icon: tweetGenerator,
+      key: 1,
+    },
   ],
 };
 

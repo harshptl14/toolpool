@@ -1,10 +1,9 @@
-# <center>**TOOL POOL**</center>
+# <center>**ToolPool** - One stop solution with all tools for your work</center>
 
 <a href="https://toolpool.ml" >
 <img src="https://toolpool.ml/assets/posters/posterToolpool.jpg" alt="TOOLPOOL POSTER" />
 </a>
 
-<center><strong>One-Stop solution with all tools for your work</strong></center>
 <br/>
 
 # **Introduction**
@@ -41,6 +40,7 @@ The aim to build this website is to reduce the number of tabs open in your brows
     <summary>Image tools</summary>
 
 1. Image Resizer
+2. Image color picker
 </details>
 
 <details>
@@ -48,6 +48,7 @@ The aim to build this website is to reduce the number of tabs open in your brows
 
 1. CSS Box Shadow generator
 2. CSS Glass-morphism generator
+3. CSS Transition Generator
 </details>
 
 <details>
@@ -59,13 +60,15 @@ The aim to build this website is to reduce the number of tabs open in your brows
 <details>
     <summary>Social Media tools</summary>
 
-1. Tweet generator (under-construction)
+1. Tweet generator
 </details>
 <br/>
 
 # **Tech-Stack**
 
-<center><img src="https://user-images.githubusercontent.com/58077762/152677367-907f88ae-794c-4f1a-85a9-ffa65dc03322.jpg" /></center>
+1. NextJS and ReactJS
+2. Google Analytics
+3. Figma (for designing purpose)
 <br/>
 
 # **Quick Start**
@@ -197,7 +200,7 @@ We love your input. You can contribute to this project in many ways like,
 - Improve the documentation
 - Submitting a fix
 
-Refer [CONTRIBUTING.MD](CONTRIBUTING.MD) before you start contributing.
+Refer [CONTRIBUTING.MD](CONTRIBUTING.md) before you start contributing.
 <br/>
 
 # **Support the project ♥**

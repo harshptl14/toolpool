@@ -6,6 +6,8 @@ import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imagere
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
 import RgbHexConverter from "../../components/Tools/ColorTools/rgbHexConverter";
+// import SizeConverter from '../../components/Tools/DevTools/SizeConverter'
+import SizeConverter from "../../components/Tools/DevTools/SizeConverter/SizeConverter";
 import {
   BoxShadowReadme,
   CaseReadme,
@@ -166,6 +168,16 @@ export const TOOLS = {
       readme: CSSTransitionsReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
+    "size-converter": {
+      title: "Size Converter",
+      component: <SizeConverter />,
+      description: "Generate CSS code for transitions and animations",
+      url: "dev/size-converter",
+      icon: resize,
+      readme: CSSTransitionsReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    }
+    
   },
   social: {
     "tweet-generator": {

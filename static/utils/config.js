@@ -200,6 +200,14 @@ const config = {
       icon: shadow,
       key: 3,
     },
+    {
+      title: "Size Converter",
+      desc: "Generate CSS code for transitions and animations",
+      link: "tools/dev/size-converter",
+      icon: shadow,
+      key: 4,
+    },
+    
   ],
 
   colorTools: [

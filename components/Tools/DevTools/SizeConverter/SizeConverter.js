@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import * as ufun from "./helperFunctions";
+import * as ufun from "./helperFunctions"
 import { PencilAlt } from '@styled-icons/heroicons-outline/PencilAlt'
-import CustomInput from './CustomInput';
+import CustomInput from './CustomInput'
+import {useOutsideAlerter} from '../../../../hooks/useClickOutside'
 
 const Styledchip = styled.input`
     padding: 0 25px;
@@ -26,17 +27,30 @@ const Styledchip = styled.input`
 
 `;
 
-
-
-
 const StyledOuterDiv = styled.div`
-${({ theme }) => theme.mixins.flexBetween};
-gap: 2em;
+  ${({ theme }) => theme.mixins.flexColumn};
+  gap: 1em;
+
+@media only screen and (min-width: 768px) {
+  ${({ theme }) => theme.mixins.flexBetween};
+  gap: 1.5em;
+  }
 `;
 
 const StyledInput = styled.input`
   ${({ theme }) => theme.mixins.textbox};
   font-size: var(--fz-lg);
+`;
+
+const StyledConfigureDiv = styled.div`
+  ${({ theme }) => theme.mixins.flexColumnStart}
+  margin-top: 1em;
+  width: 100%;
+  gap: 0.5em;
+  
+@media only screen and (min-width: 768px) {
+  width: 40%;
+  }
 `;
 
 const StyledOuterChip = styled.ul`
@@ -133,6 +147,7 @@ const ChipComp = ({ chipName }) => {
 
 const SizeConverter = () => {
   const [defPixel, setdefPixel] = useState(16);
+  const [defPixelInput, setdefPixelInput] = useState(false);
   const [em, setEM] = useState(null);
   const [px, setPX] = useState(null);
   const [pt, setPT] = useState(null);
@@ -146,7 +161,7 @@ const SizeConverter = () => {
 
   useEffect(() => {
     console.log("in useEffect");
-  }, [em, px, pt, pr, defPixel]);
+  }, [em, px, pt, pr, defPixel, defPixelInput]);
 
   const clearFun = () => {
     setEM("");
@@ -154,6 +169,8 @@ const SizeConverter = () => {
     setPR("");
     setPT("");
   };
+
+  useOutsideAlerter(defPixRef, setdefPixelInput);
 
   const pxTo = async (pixValue) => {
     if (pixValue !== "") {
@@ -201,12 +218,51 @@ const SizeConverter = () => {
     console.log(defPixValue);
     if (defPixValue !== "") {
       setdefPixel(defPixValue);
+      clearFun();
     } else {
       clearFun();
       setdefPixel("");
       // inputemRef.current.
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      let prevState = defPixelInput;
+      setdefPixelInput(!prevState)
+    }
+  }
+
+  const inputObj = [
+    {
+      name: "EM",
+      placeholder: "EM",
+      inputRef: inputemRef,
+      onChangeFun: () => emTo(inputemRef.current.value),
+      curValue: em,
+    },
+    {
+      name: "Pixel",
+      placeholder: "PX",
+      inputRef: inputpxRef,
+      onChangeFun: () => pxTo(inputpxRef.current.value),
+      curValue: px,
+    },
+    {
+      name: "Point",
+      placeholder: "PT",
+      inputRef: inputptRef,
+      onChangeFun: () => ptTo(inputptRef.current.value),
+      curValue: pt,
+    },
+    {
+      name: "Percent",
+      placeholder: "PR",
+      inputRef: inputprRef,
+      onChangeFun: () => prTo(inputprRef.current.value),
+      curValue: pr,
+    }
+  ]
 
   return (
     // <div>
@@ -224,58 +280,40 @@ const SizeConverter = () => {
     // </div>
     <div>
       <StyledOuterDiv>
-          <StyledInput
-            placeholder='EM'
-            ref={inputemRef}
-            onChange={() => emTo(inputemRef.current.value)}
-            value={em}
-            disabled={defPixel === ""}
-            name="input em"
-          />
-        
-        {/* <StyledInput
-          placeholder='PX'
-          ref={inputpxRef}
-          onChange={() => pxTo(inputpxRef.current.value)}
-          value={px}
-          name="input px"
-          disabled={defPixel === ""}
-        /> */}
-
-        <CustomInput
-          name="PX"
-          inputRef={inputpxRef}
-          onChangeFun={() => pxTo(inputpxRef.current.value)}
-          curValue={px}
-          defPixel={defPixel}
-        />
-        <StyledInput
-          placeholder='PT'
-          ref={inputptRef}
-          onChange={() => ptTo(inputptRef.current.value)}
-          value={pt}
-          name="input pt"
-          disabled={defPixel === ""}
-        />
-        <StyledInput
-          placeholder='PR'
-          ref={inputprRef}
-          onChange={() => prTo(inputprRef.current.value)}
-          value={pr}
-          name="input pt"
-          disabled={defPixel === ""}
-        />
-
+        {inputObj.map((obj) => {
+          return (
+            <CustomInput
+              name={obj.name}
+              placeholder={obj.placeholder}
+              inputRef={obj.inputRef}
+              onChangeFun={obj.onChangeFun}
+              curValue={obj.curValue}
+              defPixel={defPixel}
+            />
+          )
+        })}
       </StyledOuterDiv>
-      <div>
-        Base size of fonts is 16px <PencilAlt width="30px" color="#2b7537" />
-        <StyledInput
+      <StyledConfigureDiv>
+        <div>Base size of fonts is {defPixel}px{" "}
+          <PencilAlt
+            width="30px"
+            color="#2b7537"
+            cursor="pointer"
+            onClick={() => {
+              let prevState = defPixelInput;
+              setdefPixelInput(!prevState)
+            }}
+          />
+        </div>
+        {defPixelInput && <StyledInput
+          type="number"
           ref={defPixRef}
           onChange={() => changeDefVal(defPixRef.current.value)}
           value={defPixel}
+          onKeyPress={(e) => handleKeyPress(e)}
           name="input default pixel"
-        />
-      </div>
+        />}
+      </StyledConfigureDiv>
     </div>
   )
 }

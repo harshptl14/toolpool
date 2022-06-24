@@ -494,6 +494,26 @@ const mixins = {
     }
   `,
 
+  selectInput: css`
+    width: 100%;
+      display: block;
+      /* border: 1px solid ${({ theme }) => theme.color}; */
+      background-color: ${({ theme }) => theme.toolInput};
+      padding: 0.5em 1em;
+      border-radius: 5px;
+
+      border: 1.5px solid ${({ theme }) => theme.shadeVarient};
+      color: ${({ theme }) => theme.text};
+      padding: 10px;
+      /* padding-right: 2em; */
+      
+      /* border-right: 16px solid transparent; */
+
+      :active {
+        outline: 1.8px dashed ${({ theme }) => theme.color};
+      }
+  `,
+
   imageUploader: css`
     width: 100%;
     position: relative;

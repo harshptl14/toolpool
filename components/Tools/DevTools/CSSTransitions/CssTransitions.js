@@ -27,6 +27,12 @@ const InputSection = styled.div`
   }
 `;
 
+const StyledInput = styled.input`
+  ${({ theme }) => theme.mixins.textbox};
+  /* font-size: var(--fz-xxl); */
+  /* height: 2.7em; */
+`;
+
 const ResultSection = styled.div`
   display: flex;
   width: 55%;
@@ -35,6 +41,10 @@ const ResultSection = styled.div`
   @media only screen and (max-width: 768px) {
     width: 100%;
   }
+`;
+
+const StyledSelectInput = styled.select`
+${({theme}) => theme.mixins.selectInput}
 `;
 
 const OutputBox = styled.div`
@@ -144,18 +154,18 @@ const CSSTransitionsGenerator = (props) => {
     <TranstionParentWrapper>
       <InputSection>
         <LabeledInput label="Type">
-          <select name="type" onChange={onTypeSelect}>
+          <StyledSelectInput name="type" onChange={onTypeSelect}>
             <option value="opacity">Opacity</option>
             <option value="background-color">Background color</option>
             <option value="width">Width</option>
             <option value="height">Height</option>
             <option value="outline">Outline</option>
-          </select>
+          </StyledSelectInput>
         </LabeledInput>
         {/* Component to take input for specific types */}
         {TypeComponents[state.transitionType]}
         <LabeledInput label="Duration">
-          <input
+          <StyledInput
             type="number"
             name="duration"
             placeholder="In seconds"
@@ -164,16 +174,16 @@ const CSSTransitionsGenerator = (props) => {
           />
         </LabeledInput>
         <LabeledInput label="Timing Function">
-          <select name="type" onChange={onTFSelect}>
+          <StyledSelectInput name="type" onChange={onTFSelect}>
             <option value="ease">ease</option>
             <option value="ease-in">ease-in</option>
             <option value="ease-out">ease-out</option>
             <option value="ease-in-out">ease-in-out</option>
             <option value="linear">linear</option>
-          </select>
+          </StyledSelectInput>
         </LabeledInput>
         <LabeledInput label="Delay">
-          <input
+          <StyledInput
             type="number"
             name="delay"
             placeholder="In seconds"

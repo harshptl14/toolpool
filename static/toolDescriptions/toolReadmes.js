@@ -203,3 +203,39 @@ Example:
 }
 
 `;
+
+export const SizeConverterReadme = `
+
+# What is a Size Converter
+
+CSS has four different units that can be used to denote the size of fonts (and other elements such as margins). The application and relationships between these units can be very confusing, so this tool will help to convert em to px, pt to px, etc.
+
+## ****Px, em, pt, and %****
+
+- **Pixels (px)** are fixed-size units that correspond to the resolution of the screen - one pixel is the smallest "dot" that can be accurately displayed on the screen. Choosing this unit will result in a perfectly sharp and visible font on the screen, regardless of what kind of display you will use. The only drawback is that fonts expressed in these units cannot scale (but it is possible to use the zoom feature of web browsers to enlarge the text).
+
+- **Ems (em)** are scalable units, used in digital media. One em corresponds to the height of the current font; for example, if the font used has a height of 12 pt, then 1 em = 12 pt. Ems are a popular unit because they are easy to understand, can be scaled if desired, and are mobile-device friendly. The main drawback of ems is the threat of cascading - because this unit is relative, changing the height of the "parent" text immediately resizes all other fonts.
+
+- **Points (pt)** are a unit for print CSS only. One point is equal to 1/72 inch, but only after printing. 1 pt will look differently across devices or web browsers, as it will depend on screen resolution. Points are not scalable and should be avoided in digital media.
+
+- **Percentage (%)** is very similar to the em unit. The main difference is that 1 em = 100%. This unit is perfectly scalable and allows for zooming in and out. Similarly to ems, they can cause cascading.
+
+## **Conversion**
+
+Follow these simple steps to convert between CSS units quickly and effortlessly:
+
+1. Set a base value. By default, this is 16 px.
+2. Determine the size of your font in any of the units.
+3. The px to em calculator will find its equivalent in other units, according to these rules:
+    - 1 point is equal to 0.75 pixels;
+    - 1 em is equal to the size in pixels divided by the base value;
+    - 1 em is equal to 100%.
+
+## **Example: Converting pt to px, em and %**
+
+Let's assume that you want to convert 24 pt to px, assuming the base size of 16 px. You can find it in the following way:
+
+1. If \`1pt = 0.75 px\`, then \`1px = 1.33 pt\`. Hence, 24pt is equivalent to \`1.33 * 24 = 32px\`.
+2. When finding the equivalent in ems, we need to divide the size in pixels by the base size: \`32px / 16px = 2em\`.
+3. As \`1em = 100%\`, \`2em = 200%\`.
+`;

@@ -4,6 +4,7 @@ import * as ufun from "./helperFunctions"
 import { PencilAlt } from '@styled-icons/heroicons-outline/PencilAlt'
 import CustomInput from './CustomInput'
 import {useOutsideAlerter} from '../../../../hooks/useClickOutside'
+import ButtonDiv from '../../ButtonDiv'
 
 const Styledchip = styled.input`
     padding: 0 25px;
@@ -264,6 +265,29 @@ const SizeConverter = () => {
     }
   ]
 
+  const filter = [
+    // {
+    //   key: "1",
+    //   title: "UpperCase",
+    //   method: () => setInputText(inputText.toUpperCase()),
+    // },
+    {
+      key: "2",
+      title: "Reset",
+      method: () => clearFun(),
+      type: "normal",
+    },
+  ];
+
+  const finalButtons = [
+    // {
+    //   key: "2",
+    //   title: "Reset",
+    //   method: () => clearFun(),
+    //   type: "normal",
+    // },
+  ];
+
   return (
     // <div>
     //   {/* <ChipComp chipName="px to em" /> */}
@@ -314,6 +338,7 @@ const SizeConverter = () => {
           name="input default pixel"
         />}
       </StyledConfigureDiv>
+      <ButtonDiv filter={filter} finalButtons={finalButtons} />
     </div>
   )
 }

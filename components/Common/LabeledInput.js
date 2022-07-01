@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   span {
     display: block;
     margin-bottom: 0.4em;
-    font-size: var(--fz-xs);
+    font-size: var(--fz-lg);
   }
 
   /* select {

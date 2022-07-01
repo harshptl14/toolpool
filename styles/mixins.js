@@ -324,15 +324,16 @@ const mixins = {
   textarea: css`
     width: 100%;
     /* resize: none; */
-    background-color: ${({ theme }) => theme.footer};
+    background-color: ${({ theme }) => theme.background};
     border: 2px solid ${({ theme }) => theme.shade};
     font-size: var(--fz-lg);
     padding: 15px 20px;
     /* margin: 0px 0 15px 0; */
     font-family: "Open Sans", -apple-system, system-ui, sans-serif;
     color: ${({ theme }) => theme.text};
-    &:focus,
-    &:active {
+
+    :disabled{
+      background-color: ${({ theme }) => theme.shadeBackcard};
     }
   `,
 
@@ -492,6 +493,11 @@ const mixins = {
     :active {
       outline: 1.8px dashed ${({ theme }) => theme.color};
     }
+
+    :disabled{
+      background-color: ${({ theme }) => theme.shadeBackcard};
+      cursor: not-allowed;
+    }
   `,
 
   selectInput: css`
@@ -500,7 +506,7 @@ const mixins = {
       /* border: 1px solid ${({ theme }) => theme.color}; */
       background-color: ${({ theme }) => theme.toolInput};
       padding: 0.5em 1em;
-      border-radius: 5px;
+      /* border-radius: 5px; */
 
       border: 1.5px solid ${({ theme }) => theme.shadeVarient};
       color: ${({ theme }) => theme.text};

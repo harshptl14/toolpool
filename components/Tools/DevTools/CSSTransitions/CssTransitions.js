@@ -29,7 +29,7 @@ const InputSection = styled.div`
 
 const StyledInput = styled.input`
   ${({ theme }) => theme.mixins.textbox};
-  /* font-size: var(--fz-xxl); */
+  font-size: var(--fz-lg);
   /* height: 2.7em; */
 `;
 
@@ -44,24 +44,30 @@ const ResultSection = styled.div`
 `;
 
 const StyledSelectInput = styled.select`
-${({theme}) => theme.mixins.selectInput}
+${({ theme }) => theme.mixins.selectInput}
+font-size: var(--fz-lg);
+
 `;
 
 const OutputBox = styled.div`
   width: 90%;
+  height: 100%;
   margin: auto;
-  border-radius: 10px;
-  min-height: 200px;
+  /* border-radius: 10px; */
+  /* min-height: 200px; */
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.shadeVarient};
+  background-color: ${({ theme }) => theme.shadeBackcard};
   padding: 1em;
   .output {
-    width: 150px;
-    height: 150px;
+    width: 60%;
+    height: 60%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: ${({ theme }) => theme.color};
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: ${({ theme }) => theme.text};
     ${(props) => props.mainCode}
@@ -74,11 +80,14 @@ const OutputBox = styled.div`
 `;
 
 const ResultCodeSection = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   margin: auto;
   flex-direction: column;
 
+  h2{
+    margin-bottom: 0;
+  }
   .desc {
     width: 100%;
     display: flex;
@@ -95,10 +104,11 @@ const ResultCodeSection = styled.div`
   }
 
   .code {
-    background-color: ${({ theme }) => theme.shadeVarient};
+    background-color: ${({ theme }) => theme.shadeBackcard};
     padding: 1em;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 500;
+    font-family: var(--font-mono);
   }
 `;
 
@@ -151,83 +161,86 @@ const CSSTransitionsGenerator = (props) => {
   ];
 
   return (
-    <TranstionParentWrapper>
-      <InputSection>
-        <LabeledInput label="Type">
-          <StyledSelectInput name="type" onChange={onTypeSelect}>
-            <option value="opacity">Opacity</option>
-            <option value="background-color">Background color</option>
-            <option value="width">Width</option>
-            <option value="height">Height</option>
-            <option value="outline">Outline</option>
-          </StyledSelectInput>
-        </LabeledInput>
-        {/* Component to take input for specific types */}
-        {TypeComponents[state.transitionType]}
-        <LabeledInput label="Duration">
-          <StyledInput
-            type="number"
-            name="duration"
-            placeholder="In seconds"
-            onChange={onDurationChange}
-            defaultValue={state.duration}
-          />
-        </LabeledInput>
-        <LabeledInput label="Timing Function">
-          <StyledSelectInput name="type" onChange={onTFSelect}>
-            <option value="ease">ease</option>
-            <option value="ease-in">ease-in</option>
-            <option value="ease-out">ease-out</option>
-            <option value="ease-in-out">ease-in-out</option>
-            <option value="linear">linear</option>
-          </StyledSelectInput>
-        </LabeledInput>
-        <LabeledInput label="Delay">
-          <StyledInput
-            type="number"
-            name="delay"
-            placeholder="In seconds"
-            onChange={onDelayChange}
-            defaultValue={state.delay}
-          />
-        </LabeledInput>
-      </InputSection>
-      <ResultSection>
-        <OutputBox
-          mainCode={state.mainCode}
-          transitionCode={state.transitionCode}
-          pseudoCode={state.pseudoCode}
-        >
-          <div className="output">
-            <p>Hover me</p>
-          </div>
-        </OutputBox>
-        <ResultCodeSection>
-          <h2>Code</h2>
-          <div className="maincode">
-            <div className="desc">
-              <p>Code for main element</p>
-              <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
+    <>
+      <TranstionParentWrapper>
+        <InputSection>
+          <LabeledInput label="Type">
+            <StyledSelectInput name="type" onChange={onTypeSelect}>
+              <option value="opacity">Opacity</option>
+              <option value="background-color">Background color</option>
+              <option value="width">Width</option>
+              <option value="height">Height</option>
+              <option value="outline">Outline</option>
+            </StyledSelectInput>
+          </LabeledInput>
+          {/* Component to take input for specific types */}
+          {TypeComponents[state.transitionType]}
+          <LabeledInput label="Duration">
+            <StyledInput
+              type="number"
+              name="duration"
+              placeholder="In seconds"
+              onChange={onDurationChange}
+              defaultValue={state.duration}
+            />
+          </LabeledInput>
+          <LabeledInput label="Timing Function">
+            <StyledSelectInput name="type" onChange={onTFSelect}>
+              <option value="ease">ease</option>
+              <option value="ease-in">ease-in</option>
+              <option value="ease-out">ease-out</option>
+              <option value="ease-in-out">ease-in-out</option>
+              <option value="linear">linear</option>
+            </StyledSelectInput>
+          </LabeledInput>
+          <LabeledInput label="Delay">
+            <StyledInput
+              type="number"
+              name="delay"
+              placeholder="In seconds"
+              onChange={onDelayChange}
+              defaultValue={state.delay}
+            />
+          </LabeledInput>
+        </InputSection>
+        <ResultSection>
+          <OutputBox
+            mainCode={state.mainCode}
+            transitionCode={state.transitionCode}
+            pseudoCode={state.pseudoCode}
+          >
+            <div className="output">
+              <p>Hover me</p>
             </div>
-            <div className="code">
-              <div>{state.mainCode}</div>
-              <div>{state.transitionCode}</div>
+          </OutputBox>
+          
+        </ResultSection>
+      </TranstionParentWrapper>
+      <ResultCodeSection>
+            <h2>Code</h2>
+            <div className="maincode">
+              <div className="desc">
+                <p>Code for main element</p>
+                <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
+              </div>
+              <div className="code">
+                <div>{state.mainCode}</div>
+                <div>{state.transitionCode}</div>
+              </div>
             </div>
-          </div>
-          <div className="pseudocode">
-            <div className="desc">
-              <p>
-                Code for pseudo element, <i>like :hover</i>
-              </p>
-              <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
+            <div className="pseudocode">
+              <div className="desc">
+                <p>
+                  Code for pseudo element, <i>like :hover</i>
+                </p>
+                <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
+              </div>
+              <div className="code">
+                <div>{state.pseudoCode}</div>
+              </div>
             </div>
-            <div className="code">
-              <div>{state.pseudoCode}</div>
-            </div>
-          </div>
-        </ResultCodeSection>
-      </ResultSection>
-    </TranstionParentWrapper>
+          </ResultCodeSection>
+    </>
   );
 };
 

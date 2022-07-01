@@ -9,13 +9,13 @@ width: 100%;
 
 
 const StyledInput = styled.input`
-  ${({ theme }) => theme.mixins.textbox};
-  font-size: var(--fz-xxl);
-  height: 2.7em;
+    ${({ theme }) => theme.mixins.textbox};
+    font-size: var(--fz-xxl);
+    height: 2.7em;
 `;
 
 
-const CustomInput = ({name, placeholder, inputRef, onChangeFun, curValue, defPixel}) => {
+const CustomInput = ({ name, placeholder, inputRef, onChangeFun, curValue, defPixel }) => {
     return (
         <StyledInputWrapper>
             {name}

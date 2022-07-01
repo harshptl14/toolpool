@@ -15,6 +15,10 @@ import {
   shadow,
   tweetGenerator,
   colorConverter,
+  colorPicker,
+  glass,
+  scale,
+  transition
 } from "../icons/index";
 
 const config = {
@@ -174,7 +178,7 @@ const config = {
       title: "Image Color Picker",
       desc: "Get exact pixel color from an image",
       link: "tools/image/imagecolorpicker",
-      icon: resize,
+      icon: colorPicker,
       key: 2,
     },
   ],
@@ -190,21 +194,21 @@ const config = {
       title: "CSS Glass-morphism Generator",
       desc: "Generate CSS code for Glassmorphism effect on elements",
       link: "tools/dev/glass-morphism-generator",
-      icon: shadow,
+      icon: glass,
       key: 2,
     },
     {
       title: "CSS Transition Generator",
       desc: "Generate CSS code for transitions and animations",
       link: "tools/dev/css-transition-generator",
-      icon: shadow,
+      icon: transition,
       key: 3,
     },
     {
       title: "Size Converter",
       desc: "Generate CSS code for transitions and animations",
       link: "tools/dev/size-converter",
-      icon: shadow,
+      icon: scale,
       key: 4,
     },
     

@@ -14,6 +14,11 @@ import loading from "../../public/assets/sand-clock.png";
 import shadow from "../../public/assets/square-shadow.png";
 import tweetGenerator from "../../public/assets/tweetGenerator.png";
 import colorConverter from "../../public/assets/colorConverter.png";
+import colorPicker from "../../public/assets/colorPicker.png";
+import glass from "../../public/assets/glass.png";
+import transition from "../../public/assets/transition.png";
+import scale from "../../public/assets/scale.png";
+
 
 export {
   lorem,
@@ -32,4 +37,8 @@ export {
   shadow,
   tweetGenerator,
   colorConverter,
+  colorPicker,
+  transition,
+  scale,
+  glass
 };

@@ -34,6 +34,10 @@ import {
   shadow,
   tweetGenerator,
   colorConverter,
+  colorPicker,
+  transition,
+  scale,
+  glass
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
@@ -136,7 +140,7 @@ export const TOOLS = {
       url: "image/imagecolorpicker",
       description: "Get exact pixel color from an image.",
       readme: ImageColorPickerReadme,
-      icon: resize,
+      icon: colorPicker,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },
@@ -156,7 +160,7 @@ export const TOOLS = {
       component: <GlassMorphismGenerator />,
       description: "Generate CSS code for Glassmorphism effect on elements",
       url: "dev/glass-morphism-generator",
-      icon: resize,
+      icon: glass,
       readme: GlassMorphReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
@@ -165,7 +169,7 @@ export const TOOLS = {
       component: <CSSTransitionsWrapper />,
       description: "Generate CSS code for transitions and animations",
       url: "dev/css-transition-generator",
-      icon: resize,
+      icon: transition,
       readme: CSSTransitionsReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
@@ -174,7 +178,7 @@ export const TOOLS = {
       component: <SizeConverter />,
       description: "Generate CSS code for transitions and animations",
       url: "dev/size-converter",
-      icon: resize,
+      icon: scale,
       readme: SizeConverterReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     }

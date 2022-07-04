@@ -59,6 +59,11 @@ const config = {
       url: "/contact",
       key: 2,
     },
+    {
+      name: "Support",
+      url: "https://ko-fi.com/arshpatel",
+      key: 3,
+    }
   ],
 
   footerLinks: [

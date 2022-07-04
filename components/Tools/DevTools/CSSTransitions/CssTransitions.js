@@ -10,20 +10,22 @@ import ButtonDiv from "../../ButtonDiv";
 const TranstionParentWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 800px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
 const InputSection = styled.div`
   display: flex;
-  width: 45%;
   flex-direction: column;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    margin: auto;
+  width: 100%;
+  
+  @media (min-width: 800px) {
+    width: 40%;
+    flex-direction: column;
   }
 `;
 
@@ -35,24 +37,27 @@ const StyledInput = styled.input`
 
 const ResultSection = styled.div`
   display: flex;
-  width: 55%;
+  width: 100%;
   flex-direction: column;
   font-size: var(--fz-md);
-  @media only screen and (max-width: 768px) {
-    width: 100%;
+  height: 500px;
+  
+  @media (min-width: 800px) {
+    width: 55%;
+    height: inherit;
+    max-height: 600px;
   }
 `;
 
 const StyledSelectInput = styled.select`
 ${({ theme }) => theme.mixins.selectInput}
 font-size: var(--fz-lg);
-
 `;
 
 const OutputBox = styled.div`
-  width: 90%;
+  width: 100%;
   height: 100%;
-  margin: auto;
+  /* margin: auto; */
   /* border-radius: 10px; */
   /* min-height: 200px; */
   display: flex;
@@ -76,6 +81,10 @@ const OutputBox = styled.div`
 
   .output:hover {
     ${(props) => props.pseudoCode}
+  }
+
+  @media (min-width: 800px) {
+    width: 100%;
   }
 `;
 
@@ -213,33 +222,33 @@ const CSSTransitionsGenerator = (props) => {
               <p>Hover me</p>
             </div>
           </OutputBox>
-          
+
         </ResultSection>
       </TranstionParentWrapper>
       <ResultCodeSection>
-            <h2>Code</h2>
-            <div className="maincode">
-              <div className="desc">
-                <p>Code for main element</p>
-                <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
-              </div>
-              <div className="code">
-                <div>{state.mainCode}</div>
-                <div>{state.transitionCode}</div>
-              </div>
-            </div>
-            <div className="pseudocode">
-              <div className="desc">
-                <p>
-                  Code for pseudo element, <i>like :hover</i>
-                </p>
-                <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
-              </div>
-              <div className="code">
-                <div>{state.pseudoCode}</div>
-              </div>
-            </div>
-          </ResultCodeSection>
+        <h2>Code</h2>
+        <div className="maincode">
+          <div className="desc">
+            <p>Code for main element</p>
+            <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
+          </div>
+          <div className="code">
+            <div>{state.mainCode}</div>
+            <div>{state.transitionCode}</div>
+          </div>
+        </div>
+        <div className="pseudocode">
+          <div className="desc">
+            <p>
+              Code for pseudo element, <i>like :hover</i>
+            </p>
+            <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
+          </div>
+          <div className="code">
+            <div>{state.pseudoCode}</div>
+          </div>
+        </div>
+      </ResultCodeSection>
     </>
   );
 };

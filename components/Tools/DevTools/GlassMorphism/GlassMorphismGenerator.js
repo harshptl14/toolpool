@@ -1,9 +1,10 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
+import styled, { useTheme } from "styled-components";
 import { UploadFile } from "@styled-icons/material";
 import { useCallback } from "react";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 import ButtonDiv from "../../ButtonDiv";
+import RGBToHex from "../../ColorTools/RgbToHex/converterFunctions";
 
 const StyledOuterDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
@@ -42,30 +43,7 @@ const SlidersSection = styled.div`
   }
   ${({ theme }) => theme.mixins.checkbox};
 
-  input[type="color"] {
-    -webkit-appearance: none;
-    border: none;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-  }
-  input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  input[type="color"]::-webkit-color-swatch {
-    border: none;
-  }
 
-  ${({ theme }) => theme.mixins.checkbox};
-
-  .colordiv {
-    ${({ theme }) => theme.mixins.flexStart};
-    gap: 10px;
-    font-size: var(--fz-sm);
-    color: ${({ theme }) => theme.color};
-    padding: 13px;
-    background-color: ${({ theme }) => theme.shadeBackcard};
-  }
 
   @media (min-width: 800px) {
     flex: 1 0 fill;
@@ -89,21 +67,7 @@ const SliderDiv = styled.div`
 `;
 
 const ColorSection = styled.div`
-  ${({ theme }) => theme.mixins.flexStart}
-  width: 100%;
-  height: 100%;
-  margin-top: 15px;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-family: var(--font-mono);
-
-  label {
-    gap: 10px;
-    font-size: var(--fz-lg);
-    ${({ theme }) => theme.mixins.flexStart};
-  }
-
-  /* justify-content: flex-start; */
+  ${({ theme }) => theme.mixins.colorSelection}
 `;
 
 const ChoiceSection = styled.div`
@@ -112,7 +76,7 @@ const ChoiceSection = styled.div`
 
 const OutputSection = styled(SlidersSection)`
   border: 1.8px dashed ${({ theme }) => theme.shade};
-  background: rgba(255, 255, 255, 1);
+  /* background: rgba(255, 255, 255, 1); */
   height: 430px;
   background-image: ${(props) =>
     props.isbgimage === true && `url(${props.bgimage})`};
@@ -190,14 +154,24 @@ const CSSProps = styled.div`
   }
 `;
 
+
+
 const GlassMorphismGenerator = () => {
+  const HexToRGBobj = (hex) => {
+    return {
+      r: ("0x" + hex[1] + hex[2]) | 0,
+      g: ("0x" + hex[3] + hex[4]) | 0,
+      b: ("0x" + hex[5] + hex[6]) | 0,
+    };
+  };
+  const theme = useTheme();
   const [blur, setBlur] = useState(10);
   const [opacity, setOpacity] = useState(0.5);
   const [isBGColor, setIsBGColor] = useState(false);
   const [isBGImage, setisBGImage] = useState(false);
-  const [RGBColor, setRGBColor] = useState({ r: 255, g: 255, b: 255 });
+  const [RGBColor, setRGBColor] = useState(() => HexToRGBobj(theme.contrast));
   const [bgImage, setBgImage] = useState(null);
-  const [bgColor, setBgColor] = useState({ r: 255, g: 255, b: 255 });
+  const [bgColor, setBgColor] = useState({ r: 0, g: 0, b: 0 });
 
   const onSelectFile = useCallback((file) => {
     // generating ObjectURL for input image to preview
@@ -214,6 +188,8 @@ const GlassMorphismGenerator = () => {
     ];
   };
 
+
+
   const filter = [];
 
   const finalButtons = [
@@ -229,25 +205,36 @@ const GlassMorphismGenerator = () => {
     },
   ];
 
+  useEffect(() => {
+    setRGBColor(() => HexToRGBobj(theme.contrast));
+    console.log(RGBColor)
+    console.log(theme.contrast)
+  }, [theme])
+
   return (
     <StyledOuterDiv>
       <StyledUpper>
         <SlidersSection>
           <ColorSection>
-            <div className="colordiv">
-              <input
-                type="color"
-                onInput={(e) => {
-                  const rgb = HexToRGB(e.target.value);
-                  setRGBColor({
-                    r: rgb[0],
-                    g: rgb[1],
-                    b: rgb[2],
-                  });
-                }}
-              />
-              Glass Color
-            </div>
+            <input
+              type="color"
+              // value={
+              //   () => {
+              //     const hexColor = RGBToHex(`rgb(255, 12, 12)`)
+              //     console.log(hexColor);
+              //     return hexColor;
+              //   }
+              // }
+              onInput={(e) => {
+                const rgb = HexToRGB(e.target.value);
+                setRGBColor({
+                  r: rgb[0],
+                  g: rgb[1],
+                  b: rgb[2],
+                });
+              }}
+            />
+            Glass Color
           </ColorSection>
           <SliderDiv>
             <div className="sliderTitle">Blur</div>
@@ -337,20 +324,18 @@ const GlassMorphismGenerator = () => {
             </label>
             {isBGColor && (
               <ColorSection>
-                <div className="colordiv">
-                  <input
-                    type="color"
-                    onInput={(e) => {
-                      const rgb = HexToRGB(e.target.value);
-                      setBgColor({
-                        r: rgb[0],
-                        g: rgb[1],
-                        b: rgb[2],
-                      });
-                    }}
-                  />
-                  Background Color
-                </div>
+                <input
+                  type="color"
+                  onInput={(e) => {
+                    const rgb = HexToRGB(e.target.value);
+                    setBgColor({
+                      r: rgb[0],
+                      g: rgb[1],
+                      b: rgb[2],
+                    });
+                  }}
+                />
+                Background Color
               </ColorSection>
             )}
           </ChoiceSection>

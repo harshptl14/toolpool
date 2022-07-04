@@ -520,6 +520,37 @@ const mixins = {
       }
   `,
 
+  colorSelection: css`
+    ${({ theme }) => theme.mixins.flexStart}
+  gap: 20px;
+  width: max-content;
+  height: 100%;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+
+    /* ${({ theme }) => theme.mixins.flexStart}; */
+    gap: 10px;
+    font-size: var(--fz-sm);
+    color: ${({ theme }) => theme.color};
+    padding: 13px;
+    background-color: ${({ theme }) => theme.shadeBackcard};
+
+  input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
+  `,
+
   imageUploader: css`
     width: 100%;
     position: relative;

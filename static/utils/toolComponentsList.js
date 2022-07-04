@@ -5,7 +5,7 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
-import RgbHexConverter from "../../components/Tools/ColorTools/rgbHexConverter";
+import RgbHexConverter from "../../components/Tools/ColorTools/RgbToHex/rgbHexConverter";
 // import SizeConverter from '../../components/Tools/DevTools/SizeConverter'
 import SizeConverter from "../../components/Tools/DevTools/SizeConverter/SizeConverter";
 import {

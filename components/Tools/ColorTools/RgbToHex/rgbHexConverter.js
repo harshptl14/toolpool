@@ -1,10 +1,10 @@
 import { useState, useEffec, useContext, useEffect } from "react";
 import styled from "styled-components";
-import ButtonDiv from "../ButtonDiv";
+import ButtonDiv from "../../ButtonDiv";
 import * as conFun from "./converterFunctions";
-import { regexColorCodeTypes } from "../../../static/helpers/helperfunctions";
-import { ToastContext } from "../../Toast/toastcontext";
-import { copyToClipboard } from "../../../static/helpers/helperfunctions";
+import { regexColorCodeTypes } from "../../../../static/helpers/helperfunctions";
+import { ToastContext } from "../../../Toast/toastcontext";
+import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 
 const StyledInput = styled.input`
   ${({ theme }) => theme.mixins.textbox};
@@ -273,6 +273,8 @@ const rgbHexConverter = () => {
     let rgbaRegex = regexColorCodeTypes("rgba");
     let hslRegex = regexColorCodeTypes("hsl");
     let hslaRegex = regexColorCodeTypes("hsla");
+
+    console.log(currentValue)
 
     if (hexRegex.test(currentValue)) {
       hexConverter(currentValue);

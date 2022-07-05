@@ -20,7 +20,8 @@ import {
   GlassMorphReadme,
   ImageColorPickerReadme,
   CSSTransitionsReadme,
-  SizeConverterReadme
+  SizeConverterReadme,
+  RgbHexConverterReadme
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -204,7 +205,7 @@ export const TOOLS = {
       description:
         "Convert RGB or Hex color into different types of color codes",
       icon: colorConverter,
-      readme: ``,
+      readme: RgbHexConverterReadme,
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },

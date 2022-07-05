@@ -239,3 +239,21 @@ Let's assume that you want to convert 24 pt to px, assuming the base size of 16 
 2. When finding the equivalent in ems, we need to divide the size in pixels by the base size: \`32px / 16px = 2em\`.
 3. As \`1em = 100%\`, \`2em = 200%\`.
 `;
+
+export const RgbHexConverterReadme = `
+# What is this tool?
+
+RGBA-HEX-HSL Converter is a **free online tool for converting various color formats into another format**. There are different color formats to define a color in CSS. Some are HEX (Hexadecimal Colors), RGB & RGBA, HSL & HSLA.
+
+The most used color formats are HEX and RGBA. HEX stands for hexadecimal colors while RGBA stands for "red, green, blue, alpha". HEX color code may have varying character lengths with a maximum of 8 without a # sign. The first 6 characters show the amount of red, green, and blue. There are 2 hexadecimal characters for each color. Each character may vary within 0-9 & a-f which means a total of 16 possibilities. For 2 characters, it means 256 possibilities. If you use an 8-character length HEX code, the last 2 characters symbolize the alpha of the color. In RGBA color format, there are 4 arguments. The first 3 is red, green, and blue which is varying between 0 to 255 and the last one is the alpha (or opacity) which varies from 0 to 1.
+
+For the example in the image, if you convert each hexadecimal pair to decimals, 00 => 0, 52 => 82, cc => 204, you will get the RGB colors. Since HEX color is 6 characters only, alpha is equal to 1.
+
+## **How to use Online HEX to RGBA Converter?**
+
+You can convert the formate of input color by following these steps.
+
+1. First, enter the HEX-RGBA-HSL code you want to convert to another format in the input area.
+2. Click the convert button. If the code you entered is valid, the code will pop, otherwise, you will see an error. You can also use the color picker directly, then you don't need to use the Convert button since it automatically fills both color codes.
+3. You can copy the code to your clipboard by clicking on a value.
+`;

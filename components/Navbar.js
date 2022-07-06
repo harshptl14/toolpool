@@ -189,7 +189,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
     </div>
   );
 
-  const ResumeLink = <StyledButton onClick={toggleTheme}>Theme</StyledButton>;
+  const ThemeLink = <StyledButton onClick={toggleTheme}>Theme</StyledButton>;
 
   return (
     <BannerWrapper>
@@ -212,7 +212,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
                       </li>
                     ))}
                 </ol>
-                <div>{ResumeLink}</div>
+                <div>{ThemeLink}</div>
               </StyledLinks>
               <Menu toggleTheme={toggleTheme} />
             </>
@@ -260,7 +260,7 @@ const Navbar = ({ isHome, toggleTheme }) => {
                           }ms`,
                         }}
                       >
-                        {ResumeLink}
+                        {ThemeLink}
                       </div>
                     </CSSTransition>
                   )}

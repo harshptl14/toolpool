@@ -3,6 +3,7 @@ import config from "../../static/utils/config";
 import styled, { css } from "styled-components";
 import { useScrollDirection } from "../../hooks";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 
 const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -110,14 +111,18 @@ const ChangeCat = styled.select`
 `;
 
 const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
+  const router = useRouter()
   return config.categoryList.map((obj) => {
     return (
       <StyledCategoryItems
         key={obj.id}
+        id={obj.id}
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
           setMenuItem(obj.id);
           executeScroll();
+          router.push(`#${obj.id}`, undefined, { shallow: true })
+          
         }}
       >
         {/* <Icon src={obj.logo} alt="" /> */}
@@ -132,7 +137,6 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
 
 const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
   const scrollDirection = useScrollDirection("down");
-
   return (
     <StyledMobileCategory scrollDirection={scrollDirection}>
       <ChangeCat

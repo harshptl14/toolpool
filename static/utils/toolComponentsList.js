@@ -44,6 +44,7 @@ import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tw
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
 import ImageColorPicker from "../../components/Tools/ImageTools/ImageColorPicker/imagecolorpicker";
 import CSSTransitionsWrapper from "../../components/Tools/DevTools/CSSTransitions/CssTransitions";
+import QrcodeGenerator from "../../components/Tools/MiscellaneousTools/QrcodeGenerator/QrcodeGenerator";
 
 export const URLLIST = [
   "text/lorem",
@@ -209,4 +210,17 @@ export const TOOLS = {
       poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
     },
   },
+
+  miscellaneous: {
+    "qrcode-generator": {
+      title: "QR Code Generator",
+      component: <QrcodeGenerator />,
+      url: "miscellaneous/qrcode-generator",
+      description:
+        "Generate a QR code for given text input.",
+      icon: colorConverter,
+      readme: RgbHexConverterReadme,
+      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+    },
+  }
 };

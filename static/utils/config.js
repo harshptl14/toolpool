@@ -122,6 +122,12 @@ const config = {
       id: "socialmediaTools",
       key: 5,
     },
+    {
+      name: "Miscellaneous Tools",
+      logo: colorsTools,
+      id: "miscellaneousTools",
+      key: 6,
+    }
   ],
 
   textTools: [
@@ -216,7 +222,7 @@ const config = {
       icon: scale,
       key: 4,
     },
-    
+
   ],
 
   colorTools: [
@@ -233,6 +239,15 @@ const config = {
       title: "Tweet Generator",
       desc: "Generate a fake tweet screenshot just for fun.",
       link: "tools/social/tweet-generator",
+      icon: tweetGenerator,
+      key: 1,
+    },
+  ],
+  miscellaneousTools: [
+    {
+      title: "QR Code Generator",
+      desc: "Generate a QR code for given text input.",
+      link: "tools/miscellaneous/qrcode-generator",
       icon: tweetGenerator,
       key: 1,
     },

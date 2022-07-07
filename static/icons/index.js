@@ -19,6 +19,7 @@ import glass from "../../public/assets/glass.png";
 import transition from "../../public/assets/transition.png";
 import scale from "../../public/assets/scale.png";
 import qrcode from "../../public/assets/qrcode.png";
+import miscellaneous from "../../public/assets/miss.png"; 
 
 
 export {
@@ -42,5 +43,6 @@ export {
   transition,
   scale,
   glass,
-  qrcode
+  qrcode,
+  miscellaneous
 };

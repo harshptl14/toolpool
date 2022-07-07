@@ -18,7 +18,8 @@ import {
   colorPicker,
   glass,
   scale,
-  transition
+  transition,
+  miscellaneous
 } from "../icons/index";
 
 const config = {
@@ -124,7 +125,7 @@ const config = {
     },
     {
       name: "Miscellaneous Tools",
-      logo: colorsTools,
+      logo: miscellaneous,
       id: "miscellaneousTools",
       key: 6,
     }
@@ -163,14 +164,14 @@ const config = {
     },
     {
       title: "Text 2 Binary",
-      desc: "Convert text to binary strings and vice versa.",
+      desc: "Convert text to binary strings and vice versa",
       link: "tools/text/t2b",
       icon: binary,
       key: 5,
     },
     {
       title: "Unique words finder",
-      desc: "Find all the uniques words used in a text.",
+      desc: "Find all the uniques words used in a text",
       link: "tools/text/uniquewords",
       icon: unique,
       key: 6,
@@ -196,7 +197,7 @@ const config = {
   developerTools: [
     {
       title: "CSS Box-Shadow Generator",
-      desc: "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
+      desc: "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly",
       link: "tools/dev/box-shadow-generator",
       icon: shadow,
       key: 1,
@@ -217,7 +218,7 @@ const config = {
     },
     {
       title: "Size Converter",
-      desc: "Generate CSS code for transitions and animations",
+      desc: "Tool to convert between CSS units quickly and effortlessly",
       link: "tools/dev/size-converter",
       icon: scale,
       key: 4,
@@ -237,7 +238,7 @@ const config = {
   socialmediaTools: [
     {
       title: "Tweet Generator",
-      desc: "Generate a fake tweet screenshot just for fun.",
+      desc: "Generate a fake tweet screenshot just for fun",
       link: "tools/social/tweet-generator",
       icon: tweetGenerator,
       key: 1,
@@ -246,7 +247,7 @@ const config = {
   miscellaneousTools: [
     {
       title: "QR Code Generator",
-      desc: "Generate a QR code for given text input.",
+      desc: "Generate a QR code for given text input",
       link: "tools/miscellaneous/qrcode-generator",
       icon: tweetGenerator,
       key: 1,

@@ -38,7 +38,8 @@ import {
   colorPicker,
   transition,
   scale,
-  glass
+  glass,
+  qrcode
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
@@ -143,7 +144,7 @@ export const TOOLS = {
       description: "Get exact pixel color from an image.",
       readme: ImageColorPickerReadme,
       icon: colorPicker,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterImageColorPicker.jpg",
     },
   },
   dev: {
@@ -155,7 +156,7 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: shadow,
       readme: BoxShadowReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterBoxshadowGenerator.jpg",
     },
     "glass-morphism-generator": {
       title: "CSS Glass-morphism Generator",
@@ -164,7 +165,7 @@ export const TOOLS = {
       url: "dev/glass-morphism-generator",
       icon: glass,
       readme: GlassMorphReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterGlassmorphismGenerator.jpg",
     },
     "css-transition-generator": {
       title: "CSS Transition Generator",
@@ -173,7 +174,7 @@ export const TOOLS = {
       url: "dev/css-transition-generator",
       icon: transition,
       readme: CSSTransitionsReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterTransitionGenerator.jpg",
     },
     "size-converter": {
       title: "Size Converter",
@@ -182,7 +183,7 @@ export const TOOLS = {
       url: "dev/size-converter",
       icon: scale,
       readme: SizeConverterReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterSizeConverter.jpg",
     }
     
   },
@@ -195,7 +196,7 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: tweetGenerator,
       readme: ``,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterTweetGenerator.jpg",
     },
   },
   color: {
@@ -207,7 +208,7 @@ export const TOOLS = {
         "Convert RGB or Hex color into different types of color codes",
       icon: colorConverter,
       readme: RgbHexConverterReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterRgbHexHslConverter.jpg",
     },
   },
 
@@ -218,9 +219,9 @@ export const TOOLS = {
       url: "miscellaneous/qrcode-generator",
       description:
         "Generate a QR code for given text input.",
-      icon: colorConverter,
+      icon: qrcode,
       readme: RgbHexConverterReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterQrCodeGenerator.jpg",
     },
   }
 };

@@ -18,6 +18,7 @@ import colorPicker from "../../public/assets/colorPicker.png";
 import glass from "../../public/assets/glass.png";
 import transition from "../../public/assets/transition.png";
 import scale from "../../public/assets/scale.png";
+import qrcode from "../../public/assets/qrcode.png";
 
 
 export {
@@ -40,5 +41,6 @@ export {
   colorPicker,
   transition,
   scale,
-  glass
+  glass,
+  qrcode
 };

@@ -21,7 +21,9 @@ import {
   ImageColorPickerReadme,
   CSSTransitionsReadme,
   SizeConverterReadme,
-  RgbHexConverterReadme
+  RgbHexConverterReadme,
+  QrCodeGeneratorReadme,
+  TweetGeneratorReadme
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -195,7 +197,7 @@ export const TOOLS = {
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: tweetGenerator,
-      readme: ``,
+      readme: TweetGeneratorReadme,
       poster: "https://toolpool.ml/assets/posters/posterTweetGenerator.jpg",
     },
   },
@@ -220,7 +222,7 @@ export const TOOLS = {
       description:
         "Generate a QR code for given text input.",
       icon: qrcode,
-      readme: RgbHexConverterReadme,
+      readme: QrCodeGeneratorReadme,
       poster: "https://toolpool.ml/assets/posters/posterQrCodeGenerator.jpg",
     },
   }

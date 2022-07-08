@@ -257,3 +257,27 @@ You can convert the formate of input color by following these steps.
 2. Click the convert button. If the code you entered is valid, the code will pop, otherwise, you will see an error. You can also use the color picker directly, then you don't need to use the Convert button since it automatically fills both color codes.
 3. You can copy the code to your clipboard by clicking on a value.
 `;
+
+export const QrCodeGeneratorReadme = `
+# What is this tool?
+
+QR Code generator is a free tool to generate your own custom QR Codes.
+
+QR Code is a two-dimensional version of the barcode, typically made up of black and white pixel patterns. Denso Wave, a Japanese subsidiary of the Toyota supplier Denso, developed them to mark components to accelerate logistics processes for their automobile production. Now, it has found its way into mobile marketing with the widespread adoption of smartphones. "QR" stands for "Quick Response", which refers to instant access to the information hidden in the Code.
+
+Steps to use this tool.
+
+1. Enter all the information needed in the input field. This could be a link, contact information, text, or any other type of info. 
+2. Once you’re done, select “Download QR Code”
+3. That’s it! you have your own custom QR code.
+`;
+
+export const TweetGeneratorReadme = `
+# What is this tool?
+
+Tweet Generator is a free online tool for generating tweets for making jokes to your friends, colleagues or community. It works like a Tweet maker. Twitter is one of the biggest social networks. Even it is not possible to make sure if the information given is 100% true or not as all other internet sources, people are getting information by following accounts of other people, communities, organizations.
+
+You can make fun with your friends by generating real looking tweets online and share the generated tweet images with your friends. Don't forget that main intention of this tool is just to entertain and make jokes to people, nothing more. So, checkout the usage policy below if you have any questions on your mind about usage details.
+
+
+`;

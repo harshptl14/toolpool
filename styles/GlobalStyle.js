@@ -51,7 +51,7 @@ a {
   body::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.border};
     /* border: 1px solid ${({ theme }) => theme.color}; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
   }
 
   body {

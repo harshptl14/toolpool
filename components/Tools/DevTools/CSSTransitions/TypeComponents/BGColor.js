@@ -5,8 +5,13 @@ import { TransitionContext } from "../context/TransitionContext";
 
 const ColorInputsWrapper = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
-  justify-content: space-between;
+  
+  @media (min-width: 900px) {
+    flex-direction: row;
+    gap: 1em;
+  }
 `;
 
 const BGColorInputs = () => {

@@ -4,6 +4,9 @@ import { useInput } from "../hooks/useInput";
 import PageTitle from "../components/PageTitle";
 import Head from "next/head";
 import Image from "next/image";
+import IconStyle from "../components/Common/IconStyle";
+import { Twitter } from "@styled-icons/bootstrap/Twitter";
+import { Kofi } from "@styled-icons/simple-icons/Kofi";
 import ContactIllustration from "../public/svg/contact.svg";
 
 const StyledContactDiv = styled.div`
@@ -41,6 +44,12 @@ const StyledHeading = styled.div`
     top: 4.4rem;
     width: 30%;
   }
+`;
+
+const StyledContactIcons = styled.div`
+  ${({ theme }) => theme.mixins.flexStart}
+  gap: 0.7em;
+  margin-top: 0.5em;
 `;
 
 const StyledContent = styled.form`
@@ -148,6 +157,12 @@ const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const contactDetails = {
+    email: 'hey.10devs@gmail.com',
+    twitter: 'https://twitter.com/toolpool_10devs',
+    kofi: 'https://ko-fi.com/arshpatel'
+  }
   return (
     <StyledContactDiv>
       <Head>
@@ -155,7 +170,7 @@ const Contact = () => {
         <meta
           name="Keywords"
           content="online tools, free online tools, text tools, image tools, developers tools, social media tools, color tools, lorem ipsum, letter count,
-     space remover, text to binary, binary to text, unique word, upper case, lower case, image resize, crop image"
+          space remover, text to binary, binary to text, unique word, upper case, lower case, image resize, crop image"
         />
         <meta
           name="description"
@@ -192,7 +207,25 @@ const Contact = () => {
       </Head>
       <StyledHeading>
         <PageTitle size="big">Contact Us</PageTitle>
-        <div className="desc">octruszamp@gmail.com</div>
+        <div className="desc">{contactDetails.email}</div>
+        <StyledContactIcons>
+          <IconStyle padding="0.5rem">
+            <Twitter
+              width="25px"
+              color="#2b7537"
+              cursor="pointer"
+              onClick={() => window.open(contactDetails.twitter, '_blank')}
+            />
+          </IconStyle>
+          <IconStyle padding="0.5rem">
+            <Kofi
+              width="35px"
+              color="#2b7537"
+              cursor="pointer"
+              onClick={() => window.open(contactDetails.kofi, '_blank')}
+            />
+          </IconStyle>
+        </StyledContactIcons>
       </StyledHeading>
       <StyledContent onSubmit={handleSubmit}>
         <StyledContactImage>

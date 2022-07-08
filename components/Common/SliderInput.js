@@ -33,7 +33,6 @@ const SliderDiv = styled.div`
 
   @media (min-width: 800px) {
     width: 100%;
-    margin-top: 20px;
   }
 `;
 

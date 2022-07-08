@@ -5,7 +5,9 @@ import UniqueWordsFinder from "../../components/Tools/TextTools/UniqueWordsFinde
 import ImageResizer from "../../components/Tools/ImageTools/ImageResizer/imageresizer";
 import LetterCounter from "../../components/Tools/TextTools/LetterCounter/LetterCounter";
 import WhiteSpace from "../../components/Tools/TextTools/WhiteSpaceRemover/WhiteSpace";
-import RgbHexConverter from "../../components/Tools/ColorTools/rgbHexConverter";
+import RgbHexConverter from "../../components/Tools/ColorTools/RgbToHex/rgbHexConverter";
+// import SizeConverter from '../../components/Tools/DevTools/SizeConverter'
+import SizeConverter from "../../components/Tools/DevTools/SizeConverter/SizeConverter";
 import {
   BoxShadowReadme,
   CaseReadme,
@@ -18,6 +20,10 @@ import {
   GlassMorphReadme,
   ImageColorPickerReadme,
   CSSTransitionsReadme,
+  SizeConverterReadme,
+  RgbHexConverterReadme,
+  QrCodeGeneratorReadme,
+  TweetGeneratorReadme
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -31,11 +37,17 @@ import {
   shadow,
   tweetGenerator,
   colorConverter,
+  colorPicker,
+  transition,
+  scale,
+  glass,
+  qrcode
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
 import ImageColorPicker from "../../components/Tools/ImageTools/ImageColorPicker/imagecolorpicker";
 import CSSTransitionsWrapper from "../../components/Tools/DevTools/CSSTransitions/CssTransitions";
+import QrcodeGenerator from "../../components/Tools/MiscellaneousTools/QrcodeGenerator/QrcodeGenerator";
 
 export const URLLIST = [
   "text/lorem",
@@ -133,8 +145,8 @@ export const TOOLS = {
       url: "image/imagecolorpicker",
       description: "Get exact pixel color from an image.",
       readme: ImageColorPickerReadme,
-      icon: resize,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      icon: colorPicker,
+      poster: "https://toolpool.ml/assets/posters/posterImageColorPicker.jpg",
     },
   },
   dev: {
@@ -146,26 +158,36 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: shadow,
       readme: BoxShadowReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterBoxshadowGenerator.jpg",
     },
     "glass-morphism-generator": {
       title: "CSS Glass-morphism Generator",
       component: <GlassMorphismGenerator />,
       description: "Generate CSS code for Glassmorphism effect on elements",
       url: "dev/glass-morphism-generator",
-      icon: resize,
+      icon: glass,
       readme: GlassMorphReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterGlassmorphismGenerator.jpg",
     },
     "css-transition-generator": {
       title: "CSS Transition Generator",
       component: <CSSTransitionsWrapper />,
       description: "Generate CSS code for transitions and animations",
       url: "dev/css-transition-generator",
-      icon: resize,
+      icon: transition,
       readme: CSSTransitionsReadme,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.ml/assets/posters/posterTransitionGenerator.jpg",
     },
+    "size-converter": {
+      title: "Size Converter",
+      component: <SizeConverter />,
+      description: "Generate CSS code for transitions and animations",
+      url: "dev/size-converter",
+      icon: scale,
+      readme: SizeConverterReadme,
+      poster: "https://toolpool.ml/assets/posters/posterSizeConverter.jpg",
+    }
+    
   },
   social: {
     "tweet-generator": {
@@ -175,8 +197,8 @@ export const TOOLS = {
       description:
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: tweetGenerator,
-      readme: ``,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      readme: TweetGeneratorReadme,
+      poster: "https://toolpool.ml/assets/posters/posterTweetGenerator.jpg",
     },
   },
   color: {
@@ -187,8 +209,21 @@ export const TOOLS = {
       description:
         "Convert RGB or Hex color into different types of color codes",
       icon: colorConverter,
-      readme: ``,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      readme: RgbHexConverterReadme,
+      poster: "https://toolpool.ml/assets/posters/posterRgbHexHslConverter.jpg",
     },
   },
+
+  miscellaneous: {
+    "qrcode-generator": {
+      title: "QR Code Generator",
+      component: <QrcodeGenerator />,
+      url: "miscellaneous/qrcode-generator",
+      description:
+        "Generate a QR code for given text input.",
+      icon: qrcode,
+      readme: QrCodeGeneratorReadme,
+      poster: "https://toolpool.ml/assets/posters/posterQrCodeGenerator.jpg",
+    },
+  }
 };

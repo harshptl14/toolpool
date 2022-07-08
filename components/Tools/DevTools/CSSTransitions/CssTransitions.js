@@ -10,48 +10,69 @@ import ButtonDiv from "../../ButtonDiv";
 const TranstionParentWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 800px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
 const InputSection = styled.div`
   display: flex;
-  width: 45%;
   flex-direction: column;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    margin: auto;
+  width: 100%;
+  
+  @media (min-width: 800px) {
+    width: 40%;
+    flex-direction: column;
   }
+`;
+
+const StyledInput = styled.input`
+  ${({ theme }) => theme.mixins.textbox};
+  font-size: var(--fz-lg);
+  /* height: 2.7em; */
 `;
 
 const ResultSection = styled.div`
   display: flex;
-  width: 55%;
+  width: 100%;
   flex-direction: column;
   font-size: var(--fz-md);
-  @media only screen and (max-width: 768px) {
-    width: 100%;
+  height: 500px;
+  
+  @media (min-width: 800px) {
+    width: 55%;
+    height: inherit;
+    max-height: 600px;
   }
 `;
 
+const StyledSelectInput = styled.select`
+${({ theme }) => theme.mixins.selectInput}
+font-size: var(--fz-lg);
+`;
+
 const OutputBox = styled.div`
-  width: 90%;
-  margin: auto;
-  border-radius: 10px;
-  min-height: 200px;
+  width: 100%;
+  height: 100%;
+  /* margin: auto; */
+  /* border-radius: 10px; */
+  /* min-height: 200px; */
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.shadeVarient};
+  background-color: ${({ theme }) => theme.shadeBackcard};
   padding: 1em;
   .output {
-    width: 150px;
-    height: 150px;
+    width: 60%;
+    height: 60%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: ${({ theme }) => theme.color};
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: ${({ theme }) => theme.text};
     ${(props) => props.mainCode}
@@ -61,14 +82,21 @@ const OutputBox = styled.div`
   .output:hover {
     ${(props) => props.pseudoCode}
   }
+
+  @media (min-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const ResultCodeSection = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   margin: auto;
   flex-direction: column;
 
+  h2{
+    margin-bottom: 0;
+  }
   .desc {
     width: 100%;
     display: flex;
@@ -85,10 +113,11 @@ const ResultCodeSection = styled.div`
   }
 
   .code {
-    background-color: ${({ theme }) => theme.shadeVarient};
+    background-color: ${({ theme }) => theme.shadeBackcard};
     padding: 1em;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 500;
+    font-family: var(--font-mono);
   }
 `;
 
@@ -141,83 +170,86 @@ const CSSTransitionsGenerator = (props) => {
   ];
 
   return (
-    <TranstionParentWrapper>
-      <InputSection>
-        <LabeledInput label="Type">
-          <select name="type" onChange={onTypeSelect}>
-            <option value="opacity">Opacity</option>
-            <option value="background-color">Background color</option>
-            <option value="width">Width</option>
-            <option value="height">Height</option>
-            <option value="outline">Outline</option>
-          </select>
-        </LabeledInput>
-        {/* Component to take input for specific types */}
-        {TypeComponents[state.transitionType]}
-        <LabeledInput label="Duration">
-          <input
-            type="number"
-            name="duration"
-            placeholder="In seconds"
-            onChange={onDurationChange}
-            defaultValue={state.duration}
-          />
-        </LabeledInput>
-        <LabeledInput label="Timing Function">
-          <select name="type" onChange={onTFSelect}>
-            <option value="ease">ease</option>
-            <option value="ease-in">ease-in</option>
-            <option value="ease-out">ease-out</option>
-            <option value="ease-in-out">ease-in-out</option>
-            <option value="linear">linear</option>
-          </select>
-        </LabeledInput>
-        <LabeledInput label="Delay">
-          <input
-            type="number"
-            name="delay"
-            placeholder="In seconds"
-            onChange={onDelayChange}
-            defaultValue={state.delay}
-          />
-        </LabeledInput>
-      </InputSection>
-      <ResultSection>
-        <OutputBox
-          mainCode={state.mainCode}
-          transitionCode={state.transitionCode}
-          pseudoCode={state.pseudoCode}
-        >
-          <div className="output">
-            <p>Hover me</p>
+    <>
+      <TranstionParentWrapper>
+        <InputSection>
+          <LabeledInput label="Type">
+            <StyledSelectInput name="type" onChange={onTypeSelect}>
+              <option value="opacity">Opacity</option>
+              <option value="background-color">Background color</option>
+              <option value="width">Width</option>
+              <option value="height">Height</option>
+              <option value="outline">Outline</option>
+            </StyledSelectInput>
+          </LabeledInput>
+          {/* Component to take input for specific types */}
+          {TypeComponents[state.transitionType]}
+          <LabeledInput label="Duration">
+            <StyledInput
+              type="number"
+              name="duration"
+              placeholder="In seconds"
+              onChange={onDurationChange}
+              defaultValue={state.duration}
+            />
+          </LabeledInput>
+          <LabeledInput label="Timing Function">
+            <StyledSelectInput name="type" onChange={onTFSelect}>
+              <option value="ease">ease</option>
+              <option value="ease-in">ease-in</option>
+              <option value="ease-out">ease-out</option>
+              <option value="ease-in-out">ease-in-out</option>
+              <option value="linear">linear</option>
+            </StyledSelectInput>
+          </LabeledInput>
+          <LabeledInput label="Delay">
+            <StyledInput
+              type="number"
+              name="delay"
+              placeholder="In seconds"
+              onChange={onDelayChange}
+              defaultValue={state.delay}
+            />
+          </LabeledInput>
+        </InputSection>
+        <ResultSection>
+          <OutputBox
+            mainCode={state.mainCode}
+            transitionCode={state.transitionCode}
+            pseudoCode={state.pseudoCode}
+          >
+            <div className="output">
+              <p>Hover me</p>
+            </div>
+          </OutputBox>
+
+        </ResultSection>
+      </TranstionParentWrapper>
+      <ResultCodeSection>
+        <h2>Code</h2>
+        <div className="maincode">
+          <div className="desc">
+            <p>Code for main element</p>
+            <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
           </div>
-        </OutputBox>
-        <ResultCodeSection>
-          <h2>Code</h2>
-          <div className="maincode">
-            <div className="desc">
-              <p>Code for main element</p>
-              <ButtonDiv filter={[]} finalButtons={mainCopyButtons} />
-            </div>
-            <div className="code">
-              <div>{state.mainCode}</div>
-              <div>{state.transitionCode}</div>
-            </div>
+          <div className="code">
+            <div>{state.mainCode}</div>
+            <div>{state.transitionCode}</div>
           </div>
-          <div className="pseudocode">
-            <div className="desc">
-              <p>
-                Code for pseudo element, <i>like :hover</i>
-              </p>
-              <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
-            </div>
-            <div className="code">
-              <div>{state.pseudoCode}</div>
-            </div>
+        </div>
+        <div className="pseudocode">
+          <div className="desc">
+            <p>
+              Code for pseudo element, <i>like :hover</i>
+            </p>
+            <ButtonDiv filter={[]} finalButtons={pseudoCopyButtons} />
           </div>
-        </ResultCodeSection>
-      </ResultSection>
-    </TranstionParentWrapper>
+          <div className="code">
+            <div>{state.pseudoCode}</div>
+          </div>
+        </div>
+      </ResultCodeSection>
+    </>
   );
 };
 

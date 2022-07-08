@@ -117,7 +117,7 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
           setMenuItem(obj.id);
-          executeScroll();
+          executeScroll();          
         }}
       >
         {/* <Icon src={obj.logo} alt="" /> */}
@@ -132,7 +132,6 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
 
 const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
   const scrollDirection = useScrollDirection("down");
-
   return (
     <StyledMobileCategory scrollDirection={scrollDirection}>
       <ChangeCat

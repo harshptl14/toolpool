@@ -39,7 +39,7 @@ const QrcodeGenerator = () => {
             method: () => setQrValue(""),
             type: "normal",
         },
-        
+
     ];
 
     const finalButtons = [
@@ -48,6 +48,7 @@ const QrcodeGenerator = () => {
             title: "Download QR Code",
             method: () => downloadQRCode(),
             type: "submit",
+            disabled: qrValue.length === 0,
         },
     ];
 
@@ -76,11 +77,12 @@ const QrcodeGenerator = () => {
             <ButtonDiv filter={filter} finalButtons={[]} />
 
             <StyledOutputBackgroud>
-            <QRCodeCanvas
-                id="qr-gen"
-                value={qrValue}
-                size={250}
-                level={"H"}
+                <QRCodeCanvas
+                    id="qr-gen"
+                    value={qrValue}
+                    size={250}
+                    level={"H"}
+                    style={{ opacity: qrValue.length === 0 ? 0.5 : 1 }}
                     includeMargin={true} />
             </StyledOutputBackgroud>
             <ButtonDiv filter={[]} finalButtons={finalButtons} />

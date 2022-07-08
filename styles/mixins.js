@@ -245,6 +245,17 @@ const mixins = {
     &:after {
       display: none !important;
     }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
+    }
   `,
 
   smallButtonFilled: css`
@@ -268,6 +279,17 @@ const mixins = {
     &:after {
       display: none !important;
     }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
+    }
   `,
 
   bigButton: css`
@@ -290,6 +312,17 @@ const mixins = {
     }
     &:after {
       display: none !important;
+    }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
     }
   `,
 
@@ -324,7 +357,7 @@ const mixins = {
   textarea: css`
     width: 100%;
     /* resize: none; */
-    background-color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.footer};
     border: 2px solid ${({ theme }) => theme.shade};
     font-size: var(--fz-lg);
     padding: 15px 20px;

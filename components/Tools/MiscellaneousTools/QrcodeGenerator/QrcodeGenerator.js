@@ -11,10 +11,13 @@ font-size: 0.8em;
 `;
 
 const StyledOutputBackgroud = styled.div`
-${({ theme }) => theme.mixins.flexCenter};
-background-color: ${({ theme }) => theme.shadeBackcard};
-padding: 3em;
+    ${({ theme }) => theme.mixins.flexCenter};
+    background-color: ${({ theme }) => theme.shadeBackcard};
+    padding: 3em;
     overflow-x: scroll;
+
+    @media (min-width: 800px) {
+
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; 
 
@@ -22,6 +25,7 @@ padding: 3em;
     width: 0;
     height: 0;
     }
+}
 `;
 
 const QrcodeGenerator = () => {

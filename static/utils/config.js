@@ -19,7 +19,8 @@ import {
   glass,
   scale,
   transition,
-  miscellaneous
+  miscellaneous, 
+  qrcode
 } from "../icons/index";
 
 const config = {
@@ -249,7 +250,7 @@ const config = {
       title: "QR Code Generator",
       desc: "Generate a QR code for given text input",
       link: "tools/miscellaneous/qrcode-generator",
-      icon: tweetGenerator,
+      icon: qrcode,
       key: 1,
     },
   ],

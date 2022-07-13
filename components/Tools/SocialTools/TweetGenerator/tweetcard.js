@@ -6,11 +6,11 @@ import { nFormatter } from "../../../../static/helpers/helperfunctions";
 
 const MainCard = styled.div`
   display: flex;
+  width: max-content;
   max-width: 600px;
   height: max-content;
   margin: auto;
   background-color: ${(props) => (props.tTheme ? "black" : "white")};
-
   border: 1px solid var(--fontdesc-dark);
   border-radius: 5px;
   padding: 1rem;

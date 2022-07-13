@@ -50,8 +50,21 @@ const StyledFilearea = styled.div`
 const Tweet = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.shade};
-  padding: 50px;
-  overflow-x: auto;
+  overflow-x: scroll;
+  padding: 30px;
+  
+  @media (min-width: 800px) {
+    padding: 50px;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; 
+
+    ::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+    }
+  }
+
 `;
 
 const TweetInputs = styled.div`

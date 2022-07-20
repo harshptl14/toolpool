@@ -21,14 +21,18 @@ const ColorInputWrapper = styled.div`
   .color-input {
     display: flex;
     align-items: center;
-    border: 1px solid ${({ theme }) => theme.color};
-    border-radius: 5px;
+    width: inherit;
+    padding: 0.8em;
+    gap: 1em;
+    background-color: ${({ theme }) => theme.shadeBackcard};
+    /* border: 1.5px solid ${({ theme }) => theme.shadeVarient}; */
+    /* border-radius: 5px; */
   }
 
   .color-input span {
-    font-size: var(--fz-sm);
-    margin: 1em;
+    font-size: var(--fz-md);
     font-weight: 500;
+    margin-bottom: 0;
   }
 `;
 

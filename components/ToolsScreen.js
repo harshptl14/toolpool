@@ -70,6 +70,7 @@ const StyledToolCard = styled.a`
   width: 100%;
   margin: 0px auto 40px auto;
   position: static;
+  min-height: 350px;
 
   @media (min-width: 600px) {
     width: 100%;

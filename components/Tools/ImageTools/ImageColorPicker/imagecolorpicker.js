@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { UploadFile } from "@styled-icons/material";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import Canvas from "../canvas";
 import ButtonDiv from "../../ButtonDiv";
 import { Copy } from "@styled-icons/boxicons-regular";
 import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
+import { ToastContext } from "../../../Toast/toastcontext";
+import { RGBAToHexA } from "../../ColorTools/RgbToHex/converterFunctions";
+
+
 const Wrapperdiv = styled.div`
   .canvas-preview {
     margin: 1em auto;
@@ -31,20 +35,64 @@ const Wrapperdiv = styled.div`
   }
 `;
 
-const CopyButton = styled.button`
+const StyledCopyButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  color: ${({ theme }) => theme.color}
 `;
 
 const StyledFilearea = styled.div`
   ${({ theme }) => theme.mixins.imageUploader}
 `;
 
+const StyledPreviewimageDiv = styled.div`
+  position: relative;
+  margin: 16px 0px;
+  padding: 0;
+  width: 100%;
+  height: max-content;
+  background: ${({ theme }) => theme.shade};
+  border: 1px solid ${({ theme }) => theme.shade};
+  /* border-radius: 8px; */
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  color: rgb(97, 98, 150);
+  /* opacity: 0.5; */
+  transition: all 0.25s ease 0s;
+  margin: 1em auto;
+  /* max-width: fit-content; */
+  overflow-x: hidden; 
+
+  canvas {
+    width: auto;
+    max-width: calc(100% - 40px);
+    height: auto;
+    max-height: 620px;
+  }
+
+  .title {
+    color: ${({ theme }) => theme.color};
+    margin-top: 10px;
+    font-size: var(--fz-lg);
+  }
+
+  .size {
+    margin-top: 5px;
+    font-size: var(--fz-lg);
+    color: ${({ theme }) => theme.text};
+  }
+`;
+
 const ResultWrapper = styled.div`
   margin: 2em auto;
   padding: 1em;
   max-width: max-content;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-color: ${({ theme }) => theme.shadeVarient};
   display: flex;
 
@@ -80,7 +128,9 @@ function findPos(obj) {
 }
 
 const hexToRgb = (hex) => {
+  console.log("hexToRgb", hex)
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  console.log("result of hexToRgb", result)
   return result
     ? `
         ${parseInt(result[1], 16)},
@@ -92,7 +142,8 @@ const hexToRgb = (hex) => {
 
 const ImageColorPicker = () => {
   const [previewImage, setpreviewImage] = useState(null);
-  const [hex, setHex] = useState("#ffffff");
+  const [hex, setHex] = useState({ hex: "#ffffff", rgba: "rgb(255,255,255,1)" });
+  const [state, dispatch] = useContext(ToastContext);
 
   const draw = useCallback(
     (ctx) => {
@@ -128,7 +179,10 @@ const ImageColorPicker = () => {
         const eyeDropper = new EyeDropper();
         try {
           eyeDropper.open().then((data) => {
-            setHex(data.sRGBHex);
+            setHex({
+              hex: RGBAToHexA(data.sRGBHex).slice(0, -2),
+              rgba: data.sRGBHex,
+            });
           });
         } catch (err) {
           console.log(err);
@@ -141,7 +195,7 @@ const ImageColorPicker = () => {
       title: "Reset",
       method: () => {
         setpreviewImage(null);
-        setHex('#ffffff');
+        setHex({ hex: "#ffffff", rgba: "rgb(255,255,255,1)" });
       },
       type: "normal",
     },
@@ -156,11 +210,11 @@ const ImageColorPicker = () => {
           id="images"
           required="required"
           onClick={(e) => {
-            setpreviewImage(null);
+            e.target.value = null;
           }}
           onChange={(e) => {
-            if (e.target.files.length === 0) {
-              setpreviewImage(null);
+            if (!e.target.files || e.target.files.length === 0) {
+              setpreviewImage(undefined);
               return;
             }
             var image = new Image();
@@ -181,30 +235,41 @@ const ImageColorPicker = () => {
           </div>
         </div>
       </StyledFilearea>
+
       {previewImage && (
         <div className="result">
-          <ResultWrapper hex={hex}>
+          <ResultWrapper hex={hex.hex}>
             <div className="color-display"></div>
             <div className="color-data">
               <span>
-                RGB : ({`${hexToRgb(hex)}`})
-                <CopyButton
+                RGBA : {hex.rgba}
+                <StyledCopyButton
                   onClick={(e) => {
-                    copyToClipboard(hexToRgb(hex));
+                    copyToClipboard(hex.rgba);
+                    dispatch(
+                      {
+                        type: "SHOW",
+                        message: "Copied",
+                      }
+                    );
                   }}
                 >
-                  <Copy width={20} />
-                </CopyButton>
+                  <Copy width={25} />
+                </StyledCopyButton>
               </span>
               <span>
-                Hex : {hex}
-                <CopyButton
+                Hex : {hex.hex}
+                <StyledCopyButton
                   onClick={(e) => {
-                    copyToClipboard(hex);
+                    copyToClipboard(hex.hex);
+                    dispatch({
+                      type: "SHOW",
+                      message: "Copied",
+                    });
                   }}
                 >
-                  <Copy width={20} />
-                </CopyButton>
+                  <Copy width={25} />
+                </StyledCopyButton>
               </span>
             </div>
           </ResultWrapper>
@@ -213,28 +278,30 @@ const ImageColorPicker = () => {
               <ButtonDiv filter={[]} finalButtons={finalButtons} />
             )}
           </div>
-        </div>
+        </div >
       )}
 
-      {previewImage && (
-        <div className="canvas-preview">
-          <Canvas
-            id="canvas"
-            draw={draw}
-            width={700}
-            height={500}
-            onClick={(e, ctx) => {
-              // var pos = findPos(ctx.canvas);
-              // const x = e.pageX - pos.x;
-              // const y = e.pageY - pos.y;
-              // var imageData = ctx.getImageData(x, y, 1, 1).data;
-              // const [r, g, b] = imageData;
-              // setRgb([r, g, b]);
-            }}
-          />
-        </div>
-      )}
-    </Wrapperdiv>
+      {
+        previewImage && (
+          <StyledPreviewimageDiv>
+            <Canvas
+              id="canvas"
+              draw={draw}
+              width={700}
+              height={500}
+              onClick={(e, ctx) => {
+                // var pos = findPos(ctx.canvas);
+                // const x = e.pageX - pos.x;
+                // const y = e.pageY - pos.y;
+                // var imageData = ctx.getImageData(x, y, 1, 1).data;
+                // const [r, g, b] = imageData;
+                // setRgb([r, g, b]);
+              }}
+            />
+          </StyledPreviewimageDiv>
+        )
+      }
+    </Wrapperdiv >
   );
 };
 

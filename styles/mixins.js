@@ -245,6 +245,17 @@ const mixins = {
     &:after {
       display: none !important;
     }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
+    }
   `,
 
   smallButtonFilled: css`
@@ -268,6 +279,17 @@ const mixins = {
     &:after {
       display: none !important;
     }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
+    }
   `,
 
   bigButton: css`
@@ -290,6 +312,17 @@ const mixins = {
     }
     &:after {
       display: none !important;
+    }
+
+    &:disabled{
+      background: repeating-linear-gradient(
+      -55deg,
+      ${({ theme }) => theme.border},
+      ${({ theme }) => theme.border} 5px,
+      ${({ theme }) => theme.shadeBackcard} 5px,
+      ${({ theme }) => theme.shadeBackcard} 10px
+);
+cursor: not-allowed;
     }
   `,
 
@@ -331,8 +364,9 @@ const mixins = {
     /* margin: 0px 0 15px 0; */
     font-family: "Open Sans", -apple-system, system-ui, sans-serif;
     color: ${({ theme }) => theme.text};
-    &:focus,
-    &:active {
+
+    :disabled{
+      background-color: ${({ theme }) => theme.shadeBackcard};
     }
   `,
 
@@ -492,6 +526,62 @@ const mixins = {
     :active {
       outline: 1.8px dashed ${({ theme }) => theme.color};
     }
+
+    :disabled{
+      background-color: ${({ theme }) => theme.shadeBackcard};
+      cursor: not-allowed;
+    }
+  `,
+
+  selectInput: css`
+    width: 100%;
+      display: block;
+      /* border: 1px solid ${({ theme }) => theme.color}; */
+      background-color: ${({ theme }) => theme.toolInput};
+      padding: 0.5em 1em;
+      /* border-radius: 5px; */
+
+      border: 1.5px solid ${({ theme }) => theme.shadeVarient};
+      color: ${({ theme }) => theme.text};
+      padding: 10px;
+      /* padding-right: 2em; */
+      
+      /* border-right: 16px solid transparent; */
+
+      :active {
+        outline: 1.8px dashed ${({ theme }) => theme.color};
+      }
+  `,
+
+  colorSelection: css`
+    ${({ theme }) => theme.mixins.flexStart}
+  gap: 20px;
+  width: max-content;
+  height: 100%;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+
+    /* ${({ theme }) => theme.mixins.flexStart}; */
+    gap: 10px;
+    font-size: var(--fz-sm);
+    color: ${({ theme }) => theme.color};
+    padding: 13px;
+    background-color: ${({ theme }) => theme.shadeBackcard};
+
+  input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
   `,
 
   imageUploader: css`

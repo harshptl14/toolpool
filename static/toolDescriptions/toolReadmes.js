@@ -203,3 +203,81 @@ Example:
 }
 
 `;
+
+export const SizeConverterReadme = `
+
+# What is a Size Converter
+
+CSS has four different units that can be used to denote the size of fonts (and other elements such as margins). The application and relationships between these units can be very confusing, so this tool will help to convert em to px, pt to px, etc.
+
+## ****Px, em, pt, and %****
+
+- **Pixels (px)** are fixed-size units that correspond to the resolution of the screen - one pixel is the smallest "dot" that can be accurately displayed on the screen. Choosing this unit will result in a perfectly sharp and visible font on the screen, regardless of what kind of display you will use. The only drawback is that fonts expressed in these units cannot scale (but it is possible to use the zoom feature of web browsers to enlarge the text).
+
+- **Ems (em)** are scalable units, used in digital media. One em corresponds to the height of the current font; for example, if the font used has a height of 12 pt, then 1 em = 12 pt. Ems are a popular unit because they are easy to understand, can be scaled if desired, and are mobile-device friendly. The main drawback of ems is the threat of cascading - because this unit is relative, changing the height of the "parent" text immediately resizes all other fonts.
+
+- **Points (pt)** are a unit for print CSS only. One point is equal to 1/72 inch, but only after printing. 1 pt will look differently across devices or web browsers, as it will depend on screen resolution. Points are not scalable and should be avoided in digital media.
+
+- **Percentage (%)** is very similar to the em unit. The main difference is that 1 em = 100%. This unit is perfectly scalable and allows for zooming in and out. Similarly to ems, they can cause cascading.
+
+## **Conversion**
+
+Follow these simple steps to convert between CSS units quickly and effortlessly:
+
+1. Set a base value. By default, this is 16 px.
+2. Determine the size of your font in any of the units.
+3. The px to em calculator will find its equivalent in other units, according to these rules:
+    - 1 point is equal to 0.75 pixels;
+    - 1 em is equal to the size in pixels divided by the base value;
+    - 1 em is equal to 100%.
+
+## **Example: Converting pt to px, em and %**
+
+Let's assume that you want to convert 24 pt to px, assuming the base size of 16 px. You can find it in the following way:
+
+1. If \`1pt = 0.75 px\`, then \`1px = 1.33 pt\`. Hence, 24pt is equivalent to \`1.33 * 24 = 32px\`.
+2. When finding the equivalent in ems, we need to divide the size in pixels by the base size: \`32px / 16px = 2em\`.
+3. As \`1em = 100%\`, \`2em = 200%\`.
+`;
+
+export const RgbHexConverterReadme = `
+# What is this tool?
+
+RGBA-HEX-HSL Converter is a **free online tool for converting various color formats into another format**. There are different color formats to define a color in CSS. Some are HEX (Hexadecimal Colors), RGB & RGBA, HSL & HSLA.
+
+The most used color formats are HEX and RGBA. HEX stands for hexadecimal colors while RGBA stands for "red, green, blue, alpha". HEX color code may have varying character lengths with a maximum of 8 without a # sign. The first 6 characters show the amount of red, green, and blue. There are 2 hexadecimal characters for each color. Each character may vary within 0-9 & a-f which means a total of 16 possibilities. For 2 characters, it means 256 possibilities. If you use an 8-character length HEX code, the last 2 characters symbolize the alpha of the color. In RGBA color format, there are 4 arguments. The first 3 is red, green, and blue which is varying between 0 to 255 and the last one is the alpha (or opacity) which varies from 0 to 1.
+
+For the example in the image, if you convert each hexadecimal pair to decimals, 00 => 0, 52 => 82, cc => 204, you will get the RGB colors. Since HEX color is 6 characters only, alpha is equal to 1.
+
+## **How to use Online HEX to RGBA Converter?**
+
+You can convert the formate of input color by following these steps.
+
+1. First, enter the HEX-RGBA-HSL code you want to convert to another format in the input area.
+2. Click the convert button. If the code you entered is valid, the code will pop, otherwise, you will see an error. You can also use the color picker directly, then you don't need to use the Convert button since it automatically fills both color codes.
+3. You can copy the code to your clipboard by clicking on a value.
+`;
+
+export const QrCodeGeneratorReadme = `
+# What is this tool?
+
+QR Code generator is a free tool to generate your own custom QR Codes.
+
+QR Code is a two-dimensional version of the barcode, typically made up of black and white pixel patterns. Denso Wave, a Japanese subsidiary of the Toyota supplier Denso, developed them to mark components to accelerate logistics processes for their automobile production. Now, it has found its way into mobile marketing with the widespread adoption of smartphones. "QR" stands for "Quick Response", which refers to instant access to the information hidden in the Code.
+
+Steps to use this tool.
+
+1. Enter all the information needed in the input field. This could be a link, contact information, text, or any other type of info. 
+2. Once you’re done, select “Download QR Code”
+3. That’s it! you have your own custom QR code.
+`;
+
+export const TweetGeneratorReadme = `
+# What is this tool?
+
+Tweet Generator is a free online tool for generating tweets for making jokes to your friends, colleagues or community. It works like a Tweet maker. Twitter is one of the biggest social networks. Even it is not possible to make sure if the information given is 100% true or not as all other internet sources, people are getting information by following accounts of other people, communities, organizations.
+
+You can make fun with your friends by generating real looking tweets online and share the generated tweet images with your friends. Don't forget that main intention of this tool is just to entertain and make jokes to people, nothing more. So, checkout the usage policy below if you have any questions on your mind about usage details.
+
+
+`;

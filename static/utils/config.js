@@ -15,6 +15,12 @@ import {
   shadow,
   tweetGenerator,
   colorConverter,
+  colorPicker,
+  glass,
+  scale,
+  transition,
+  miscellaneous, 
+  qrcode
 } from "../icons/index";
 
 const config = {
@@ -55,6 +61,11 @@ const config = {
       url: "/contact",
       key: 2,
     },
+    {
+      name: "Support",
+      url: "https://ko-fi.com/arshpatel",
+      key: 3,
+    }
   ],
 
   footerLinks: [
@@ -113,6 +124,12 @@ const config = {
       id: "socialmediaTools",
       key: 5,
     },
+    {
+      name: "Miscellaneous Tools",
+      logo: miscellaneous,
+      id: "miscellaneousTools",
+      key: 6,
+    }
   ],
 
   textTools: [
@@ -148,14 +165,14 @@ const config = {
     },
     {
       title: "Text 2 Binary",
-      desc: "Convert text to binary strings and vice versa.",
+      desc: "Convert text to binary strings and vice versa",
       link: "tools/text/t2b",
       icon: binary,
       key: 5,
     },
     {
       title: "Unique words finder",
-      desc: "Find all the uniques words used in a text.",
+      desc: "Find all the uniques words used in a text",
       link: "tools/text/uniquewords",
       icon: unique,
       key: 6,
@@ -174,14 +191,14 @@ const config = {
       title: "Image Color Picker",
       desc: "Get exact pixel color from an image",
       link: "tools/image/imagecolorpicker",
-      icon: resize,
+      icon: colorPicker,
       key: 2,
     },
   ],
   developerTools: [
     {
       title: "CSS Box-Shadow Generator",
-      desc: "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
+      desc: "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly",
       link: "tools/dev/box-shadow-generator",
       icon: shadow,
       key: 1,
@@ -190,16 +207,24 @@ const config = {
       title: "CSS Glass-morphism Generator",
       desc: "Generate CSS code for Glassmorphism effect on elements",
       link: "tools/dev/glass-morphism-generator",
-      icon: shadow,
+      icon: glass,
       key: 2,
     },
     {
       title: "CSS Transition Generator",
       desc: "Generate CSS code for transitions and animations",
       link: "tools/dev/css-transition-generator",
-      icon: shadow,
+      icon: transition,
       key: 3,
     },
+    {
+      title: "Size Converter",
+      desc: "Tool to convert between CSS units quickly and effortlessly",
+      link: "tools/dev/size-converter",
+      icon: scale,
+      key: 4,
+    },
+
   ],
 
   colorTools: [
@@ -214,9 +239,18 @@ const config = {
   socialmediaTools: [
     {
       title: "Tweet Generator",
-      desc: "Generate a fake tweet screenshot just for fun.",
+      desc: "Generate a fake tweet screenshot just for fun",
       link: "tools/social/tweet-generator",
       icon: tweetGenerator,
+      key: 1,
+    },
+  ],
+  miscellaneousTools: [
+    {
+      title: "QR Code Generator",
+      desc: "Generate a QR code for given text input",
+      link: "tools/miscellaneous/qrcode-generator",
+      icon: qrcode,
       key: 1,
     },
   ],

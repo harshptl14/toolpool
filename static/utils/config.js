@@ -63,7 +63,7 @@ const config = {
     },
     {
       name: "Support",
-      url: "https://ko-fi.com/arshpatel",
+      url: "/support",
       key: 3,
     }
   ],

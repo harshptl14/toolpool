@@ -32,9 +32,9 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${(props) =>
-      props.scrollDirection === "up" &&
-      !props.scrolledToTop &&
-      css`
+    props.scrollDirection === "up" &&
+    !props.scrolledToTop &&
+    css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
         top: 0;
@@ -43,9 +43,9 @@ const StyledHeader = styled.header`
       `};
 
     ${(props) =>
-      props.scrollDirection === "down" &&
-      !props.scrolledToTop &&
-      css`
+    props.scrollDirection === "down" &&
+    !props.scrolledToTop &&
+    css`
         height: var(--nav-scroll-height);
         top: 0;
         transform: translateY(calc(var(--nav-scroll-height) * -1));
@@ -175,11 +175,11 @@ const Navbar = ({ isHome, toggleTheme }) => {
   const Logo = (
     <div className="logo" tabIndex="-1">
       {/* {isHome ? ( */}
-        <Link href="/">
-          <a aria-label="home">
-            <Image src={theme.logo} height="50" width="80" alt="Toolpool" />
-          </a>
-        </Link>
+      <Link href="/">
+        <a aria-label="home">
+          <Image src={theme.logo} height="50" width="80" alt="Toolpool" />
+        </a>
+      </Link>
       {/* )
        : (
         <Link href="/" aria-label="home">
@@ -255,9 +255,8 @@ const Navbar = ({ isHome, toggleTheme }) => {
                     <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                       <div
                         style={{
-                          transitionDelay: `${
-                            isHome ? config.navLinks.length * 100 : 0
-                          }ms`,
+                          transitionDelay: `${isHome ? config.navLinks.length * 100 : 0
+                            }ms`,
                         }}
                       >
                         {ThemeLink}

@@ -18,6 +18,7 @@ export const lightTheme = {
   nav: `var(--nav-light)`,
   border: `var(--border-light)`,
   footer: `var(--strike-dark)`,
+  card: `var(--card-light)`,
   toolInput: "#ffffff",
   shadow: "#dddddd",
   contrast: "#000000",
@@ -50,12 +51,14 @@ export const darkTheme = {
   nav: `var(--nav-dark)`,
   border: `var(--border-dark)`,
   footer: `var(--strike-light)`,
+  card: `var(--card-dark)`,
   toolInput: "#000000",
   shadow: "#0a4909",
   contrast: "#ffffff",
   logo: logoDark,
   wave: waveDark,
   info: infoDark,
+  
 
   bp: {
     mobileS: `max-width: 330px`,

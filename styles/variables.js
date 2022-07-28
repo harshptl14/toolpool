@@ -14,6 +14,9 @@ const variables = css`
     --hover-light: #eefff1;
     --hover-dark: #041b08;
 
+    --card-light: #e3ffe8;
+    --card-dark: #042209;
+    
     --shade-light-varient: #b6ffcb;
     --shade-dark-varient: #0b4115;
 

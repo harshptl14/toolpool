@@ -12,6 +12,15 @@ import colorsTools from "../../public/assets/color.png";
 import socialmediaTools from "../../public/assets/network.png";
 import loading from "../../public/assets/sand-clock.png";
 import shadow from "../../public/assets/square-shadow.png";
+import tweetGenerator from "../../public/assets/tweetGenerator.png";
+import colorConverter from "../../public/assets/colorConverter.png";
+import colorPicker from "../../public/assets/colorPicker.png";
+import glass from "../../public/assets/glass.png";
+import transition from "../../public/assets/transition.png";
+import scale from "../../public/assets/scale.png";
+import qrcode from "../../public/assets/qrcode.png";
+import miscellaneous from "../../public/assets/miss.png"; 
+
 
 export {
   lorem,
@@ -28,4 +37,12 @@ export {
   socialmediaTools,
   loading,
   shadow,
+  tweetGenerator,
+  colorConverter,
+  colorPicker,
+  transition,
+  scale,
+  glass,
+  qrcode,
+  miscellaneous
 };

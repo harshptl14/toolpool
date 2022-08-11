@@ -26,6 +26,7 @@ const Canvas = (props) => {
       {...rest}
       width={props.width}
       height={props.height}
+      onClick={(e) => props.onClick(e, canvasRef.current.getContext('2d'))}
     />
   );
 };

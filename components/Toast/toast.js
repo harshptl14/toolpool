@@ -8,6 +8,7 @@ const ToastDiv = styled.div`
   width: 100vw;
   position: fixed;
   bottom: 5rem;
+  z-index: 100;
 `;
 
 const ToastContainer = styled.div`

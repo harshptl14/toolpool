@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Head from "next/head";
 
 const StyledMainContainer = styled.main`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -31,17 +32,23 @@ const StyledHomeButton = styled.a`
 
 const NotFound = () => {
   return (
-    <StyledMainContainer>
-      <StyledTitle>404</StyledTitle>
-      <StyledSubtitle>
-        Oops! You are looking for a tool which is under development or out of
-        our bucket list. If you have any new tool suggestion then send us a
-        request...
-      </StyledSubtitle>
-      <Link href="/" passHref>
-        <StyledHomeButton>Return Home</StyledHomeButton>
-      </Link>
-    </StyledMainContainer>
+    <>
+      <Head>
+        <title>404 - Page not found</title>
+        <meta property="og:title" content="404 - Page not found" />
+      </Head>
+      <StyledMainContainer>
+        <StyledTitle>404</StyledTitle>
+        <StyledSubtitle>
+          Oops! You are looking for a tool which is under development or out of
+          our bucket list. If you have any new tool suggestion then send us a
+          request...
+        </StyledSubtitle>
+        <Link href="/" passHref>
+          <StyledHomeButton>Return Home</StyledHomeButton>
+        </Link>
+      </StyledMainContainer>
+    </>
   );
 };
 

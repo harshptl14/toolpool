@@ -109,21 +109,21 @@ const AboutUs = () => {
         />
         <meta
           name="description"
-          content="Free online tools to get your day-to-day tedious tasks get done in just a few clicks. Lorem-ipsum generator, Image resizer, Case converter and so more."
+          content="Get to know about the developers behind this project"
         />
         <meta property="og:title" content="ToolPool - About Us" />
         <meta
           property="og:description"
-          content="Free online tools to get your day-to-day tedious tasks get done in just a few clicks. Lorem-ipsum generator, Image resizer, Case converter and so more."
+          content="Get to know about the developers behind this project"
         />
         <meta
           property="og:image"
           itemProp="image"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
         />
         <meta
           property="og:image:secure_url"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
@@ -136,11 +136,11 @@ const AboutUs = () => {
         <meta name="twitter:title" content="ToolPool - About Us" />
         <meta
           name="twitter:description"
-          content="Free online tools to get your day-to-day tedious tasks get done in just a few clicks. Lorem-ipsum generator, Image resizer, Case converter and so more."
+          content="Get to know about the developers behind this project"
         />
         <meta
           name="twitter:image"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
         />
       </Head>
       <StyledHeading>
@@ -185,7 +185,7 @@ const AboutUs = () => {
           </a>
           and
           <a
-            href="https://yashpaneliya.github.io/#/"
+            href="https://expy.bio/yashpaneliya"
             target="_blank"
             rel="noopener noreferrer"
           >

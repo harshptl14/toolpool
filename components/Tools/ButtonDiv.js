@@ -81,12 +81,13 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
       </ChangeButtonDiv>
 
       <OutputButtonDiv>
-        {finalButtons.map(({ title, method, key, type }) => {
+        {finalButtons.map(({ title, method, key, type, disabled }) => {
           return (
             <StyledButton
               type={type}
               rightpadd="false"
               key={key}
+              disabled={disabled}
               onClick={(e) => {
                 if (
                   title === "Copy" ||
@@ -96,7 +97,7 @@ const ButtonDiv = ({ filter, finalButtons, display }) => {
                   if (!state.show) {
                     dispatch({
                       type: "SHOW",
-                      message: "Copied Text!!",
+                      message: "Copied to Clipboard!!",
                     });
                   }
                 }

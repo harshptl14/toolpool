@@ -196,6 +196,16 @@ const AboutUs = () => {
           experienced professionals but they are very enthusiastic developers.
           They are doing their best to build a one-stop solution for many
           problems with an elegant and user-friendly interface.
+          <br />
+          <br />
+          To know more about toolpool, checkout our{" "}
+          <a
+            href="https://10devs.notion.site/Toolpool-Official-f0463623376447608bd80d89c18021c7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Frontpage Of Toolpool
+          </a>
         </div>
       </StyledContent>
     </StyledAboutDiv>

@@ -102,11 +102,12 @@ const ResultCodeSection = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5em;
   }
 
-  .desc p {
-    min-width: max-content;
-  }
+  /* .desc p {
+    min-width: min-content;
+  } */
 
   .maincode {
     min-width: 100%;

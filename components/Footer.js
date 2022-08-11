@@ -43,9 +43,11 @@ const StyledLinks = styled.div`
     margin: 0;
     list-style: none;
     flex-wrap: wrap;
+    justify-content: center;
 
     li {
-      margin: 0 5px;
+      /* margin: 0 3px; */
+      margin-bottom: 0.5em;
       position: relative;
       counter-increment: item 1;
       font-size: var(--fz-xs);

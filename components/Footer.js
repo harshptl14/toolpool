@@ -13,6 +13,12 @@ const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.footer};
   color: ${({ theme }) => theme.descfont};
 
+  @media (min-width: 900px) {
+    ${({ theme }) => theme.mixins.flexBetween};
+    margin: 0 auto;
+    padding: 30px 70px;
+  }
+
   @media (min-width: 1000px) {
     ${({ theme }) => theme.mixins.flexBetween};
     margin: 0 auto;
@@ -31,7 +37,7 @@ const StyledLinks = styled.div`
   justify-content: center;
   padding: 15px 0;
 
-  ol {
+  ul {
     ${({ theme }) => theme.mixins.flexBetween};
     padding: 0;
     margin: 0;
@@ -67,6 +73,9 @@ const StyledLinks = styled.div`
 
 const StyledMadewith = styled.div`
   font-size: var(--fz-xs);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Footer = () => {
@@ -82,14 +91,20 @@ const Footer = () => {
         </Link>
       </StyledLogo>
       <StyledLinks>
-        <ol>
+        <ul>
           {config.footerLinks &&
-            config.footerLinks.map(({ url, name }, i) => (
+            config.footerLinks.map(({ url, name, included }, i) => (
               <li key={i}>
-                <Link href={url}>{name}</Link>
+                {included ? (
+                  <Link href={url}>{name}</Link>
+                ) : (
+                  <a href={url} target="_blank">
+                    {name}
+                  </a>
+                )}
               </li>
             ))}
-        </ol>
+        </ul>
       </StyledLinks>
       <StyledMadewith>
         Made with <FavoriteBorder width="20px" /> on Earth

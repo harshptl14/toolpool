@@ -65,7 +65,7 @@ const config = {
       name: "Support",
       url: "/support",
       key: 3,
-    }
+    },
   ],
 
   footerLinks: [
@@ -73,22 +73,32 @@ const config = {
       name: "About",
       url: "/about",
       key: 1,
+      included: true,
     },
 
     {
       name: "Contact",
       url: "/contact",
       key: 2,
+      included: true,
     },
     {
       name: "Terms of Use",
-      url: "/terms",
+      url: "https://10devs.notion.site/Terms-and-conditions-684343301dab46a7836e20ff44604579",
       key: 3,
+      included: false,
     },
     {
       name: "Privacy Policy",
-      url: "/privacy",
+      url: "https://10devs.notion.site/Privacy-policy-783ac34cb9b64402ab68fa6c1d9ec226",
       key: 4,
+      included: false,
+    },
+    {
+      name: "Patch Notes",
+      url: "https://10devs.notion.site/What-s-New-0f0bf094c014453c9ab62f51935a6b83",
+      key: 5,
+      included: false,
     },
   ],
 
@@ -129,7 +139,7 @@ const config = {
       logo: miscellaneous,
       id: "miscellaneousTools",
       key: 6,
-    }
+    },
   ],
 
   textTools: [
@@ -224,7 +234,6 @@ const config = {
       icon: scale,
       key: 4,
     },
-
   ],
 
   colorTools: [

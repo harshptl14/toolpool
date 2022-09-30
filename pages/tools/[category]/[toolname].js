@@ -47,6 +47,10 @@ const StyledDesc = styled.div`
   @media (min-width: 600px) {
     padding: 20px 50px;
   }
+
+  pre {
+    overflow: auto;
+  }
 `;
 
 const StyledTitleDiv = styled.div`

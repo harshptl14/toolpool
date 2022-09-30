@@ -318,7 +318,7 @@ const SizeConverter = () => {
         })}
       </StyledOuterDiv>
       <StyledConfigureDiv>
-        <div>Base size of fonts is {defPixel}px{" "}
+        <div>Base size of font is {defPixel}px{" "}
           <PencilAlt
             width="30px"
             color="#2b7537"

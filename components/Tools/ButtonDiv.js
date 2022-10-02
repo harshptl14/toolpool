@@ -4,7 +4,7 @@ import { ToastContext } from "../Toast/toastcontext";
 
 const StyledButtonDiv = styled.div`
   display: ${(props) => props.display || "flex"};
-  /* width: 100%; */
+  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 15px;

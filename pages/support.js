@@ -55,7 +55,7 @@ const Support = () => {
 
     const links = {
         github: 'https://github.com/harshptl14/toolpool',
-        share: 'http://twitter.com/share?text=Check%20out%20this%20website&url=https://toolpool.ml&hashtags=saas,toolpool',
+        share: 'http://twitter.com/share?text=Check%20out%20this%20website&url=https://toolpool.cool&hashtags=saas,toolpool',
         kofi: 'https://ko-fi.com/arshpatel'
     }
 
@@ -80,14 +80,14 @@ const Support = () => {
                 <meta
                     property="og:image"
                     itemProp="image"
-                    content="https://toolpool.ml/assets/posters/posterSupport.jpg"
+                    content="https://toolpool.cool/assets/posters/posterSupport.jpg"
                 />
                 <meta
                     property="og:image:secure_url"
-                    content="https://toolpool.ml/assets/posters/posterSupport.jpg"
+                    content="https://toolpool.cool/assets/posters/posterSupport.jpg"
                 />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:url" content="https://toolpool.ml/support" />
+                <meta property="og:url" content="https://toolpool.cool/support" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:type" content="website" />
@@ -99,7 +99,7 @@ const Support = () => {
                     name="twitter:description"
                     content="Support the project by donating, contributing or by sharing!"
                 />
-                <meta name="twitter:image" content="https://toolpool.ml/assets/posterSupport.jpg" />
+                <meta name="twitter:image" content="https://toolpool.cool/assets/posterSupport.jpg" />
             </Head>
 
             <TitleDiv titleText="Support the project" imageSrc="" altText="" fontSize="big" />

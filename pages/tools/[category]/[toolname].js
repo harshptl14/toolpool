@@ -137,7 +137,7 @@ const ToolWrapper = ({ category, toolname }) => {
         />
         <meta
           property="og:url"
-          content={`https://toolpool.ml/tools/${category}/${toolname}`}
+          content={`https://toolpool.cool/tools/${category}/${toolname}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/jpeg" />

@@ -159,10 +159,10 @@ const Contact = () => {
   }, []);
 
   const contactDetails = {
-    email: 'hey.10devs@gmail.com',
-    twitter: 'https://twitter.com/toolpool_10devs',
-    kofi: 'https://ko-fi.com/arshpatel'
-  }
+    email: "hey.10devs@gmail.com",
+    twitter: "https://twitter.com/toolpool_10devs",
+    kofi: "https://ko-fi.com/arshpatel",
+  };
   return (
     <StyledContactDiv>
       <Head>
@@ -184,14 +184,14 @@ const Contact = () => {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://toolpool.ml/assets/posters/posterContact.jpg"
+          content="https://toolpool.cool/assets/posters/posterContact.jpg"
         />
         <meta
           property="og:image:secure_url"
-          content="https://toolpool.ml/assets/posters/posterContact.jpg"
+          content="https://toolpool.cool/assets/posters/posterContact.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:url" content="https://toolpool.ml/contact" />
+        <meta property="og:url" content="https://toolpool.cool/contact" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
@@ -203,7 +203,10 @@ const Contact = () => {
           name="twitter:description"
           content="Contact the developers behind this project"
         />
-        <meta name="twitter:image" content="https://toolpool.ml/assets/posterContact.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://toolpool.cool/assets/posterContact.jpg"
+        />
       </Head>
       <StyledHeading>
         <PageTitle size="big">Contact Us</PageTitle>
@@ -214,7 +217,7 @@ const Contact = () => {
               width="25px"
               color="#2b7537"
               cursor="pointer"
-              onClick={() => window.open(contactDetails.twitter, '_blank')}
+              onClick={() => window.open(contactDetails.twitter, "_blank")}
             />
           </IconStyle>
           <IconStyle padding="0.5rem">
@@ -222,7 +225,7 @@ const Contact = () => {
               width="35px"
               color="#2b7537"
               cursor="pointer"
-              onClick={() => window.open(contactDetails.kofi, '_blank')}
+              onClick={() => window.open(contactDetails.kofi, "_blank")}
             />
           </IconStyle>
         </StyledContactIcons>

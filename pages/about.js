@@ -91,7 +91,7 @@ const StyledAboutImage = styled.div`
       height: 320px;
       width: 100%;
     }
-  }  
+  }
 `;
 
 const AboutUs = () => {
@@ -119,16 +119,16 @@ const AboutUs = () => {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
+          content="https://toolpool.cool/assets/posters/posterAbout.jpg"
         />
         <meta
           property="og:image:secure_url"
-          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
+          content="https://toolpool.cool/assets/posters/posterAbout.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:url" content="https://toolpool.ml/about" />
+        <meta property="og:url" content="https://toolpool.cool/about" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -140,7 +140,7 @@ const AboutUs = () => {
         />
         <meta
           name="twitter:image"
-          content="https://toolpool.ml/assets/posters/posterAbout.jpg"
+          content="https://toolpool.cool/assets/posters/posterAbout.jpg"
         />
       </Head>
       <StyledHeading>

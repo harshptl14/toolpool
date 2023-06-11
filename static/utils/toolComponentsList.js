@@ -23,7 +23,7 @@ import {
   SizeConverterReadme,
   RgbHexConverterReadme,
   QrCodeGeneratorReadme,
-  TweetGeneratorReadme
+  TweetGeneratorReadme,
 } from "../toolDescriptions/toolReadmes";
 import BoxShadowGenerator from "../../components/Tools/DevTools/BoxShadow/boxshadowgenerator";
 import {
@@ -41,7 +41,7 @@ import {
   transition,
   scale,
   glass,
-  qrcode
+  qrcode,
 } from "../icons/index";
 import TweetGenerator from "../../components/Tools/SocialTools/TweetGenerator/tweetgenerator";
 import GlassMorphismGenerator from "../../components/Tools/DevTools/GlassMorphism/GlassMorphismGenerator";
@@ -76,7 +76,7 @@ export const TOOLS = {
         "Generate Lorem Ipsum text with desired number of paragraphs and properties",
       readme: LoremReadme,
       icon: lorem,
-      poster: "https://toolpool.ml/assets/posters/posterLoremipsum.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterLoremipsum.jpg",
     },
     caseconverter: {
       title: "Case Converter",
@@ -86,7 +86,7 @@ export const TOOLS = {
         "Convert your text to uppercase, lowercase, title case, sentence case and many more",
       readme: CaseReadme,
       icon: caseconverter,
-      poster: "https://toolpool.ml/assets/posters/posterCaseconverter.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterCaseconverter.jpg",
     },
     t2b: {
       title: "Text 2 Binary",
@@ -95,7 +95,7 @@ export const TOOLS = {
       description: "Convert text to binary strings and vice versa.",
       readme: T2BReadme,
       icon: binary,
-      poster: "https://toolpool.ml/assets/posters/posterText2binary.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterText2binary.jpg",
     },
     uniquewords: {
       title: "Unique Word Finder",
@@ -104,7 +104,7 @@ export const TOOLS = {
       description: "Find all the uniques words used in a text.",
       readme: UniqueReadme,
       icon: unique,
-      poster: "https://toolpool.ml/assets/posters/posterUniqueword.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterUniqueword.jpg",
     },
 
     lettercounter: {
@@ -115,7 +115,7 @@ export const TOOLS = {
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
       readme: Lettercountreadme,
       icon: count,
-      poster: "https://toolpool.ml/assets/posters/posterLettercounter.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterLettercounter.jpg",
     },
 
     whitespaceremover: {
@@ -126,7 +126,7 @@ export const TOOLS = {
         "Remove multiple whitespaces and linebreaks in a text and clear unwanted spaces",
       readme: WhitespaceReadme,
       icon: whiteSpace,
-      poster: "https://toolpool.ml/assets/posters/posterWhitespace.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterWhitespace.jpg",
     },
   },
   image: {
@@ -137,7 +137,7 @@ export const TOOLS = {
       description: "Resize your image in dimensions you want.",
       readme: ImageResizerreadme,
       icon: resize,
-      poster: "https://toolpool.ml/assets/posters/posterImageresizer.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterImageresizer.jpg",
     },
     imagecolorpicker: {
       title: "Image Color Picker",
@@ -146,7 +146,7 @@ export const TOOLS = {
       description: "Get exact pixel color from an image.",
       readme: ImageColorPickerReadme,
       icon: colorPicker,
-      poster: "https://toolpool.ml/assets/posters/posterImageColorPicker.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterImageColorPicker.jpg",
     },
   },
   dev: {
@@ -158,7 +158,8 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: shadow,
       readme: BoxShadowReadme,
-      poster: "https://toolpool.ml/assets/posters/posterBoxshadowGenerator.jpg",
+      poster:
+        "https://toolpool.cool/assets/posters/posterBoxshadowGenerator.jpg",
     },
     "glass-morphism-generator": {
       title: "CSS Glass-morphism Generator",
@@ -167,7 +168,8 @@ export const TOOLS = {
       url: "dev/glass-morphism-generator",
       icon: glass,
       readme: GlassMorphReadme,
-      poster: "https://toolpool.ml/assets/posters/posterGlassmorphismGenerator.jpg",
+      poster:
+        "https://toolpool.cool/assets/posters/posterGlassmorphismGenerator.jpg",
     },
     "css-transition-generator": {
       title: "CSS Transition Generator",
@@ -176,7 +178,8 @@ export const TOOLS = {
       url: "dev/css-transition-generator",
       icon: transition,
       readme: CSSTransitionsReadme,
-      poster: "https://toolpool.ml/assets/posters/posterTransitionGenerator.jpg",
+      poster:
+        "https://toolpool.cool/assets/posters/posterTransitionGenerator.jpg",
     },
     "size-converter": {
       title: "Size Converter",
@@ -185,9 +188,8 @@ export const TOOLS = {
       url: "dev/size-converter",
       icon: scale,
       readme: SizeConverterReadme,
-      poster: "https://toolpool.ml/assets/posters/posterSizeConverter.jpg",
-    }
-    
+      poster: "https://toolpool.cool/assets/posters/posterSizeConverter.jpg",
+    },
   },
   social: {
     "tweet-generator": {
@@ -198,7 +200,7 @@ export const TOOLS = {
         "Create the box shadow you need by tuning the parameters, preview it as a box, circle or header and get the CSS code directly.",
       icon: tweetGenerator,
       readme: TweetGeneratorReadme,
-      poster: "https://toolpool.ml/assets/posters/posterTweetGenerator.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterTweetGenerator.jpg",
     },
   },
   color: {
@@ -210,7 +212,8 @@ export const TOOLS = {
         "Convert RGB or Hex color into different types of color codes",
       icon: colorConverter,
       readme: RgbHexConverterReadme,
-      poster: "https://toolpool.ml/assets/posters/posterRgbHexHslConverter.jpg",
+      poster:
+        "https://toolpool.cool/assets/posters/posterRgbHexHslConverter.jpg",
     },
   },
 
@@ -219,11 +222,10 @@ export const TOOLS = {
       title: "QR Code Generator",
       component: <QrcodeGenerator />,
       url: "miscellaneous/qrcode-generator",
-      description:
-        "Generate a QR code for given text input.",
+      description: "Generate a QR code for given text input.",
       icon: qrcode,
       readme: QrCodeGeneratorReadme,
-      poster: "https://toolpool.ml/assets/posters/posterQrCodeGenerator.jpg",
+      poster: "https://toolpool.cool/assets/posters/posterQrCodeGenerator.jpg",
     },
-  }
+  },
 };

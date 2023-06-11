@@ -87,17 +87,17 @@ export default function Homescreen() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.cool/assets/posters/posterToolpool.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:url" content="https://toolpool.ml" />
+        <meta property="og:url" content="https://toolpool.cool" />
         <meta property="og:type" content="website" />
 
         <meta
           property="og:image:secure_url"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.cool/assets/posters/posterToolpool.jpg"
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" sizes="192x192" href="/icons/icon-192x192.png" />
@@ -107,7 +107,7 @@ export default function Homescreen() {
           href="/icons/apple-touch-icon.png"
         />
 
-        <meta name="twitter:site" content="https://toolpool.ml" />
+        <meta name="twitter:site" content="https://toolpool.cool" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -119,7 +119,7 @@ export default function Homescreen() {
         />
         <meta
           name="twitter:image"
-          content="https://toolpool.ml/assets/posters/posterToolpool.jpg"
+          content="https://toolpool.cool/assets/posters/posterToolpool.jpg"
         />
         <meta name="twitter:creator" content="" />
       </Head>

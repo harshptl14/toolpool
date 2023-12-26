@@ -257,7 +257,6 @@ const Menu = ({ toggleTheme }) => {
 
   return (
     <StyledMenu>
-
       <div ref={wrapperRef}>
         <StyledHamburgerButton
           onClick={toggleMenu}

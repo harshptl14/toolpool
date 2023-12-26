@@ -25,10 +25,11 @@ const StyledHeading = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-size: var(--fz-lg);
 
   .desc {
     color: ${({ theme }) => theme.descfont};
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
     margin-top: 10px;
   }
 
@@ -74,7 +75,7 @@ const StyledContent = styled.div`
   }
 
   .descSmall {
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
     color: ${({ theme }) => theme.descfont};
     margin-bottom: 30px;
     word-spacing: 2.5px;
@@ -177,7 +178,7 @@ const AboutUs = () => {
         <div className="descSmall">
           <b>ToolPool</b> is designed and being built by{" "}
           <a
-            href="https://patelharsh.gq/"
+            href="https://arshpatel.me/"
             target="_blank"
             rel="noopener noreferrer"
           >

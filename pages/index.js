@@ -32,8 +32,9 @@ const CardDiv = styled.a`
   width: 98%;
   flex-shrink: 1;
   margin: 0 0 30px 0;
+  padding: 1.5em;
   font-weight: 500;
-  font-size: var(--fz-xxl);
+  font-size: var(--fz-md);
 
   /* :focus{
     outline: 1.8px dashed ${({ theme }) => theme.color};
@@ -52,9 +53,8 @@ const Icon = styled.div`
   ${({ theme }) => theme.mixins.iconBackground};
   padding: 0.8rem;
   svg,
-  Image {
-    height: auto;
-    width: 1.5rem;
+  Image,
+  img {
     transition: all 0.3s linear;
   }
   margin-bottom: 10px;
@@ -124,6 +124,7 @@ export default function Homescreen() {
         <meta name="twitter:creator" content="" />
       </Head>
       <LandingPagediv executeScroll={executeScroll} />
+      <br />
       <TitleDiv>Featured Tools</TitleDiv>
       <Content>
         {config.featuredTools.map((obj) => {
@@ -133,8 +134,10 @@ export default function Homescreen() {
               <CardDiv>
                 <Icon>
                   <Image
-                    width={30}
-                    height={30}
+                    objectFit="contain"
+                    // sizes="100vw"
+                    width={20}
+                    height={20}
                     src={obj.icon}
                     alt={obj.title}
                   />

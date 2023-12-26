@@ -10,14 +10,21 @@ const StyledCategoryItems = styled.div`
   --color-text: ${({ theme }) => theme.color};
   --color-hover: ${({ theme }) => theme.hover};
   --color-text-nonactive: ${({ theme }) => theme.text};
+  --color-border: ${({ theme }) => theme.border};
   gap: 15px;
-  padding: 20px 30px;
+  padding: 10px 20px;
   user-select: none !important;
   cursor: pointer;
   width: max-content;
+  font-size: var(--fz-sm);
 
   background-color: ${(props) =>
     props.active === "true" ? "var(--color-primary)" : "transperent"};
+
+  border: 1px solid
+    ${(props) =>
+      props.active === "true" ? "var(--color-border)" : "transperent"};
+
   color: ${(props) =>
     props.active === "true"
       ? "var(--color-text)"
@@ -31,7 +38,7 @@ const StyledCategoryItems = styled.div`
 
   @media (min-width: 600px) and (max-width: 1000px) {
     /* width: 100px; */
-    font-size: var(--fz-md);
+    /* font-size: var(--fz-md); */
   }
 `;
 
@@ -41,7 +48,9 @@ const Icon = styled.div`
   height: 30px;
   width: 30px;
   background-color: transparent;
-  svg, img {
+  border: 0;
+  svg,
+  img {
     height: auto;
     width: 1.5rem;
     transition: all 0.3s linear;
@@ -57,7 +66,6 @@ const StyledMobileCategory = styled.div`
   background-color: ${({ theme }) => theme.shade};
   border: 1.8px dashed ${({ theme }) => theme.color};
   z-index: 1;
-
 
   margin: 1em -100%; // for old browsers
   margin: 1em calc(50% - 50vw);
@@ -117,12 +125,13 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
         active={menuItem === obj.id ? "true" : "false"}
         onClick={() => {
           setMenuItem(obj.id);
-          executeScroll();          
+          window.location.hash = obj.id;
+          executeScroll();
         }}
       >
         {/* <Icon src={obj.logo} alt="" /> */}
         <Icon>
-          <Image width={30} height={30} src={obj.logo} alt={obj.name} />
+          <Image width={23} height={23} src={obj.logo} alt={obj.name} />
         </Icon>
         {obj.name}
       </StyledCategoryItems>
@@ -141,7 +150,12 @@ const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
         }}
       >
         {config.categoryList.map((obj) => {
-          return <option value={obj.id} key={obj.key}> {obj.name}</option>;
+          return (
+            <option value={obj.id} key={obj.key}>
+              {" "}
+              {obj.name}
+            </option>
+          );
         })}
       </ChangeCat>
     </StyledMobileCategory>

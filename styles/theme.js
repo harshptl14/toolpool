@@ -17,6 +17,7 @@ export const lightTheme = {
   text: `var(--font-light)`,
   nav: `var(--nav-light)`,
   border: `var(--border-light)`,
+  borderButton: `var(--border-button-light)`,
   footer: `var(--strike-dark)`,
   card: `var(--card-light)`,
   toolInput: "#ffffff",
@@ -50,6 +51,7 @@ export const darkTheme = {
   text: `var(--font-dark)`,
   nav: `var(--nav-dark)`,
   border: `var(--border-dark)`,
+  borderButton: `var(--border-button-dark)`,
   footer: `var(--strike-light)`,
   card: `var(--card-dark)`,
   toolInput: "#000000",
@@ -58,7 +60,6 @@ export const darkTheme = {
   logo: logoDark,
   wave: waveDark,
   info: infoDark,
-  
 
   bp: {
     mobileS: `max-width: 330px`,

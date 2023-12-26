@@ -31,7 +31,7 @@ a {
   }
 
   :focus {
-    outline: 1.8px dashed ${({ theme }) => theme.color};
+    outline: 1px dashed ${({ theme }) => theme.color};
     outline-offset: 3px;
   }
 
@@ -64,11 +64,11 @@ a {
     background-color: ${({ theme }) => theme.background};
     color:  ${({ theme }) => theme.text};
     font-family: var(--font-sans);
-    font-size: var(--fz-xl);
+    font-size: var(--fz-sm);
     line-height: 1.3;
 
     @media (max-width: 480px) {
-      font-size: var(--fz-lg);
+      font-size: var(--fz-sm);
     }
 
     &.hidden {

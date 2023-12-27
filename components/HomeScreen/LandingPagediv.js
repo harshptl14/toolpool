@@ -11,7 +11,7 @@ const HomeDiv = styled.div`
   /* width: 80%; */
   font-weight: 700;
   line-height: 30px;
-  color: ${({ theme }) => theme.color};
+  /* color: ${({ theme }) => theme.color}; */
 
   @media (min-width: 600px) {
     font-size: var(--fz-headingm);
@@ -45,7 +45,7 @@ const HomeDiv = styled.div`
   }
 
   .allToolsButton {
-    ${({ theme }) => theme.mixins.smallButton}
+    ${({ theme }) => theme.mixins.smallButtonFilled}
   }
 `;
 

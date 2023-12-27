@@ -2,15 +2,44 @@ import { css } from "styled-components";
 
 const variables = css`
   :root {
-    --green: #008315;
-    --dark-green: #40ac35;
-    /* --dark-green: #268f1b; */
+    --green: #1b7921;
+    --dark-green: #86e48c;
 
-    --back-light: #f8fffa;
-    --back-dark: #031d09;
+    --back-light: #ecf8ed;
+    --back-dark: #071308;
 
-    --shade-light: #d7ffe3;
-    --shade-dark: #072f0e;
+    --secondary-light: #68ed73;
+    --secondary-dark: #12971d;
+
+    --accent-light: #08e717;
+    --accent-dark: #18f727;
+
+    /* --border-light: #505050; */
+    /* --border-dark: #093e13; */
+    /* --border-light: #b1edc2; */
+    --border-light: #d4dfd5;
+    --border-dark: #1d3422;
+
+    --shade-light: #d2f5d5;
+    --shade-dark: #0a2d0c;
+
+    --shade-light-varient: #def7e1;
+    --shade-dark-varient: #08200a;
+
+    --shade-light-backcard: #e1f1e3;
+    --shade-dark-backcard: #0e1d0f;
+
+    --footer-light: #e1ece2;
+    --footer-dark: #131e14;
+
+    --font-light: #0c180d;
+    --font-dark: #e7f3e8;
+
+    --fontdesc-light: #636363;
+    --fontdesc-dark: #cacaca;
+
+    --font-light-contrast: #ecf8ed;
+    --font-dark-contrast: #071308;
 
     --hover-light: #eefff1;
     --hover-dark: #041b08;
@@ -18,30 +47,14 @@ const variables = css`
     --card-light: #e3ffe8;
     --card-dark: #042209;
 
-    --shade-light-varient: #b6ffcb;
-    --shade-dark-varient: #0b4115;
-
-    --shade-light-backcard: #e3ffe8;
-    --shade-dark-backcard: #06290c;
-
-    --fontdesc-light: #636363;
-    --fontdesc-dark: #cacaca;
-
-    --font-light: #303031;
-    --font-dark: #e4f0e6;
-
     --strike-light: #000000;
     --strike-dark: #ffffff;
-
-    /* --border-light: #505050; */
-    --border-light: #b1edc2;
-    --border-dark: #093e13;
 
     --border-button-light: #b1edc2;
     --border-button-dark: #093e13;
 
-    --nav-light: rgba(248, 255, 250, 0.75);
-    --nav-dark: rgba(3, 29, 9, 0.75);
+    --nav-light: rgba(236, 248, 237, 0.75);
+    --nav-dark: rgba(7, 19, 8, 0.75);
 
     --navy-shadow: rgba(2, 12, 27, 0.7);
 

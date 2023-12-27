@@ -16,7 +16,7 @@ const ToastContainer = styled.div`
   margin: auto;
   padding: 0.5rem;
   text-align: center;
-  border: 2px solid ${({ theme }) => theme.color};
+  border: 2px solid ${({ theme }) => theme.border};
   border-radius: 5px;
   color: ${({ theme }) => theme.color};
   font-size: var(--fz-md);

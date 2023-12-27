@@ -39,11 +39,20 @@ export const getStaticProps = async (context) => {
 };
 
 const StyledDesc = styled.div`
-  background: ${({ theme }) => theme.hover};
+  background: ${({ theme }) => theme.footer};
   margin-top: 50px;
   padding: 20px;
   color: ${({ theme }) => theme.descfont};
   font-size: var(--fz-xs);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${({ theme }) => theme.text};
+  }
 
   @media (min-width: 600px) {
     padding: 20px 50px;

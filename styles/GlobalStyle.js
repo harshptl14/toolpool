@@ -45,7 +45,7 @@ a {
   }
 
   body::-webkit-scrollbar-track {
-    /* background: ${({ theme }) => theme.shade}; */
+    background: ${({ theme }) => theme.footer};
   }
   
   body::-webkit-scrollbar-thumb {

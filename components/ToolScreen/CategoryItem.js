@@ -6,9 +6,9 @@ import Image from "next/image";
 
 const StyledCategoryItems = styled.div`
   ${({ theme }) => theme.mixins.flexBetween};
-  --color-primary: ${({ theme }) => theme.shade};
+  --color-primary: ${({ theme }) => theme.shadeVarient};
   --color-text: ${({ theme }) => theme.color};
-  --color-hover: ${({ theme }) => theme.hover};
+  --color-hover: ${({ theme }) => theme.shadeBackcard};
   --color-text-nonactive: ${({ theme }) => theme.text};
   --color-border: ${({ theme }) => theme.border};
   gap: 15px;

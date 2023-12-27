@@ -91,7 +91,7 @@ const StyledContent = styled.form`
     padding: 10px 0;
     background: none;
     border: none;
-    border-bottom: 1px solid rgb(206, 206, 206);
+    border-bottom: 1px solid ${({ theme }) => theme.border};
     color: ${({ theme }) => theme.descfont};
     font-size: var(--fz-sm);
     /* text-transform: uppercase; */
@@ -108,7 +108,7 @@ const StyledContent = styled.form`
   }
 
   .allToolsButton {
-    ${({ theme }) => theme.mixins.smallButton}
+    ${({ theme }) => theme.mixins.smallButtonFilled}
   }
 `;
 

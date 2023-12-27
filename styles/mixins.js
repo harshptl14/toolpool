@@ -145,7 +145,7 @@ const mixins = {
     /* justify-content: center; */
     align-items: center;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.shade};
+    background-color: ${({ theme }) => theme.shadeVarient};
     text-align: center;
   `,
 
@@ -168,12 +168,12 @@ const mixins = {
     text-decoration: none;
     text-decoration-skip-ink: auto;
     color: inherit;
-    color: var(--green);
+    color: ${({ theme }) => theme.color};
     &:hover,
     &:active,
     &:focus {
-      color: ${({ theme }) => theme.color};
-      outline: 0;
+      /* color: ${({ theme }) => theme.color}; */
+      border-bottom: 1px dashed ${({ theme }) => theme.color};
     }
   `,
 
@@ -260,21 +260,21 @@ const mixins = {
     }
 
     @media (min-width: 600px) {
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-small);
     }
 
     @media (min-width: 1000px) {
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-small);
     }
   `,
 
   smallButtonFilled: css`
-    color: ${({ theme }) => theme.color};
-    background-color: ${({ theme }) => theme.shade};
-    border: 1px solid ${({ theme }) => theme.color};
+    color: ${({ theme }) => theme.textContrast};
+    background-color: ${({ theme }) => theme.color};
+    border: 1px solid ${({ theme }) => theme.border};
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
-    font-size: var(--fz-xs);
+    font-size: var(--fz-xxs);
     font-family: var(--font-mono);
     line-height: 1;
     text-decoration: none;
@@ -283,7 +283,8 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: transparent;
+      background-color: ${({ theme }) => theme.shade};
+      color: ${({ theme }) => theme.text};
       outline: none;
     }
     &:after {
@@ -299,6 +300,14 @@ const mixins = {
         ${({ theme }) => theme.shadeBackcard} 10px
       );
       cursor: not-allowed;
+    }
+
+    @media (min-width: 600px) {
+      font-size: var(--fz-small);
+    }
+
+    @media (min-width: 1000px) {
+      font-size: var(--fz-small);
     }
   `,
 
@@ -368,7 +377,7 @@ const mixins = {
     width: 100%;
     height: 300px;
     /* resize: none; */
-    background-color: ${({ theme }) => theme.footer};
+    background-color: ${({ theme }) => theme.shadeBackcard};
     border: 2px solid ${({ theme }) => theme.border};
     font-size: var(--fz-lg);
     padding: 15px 20px;

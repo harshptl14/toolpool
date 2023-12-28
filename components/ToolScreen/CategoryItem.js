@@ -146,6 +146,7 @@ const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
       <ChangeCat
         onChange={(e) => {
           setMenuItem(e.target.value);
+          window.location.hash = e.target.value;
           executeScroll();
         }}
       >

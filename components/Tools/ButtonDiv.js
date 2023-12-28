@@ -39,16 +39,25 @@ const OutputButtonDiv = styled.div`
 `;
 
 const StyledButton = styled.button`
-  --submit-color: ${({ theme }) => theme.shade};
+  --submit-color: ${({ theme }) => theme.color};
+  --color-contrast: ${({ theme }) => theme.textContrast};
+  --color: ${({ theme }) => theme.text};
+  --shade: ${({ theme }) => theme.shade};
   ${({ theme }) => theme.mixins.smallButton};
   background-color: ${(props) =>
     props.type === "submit" ? "var(--submit-color)" : "transparent"};
+  color: ${(props) =>
+    props.type === "submit" ? "var(--color-contrast)" : "var(--color)"};
   margin-right: 20px;
   margin-bottom: 20px;
 
   :hover {
-    background-color: ${(props) =>
-      props.type === "submit" ? "transparent" : "var(--submit-color)"};
+    background-color: ${({ theme }) => theme.theme};
+    color: ${({ theme }) => theme.text};
+  }
+
+  :focus {
+    color: ${({ theme }) => theme.text};
   }
 
   @media (min-width: 800px) {

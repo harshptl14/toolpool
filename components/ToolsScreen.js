@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CategoryItem, CategoryItemMobile } from "./ToolScreen/CategoryItem";
 import config from "../static/utils/config";
@@ -23,7 +23,7 @@ const StyledCategory = styled.div`
   /* flex: 1 1 auto; */
   width: 100%;
   position: sticky;
-  top: 4.4rem;
+  top: 6.5rem;
   margin-bottom: 30px;
   display: none;
 
@@ -66,18 +66,23 @@ const TitleDiv = styled.div`
 // styling toolcard
 const StyledToolCard = styled.a`
   ${({ theme }) => theme.mixins.card}
-  padding: 1.8rem;
   width: 100%;
+  padding: 1.5rem;
+  /* min-height: 280px; */
   margin: 0px auto 40px auto;
   position: static;
-  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media (min-width: 600px) {
     width: 100%;
     position: relative;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
+    padding: 1.4rem;
+    min-height: 280px;
     width: 45%;
     position: relative;
   }
@@ -85,21 +90,47 @@ const StyledToolCard = styled.a`
 
 const StyledTitle = styled.div`
   font-weight: 500;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-size: var(--fz-xl);
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-size: var(--fz-md);
+
+  @media (min-width: 600px) {
+    font-size: var(--fz-md);
+  }
+
+  @media (min-width: 1000px) {
+    font-size: var(--fz-md);
+  }
 `;
 
 const StyledDesc = styled.div`
-  font-size: 17px;
   color: ${({ theme }) => theme.descfont};
   margin-bottom: 20px;
+  font-size: var(--fz-xs);
+  line-height: 21px;
+
+  @media (min-width: 600px) {
+    font-size: var(--fz-xs);
+  }
+
+  @media (min-width: 1000px) {
+    font-size: var(--fz-sm);
+  }
 `;
 
 const StyledOpen = styled.div`
   ${({ theme }) => theme.mixins.flexBeside}
-  font-size: 17px;
+  font-family: var(--font-mono);
   color: ${({ theme }) => theme.color};
+  font-size: var(--fz-xs);
+
+  @media (min-width: 600px) {
+    font-size: var(--fz-sm);
+  }
+
+  @media (min-width: 1000px) {
+    font-size: var(--fz-sm);
+  }
 `;
 
 const Icon = styled.div`
@@ -111,6 +142,11 @@ const Icon = styled.div`
     transition: all 0.3s linear;
   }
   margin-bottom: 10px;
+  padding: 0.7rem;
+
+  @media (min-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 const Arrow = styled.div`
@@ -133,6 +169,34 @@ const NoTools = styled.div`
 
 const ToolsScreen = ({ executeScroll, elRef }) => {
   const [menuItem, setMenuItem] = useState("textTools");
+  function saveMenuItem(url) {
+    const menuItemHistory = { item: menuItem };
+    sessionStorage.setItem(url, JSON.stringify(menuItemHistory));
+  }
+
+  function restoreMenuItem(url) {
+    const menuItemHistory = JSON.parse(sessionStorage.getItem(url));
+    if (menuItemHistory) {
+      setMenuItem(menuItemHistory.item);
+      // window.scrollTo(scrollPos.x, scrollPos.y);
+    }
+  }
+
+  useEffect(() => {
+    console.log(window.location.hash.substring(1));
+    console.log(window.location.pathname);
+    window.location.hash
+      ? setMenuItem(window.location.hash.substring(1))
+      : setMenuItem("textTools");
+    window.onhashchange = () => {
+      window.location.hash
+        ? setMenuItem(window.location.hash.substring(1))
+        : setMenuItem("textTools");
+    };
+    // save menu item if url changes, and restore if we go back
+    // console.log("useEffect called", window.location.hash);
+  }, [menuItem]);
+
   return (
     <>
       <TitleDiv ref={elRef}>Tool Categories</TitleDiv>
@@ -149,22 +213,17 @@ const ToolsScreen = ({ executeScroll, elRef }) => {
           setMenuItem={setMenuItem}
         />
         <StyledWrapper>
-          {config[menuItem].length !== 0 ? (
-            config[menuItem].map(({ title, desc, link, icon, key }) => {
+          {config[menuItem]?.length !== 0 ? (
+            config[menuItem]?.map(({ title, desc, link, icon, key }) => {
               return (
                 <Link href={link} passHref key={key}>
                   <StyledToolCard>
                     <Icon>
-                      <Image height={50} width={50} src={icon} alt={title} />
+                      <Image height={25} width={25} src={icon} alt={title} />
                     </Icon>
                     <StyledTitle>{title}</StyledTitle>
                     <StyledDesc>{desc}</StyledDesc>
-                    <StyledOpen>
-                      open
-                      {/* <Arrow>
-              <ArrowIcon />
-            </Arrow> */}
-                    </StyledOpen>
+                    <StyledOpen>open</StyledOpen>
                   </StyledToolCard>
                 </Link>
               );

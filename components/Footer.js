@@ -36,6 +36,7 @@ const StyledLinks = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px 0;
+  /* font-size: var(--fz-xs); */
 
   ul {
     ${({ theme }) => theme.mixins.flexBetween};
@@ -50,7 +51,7 @@ const StyledLinks = styled.div`
       margin-bottom: 0.5em;
       position: relative;
       counter-increment: item 1;
-      font-size: var(--fz-xs);
+      font-size: var(--fz-small);
       color: ${({ theme }) => theme.descfont};
 
       :hover {
@@ -65,9 +66,17 @@ const StyledLinks = styled.div`
         &:before {
           margin-right: 5px;
           color: ${({ theme }) => theme.color};
-          font-size: var(--fz-xs);
+          font-size: var(--fz-small);
           text-align: right;
         }
+      }
+    }
+  }
+
+  @media (min-width: 800px) {
+    ul {
+      li {
+        font-size: var(--fz-small);
       }
     }
   }
@@ -109,7 +118,8 @@ const Footer = () => {
         </ul>
       </StyledLinks>
       <StyledMadewith>
-        Made with <FavoriteBorder width="20px" /> on Earth
+        Made with &nbsp;
+        <FavoriteBorder width="20px" /> &nbsp; on Earth
       </StyledMadewith>
     </StyledFooter>
   );

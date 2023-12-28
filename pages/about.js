@@ -25,10 +25,11 @@ const StyledHeading = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-size: var(--fz-lg);
 
   .desc {
     color: ${({ theme }) => theme.descfont};
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
     margin-top: 10px;
   }
 
@@ -37,7 +38,7 @@ const StyledHeading = styled.div`
   }
   @media (min-width: 1000px) {
     position: sticky;
-    top: 4.4rem;
+    top: 7.5rem;
     width: 30%;
   }
 `;
@@ -66,7 +67,7 @@ const StyledContent = styled.div`
     ${({ theme }) => theme.mixins.titleDiv}
     font-size: var(--fz-xxxl);
     margin: 0px 0 10px 0;
-    color: ${({ theme }) => theme.color};
+    color: ${({ theme }) => theme.text};
 
     @media (min-width: 600px) {
       margin: 0px 0 10px 0;
@@ -74,7 +75,7 @@ const StyledContent = styled.div`
   }
 
   .descSmall {
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
     color: ${({ theme }) => theme.descfont};
     margin-bottom: 30px;
     word-spacing: 2.5px;
@@ -177,7 +178,7 @@ const AboutUs = () => {
         <div className="descSmall">
           <b>ToolPool</b> is designed and being built by{" "}
           <a
-            href="https://patelharsh.gq/"
+            href="https://arshpatel.me/"
             target="_blank"
             rel="noopener noreferrer"
           >

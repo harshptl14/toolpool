@@ -39,13 +39,24 @@ export const getStaticProps = async (context) => {
 };
 
 const StyledDesc = styled.div`
-  background: ${({ theme }) => theme.hover};
+  background: ${({ theme }) => theme.footer};
   margin-top: 50px;
   padding: 20px;
   color: ${({ theme }) => theme.descfont};
+  font-size: var(--fz-xs);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${({ theme }) => theme.text};
+  }
 
   @media (min-width: 600px) {
     padding: 20px 50px;
+    font-size: var(--fz-sm);
   }
 
   pre {
@@ -58,11 +69,12 @@ const StyledTitleDiv = styled.div`
   gap: 15px;
   font-size: "var(--fz-xxxl)";
   line-height: "25px";
+  margin-bottom: 10px;
 `;
 
 const Icon = styled.div`
   ${({ theme }) => theme.mixins.iconBackground};
-  padding: 0.8rem;
+  padding: 0.6rem;
   svg,
   img {
     height: auto;
@@ -160,8 +172,8 @@ const ToolWrapper = ({ category, toolname }) => {
       <StyledTitleDiv>
         <Icon>
           <Image
-            height={30}
-            width={30}
+            height={20}
+            width={20}
             src={TOOLS[category][toolname]["icon"]}
             alt={TOOLS[category][toolname]["title"]}
           />
@@ -171,7 +183,7 @@ const ToolWrapper = ({ category, toolname }) => {
         </StyledTitle>
       </StyledTitleDiv>
 
-      <br></br>
+      {/* <br /> */}
       {TOOLS[category][toolname]["component"]}
       {/* Error Toast */}
       {state.show && <Toast></Toast>}

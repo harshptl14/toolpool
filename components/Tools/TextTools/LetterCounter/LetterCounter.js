@@ -6,16 +6,20 @@ const StyledTextArea = styled.textarea`
 `;
 
 const StyledCouterOuterDiv = styled.div`
-  display: flex;
+  /* display: flex; */
+  ${({ theme }) => theme.mixins.flexColumnSpacebetween}
+  gap: 1em;
   width: 100%;
-  flex: 1 1 0%;
-  justify-content: space-between;
+  margin-top: 1em;
+
+  @media (min-width: 600px) {
+    ${({ theme }) => theme.mixins.flexBetween}
+  }
 `;
 
 const StyledCounterDiv = styled.div`
-  ${({ theme }) => theme.mixins.flexColumn}
   text-align: center;
-  width: 32%;
+  width: 100%;
   padding: 30px;
   background: ${({ theme }) => theme.shade};
   transition: var(--easing);

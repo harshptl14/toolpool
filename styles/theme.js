@@ -15,9 +15,11 @@ export const lightTheme = {
   shadeBackcard: "var(--shade-light-backcard)",
   descfont: `var(--fontdesc-light)`,
   text: `var(--font-light)`,
+  textContrast: `var(--font-light-contrast)`,
   nav: `var(--nav-light)`,
   border: `var(--border-light)`,
-  footer: `var(--strike-dark)`,
+  borderButton: `var(--border-button-light)`,
+  footer: `var(--footer-light)`,
   card: `var(--card-light)`,
   toolInput: "#ffffff",
   shadow: "#dddddd",
@@ -48,9 +50,11 @@ export const darkTheme = {
   shadeBackcard: "var(--shade-dark-backcard)",
   descfont: `var(--fontdesc-dark)`,
   text: `var(--font-dark)`,
+  textContrast: `var(--font-dark-contrast)`,
   nav: `var(--nav-dark)`,
   border: `var(--border-dark)`,
-  footer: `var(--strike-light)`,
+  borderButton: `var(--border-button-dark)`,
+  footer: `var(--footer-dark)`,
   card: `var(--card-dark)`,
   toolInput: "#000000",
   shadow: "#0a4909",
@@ -58,7 +62,6 @@ export const darkTheme = {
   logo: logoDark,
   wave: waveDark,
   info: infoDark,
-  
 
   bp: {
     mobileS: `max-width: 330px`,

@@ -32,7 +32,7 @@ const StyledHeading = styled.div`
 
   .desc {
     color: ${({ theme }) => theme.descfont};
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
     margin-top: 10px;
   }
 
@@ -68,7 +68,7 @@ const StyledContent = styled.form`
   }
 
   .contactusCaption {
-    font-size: 28px;
+    font-size: var(--fz-heading);
     font-weight: 600;
     margin-bottom: 13px;
   }
@@ -88,14 +88,13 @@ const StyledContent = styled.form`
 
   .app-form-control {
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
     background: none;
     border: none;
-    border-bottom: 1px solid rgb(206, 206, 206);
+    border-bottom: 1px solid ${({ theme }) => theme.border};
     color: ${({ theme }) => theme.descfont};
-    font-size: 16px;
+    font-size: var(--fz-sm);
     /* text-transform: uppercase; */
-    font-family: "spartan", sans-serif;
     outline: none;
     transition: border-color 0.2s;
   }

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@styled-icons/material": "^10.34.0",
+    "@vercel/analytics": "^1.1.1",
     "babel-plugin-styled-components": "^2.0.2",
     "dotenv": "^14.2.0",
     "html-to-image": "^1.9.0",

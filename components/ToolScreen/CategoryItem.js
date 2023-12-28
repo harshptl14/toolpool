@@ -139,7 +139,7 @@ const CategoryItem = ({ executeScroll, menuItem, setMenuItem }) => {
   });
 };
 
-const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
+const CategoryItemMobile = ({ executeScroll, setMenuItem, menuItem }) => {
   const scrollDirection = useScrollDirection("down");
   return (
     <StyledMobileCategory scrollDirection={scrollDirection}>
@@ -152,7 +152,7 @@ const CategoryItemMobile = ({ executeScroll, setMenuItem }) => {
       >
         {config.categoryList.map((obj) => {
           return (
-            <option value={obj.id} key={obj.key}>
+            <option value={obj.id} key={obj.key} selected={menuItem === obj.id}>
               {" "}
               {obj.name}
             </option>

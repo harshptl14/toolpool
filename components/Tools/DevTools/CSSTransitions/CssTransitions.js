@@ -22,7 +22,7 @@ const InputSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  
+
   @media (min-width: 800px) {
     width: 40%;
     flex-direction: column;
@@ -41,7 +41,7 @@ const ResultSection = styled.div`
   flex-direction: column;
   font-size: var(--fz-md);
   height: 500px;
-  
+
   @media (min-width: 800px) {
     width: 55%;
     height: inherit;
@@ -50,8 +50,8 @@ const ResultSection = styled.div`
 `;
 
 const StyledSelectInput = styled.select`
-${({ theme }) => theme.mixins.selectInput}
-font-size: var(--fz-lg);
+  ${({ theme }) => theme.mixins.selectInput}
+  font-size: var(--fz-lg);
 `;
 
 const OutputBox = styled.div`
@@ -94,7 +94,7 @@ const ResultCodeSection = styled.div`
   margin: auto;
   flex-direction: column;
 
-  h2{
+  h2 {
     margin-bottom: 0;
   }
   .desc {
@@ -131,12 +131,12 @@ const CSSTransitionsGenerator = (props) => {
   }, [state.transitionType]);
 
   const onTypeSelect = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch({ type: "CHANGETYPE", transitionType: e.target.value });
   };
 
   const onTFSelect = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch({ type: "CHANGETFUNCTION", tfvalue: e.target.value });
   };
 
@@ -223,7 +223,6 @@ const CSSTransitionsGenerator = (props) => {
               <p>Hover me</p>
             </div>
           </OutputBox>
-
         </ResultSection>
       </TranstionParentWrapper>
       <ResultCodeSection>

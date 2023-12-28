@@ -1,40 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react'
-import styled from 'styled-components'
-import * as ufun from "./helperFunctions"
-import { PencilAlt } from '@styled-icons/heroicons-outline/PencilAlt'
-import CustomInput from './CustomInput'
-import {useOutsideAlerter} from '../../../../hooks/useClickOutside'
-import ButtonDiv from '../../ButtonDiv'
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import * as ufun from "./helperFunctions";
+import { PencilAlt } from "@styled-icons/heroicons-outline/PencilAlt";
+import CustomInput from "./CustomInput";
+import { useOutsideAlerter } from "../../../../hooks/useClickOutside";
+import ButtonDiv from "../../ButtonDiv";
 
 const Styledchip = styled.input`
-    padding: 0 25px;
-    color: rgba(0, 0, 0, .87);
-    align-items: center;
-    height: 42px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: transparent;
+  padding: 0 25px;
+  color: rgba(0, 0, 0, 0.87);
+  align-items: center;
+  height: 42px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: var(--border-circle);
+  border-color: ${({ theme }) => theme.shade};
+  background-color: ${({ theme }) => theme.toolInput};
+  font-size: var(--fz-md);
+
+  :active {
+    border: 1px solid ${({ theme }) => theme.color};
     border-radius: var(--border-circle);
-    border-color: ${({ theme }) => theme.shade};
-    background-color: ${({ theme }) => theme.toolInput};
-    font-size: var(--fz-md);
-
-    :active{
-      border: 1px solid ${({ theme }) => theme.color};
-      border-radius: var(--border-circle);
-      background-color: ${({ theme }) => theme.shade};
-      color: ${({ theme }) => theme.color};
-    }
-
+    background-color: ${({ theme }) => theme.shade};
+    color: ${({ theme }) => theme.color};
+  }
 `;
 
 const StyledOuterDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn};
   gap: 1em;
 
-@media only screen and (min-width: 768px) {
-  ${({ theme }) => theme.mixins.flexBetween};
-  gap: 1.5em;
+  @media only screen and (min-width: 768px) {
+    ${({ theme }) => theme.mixins.flexBetween};
+    gap: 1.5em;
   }
 `;
 
@@ -48,9 +47,9 @@ const StyledConfigureDiv = styled.div`
   margin-top: 1em;
   width: 100%;
   gap: 0.5em;
-  
-@media only screen and (min-width: 768px) {
-  width: 40%;
+
+  @media only screen and (min-width: 768px) {
+    width: 40%;
   }
 `;
 
@@ -60,7 +59,7 @@ const StyledOuterChip = styled.ul`
   padding: 0;
   display: flex;
 
-  li{
+  li {
     /* float: left; */
     margin: 0 5px 0 0;
     padding: 0 60px;
@@ -72,7 +71,7 @@ const StyledOuterChip = styled.ul`
 
     /* border: 1px solid ${({ theme }) => theme.border}; */
 
-/* 
+    /* 
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.border};
     border-radius: var(--border-radius);
@@ -84,8 +83,8 @@ const StyledOuterChip = styled.ul`
     transition: var(--transition); */
   }
 
-  
-  label, input{
+  label,
+  input {
     display: block;
     position: absolute;
     top: 0;
@@ -93,7 +92,7 @@ const StyledOuterChip = styled.ul`
     right: 0;
     bottom: 0;
     cursor: pointer;
-    
+
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.border};
     border-radius: var(--border-radius);
@@ -108,32 +107,28 @@ const StyledOuterChip = styled.ul`
   input[type="radio"] {
     opacity: 0.01;
     z-index: 100;
-}
+  }
 
-input[type="radio"]:checked+label,
-.Checked+label {
-  background: ${({ theme }) => theme.shade};
-  color: ${({ theme }) => theme.color};
-}
+  input[type="radio"]:checked + label,
+  .Checked + label {
+    background: ${({ theme }) => theme.shade};
+    color: ${({ theme }) => theme.color};
+  }
 
-label {
-  padding: 5px;
-  /* border: 1px solid #CCC; */
-  /* cursor: pointer; */
-  z-index: 90;
+  label {
+    padding: 5px;
+    /* border: 1px solid #CCC; */
+    /* cursor: pointer; */
+    z-index: 90;
+  }
 
-
-}
-
-li:hover {
-  background: ${({ theme }) => theme.shade};
-}
+  li:hover {
+    background: ${({ theme }) => theme.shade};
+  }
 `;
-
 
 const ChipComp = ({ chipName }) => {
   return (
-
     <label>
       <Styledchip
         type="radio"
@@ -143,8 +138,8 @@ const ChipComp = ({ chipName }) => {
       />
       {chipName}
     </label>
-  )
-}
+  );
+};
 
 const SizeConverter = () => {
   const [defPixel, setdefPixel] = useState(16);
@@ -161,7 +156,7 @@ const SizeConverter = () => {
   const defPixRef = useRef();
 
   useEffect(() => {
-    console.log("in useEffect");
+    // console.log("in useEffect");
   }, [em, px, pt, pr, defPixel, defPixelInput]);
 
   const clearFun = () => {
@@ -196,7 +191,7 @@ const SizeConverter = () => {
   const ptTo = (ptValue) => {
     if (ptValue !== "") {
       const tempEM = ufun.ptToem(ptValue, setPT, setEM);
-      console.log(tempEM);
+      // console.log(tempEM);
       ufun.emTopx(tempEM, setEM, setPX, defPixel);
       ufun.emTopr(tempEM, setEM, setPR);
     } else {
@@ -207,7 +202,7 @@ const SizeConverter = () => {
   const prTo = (prValue) => {
     if (prValue !== "") {
       const tempEM = ufun.prToem(prValue, setPR, setEM);
-      console.log(tempEM);
+      // console.log(tempEM);
       ufun.emTopx(tempEM, setEM, setPX, defPixel);
       ufun.emTopt(tempEM, setEM, setPT);
     } else {
@@ -216,7 +211,7 @@ const SizeConverter = () => {
   };
 
   const changeDefVal = (defPixValue) => {
-    console.log(defPixValue);
+    // console.log(defPixValue);
     if (defPixValue !== "") {
       setdefPixel(defPixValue);
       clearFun();
@@ -228,11 +223,11 @@ const SizeConverter = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       let prevState = defPixelInput;
-      setdefPixelInput(!prevState)
+      setdefPixelInput(!prevState);
     }
-  }
+  };
 
   const inputObj = [
     {
@@ -262,8 +257,8 @@ const SizeConverter = () => {
       inputRef: inputprRef,
       onChangeFun: () => prTo(inputprRef.current.value),
       curValue: pr,
-    }
-  ]
+    },
+  ];
 
   const filter = [
     // {
@@ -314,33 +309,36 @@ const SizeConverter = () => {
               curValue={obj.curValue}
               defPixel={defPixel}
             />
-          )
+          );
         })}
       </StyledOuterDiv>
       <StyledConfigureDiv>
-        <div>Base size of font is {defPixel}px{" "}
+        <div>
+          Base size of font is {defPixel}px{" "}
           <PencilAlt
             width="30px"
             color="#2b7537"
             cursor="pointer"
             onClick={() => {
               let prevState = defPixelInput;
-              setdefPixelInput(!prevState)
+              setdefPixelInput(!prevState);
             }}
           />
         </div>
-        {defPixelInput && <StyledInput
-          type="number"
-          ref={defPixRef}
-          onChange={() => changeDefVal(defPixRef.current.value)}
-          value={defPixel}
-          onKeyPress={(e) => handleKeyPress(e)}
-          name="input default pixel"
-        />}
+        {defPixelInput && (
+          <StyledInput
+            type="number"
+            ref={defPixRef}
+            onChange={() => changeDefVal(defPixRef.current.value)}
+            value={defPixel}
+            onKeyPress={(e) => handleKeyPress(e)}
+            name="input default pixel"
+          />
+        )}
       </StyledConfigureDiv>
       <ButtonDiv filter={filter} finalButtons={finalButtons} />
     </div>
-  )
-}
+  );
+};
 
-export default SizeConverter
+export default SizeConverter;

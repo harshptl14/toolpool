@@ -183,8 +183,6 @@ const ToolsScreen = ({ executeScroll, elRef }) => {
   }
 
   useEffect(() => {
-    console.log(window.location.hash.substring(1));
-    console.log(window.location.pathname);
     window.location.hash
       ? setMenuItem(window.location.hash.substring(1))
       : setMenuItem("textTools");
@@ -193,6 +191,7 @@ const ToolsScreen = ({ executeScroll, elRef }) => {
         ? setMenuItem(window.location.hash.substring(1))
         : setMenuItem("textTools");
     };
+    window.location.hash && executeScroll({ behavior: "smooth" });
     // save menu item if url changes, and restore if we go back
     // console.log("useEffect called", window.location.hash);
   }, [menuItem]);
@@ -211,6 +210,7 @@ const ToolsScreen = ({ executeScroll, elRef }) => {
         <CategoryItemMobile
           executeScroll={executeScroll}
           setMenuItem={setMenuItem}
+          menuItem={menuItem}
         />
         <StyledWrapper>
           {config[menuItem]?.length !== 0 ? (

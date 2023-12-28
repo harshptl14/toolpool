@@ -8,7 +8,6 @@ import { copyToClipboard } from "../../../../static/helpers/helperfunctions";
 import { ToastContext } from "../../../Toast/toastcontext";
 import { RGBAToHexA } from "../../ColorTools/RgbToHex/converterFunctions";
 
-
 const Wrapperdiv = styled.div`
   .canvas-preview {
     margin: 1em auto;
@@ -39,7 +38,7 @@ const StyledCopyButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.color}
+  color: ${({ theme }) => theme.color};
 `;
 
 const StyledFilearea = styled.div`
@@ -66,7 +65,7 @@ const StyledPreviewimageDiv = styled.div`
   transition: all 0.25s ease 0s;
   margin: 1em auto;
   /* max-width: fit-content; */
-  overflow-x: hidden; 
+  overflow-x: hidden;
 
   canvas {
     width: auto;
@@ -128,9 +127,9 @@ function findPos(obj) {
 }
 
 const hexToRgb = (hex) => {
-  console.log("hexToRgb", hex)
+  /* console.log("hexToRgb", hex) */
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  console.log("result of hexToRgb", result)
+  /* console.log("result of hexToRgb", result) */
   return result
     ? `
         ${parseInt(result[1], 16)},
@@ -142,7 +141,10 @@ const hexToRgb = (hex) => {
 
 const ImageColorPicker = () => {
   const [previewImage, setpreviewImage] = useState(null);
-  const [hex, setHex] = useState({ hex: "#ffffff", rgba: "rgb(255,255,255,1)" });
+  const [hex, setHex] = useState({
+    hex: "#ffffff",
+    rgba: "rgb(255,255,255,1)",
+  });
   const [state, dispatch] = useContext(ToastContext);
 
   const draw = useCallback(
@@ -185,7 +187,7 @@ const ImageColorPicker = () => {
             });
           });
         } catch (err) {
-          console.log(err);
+          /* console.log(err); */
         }
       },
       type: "normal",
@@ -246,12 +248,10 @@ const ImageColorPicker = () => {
                 <StyledCopyButton
                   onClick={(e) => {
                     copyToClipboard(hex.rgba);
-                    dispatch(
-                      {
-                        type: "SHOW",
-                        message: "Copied",
-                      }
-                    );
+                    dispatch({
+                      type: "SHOW",
+                      message: "Copied",
+                    });
                   }}
                 >
                   <Copy width={25} />
@@ -278,30 +278,28 @@ const ImageColorPicker = () => {
               <ButtonDiv filter={[]} finalButtons={finalButtons} />
             )}
           </div>
-        </div >
+        </div>
       )}
 
-      {
-        previewImage && (
-          <StyledPreviewimageDiv>
-            <Canvas
-              id="canvas"
-              draw={draw}
-              width={700}
-              height={500}
-              onClick={(e, ctx) => {
-                // var pos = findPos(ctx.canvas);
-                // const x = e.pageX - pos.x;
-                // const y = e.pageY - pos.y;
-                // var imageData = ctx.getImageData(x, y, 1, 1).data;
-                // const [r, g, b] = imageData;
-                // setRgb([r, g, b]);
-              }}
-            />
-          </StyledPreviewimageDiv>
-        )
-      }
-    </Wrapperdiv >
+      {previewImage && (
+        <StyledPreviewimageDiv>
+          <Canvas
+            id="canvas"
+            draw={draw}
+            width={700}
+            height={500}
+            onClick={(e, ctx) => {
+              // var pos = findPos(ctx.canvas);
+              // const x = e.pageX - pos.x;
+              // const y = e.pageY - pos.y;
+              // var imageData = ctx.getImageData(x, y, 1, 1).data;
+              // const [r, g, b] = imageData;
+              // setRgb([r, g, b]);
+            }}
+          />
+        </StyledPreviewimageDiv>
+      )}
+    </Wrapperdiv>
   );
 };
 

@@ -18,7 +18,7 @@ const StyledParentCard = styled.div`
 const StyledCard = styled.div`
   width: 100%;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.card};
+  background-color: ${({ theme }) => theme.shadeVarient};
   padding: 1em;
   border: 1px solid ${({ theme }) => theme.border};
 

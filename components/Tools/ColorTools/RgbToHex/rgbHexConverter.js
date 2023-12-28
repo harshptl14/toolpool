@@ -206,7 +206,7 @@ const rgbHexConverter = () => {
 
   const handleConvert = () => {
     const currentValue = userInput;
-    console.log(output);
+    // console.log(output);
     handleValidation(currentValue);
   };
 
@@ -236,7 +236,7 @@ const rgbHexConverter = () => {
       ];
       setOutput(conveterObj);
     } else {
-      console.log("Invalid input");
+      // console.log("Invalid input");
     }
   };
 
@@ -261,7 +261,7 @@ const rgbHexConverter = () => {
       ];
       setOutput(conveterObj);
     } else {
-      console.log("Invalid input");
+      // console.log("Invalid input");
     }
   };
 
@@ -274,7 +274,7 @@ const rgbHexConverter = () => {
     let hslRegex = regexColorCodeTypes("hsl");
     let hslaRegex = regexColorCodeTypes("hsla");
 
-    console.log(currentValue)
+    // console.log(currentValue)
 
     if (hexRegex.test(currentValue)) {
       hexConverter(currentValue);

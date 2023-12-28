@@ -43,8 +43,6 @@ const SlidersSection = styled.div`
   }
   ${({ theme }) => theme.mixins.checkbox};
 
-
-
   @media (min-width: 800px) {
     flex: 1 0 fill;
     align-items: stretch;
@@ -145,7 +143,7 @@ const CSSProps = styled.div`
   border-radius: 5px;
   font-family: var(--font-mono);
   background-color: ${({ theme }) => theme.shadeBackcard};
-  font-size: var(--fz-sm);  
+  font-size: var(--fz-sm);
 
   @media (min-width: 800px) {
     font-size: var(--fz-lg);
@@ -153,8 +151,6 @@ const CSSProps = styled.div`
     margin-top: 1rem;
   }
 `;
-
-
 
 const GlassMorphismGenerator = () => {
   const HexToRGBobj = (hex) => {
@@ -176,7 +172,7 @@ const GlassMorphismGenerator = () => {
   const onSelectFile = useCallback((file) => {
     // generating ObjectURL for input image to preview
     const objectUrl = URL.createObjectURL(file);
-    console.log(objectUrl);
+    // console.log(objectUrl);
     setBgImage(objectUrl);
   }, []);
 
@@ -187,8 +183,6 @@ const GlassMorphismGenerator = () => {
       ("0x" + hex[5] + hex[6]) | 0,
     ];
   };
-
-
 
   const filter = [];
 
@@ -207,9 +201,9 @@ const GlassMorphismGenerator = () => {
 
   useEffect(() => {
     setRGBColor(() => HexToRGBobj(theme.contrast));
-    console.log(RGBColor)
-    console.log(theme.contrast)
-  }, [theme])
+    // console.log(RGBColor);
+    // console.log(theme.contrast);
+  }, [theme]);
 
   return (
     <StyledOuterDiv>
@@ -289,7 +283,7 @@ const GlassMorphismGenerator = () => {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files);
+                    // console.log(e.target.files);
                     if (!e.target.files || e.target.files.length === 0) {
                       setBgImage(null);
                       return;

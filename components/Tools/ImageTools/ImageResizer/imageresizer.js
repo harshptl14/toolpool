@@ -6,7 +6,7 @@ import ButtonDiv from "../../ButtonDiv";
 import { ToastContext } from "../../../Toast/toastcontext";
 
 const StyledFilearea = styled.div`
- ${({theme}) => theme.mixins.imageUploader}
+  ${({ theme }) => theme.mixins.imageUploader}
 `;
 
 const StyledPreviewimageDiv = styled.div`
@@ -84,10 +84,10 @@ const ImageResizer = () => {
   const MAX_HEIGHT = 10000;
 
   const onSelectFile = (file) => {
-    console.log("File", file);
+    // console.log("File", file);
     // generating ObjectURL for input image to preview
     const objectUrl = URL.createObjectURL(file);
-    console.log(objectUrl);
+    // console.log(objectUrl);
     var image = new Image();
     image.name = file.name;
     image.src = objectUrl;
@@ -179,7 +179,7 @@ const ImageResizer = () => {
   function DownloadCanvasAsImage() {
     try {
       if (width > MAX_WIDTH || width < 9) {
-        console.log("Width should be between 9 to 5000 pixels");
+        // console.log("Width should be between 9 to 5000 pixels");
         dispatch({
           type: "SHOW",
           message: "Width should be between 9 to 5000 pixels",
@@ -187,7 +187,7 @@ const ImageResizer = () => {
         return;
       }
       if (height > MAX_HEIGHT || height < 9) {
-        console.log("Height should be between 9 to 20000 pixels");
+        // console.log("Height should be between 9 to 20000 pixels");
         dispatch({
           type: "SHOW",
           message: "Height should be between 9 to 5000 pixels",
@@ -203,7 +203,7 @@ const ImageResizer = () => {
         downloadLink.click();
       });
     } catch (err) {
-      console.log(err.message);
+      // console.log(err.message);
     }
   }
 
@@ -219,7 +219,7 @@ const ImageResizer = () => {
             e.target.value = null;
           }}
           onChange={(e) => {
-            console.log(e.target.files);
+            // console.log(e.target.files);
             if (!e.target.files || e.target.files.length === 0) {
               setpreviewImage(undefined);
               return;

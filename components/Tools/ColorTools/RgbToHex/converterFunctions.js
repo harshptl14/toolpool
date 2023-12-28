@@ -761,11 +761,11 @@ export function CMYKToHex(cmyk) {
   // strip the slash if using space-separated syntax
   if (cmyk.indexOf("/") > -1) cmyk.splice(3, 1);
 
-  let c = cmyk[0] /100,
+  let c = cmyk[0] / 100,
     m = cmyk[1] / 100,
     y = cmyk[2] / 100,
     k = cmyk[3] / 100;
-  
+
   c = c * (1 - k) + k;
   m = m * (1 - k) + k;
   y = y * (1 - k) + k;
@@ -773,7 +773,7 @@ export function CMYKToHex(cmyk) {
   let r = 1 - c,
     g = 1 - m,
     b = 1 - y;
-  
+
   r = Math.round(255 * r);
   g = Math.round(255 * g);
   b = Math.round(255 * b);
@@ -786,7 +786,6 @@ export function CMYKToHex(cmyk) {
   if (g.length == 1) g = "0" + g;
   if (b.length == 1) b = "0" + b;
 
-  console.log("#" + r + g + b);
+  // console.log("#" + r + g + b);
   return "#" + r + g + b;
-  
 }

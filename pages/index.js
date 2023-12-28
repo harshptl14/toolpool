@@ -68,6 +68,10 @@ export default function Homescreen() {
       <Head>
         <title>ToolPool - Free Online Helper Tools</title>
         <meta
+          name="google-site-verification"
+          content="3JiRpbr672iMzABDOZg2QdYUQiJ7qWkJORU4PTNMK3I"
+        />
+        <meta
           name="Keywords"
           content="online tools, free online tools, text tools, image tools, developers tools, social media tools, color tools, lorem ipsum, letter count,
      space remover, text to binary, binary to text, unique word, upper case, lower case, image resize, crop image"

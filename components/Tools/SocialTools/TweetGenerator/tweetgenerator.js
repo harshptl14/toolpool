@@ -52,19 +52,19 @@ const Tweet = styled.div`
   background-color: ${({ theme }) => theme.shade};
   overflow-x: scroll;
   padding: 30px;
-  
+
   @media (min-width: 800px) {
     padding: 50px;
 
     scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
 
-    ::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+    ::-webkit-scrollbar {
+      /* WebKit */
+      width: 0;
+      height: 0;
     }
   }
-
 `;
 
 const TweetInputs = styled.div`
@@ -239,7 +239,7 @@ const TweetGenerator = () => {
         link.remove();
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -317,7 +317,7 @@ const TweetGenerator = () => {
                       className="pop"
                       onClick={() => {
                         setProfileImage(null);
-                        console.log(profileImage);
+                        // console.log(profileImage);
                       }}
                     >
                       <Cross size="15" />

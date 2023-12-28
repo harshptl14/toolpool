@@ -107,7 +107,7 @@ const StyledLinks = styled.div`
       margin: 0 5px;
       position: relative;
       counter-increment: item 1;
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-xs);
       color: ${({ theme }) => theme.text};
 
       :hover {

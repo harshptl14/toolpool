@@ -95,11 +95,11 @@ const StyledTitle = styled.div`
   font-size: var(--fz-md);
 
   @media (min-width: 600px) {
-    font-size: var(--fz-xl);
+    font-size: var(--fz-md);
   }
 
   @media (min-width: 1000px) {
-    font-size: var(--fz-xl);
+    font-size: var(--fz-md);
   }
 `;
 
@@ -107,13 +107,14 @@ const StyledDesc = styled.div`
   color: ${({ theme }) => theme.descfont};
   margin-bottom: 20px;
   font-size: var(--fz-xs);
+  line-height: 21px;
 
   @media (min-width: 600px) {
     font-size: var(--fz-xs);
   }
 
   @media (min-width: 1000px) {
-    font-size: var(--fz-xs);
+    font-size: var(--fz-sm);
   }
 `;
 

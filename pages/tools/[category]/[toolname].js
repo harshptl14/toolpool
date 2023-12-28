@@ -56,6 +56,7 @@ const StyledDesc = styled.div`
 
   @media (min-width: 600px) {
     padding: 20px 50px;
+    font-size: var(--fz-sm);
   }
 
   pre {

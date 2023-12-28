@@ -3,26 +3,27 @@ import styled from "styled-components";
 
 const HomeDiv = styled.div`
   ${({ theme }) => theme.mixins.flexColumn}
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  font-size: var(--fz-heading);
+  font-size: var(--fz-headingm);
   text-align: center;
   /* width: 80%; */
   font-weight: 700;
-  line-height: 30px;
+  line-height: 40px;
   /* color: ${({ theme }) => theme.color}; */
 
   @media (min-width: 600px) {
-    font-size: var(--fz-headingm);
+    /* font-size: var(--fz-headingm); */
+    margin-top: 40px;
     line-height: 40px;
-    /* width: 70%; */
+    width: 70%;
   }
 
   @media (min-width: 1200px) {
     font-size: var(--fz-headingxl);
     line-height: 55px;
-    /* width: 60%; */
+    width: 65%;
   }
 
   .homeDesc {
@@ -64,10 +65,7 @@ const LandingPagediv = ({ executeScroll }) => {
           height="54"
         />
       </a> */}
-      <div>
-        One-Stop solution with all <br />
-        tools for your work
-      </div>
+      <div>One-Stop solution with all tools for your work</div>
       <div className="homeDesc">
         No need to bookmark tools seperately. It’s a free website with all
         important tools together

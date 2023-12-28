@@ -115,7 +115,7 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: ${({ theme }) => theme.shade};
+    background-color: ${({ theme }) => theme.shadeVarient};
     /* box-shadow: -10px 0px 30px -15px var(--green); */
     z-index: 9;
     transform: translateX(${(props) => (props.menuOpen ? 0 : 100)}vw);
@@ -142,7 +142,7 @@ const StyledSidebar = styled.aside`
       position: relative;
       margin: 0 auto 20px;
       counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+      font-size: clamp(var(--fz-sm), 4vw, var(--fz-sm));
 
       @media (max-width: 600px) {
         margin: 0 auto 10px;
@@ -165,10 +165,11 @@ const StyledSidebar = styled.aside`
   }
 
   .theme-button {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
+    ${({ theme }) => theme.mixins.smallButtonFilled};
+    /* padding: 18px 50px; */
     margin: 10% auto 0;
-    width: max-content;
+    /* width: max-content; */
+    font-size: var(--fz-sm);
   }
 `;
 

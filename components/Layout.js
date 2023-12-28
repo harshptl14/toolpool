@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { lightTheme, darkTheme } from "../styles/theme";
 import Footer from "./Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const GlobalPadding = styled.div`
   ${({ theme }) => theme.mixins.padding};
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Navbar isHome={home} toggleTheme={themeToggler} />
       <GlobalPadding>
+        <Analytics />
         <ToastContextProvider>{children}</ToastContextProvider>
       </GlobalPadding>
       <Footer />
